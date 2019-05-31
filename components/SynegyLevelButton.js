@@ -32,6 +32,24 @@ const SynergyLevelButtonGroup = () => (
   />
 )
 
+const playerLevelMockData = [5, 6, 7, 8, 9, 10]
+
+const PlayerLevelButton = ({ item }) => (
+  <TouchableHighlight>
+    <View style={styles.container}>
+      <Text>lv{item}</Text>
+    </View>
+  </TouchableHighlight>
+)
+
+export const PlayerLevelButtonGroup = () => (
+  <FlatList
+    data={playerLevelMockData}
+    contentContainerStyle={styles.flatListContainer}
+    renderItem={PlayerLevelButton}
+  />
+)
+
 export default SynergyLevelButtonGroup
 
 const styles = StyleSheet.create({
