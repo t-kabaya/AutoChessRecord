@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
-import SynergyLevelButton from '../components/SynegyLevelButton'
+import SynergyLevelButtonGroup from '../components/SynegyLevelButton'
 
 export default class HomeScreen extends React.Component {
   constructor () {
@@ -32,7 +32,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View>
         <Text>発動したシナジー</Text>
-        <SynergyLevelButton />
+        <SynergyLevelButtonGroup />
       </View>
     )
   }

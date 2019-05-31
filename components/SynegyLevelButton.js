@@ -1,13 +1,45 @@
 import React from 'react'
-import { TouchableHighlight, View, Text } from 'react-native'
+import {
+  TouchableHighlight,
+  View,
+  Text,
+  StyleSheet,
+  FlatList
+} from 'react-native'
 
-const SynergyLevelButton = props => (
-  <TouchableHighlight>
-    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-      <Text>ライダー</Text>
-      <Text>lv1</Text>
-    </View>
-  </TouchableHighlight>
+const mockData = [
+  { race: 'ライダ-', level: 1 },
+  { race: 'サイカ-', level: 2 },
+  { race: 'ビースト', level: 1 }
+]
+
+const SynergyLevelButton = ({ item }) => {
+  return (
+    <TouchableHighlight>
+      <View style={styles.container}>
+        <Text>{item.race}</Text>
+        <Text>lv{item.level}</Text>
+      </View>
+    </TouchableHighlight>
+  )
+}
+
+const SynergyLevelButtonGroup = () => (
+  <FlatList
+    data={mockData}
+    contentContainerStyle={styles.flatListContainer}
+    renderItem={SynergyLevelButton}
+  />
 )
 
-export default SynergyLevelButton
+export default SynergyLevelButtonGroup
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  flatListContainer: {
+    flexDirection: 'row'
+  }
+})
