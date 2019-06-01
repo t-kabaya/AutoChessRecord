@@ -37,6 +37,9 @@ export default class HomeScreen extends React.Component {
         <SynergyLevelButtonGroup />
         <Text>プレイヤーのレベル</Text>
         <PlayerLevelButtonGroup />
+
+        <Text>選択したユニット</Text>
+
         <Text>決定</Text>
       </View>
     )
