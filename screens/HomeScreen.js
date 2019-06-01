@@ -9,7 +9,8 @@ import {
   View
 } from 'react-native'
 import SynergyLevelButtonGroup, {
-  PlayerLevelButtonGroup
+  PlayerLevelButtonGroup,
+  RankingButtonGroup
 } from '../components/SynegyLevelButton'
 
 export default class HomeScreen extends React.Component {
@@ -39,6 +40,9 @@ export default class HomeScreen extends React.Component {
         <PlayerLevelButtonGroup />
 
         <Text>選択したユニット</Text>
+
+        <Text>順位</Text>
+        <RankingButtonGroup />
 
         <Text>決定</Text>
       </View>
