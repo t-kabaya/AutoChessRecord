@@ -10,7 +10,8 @@ import {
   FlatList,
   TouchableHighlight,
   TouchableWithoutFeedback,
-  SafeAreaView
+  SafeAreaView,
+  Alert
 } from 'react-native'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
@@ -71,6 +72,9 @@ export default class SelectUnitsScreen extends React.Component {
 
   onPressDecision = (unitState) => {
     saveMatchRecordToFireStore(unitState, this.state.ranking)
+    Alert.alert('成功')
+    // stateをリセット
+    this.setState({unitState: unitData.map(data => ({...data, level: 0})), ranking: null})
   }
 
   render () {

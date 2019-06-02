@@ -3,7 +3,9 @@ import { ScrollView, StyleSheet } from 'react-native'
 
 export default class LinksScreen extends React.Component {
   render () {
-    return <ScrollView style={styles.container} />
+    return (
+      <View>自分の戦績が表示される。ここで、自分のサイカーの勝率とかがわかる。</View>
+    )
   }
 }
 

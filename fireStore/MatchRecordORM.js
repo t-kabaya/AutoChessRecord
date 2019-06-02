@@ -12,6 +12,7 @@ import {Constants} from 'expo'
 //   }
 // ]
 
+// 順位は押さなくてもいい。
 export const saveMatchRecordToFireStore = async(units, ranking) => {
   const unitDataToStore = units.filter(unit => !(unit.level === 0)).map(unit => ({unitId: unit.id, level: unit.level}))
   try {
