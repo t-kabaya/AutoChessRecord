@@ -33,19 +33,29 @@ export default class HomeScreen extends React.Component {
 
   render () {
     return (
-      <View>
-        <Text>発動したシナジー</Text>
+      <View style={styles.container}>
+        <Text style={styles.baseText}>発動したシナジー</Text>
         <SynergyLevelButtonGroup />
         <Text>プレイヤーのレベル</Text>
         <PlayerLevelButtonGroup />
 
-        <Text>選択したユニット</Text>
+        <Text style={styles.baseText}>選択したユニット</Text>
 
-        <Text>順位</Text>
+        <Text style={styles.baseText}>順位</Text>
         <RankingButtonGroup />
 
-        <Text>決定</Text>
+        <Text style={styles.baseText}>決定</Text>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  baseText: {
+    fontSize: 20
+  }
+})

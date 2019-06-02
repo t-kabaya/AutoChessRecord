@@ -9,7 +9,8 @@ import {
   View,
   FlatList,
   TouchableHighlight,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  SafeAreaView
 } from 'react-native'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
@@ -20,7 +21,8 @@ import {Badge, Button} from 'native-base'
 
 export default class SelectUnitsScreen extends React.Component {
   state = {
-    unitState: unitData.map(data => ({...data, level: 0}))
+    unitState: unitData.map(data => ({...data, level: 0})),
+    ranking: null
   }
 
   onPressUnitListItem = (item) => {
@@ -50,13 +52,29 @@ export default class SelectUnitsScreen extends React.Component {
     )
   }
 
+  rankingItem = ({item}) => {
+    const isSelected = (item === this.state.ranking)
+    return (
+      <Button
+        onPress={() => this.onPressRankingItem(item)}
+        style={styles.rankingButton(isSelected)}
+      >
+        <Text style={styles.rankingButtonText}>{item}</Text>
+      </Button>
+    )
+  }
+
+  onPressRankingItem = (item) => {
+    this.setState({ranking: item})
+  }
+
   render () {
     const {unitState} = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
     console.log(selectedUnits)
     return (
-      <View style={{flex: 1}}>
-        <View style={{flex: 4}}>
+      <SafeAreaView style={{flex: 1}}>
+        <View style={{flex: 3}}>
           <Button full>
             <Text style={styles.doneSelectButtonText}>決定</Text>
             </Button>
@@ -66,7 +84,17 @@ export default class SelectUnitsScreen extends React.Component {
           <Text style={styles.text}>選択済み</Text>
           <FlatList inverted horizontal data={selectedUnits} renderItem={this.unitListItem} />
         </View>
-      </View>
+        <View style={{flex: 1}}>
+          <Text style={styles.text}>順位</Text>
+          <FlatList
+            scrollEnabled={false}
+            contentContainerStyle={styles.rankingContainer}
+            numColumns={4}
+            data={[1,2,3,4,5,6,7,8]}
+            renderItem={this.rankingItem}
+          />
+        </View>
+      </SafeAreaView>
     )
   }
 }
@@ -95,5 +123,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingTop: 5,
     fontSize: 18,
+  },
+  rankingContainer: {
+    alignItems: 'center'
+  },
+  rankingButton:  (isSelected) => ({
+    width: Layout.width * 1 / 5,
+    margin: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: isSelected ? 'blue' : 'gray'
+  }),
+  rankingButtonText: {
+    alignSelf: 'center',
+    color: 'white',
+    fontSize: 20
   }
 })
