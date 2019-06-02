@@ -16,6 +16,7 @@ import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import {Badge, Button} from 'native-base'
+import {saveMatchRecordToFireStore} from '../fireStore/MatchRecordORM'
 
 // unitの重複は考えない
 
@@ -68,6 +69,10 @@ export default class SelectUnitsScreen extends React.Component {
     this.setState({ranking: item})
   }
 
+  onPressDecision = (unitState) => {
+    saveMatchRecordToFireStore(unitState, this.state.ranking)
+  }
+
   render () {
     const {unitState} = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
@@ -75,7 +80,7 @@ export default class SelectUnitsScreen extends React.Component {
     return (
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 3}}>
-          <Button full>
+          <Button full onPress={() => this.onPressDecision(unitState)}>
             <Text style={styles.doneSelectButtonText}>決定</Text>
             </Button>
           <FlatList style={styles.unitListContainer} numColumns={4} data={unitState} renderItem={this.unitListItem} />

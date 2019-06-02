@@ -16,8 +16,40 @@ firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
 
-db.collection("TIL").add({
-  userId: '34',
-  tilContentText: 'oeua',
-  date: new Date()
-})
+// db.collection("matchRecord").add({
+//   userId: '34',
+//   ranking: 3,
+//   units: [
+//     {
+//       id: 7,
+//       level: 2
+//     }
+//   ],
+//   date: new Date()
+// })
+
+// import {saveMatchRecordToFireStore} from './MatchRecordORM'
+// saveMatchRecordToFireStore({
+//   ranking: 8,
+//   units: [
+//     {
+//       id: 7,
+//       level: 2
+//     }
+//   ]
+// })
+
+
+
+
+// 設計
+// matchRecord table
+// ranking 1から10
+// userId: string
+// units: [
+//   {
+//     id: 7,
+//     level: 2
+//   }
+// ]
+// date: new Date()
