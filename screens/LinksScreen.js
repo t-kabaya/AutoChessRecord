@@ -1,10 +1,17 @@
 import React from 'react'
-import { ScrollView, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet, View, Text } from 'react-native'
+import {getMyMatchRecord} from '../fireStore/MatchRecordORM'
 
 export default class LinksScreen extends React.Component {
+  componentDidMount = () => {
+    getMyMatchRecord()
+  }
+
   render () {
     return (
-      <View>自分の戦績が表示される。ここで、自分のサイカーの勝率とかがわかる。</View>
+      <View>
+        <Text>AAAA</Text>
+      </View>
     )
   }
 }

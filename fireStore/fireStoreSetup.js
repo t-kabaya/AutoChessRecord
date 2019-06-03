@@ -16,6 +16,21 @@ firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
 
+// import {getMyMatchRecord} from './MatchRecordORM'
+
+// export const getMyMatchRecord = async() => {
+//   console.log('error')
+//   const response = await db.collection('matchRecord').get()
+//   console.log(response)
+//   const myMatchRecord = await response
+//                           .docs
+//                           .map(item => item.data())
+//                           .filter(data => data.userId === Constants.installationId)
+//   console.log(myMatchRecord)
+// }
+
+// getMyMatchRecord()
+
 // db.collection("matchRecord").add({
 //   userId: '34',
 //   ranking: 3,
