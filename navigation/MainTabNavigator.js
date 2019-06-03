@@ -8,7 +8,7 @@ import {
 import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
 import SelectUnitsScreen from '../screens/SelectUnitsScreen'
-import LinksScreen from '../screens/LinksScreen'
+import MyMatchRecordScreen from '../screens/MyMatchRecordScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 
 const HomeStack = createStackNavigator({
@@ -31,7 +31,7 @@ HomeStack.navigationOptions = {
 }
 
 const LinksStack = createStackNavigator({
-  Links: LinksScreen
+  Links: MyMatchRecordScreen
 })
 
 LinksStack.navigationOptions = {
@@ -59,7 +59,7 @@ SettingsStack.navigationOptions = {
 }
 
 export default createBottomTabNavigator({
-  HomeStack,
   LinksStack,
+  HomeStack,
   SettingsStack
 })
