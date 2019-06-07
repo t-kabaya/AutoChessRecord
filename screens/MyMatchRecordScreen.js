@@ -1,6 +1,7 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View, Text, FlatList } from 'react-native'
+import { ScrollView, StyleSheet, View, Text, FlatList, Image } from 'react-native'
 import {getMyMatchRecord} from '../fireStore/MatchRecordORM'
+import unitData, {unitImagePathArray} from '../constants/UnitData'
 
 export default class MyMatchRecordScreen extends React.Component {
   state={
@@ -17,11 +18,26 @@ export default class MyMatchRecordScreen extends React.Component {
     this.setState({myMatchRecord, isLoading: false})
   }
 
-  matchRecordListItem = ({item}) => (
-    <View>
+  matchRecordListItem = ({item}) => {
+    const ListItem = ({item}) => {
+      return (
+        <View>
+          <Image source={unitImagePathArray[item.id -1]}/>
+          <Text>{JSON.stringify(item)}</Text>
+          <Text>{JSON.stringify(item)}</Text>
+        </View>
+      )
+    }
+  return (
+    <View style={styles.cardContainer}>
       <Text>{item.ranking}位</Text>
+      {/* <Text>{JSON.stringify(item.units)}位</Text> */}
+      <FlatList
+        data={item.units}
+        renderItem={({item}) => < ListItem item={item}/>} 
+      />
     </View>
-  )
+  )}
 
   render () {
     const {myMatchRecord} = this.state
@@ -48,5 +64,9 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 20
+  },
+  cardContainer: {
+    width: '100%',
+    borderWidth: 1
   }
 })

@@ -47,8 +47,8 @@ const unitData = [
     unitName: '医者',
     race: '海兵',
     job: 'サポーター',
-    class: 'サポーター'
-  ,imageUrl: require('../assets/images/unit7.jpeg')},
+    class: 'サポーター',
+    imageUrl: '../assets/images/unit7.jpeg'},
   {
     id: 8,
     unitName: 'アイアンバードライダー',
