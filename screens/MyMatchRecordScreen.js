@@ -10,6 +10,8 @@ import {
 import { Ionicons } from '@expo/vector-icons'
 import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
+import * as Localization from 'expo-localization'
+import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
 
 const UnitImageListItem = ({ item }) => {
   return (
@@ -18,7 +20,8 @@ const UnitImageListItem = ({ item }) => {
         style={styles.unitImage}
         source={unitImagePathArray[item.unitId - 1]}
       />
-      <Text>{JSON.stringify(item.level)}</Text>
+      <Text>{unitData[item.unitId - 1].unitName}</Text>
+      <Text>{item.level}</Text>
       <View style={styles.starContainer}>
         {[...Array(item.level)].map(level => (
           <Ionicons name='ios-star' size={12} color='#FBC02D' />
@@ -44,6 +47,7 @@ export default class MyMatchRecordScreen extends React.Component {
   }
 
   matchRecordListItem = ({ item }) => {
+    const synergies = calcSynergiesFromUnitIds(item.units)
     return (
       <View style={styles.cardContainer}>
         <Text>{item.ranking}位</Text>
@@ -53,6 +57,9 @@ export default class MyMatchRecordScreen extends React.Component {
           data={item.units}
           renderItem={({ item }) => <UnitImageListItem item={item} />}
         />
+        <View>
+          <Text>{JSON.stringify(synergies)}</Text>
+        </View>
       </View>
     )
   }
@@ -60,6 +67,7 @@ export default class MyMatchRecordScreen extends React.Component {
   render () {
     const { myMatchRecord } = this.state
     if (this.state.isLoading) return null
+    alert(Localization.locale)
     console.log({ myMatchRecord })
     return (
       <View style={styles.container}>
@@ -81,6 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   cardContainer: {
+    flexDirection: 'row',
     width: '100%',
     borderWidth: 1
   },

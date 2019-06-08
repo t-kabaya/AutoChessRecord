@@ -1,381 +1,486 @@
+import * as Localization from 'expo-localization'
+import i18n from 'i18n-js'
+
+/* -------------------- job --------------------- */
+// const guardian = 'guardian'
+// const blaster = 'blaster'
+// const supporter = 'supporter'
+// const longShot = 'longShot'
+// const siegeBreaker = 'siegeBreaker'
+// const assassin = 'assassin'
+// const summoner = 'summoner'
+// const vanguard = 'vanguard'
+
+/* -------------------- race --------------------- */
+const marine = 'marine'
+
+const en = {
+  /* -------------------- job --------------------- */
+  guardian: 'guardian',
+  blaster: 'blaster',
+  supporter: 'supporter',
+  longShot: 'longShot',
+  siegeBreaker: 'siegeBreaker',
+  assassin: 'assassin',
+  summoner: 'summoner',
+  vanguard: 'vanguard',
+  /* -------------------- race --------------------- */
+  marine: 'marine',
+  rider: 'rider',
+  mech: 'mech',
+  airForce: 'airForce',
+  puppet: 'puppet',
+  psyker: 'psyker',
+  walker: 'walker',
+  kraken: 'kraken',
+  beast: 'beast',
+  rapter: 'rapter',
+  insectoid: 'insectoid',
+  immortal: 'immortal',
+  panda: 'panda'
+}
+
+const ja = {
+  foo: 'ja',
+  bar: 'chatouiller {{someValue}}'
+}
+
+i18n.fallbacks = true
+i18n.translations = { en, ja }
+// 開発のため、一旦jaを代入
+// i18n.locale = Localization.locale
+i18n.locale = 'en'
+
 const unitData = [
   {
-    id: 1,
+    unitId: 1,
     unitName: 'ゾウ',
-    race: 'ビースト',
-    job: 'ヴァンガード',
+    race: ['beast'],
+    job: ['vanguard'],
     class: 'タンク',
     imageUrl: require('../assets/images/unit1.jpeg')
   },
   {
-    id: 2,
+    unitId: 2,
     unitName: '酸の歯',
-    race: 'ビースト',
-    job: 'ヴァンガード',  
+    race: ['beast'],
+    job: ['vanguard'],
     class: 'タンク',
-    imageUrl: require('../assets/images/unit2.jpeg')},
+    imageUrl: require('../assets/images/unit2.jpeg')
+  },
   {
-    id: 3,
+    unitId: 3,
     unitName: '鋭いエッジ',
-    race: 'パペット',
-    job: 'アサシン',
-    class: 'ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit3.jpeg')},
+    race: ['puppet'],
+    job: ['assasin'],
+    class: 'ベーシックアタック',
+    imageUrl: require('../assets/images/unit3.jpeg')
+  },
   {
-    id: 4,
+    unitId: 4,
     unitName: '歌手',
-    race: 'サイカー',
-    job: 'サポーター',
-    class: 'サポーター'
-  ,imageUrl: require('../assets/images/unit4.jpeg')},
+    race: ['psyker'],
+    job: ['supporter'],
+    class: 'supporter',
+    imageUrl: require('../assets/images/unit4.jpeg')
+  },
   {
-    id: 5,
+    unitId: 5,
     unitName: '法王',
-    race: 'サイカー',
-    job: 'ブラスター',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit5.jpeg')},
+    race: ['psyker'],
+    job: ['blaster'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit5.jpeg')
+  },
   {
-    id: 6,
+    unitId: 6,
     unitName: '狙撃兵',
-    race: '海兵',
-    job: 'ロングショット',
-    class: 'ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit6.jpeg')},
+    race: ['marine'],
+    job: ['longShot'],
+    class: 'ベーシックアタック',
+    imageUrl: require('../assets/images/unit6.jpeg')
+  },
   {
-    id: 7,
+    unitId: 7,
     unitName: '医者',
-    race: '海兵',
-    job: 'サポーター',
-    class: 'サポーター',
-    imageUrl: '../assets/images/unit7.jpeg'},
+    race: ['marine'],
+    job: ['supporter'],
+    class: 'supporter',
+    imageUrl: '../assets/images/unit7.jpeg'
+  },
   {
-    id: 8,
-    unitName: 'アイアンバードライダー',
-    race: 'ライダー',
-    job: 'ロングショット',
-    class: 'ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit8.jpeg')},
+    unitId: 8,
+    unitName: 'アイアンバードrider',
+    race: ['rider'],
+    job: ['longShot'],
+    class: 'ベーシックアタック',
+    imageUrl: require('../assets/images/unit8.jpeg')
+  },
   {
-    id: 9,
+    unitId: 9,
     unitName: '略奪者',
-    race: 'メカ',
-    job: 'ブラスター',
-    class: 'コントロール'
-  ,imageUrl: require('../assets/images/unit9.jpeg')},
+    race: ['mech'],
+    job: ['blaster'],
+    class: 'コントロール',
+    imageUrl: require('../assets/images/unit9.jpeg')
+  },
   {
-    id: 10,
+    unitId: 10,
     unitName: '目玉の男',
-    race: 'スペシャリスト',
-    job: 'スペシャリスト',
-    class: 'コントロール'
-  ,imageUrl: require('../assets/images/unit10.jpeg')},
+    race: ['insectoid'],
+    job: ['specialist'],
+    class: 'コントロール',
+    imageUrl: require('../assets/images/unit10.jpeg')
+  },
   {
-    id: 11,
+    unitId: 11,
     unitName: 'レーザーの爪',
-    race: 'ビースト',
-    job: 'アサシン',
-    class: 'ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit11.jpeg')},
+    race: ['beast'],
+    job: ['assasin'],
+    class: 'ベーシックアタック',
+    imageUrl: require('../assets/images/unit11.jpeg')
+  },
   {
-    id: 12,
+    unitId: 12,
     unitName: 'パンダ僧',
-    race: 'パンダ',
-    job: 'ヴァンガード',
-    class: 'タンク'
-  ,imageUrl: require('../assets/images/unit12.jpeg')},
+    race: ['panda'],
+    job: ['vanguard'],
+    class: 'タンク',
+    imageUrl: require('../assets/images/unit12.jpeg')
+  },
   {
-    id: 13,
+    unitId: 13,
     unitName: '手品師',
-    race: 'サイカー',
-    job: 'サモナー',
-    class: '召喚'
-  ,imageUrl: require('../assets/images/unit13.jpeg')},
+    race: ['psyker'],
+    job: ['summoner'],
+    class: '召喚',
+    imageUrl: require('../assets/images/unit13.jpeg')
+  },
   {
-    id: 14,
+    unitId: 14,
     unitName: 'セイレーン',
-    race: 'クラーケン',
-    job: 'アサシン',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit14.jpeg')},
+    race: ['kraken'],
+    job: ['assasin'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit14.jpeg')
+  },
   {
-    id: 15,
+    unitId: 15,
     unitName: '雷を呼ぶ者',
-    race: 'サイカー',
-    job: 'ロングショット',
-    class: 'レイトゲームキャリー'
-  ,imageUrl: require('../assets/images/unit15.jpeg')},
+    race: ['psyker'],
+    job: ['longShot'],
+    class: 'レイトゲームキャリー',
+    imageUrl: require('../assets/images/unit15.jpeg')
+  },
   {
-    id: 16,
+    unitId: 16,
     unitName: '金剛杵',
-    race: 'ウォーカー',
-    job: 'ガーディアン',
-    class: 'タンク、ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit16.jpeg')},
+    race: ['walker'],
+    job: ['guardian'],
+    class: 'タンク、ベーシックアタック',
+    imageUrl: require('../assets/images/unit16.jpeg')
+  },
   {
-    id: 17,
+    unitId: 17,
     unitName: '刃のマスター',
-    race: 'パペット',
-    job: 'ヴァンガード',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit17.jpeg')},
+    race: ['puppet'],
+    job: ['vanguard'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit17.jpeg')
+  },
   {
-    id: 18,
+    unitId: 18,
     unitName: '空のカニ',
-    race: 'クラーケン',
-    job: 'シエージュブレイカー',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit18.jpeg')},
+    race: ['kraken'],
+    job: ['siegeBreaker'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit18.jpeg')
+  },
   {
-    id: 19,
+    unitId: 19,
     unitName: 'ゴリラ',
-    race: 'メカ',
-    job: 'ブラスター',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit19.jpeg')},
+    race: ['mech'],
+    job: ['blaster'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit19.jpeg')
+  },
   {
-    id: 20,
+    unitId: 20,
     unitName: 'ドラゴンの息',
-    race: '海兵',
-    job: 'ヴァンガード',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit20.jpeg')},
+    race: ['marine'],
+    job: ['vanguard'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit20.jpeg')
+  },
   {
-    id: 21,
+    unitId: 21,
     unitName: '大盾の歩兵',
-    race: '海兵',
-    job: 'ガーディアン',
-    class: 'タンク'
-  ,imageUrl: require('../assets/images/unit21.jpeg')},
+    race: ['marine'],
+    job: ['guardian'],
+    class: 'タンク',
+    imageUrl: require('../assets/images/unit21.jpeg')
+  },
   {
-    id: 22,
+    unitId: 22,
     unitName: 'カミカゼ',
-    race: 'インセクトイド',
-    job: 'ブラスター',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit22.jpeg')},
+    race: ['insectoid'],
+    job: ['blaster'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit22.jpeg')
+  },
   {
-    id: 23,
+    unitId: 23,
     unitName: '緑の大男',
-    race: 'イモータル',
-    job: 'スペシャリスト',
-    class: 'コントロール'
-  ,imageUrl: require('../assets/images/unit23.jpeg')},
+    race: ['immortal'],
+    job: ['specialist'],
+    class: 'コントロール',
+    imageUrl: require('../assets/images/unit23.jpeg')
+  },
   {
-    id: 24,
+    unitId: 24,
     unitName: '暗殺剣士',
-    race: 'パペット',
-    job: 'ヴァンガード',
-    class: 'ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit24.jpeg')},
+    race: ['puppet'],
+    job: ['vanguard'],
+    class: 'ベーシックアタック',
+    imageUrl: require('../assets/images/unit24.jpeg')
+  },
   {
-    id: 25,
+    unitId: 25,
     unitName: '嵐を呼ぶ者',
-    race: 'クラーケン',
-    job: 'スペシャリスト',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit25.jpeg')},
+    race: ['kraken'],
+    job: ['specialist'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit25.jpeg')
+  },
   {
-    id: 26,
+    unitId: 26,
     unitName: '阿羅漢',
-    race: 'ウォーカー',
-    job: 'ロングショット',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit26.jpeg')},
+    race: ['walker'],
+    job: ['longShot'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit26.jpeg')
+  },
   {
-    id: 27,
+    unitId: 27,
     unitName: '石弓',
-    race: 'メカ',
-    job: 'シエージュブレイカー',
-    class: 'レイトゲームキャリー'
-  ,imageUrl: require('../assets/images/unit27.jpeg')},
+    race: ['mech'],
+    job: ['siegeBreaker'],
+    class: 'レイトゲームキャリー',
+    imageUrl: require('../assets/images/unit27.jpeg')
+  },
   {
-    id: 28,
+    unitId: 28,
     unitName: '先導者',
-    race: 'ライダー',
-    job: 'ブラスター',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit28.jpeg')},
+    race: ['rider'],
+    job: ['blaster'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit28.jpeg')
+  },
   {
-    id: 29,
+    unitId: 29,
     unitName: '恐れを知らぬ者',
-    race: 'エアフォース',
-    job: 'ブラスター',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit29.jpeg')},
+    race: ['airForce'],
+    job: ['blaster'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit29.jpeg')
+  },
   {
-    id: 30,
+    unitId: 30,
     unitName: '技術者',
-    race: 'エアフォース',
-    job: 'サポーター',
-    class: 'サポーター'
-  ,imageUrl: require('../assets/images/unit30.jpeg')},
+    race: ['airForce'],
+    job: ['supporter'],
+    class: 'supporter',
+    imageUrl: require('../assets/images/unit30.jpeg')
+  },
   {
-    id: 31,
+    unitId: 31,
     unitName: 'ゲリラ隊',
-    race: '海兵',
-    job: 'ロングショット',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit31.jpeg')},
+    race: ['marine'],
+    job: ['longShot'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit31.jpeg')
+  },
   {
-    id: 32,
+    unitId: 32,
     unitName: '半魚人',
-    race: 'エアフォース',
-    job: 'アサシン',
-    class: 'ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit32.jpeg')},
+    race: ['airForce'],
+    job: ['assasin'],
+    class: 'ベーシックアタック',
+    imageUrl: require('../assets/images/unit32.jpeg')
+  },
   {
-    id: 33,
+    unitId: 33,
     unitName: '悪魔の手',
-    race: 'ビースト',
-    job: 'サモナー',
-    class: '召喚'
-  ,imageUrl: require('../assets/images/unit33.jpeg')},
+    race: ['beast'],
+    job: ['summoner'],
+    class: '召喚',
+    imageUrl: require('../assets/images/unit33.jpeg')
+  },
   {
-    id: 34,
+    unitId: 34,
     unitName: 'クモ',
-    race: 'インセクトイド',
-    job: 'スペシャリスト',
-    class: 'コントロール'
-  ,imageUrl: require('../assets/images/unit34.jpeg')},
+    race: ['insectoid'],
+    job: ['specialist'],
+    class: 'コントロール',
+    imageUrl: require('../assets/images/unit34.jpeg')
+  },
   {
-    id: 35,
+    unitId: 35,
     unitName: 'オオコウモリ',
-    race: 'ラプター',
-    job: 'ロングショット',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit35.jpeg')},
+    race: ['raptor'],
+    job: ['longShot'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit35.jpeg')
+  },
   {
-    id: 36,
+    unitId: 36,
     unitName: 'ワシ',
-    race: 'ラプター、ビースト',
-    job: 'ヴァンガード',
-    class: 'タンク'
-  ,imageUrl: require('../assets/images/unit36.jpeg')},
+    race: ['raptor', 'beast'],
+    job: ['vanguard'],
+    class: 'タンク',
+    imageUrl: require('../assets/images/unit36.jpeg')
+  },
   {
-    id: 37,
+    unitId: 37,
     unitName: 'シュリケンパンダ',
-    race: 'パンダ',
-    job: 'アサシン',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit37.jpeg')},
+    race: ['panda'],
+    job: ['assasin'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit37.jpeg')
+  },
   {
-    id: 38,
+    unitId: 38,
     unitName: '黄金の鬣',
-    race: 'ビースト',
-    job: 'ガーディアン',
-    class: 'コントロール、タンク'
-  ,imageUrl: require('../assets/images/unit38.jpeg')},
+    race: ['beast'],
+    job: ['guardian'],
+    class: 'コントロール、タンク',
+    imageUrl: require('../assets/images/unit38.jpeg')
+  },
   {
-    id: 39,
+    unitId: 39,
     unitName: 'フェニックス',
-    race: 'ラプター',
-    job: 'ブラスター',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit39.jpeg')},
+    race: ['raptor'],
+    job: ['blaster'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit39.jpeg')
+  },
   {
-    id: 40,
+    unitId: 40,
     unitName: '塁壁',
-    race: 'パペット',
-    job: 'ガーディアン',
-    class: 'タンク'
-  ,imageUrl: require('../assets/images/unit40.jpeg')},
+    race: ['puppet'],
+    job: ['guardian'],
+    class: 'タンク',
+    imageUrl: require('../assets/images/unit40.jpeg')
+  },
   {
-    id: 41,
+    unitId: 41,
     unitName: '嵐の守護者',
-    race: 'ウォーカー',
-    job: 'シエージュブレイカー',
-    class: 'アビリティダメージ、コントロール'
-  ,imageUrl: require('../assets/images/unit41.jpeg')},
+    race: ['walker'],
+    job: ['siegeBreaker'],
+    class: 'アビリティダメージ、コントロール',
+    imageUrl: require('../assets/images/unit41.jpeg')
+  },
   {
-    id: 42,
+    unitId: 42,
     unitName: 'シュメールの神',
-    race: 'パペット、クラーケン',
-    job: 'サモナー',
-    class: '召喚'
-  ,imageUrl: require('../assets/images/unit42.jpeg')},
+    race: ['puppet', 'kraken'],
+    job: ['summoner'],
+    class: '召喚',
+    imageUrl: require('../assets/images/unit42.jpeg')
+  },
   {
-    id: 43,
+    unitId: 43,
     unitName: '戦を呼ぶ者',
-    race: 'パペット',
-    job: 'ガーディアン',
-    class: 'レイトゲームキャリー'
-  ,imageUrl: require('../assets/images/unit43.jpeg')},
+    race: ['puppet'],
+    job: ['guardian'],
+    class: 'レイトゲームキャリー',
+    imageUrl: require('../assets/images/unit43.jpeg')
+  },
   {
-    id: 44,
+    unitId: 44,
     unitName: 'てき弾兵',
-    race: '海兵',
-    job: 'スペシャリスト',
-    class: 'コントロール'
-  ,imageUrl: require('../assets/images/unit44.jpeg')},
+    race: ['marine'],
+    job: ['specialist'],
+    class: 'コントロール',
+    imageUrl: require('../assets/images/unit44.jpeg')
+  },
   {
-    id: 45,
+    unitId: 45,
     unitName: '見張り',
-    race: 'メカ',
-    job: 'アサシン',
-    class: 'ベーシックアタック'
-  ,imageUrl: require('../assets/images/unit45.jpeg')},
+    race: ['mech'],
+    job: ['assasin'],
+    class: 'ベーシックアタック',
+    imageUrl: require('../assets/images/unit45.jpeg')
+  },
   {
-    id: 46,
+    unitId: 46,
     unitName: '巡視船',
-    race: 'エアフォース',
-    job: 'シエージュブレイカー',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit46.jpeg')},
+    race: ['airForce'],
+    job: ['siegeBreaker'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit46.jpeg')
+  },
   {
-    id: 47,
+    unitId: 47,
     unitName: '魂の導師',
-    race: 'ビースト',
-    job: 'サポーター',
-    class: 'サポーター'
-  ,imageUrl: require('../assets/images/unit47.jpeg')},
+    race: ['beast'],
+    job: ['supporter'],
+    class: 'supporter',
+    imageUrl: require('../assets/images/unit47.jpeg')
+  },
   {
-    id: 48,
+    unitId: 48,
     unitName: '巣箱の女王',
-    race: 'インセクトイド',
-    job: 'ロングショット',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit48.jpeg')},
+    race: ['insectoid'],
+    job: ['longShot'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit48.jpeg')
+  },
   {
-    id: 49,
+    unitId: 49,
     unitName: '骨の竜',
-    race: 'ラプター、イモータル',
-    job: 'シエージュブレイカー',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit49.jpeg')},
+    race: ['raptor', 'immortal'],
+    job: ['siegeBreaker'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit49.jpeg')
+  },
   {
-    id: 50,
+    unitId: 50,
     unitName: 'チャン・マスター',
-    race: 'パンダ',
-    job: 'スペシャリスト',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit50.jpeg')},
+    race: ['panda'],
+    job: ['specialist'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit50.jpeg')
+  },
   {
-    id: 51,
+    unitId: 51,
     unitName: 'クジラ',
-    race: 'クラーケン',
-    job: 'シエージュブレイカー',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit51.jpeg')},
+    race: ['kraken'],
+    job: ['siegeBreaker'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit51.jpeg')
+  },
   {
-    id: 52,
+    unitId: 52,
     unitName: '嵐',
-    race: 'メカ',
-    job: 'ブラスター',
-    class: 'アビリティダメージ'
-  ,imageUrl: require('../assets/images/unit52.jpeg')},
+    race: ['mech'],
+    job: ['blaster'],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit52.jpeg')
+  },
   {
-    id: 53,
+    unitId: 53,
     unitName: '食らう者',
-    race: 'ラプター',
-    job: 'スペシャリスト',
-    class: 'コントロール'
-  ,imageUrl: require('../assets/images/unit53.jpeg')},
+    race: ['raptor'],
+    job: ['specialist'],
+    class: 'コントロール',
+    imageUrl: require('../assets/images/unit53.jpeg')
+  },
   {
-    id: 54,
+    unitId: 54,
     unitName: '木の芽の竜',
-    race: 'イモータル',
-    job: 'ヴァンガード',
+    race: ['immortal'],
+    job: ['vanguard'],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit54.jpeg')
   }
