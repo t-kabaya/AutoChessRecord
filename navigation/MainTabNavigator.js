@@ -12,8 +12,7 @@ import MyMatchRecordScreen from '../screens/MyMatchRecordScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 
 const HomeStack = createStackNavigator({
-  SelectUnitsScreen,
-  HomeScreen,
+  SelectUnitsScreen
 })
 
 HomeStack.navigationOptions = {
@@ -60,6 +59,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   LinksStack,
-  HomeStack,
-  SettingsStack
+  HomeStack
+  // SettingsStack
 })

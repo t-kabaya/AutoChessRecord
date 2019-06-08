@@ -1,10 +1,35 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View, Text, FlatList, Image } from 'react-native'
-import {getMyMatchRecord} from '../fireStore/MatchRecordORM'
-import unitData, {unitImagePathArray} from '../constants/UnitData'
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  Image
+} from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
+import unitData, { unitImagePathArray } from '../constants/UnitData'
+
+const UnitImageListItem = ({ item }) => {
+  return (
+    <View style={styles.unitImageListItem}>
+      <Image
+        style={styles.unitImage}
+        source={unitImagePathArray[item.unitId - 1]}
+      />
+      <Text>{JSON.stringify(item.level)}</Text>
+      <View style={styles.starContainer}>
+        {[...Array(item.level)].map(level => (
+          <Ionicons name='ios-star' size={12} color='#FBC02D' />
+        ))}
+      </View>
+    </View>
+  )
+}
 
 export default class MyMatchRecordScreen extends React.Component {
-  state={
+  state = {
     isLoading: true,
     myMatchRecord: null
   }
@@ -12,44 +37,34 @@ export default class MyMatchRecordScreen extends React.Component {
   componentDidMount = () => {
     this.setInitialState()
   }
-  
-  setInitialState = async() => {
+
+  setInitialState = async () => {
     const myMatchRecord = await getMyMatchRecord()
-    this.setState({myMatchRecord, isLoading: false})
+    this.setState({ myMatchRecord, isLoading: false })
   }
 
-  matchRecordListItem = ({item}) => {
-    const ListItem = ({item}) => {
-      return (
-        <View>
-          <Image source={unitImagePathArray[item.id -1]}/>
-          <Text>{JSON.stringify(item)}</Text>
-          <Text>{JSON.stringify(item)}</Text>
-        </View>
-      )
-    }
-  return (
-    <View style={styles.cardContainer}>
-      <Text>{item.ranking}位</Text>
-      {/* <Text>{JSON.stringify(item.units)}位</Text> */}
-      <FlatList
-        data={item.units}
-        renderItem={({item}) => < ListItem item={item}/>} 
-      />
-    </View>
-  )}
+  matchRecordListItem = ({ item }) => {
+    return (
+      <View style={styles.cardContainer}>
+        <Text>{item.ranking}位</Text>
+        {/* <Text>{JSON.stringify(item.units)}位</Text> */}
+        <FlatList
+          horizontal
+          data={item.units}
+          renderItem={({ item }) => <UnitImageListItem item={item} />}
+        />
+      </View>
+    )
+  }
 
   render () {
-    const {myMatchRecord} = this.state
+    const { myMatchRecord } = this.state
     if (this.state.isLoading) return null
-    console.log({myMatchRecord})
+    console.log({ myMatchRecord })
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>私の戦績</Text>
-        <FlatList
-          data={myMatchRecord}
-          renderItem={this.matchRecordListItem}
-        />
+        <FlatList data={myMatchRecord} renderItem={this.matchRecordListItem} />
       </View>
     )
   }
@@ -68,5 +83,13 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: '100%',
     borderWidth: 1
+  },
+  unitImageListItem: {},
+  unitImage: {
+    height: 50,
+    width: 50
+  },
+  starContainer: {
+    flexDirection: 'row'
   }
 })

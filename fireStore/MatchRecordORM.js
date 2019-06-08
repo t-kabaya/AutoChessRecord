@@ -1,5 +1,5 @@
-import {db} from './fireStoreSetup'
-import {Constants} from 'expo'
+import { db } from './fireStoreSetup'
+import { Constants } from 'expo'
 import unitData from '../constants/UnitData'
 
 // 設計
@@ -14,10 +14,12 @@ import unitData from '../constants/UnitData'
 // ]
 
 // 順位は押さなくてもいい。
-export const saveMatchRecordToFireStore = async(units, ranking) => {
-  const unitDataToStore = units.filter(unit => !(unit.level === 0)).map(unit => ({unitId: unit.id, level: unit.level}))
+export const saveMatchRecordToFireStore = async (units, ranking) => {
+  const unitDataToStore = units
+    .filter(unit => !(unit.level === 0))
+    .map(unit => ({ unitId: unit.id, level: unit.level }))
   try {
-    db.collection("matchRecord").add({
+    db.collection('matchRecord').add({
       userId: Constants.installationId,
       ranking: 3,
       units: unitDataToStore,
@@ -28,15 +30,17 @@ export const saveMatchRecordToFireStore = async(units, ranking) => {
   }
 }
 
-export const getMyMatchRecord = async() => {
-  console.log('error')
-  const response = await db.collection('matchRecord').get()
-  const myMatchRecord = await response
-                          .docs
-                          .map(item => item.data())
-                          .filter(data => data.userId === Constants.installationId)
-                          
-  // const myMatchRecordHasImage = myMatchRecord.map(record => ({...record, }))
-  // ここに、シナジーなどを計算する処理を書いていくが、また後日追加する。
-  return myMatchRecord
+export const getMyMatchRecord = async () => {
+  try {
+    const response = await db.collection('matchRecord').get()
+    const myMatchRecord = await response.docs
+      .map(item => item.data())
+      .filter(data => data.userId === Constants.installationId)
+
+    // const myMatchRecordHasImage = myMatchRecord.map(record => ({...record, }))
+    // ここに、シナジーなどを計算する処理を書いていくが、また後日追加する。
+    return myMatchRecord
+  } catch (error) {
+    console.log('error')
+  }
 }
