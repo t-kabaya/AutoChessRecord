@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 // unitIdから、シナジーを計算する。
 const calcSynergiesFromUnitIds = arr => {
+  return []
   const unitIdsArray = arr.map(unit => unit.unitId)
   // 同じidのユニットの重複を考慮に入れる。
   const uniqUnitIdsArray = _.uniq(unitIdsArray)
