@@ -1,15 +1,21 @@
 import unitData from '../constants/UnitData'
 import _ from 'lodash'
+import {en} from '../constants/I18n'
 
 // unitIdから、シナジーを計算する。
 const calcSynergiesFromUnitIds = arr => {
-  return []
   const unitIdsArray = arr.map(unit => unit.unitId)
+  if (unitIdsArray.includes(undefined)) {
+    throw new Error('error at uniqIdsArray')
+  }
   // 同じidのユニットの重複を考慮に入れる。
   const uniqUnitIdsArray = _.uniq(unitIdsArray)
 
-  const synergies = uniqUnitIdsArray.reduce((accumulator, currentValue) => {
+  const unFormattedSynergiesList = uniqUnitIdsArray.reduce((accumulator, currentValue) => {
+    // const unit = unitData.find(unit => unit.unitId === currentValue)
     const unit = unitData.find(unit => unit.unitId === currentValue)
+    console.log(unit)
+
     const job = unit.job
     const race = unit.race
     // accumulator.push(job)
@@ -17,11 +23,58 @@ const calcSynergiesFromUnitIds = arr => {
     return [...accumulator, job, race].flat().sort()
   }, [])
 
-  // 一旦設計しよう。
-  // １０分ぐらい
-  // reduceを使って、objectに入れてしまおう。
-  // ArrayOfObjectを作る。
+  const synergiesWithoutLevel = unFormattedSynergiesList.reduce((accumulator, currentValue) => {
+    if (accumulator.some(synergy => synergy.hasOwnProperty(currentValue))) {
+
+      for (let i=0; i<accumulator.length; i++) {
+        if (accumulator[i].synergy === currentValue) {
+          accumulator[i].count = accumulator[i].count + 1
+        }
+      }
+
+      return accumulator
+    } else {
+      return [...accumulator, {synergy: currentValue, count: 1}]
+    }
+  },[])
+
+  // level 3, 2, 1の順に、シナジーが発動した順にreturnしていく。
+  const synergies = synergiesWithoutLevel.reduce((accumulator, currentValue) => {
+    // lv3の時
+    if (isLevel3(currentValue)) {
+
+    // lv2の時
+    } else if (isLevel2(currentValue)) {
+
+    // lv1の時
+    } else if (isLevel1(currentValue)) {
+
+    } else {
+      return accumulator
+    }
+  },)
+
+
   return synergies
 }
 
 export default calcSynergiesFromUnitIds
+
+
+export const isLevel3 = (input) => {
+  if (
+    // level3を達成出来る種族は限られている。
+    [en.marine, en.puppet, en.beast, en.blaster, en.longShot, en.specialist, en.assassin, en.vanguard].includes(input.synergy)
+  ) {
+    return true
+  }
+  return false
+}
+
+const isLevel2 = ( ) => {
+  return false
+}
+
+const isLevel1 = ( ) => {
+  return false
+}

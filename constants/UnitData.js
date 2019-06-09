@@ -110,7 +110,7 @@ const unitData = [
   },
   {
     unitId: 8,
-    unitName: 'アイアンバードrider',
+    unitName: 'アイアンバードライダー',
     race: ['rider'],
     job: ['longShot'],
     class: 'ベーシックアタック',
