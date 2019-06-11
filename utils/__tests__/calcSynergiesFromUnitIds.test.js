@@ -1,44 +1,53 @@
 import unitData from '../../constants/UnitData'
-import calcSynergiesFromUnitIds, {isLevel3} from '../calcSynergiesFromUnitIds'
-import {en} from '../../constants/I18n'
+import calcSynergiesFromUnitIds, {
+  isLevel3,
+  isLevel2,
+  isLevel1
+} from '../calcSynergiesFromUnitIds'
+import {
+  synergyLevel1Condition,
+  synergyLevel2Condition
+} from '../../constants/SynergyLevelCondition'
+import { en } from '../../constants/I18n'
 
 // 何もシナジーがない
-const noSynergyInput = [
-  {unitId: 8, level: 2},
-  {unitId: 10, level: 1}
-]
+const noSynergyInput = [{ unitId: 8, level: 2 }, { unitId: 10, level: 1 }]
 
 // test('noSynergyInput must return blank array', () => {
 //   expect(calcSynergiesFromUnitIds(noSynergyInput)).toEqual([]);
 // });
 
 // ロングショットのみシナジーがある
-const onlyMechSynergyInput = [
-  {unitId: 9, level: 1},
-  {unitId: 19, level: 1},
-]
+const onlyMechSynergyInput = [{ unitId: 9, level: 1 }, { unitId: 19, level: 1 }]
 
 test('must return mechLevel1', () => {
-  expect(calcSynergiesFromUnitIds(onlyMechSynergyInput)).toEqual([{synergy: 'mech', level: 1}].sort());
-});
+  expect(calcSynergiesFromUnitIds(onlyMechSynergyInput)).toEqual(
+    [{ synergy: 'mech', level: 1 }].sort()
+  )
+})
 
 const insectoid1Psyker2Blaster1Input = [
-  {unitId: 10, level: 1},
-  {unitId: 39, level: 1},
-  {unitId: 22, level: 1},
-  {unitId: 48, level: 1},
-  {unitId: 4, level: 1},
-  {unitId: 5, level: 1},
-  {unitId: 15, level: 1},
-  {unitId: 13, level: 1},
+  { unitId: 10, level: 1 },
+  { unitId: 39, level: 1 },
+  { unitId: 22, level: 1 },
+  { unitId: 48, level: 1 },
+  { unitId: 4, level: 1 },
+  { unitId: 5, level: 1 },
+  { unitId: 15, level: 1 },
+  { unitId: 13, level: 1 }
 ]
 
 test('must return insectoidLevel1, psykerLevel2, BlasterLevel1', () => {
-  expect(calcSynergiesFromUnitIds(noSynergyInput)).toEqual([{synergy: 'insectoid', level: 1}, {synergy: 'psyker', level: 2}, {synergy: 'blaster', level: 1}].sort());
-});
+  expect(calcSynergiesFromUnitIds(noSynergyInput)).toEqual(
+    [
+      { synergy: 'insectoid', level: 1 },
+      { synergy: 'psyker', level: 2 },
+      { synergy: 'blaster', level: 1 }
+    ].sort()
+  )
+})
 
-/*------   levelFunction   ------*/
-
+/* ------   levelFunction   ------ */
 
 // const level3MarineInput = {synergy: en.marine, count: 6}
 // const level3PuppetInput = {synergy: en.puppet, count: 6}
@@ -50,17 +59,45 @@ test('must return insectoidLevel1, psykerLevel2, BlasterLevel1', () => {
 // // {synergy: en.vanguard, count: 6}
 
 test('must detect level3', () => {
- 
-  expect(en.marine).toEqual('marine');
-});
+  expect(en.marine).toEqual('marine')
+})
 
+/* -------------------- level function test --------------------- */
 
-const level3Input = [en.marine, en.puppet, en.beast, en.blaster, en.longShot, en.specialist, en.assassin, en.vanguard]
+const level3Input = [
+  en.marine,
+  en.puppet,
+  en.beast,
+  en.blaster,
+  en.longShot,
+  en.specialist,
+  en.assassin,
+  en.vanguard
+]
 level3Input.forEach(item => {
   test('must detect level3', () => {
-    const input = {synergy: item, count: 6}
-    expect(isLevel3(input)).toEqual(true);
-  });
+    const input = { synergy: item, count: 6 }
+    expect(isLevel3(input)).toEqual(true)
+  })
 })
-  
 
+level3Input.forEach(item => {
+  test('must fail lack of count', () => {
+    const input = { synergy: item, count: 5 }
+    expect(isLevel3(input)).toEqual(false)
+  })
+})
+
+/* -------------------- isLevel2 --------------------- */
+
+synergyLevel2Condition.forEach(item => {
+  test('must detect level2', () => {
+    expect(isLevel2(item)).toEqual(true)
+  })
+})
+
+synergyLevel1Condition.forEach(item => {
+  test('must detect level1', () => {
+    expect(isLevel1(item)).toEqual(true)
+  })
+})
