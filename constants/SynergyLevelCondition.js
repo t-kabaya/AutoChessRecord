@@ -58,7 +58,6 @@ export const synergyLevel1Condition = [
 
   /* -------------------- count 2 --------------------- */
   { synergy: en.guardian, count: 2 },
-  { synergy: en.blaster, count: 2 },
   { synergy: en.supporter, count: 2 },
   { synergy: en.longShot, count: 2 },
   { synergy: en.assassin, count: 2 },

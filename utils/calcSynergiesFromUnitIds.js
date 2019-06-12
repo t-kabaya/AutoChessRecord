@@ -47,25 +47,17 @@ const calcSynergiesFromUnitIds = arr => {
     []
   )
 
+  const countedUpSynergiesArray = countUpSynergyAndCount(synergiesWithoutLevel)
+
   // level 3, 2, 1の順に、シナジーが発動した順にreturnしていく。
-  const synergies = synergiesWithoutLevel.reduce(
-    (accumulator, currentValue) => {
-      // lv3の時
-      if (isLevel3(currentValue)) {
-        // lv2の時
-      } else if (isLevel2(currentValue)) {
-        // lv1の時
-      } else if (isLevel1(currentValue)) {
-      } else {
-        return accumulator
-      }
-    }
-  )
+  const synergies = calcSynergyLevel(countedUpSynergiesArray)
 
   return synergies
 }
 
 export default calcSynergiesFromUnitIds
+
+/* -------------------- PRIVATE --------------------- */
 
 export const isLevel3 = input => {
   if (
@@ -96,9 +88,47 @@ export const isLevel2 = condition => {
 }
 
 export const isLevel1 = condition => {
-  if (synergyLevel1Condition.includes(condition)) {
+  if (synergyLevel1Condition.some(item => condition === item)) {
     return true
   } else {
     return false
   }
+}
+
+export const calcSynergyLevel = synergiesWithoutLevel => {
+  return synergiesWithoutLevel.reduce((accumulator, currentValue) => {
+    // lv3の時
+    if (isLevel3(currentValue)) {
+      return [...accumulator, { lol: 'name' }]
+      // lv2の時
+    } else if (isLevel2(currentValue)) {
+      return [...accumulator, { lol: 'name' }]
+
+      // lv1の時
+    } else if (isLevel1(currentValue)) {
+      return [...accumulator, { level: 1, synergy: currentValue.synergy }]
+    } else {
+      return accumulator
+    }
+  }, [])
+}
+
+export const countUpSynergyAndCount = data => {
+  const result = data.reduce((accumulator, currentValue) => {
+    if (accumulator.some(item => item.synergy === currentValue.synergy)) {
+      const newAccumulator = accumulator.map(x => {
+        if (x.synergy === currentValue.synergy) {
+          return { synergy: x.synergy, count: x.count + 1 }
+        } else {
+          return x
+        }
+      })
+      return newAccumulator
+    } else {
+      return [...accumulator, currentValue]
+    }
+  }, [])
+
+  // テストのためソート
+  return result.sort()
 }

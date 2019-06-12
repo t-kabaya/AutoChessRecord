@@ -2,7 +2,9 @@ import unitData from '../../constants/UnitData'
 import calcSynergiesFromUnitIds, {
   isLevel3,
   isLevel2,
-  isLevel1
+  isLevel1,
+  countUpSynergyAndCount,
+  calcSynergyLevel
 } from '../calcSynergiesFromUnitIds'
 import {
   synergyLevel1Condition,
@@ -58,10 +60,6 @@ test('must return insectoidLevel1, psykerLevel2, BlasterLevel1', () => {
 // // {synergy: en.assassin, count: 6}
 // // {synergy: en.vanguard, count: 6}
 
-test('must detect level3', () => {
-  expect(en.marine).toEqual('marine')
-})
-
 /* -------------------- level function test --------------------- */
 
 const level3Input = [
@@ -101,3 +99,35 @@ synergyLevel1Condition.forEach(item => {
     expect(isLevel1(item)).toEqual(true)
   })
 })
+
+/* -------------------- countUpSynergyAndCount --------------------- */
+
+test('countUpSynergyAndCount must detect mech level 1', () => {
+  const countUpSynergyLevelInput = [
+    { count: 1, synergy: 'blaster' },
+    { count: 1, synergy: 'blaster' },
+    { count: 1, synergy: 'mech' },
+    { count: 1, synergy: 'mech' }
+  ]
+
+  const output = [
+    { count: 2, synergy: 'blaster' },
+    { count: 2, synergy: 'mech' }
+  ]
+  expect(countUpSynergyAndCount(countUpSynergyLevelInput)).toEqual(output)
+})
+
+/* -------------------- calcSynergyLevel --------------------- */
+
+// const calcSynergyLevelInput = [
+//   { count: 1, synergy: 'blaster' },
+//   { count: 1, synergy: 'blaster' },
+//   { count: 1, synergy: 'mech' },
+//   { count: 1, synergy: 'mech' }
+// ]
+
+// test('calcSynergy must detect mech level 1', () => {
+//   expect(calcSynergyLevel(calcSynergyLevelInput)).toEqual([
+//     { level: 1, synergy: 'mech' }
+//   ])
+// })
