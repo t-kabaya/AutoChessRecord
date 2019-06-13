@@ -94,10 +94,18 @@ synergyLevel2Condition.forEach(item => {
   })
 })
 
+/* -------------------- isLevel1 --------------------- */
+
 synergyLevel1Condition.forEach(item => {
   test('must detect level1', () => {
     expect(isLevel1(item)).toEqual(true)
   })
+})
+
+test('must detect mech level1', () => {
+  const level1MechInput = { synergy: en.mech, count: 3 }
+
+  expect(isLevel1(level1MechInput)).toEqual(true)
 })
 
 /* -------------------- countUpSynergyAndCount --------------------- */
@@ -119,15 +127,13 @@ test('countUpSynergyAndCount must detect mech level 1', () => {
 
 /* -------------------- calcSynergyLevel --------------------- */
 
-// const calcSynergyLevelInput = [
-//   { count: 1, synergy: 'blaster' },
-//   { count: 1, synergy: 'blaster' },
-//   { count: 1, synergy: 'mech' },
-//   { count: 1, synergy: 'mech' }
-// ]
+test('calcSynergy must detect mech level 1', () => {
+  const calcSynergyLevelInput = [
+    { synergy: en.mech, count: 3 },
+    { count: 1, synergy: 'blaster' }
+  ]
 
-// test('calcSynergy must detect mech level 1', () => {
-//   expect(calcSynergyLevel(calcSynergyLevelInput)).toEqual([
-//     { level: 1, synergy: 'mech' }
-//   ])
-// })
+  expect(calcSynergyLevel(calcSynergyLevelInput)).toEqual([
+    { synergyLevel: 2, synergy: 'mech' }
+  ])
+})

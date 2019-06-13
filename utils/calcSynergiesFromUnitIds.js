@@ -80,7 +80,7 @@ export const isLevel3 = input => {
 }
 
 export const isLevel2 = condition => {
-  if (synergyLevel2Condition.includes(condition)) {
+  if (synergyLevel2Condition.some(item => areEqualShallow(condition, item))) {
     return true
   } else {
     return false
@@ -88,7 +88,8 @@ export const isLevel2 = condition => {
 }
 
 export const isLevel1 = condition => {
-  if (synergyLevel1Condition.some(item => condition === item)) {
+  // jsでは、object === objectは、エラーになる。object oriented programingだからね。
+  if (synergyLevel1Condition.some(item => areEqualShallow(item, condition))) {
     return true
   } else {
     return false
@@ -106,7 +107,20 @@ export const calcSynergyLevel = synergiesWithoutLevel => {
 
       // lv1の時
     } else if (isLevel1(currentValue)) {
-      return [...accumulator, { level: 1, synergy: currentValue.synergy }]
+      // synergyLevel1Conditionから、countが最小の条件を探す。
+      const sameSynergyArray = synergyLevel1Condition.filter(
+        item => item.synergy === currentValue.synergy
+      )
+      const minCount = sameSynergyArray.reduce((accumulator, currentValue) => {
+        if (accumulator > currentValue.count) {
+          return currentValue.count
+        }
+        return accumulator
+      }, 10)
+      return [
+        ...accumulator,
+        { synergyLevel: minCount, synergy: currentValue.synergy }
+      ]
     } else {
       return accumulator
     }
@@ -131,4 +145,19 @@ export const countUpSynergyAndCount = data => {
 
   // テストのためソート
   return result.sort()
+}
+
+// shallow equal?を行う。
+function areEqualShallow (a, b) {
+  for (var key in a) {
+    if (!(key in b) || a[key] !== b[key]) {
+      return false
+    }
+  }
+  for (var key in b) {
+    if (!(key in a) || a[key] !== b[key]) {
+      return false
+    }
+  }
+  return true
 }
