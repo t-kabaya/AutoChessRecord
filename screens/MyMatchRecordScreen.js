@@ -24,6 +24,16 @@ const UnitImageListItem = ({ item }) => {
   )
 }
 
+const SynergyListItem = ({ item }) => (
+  <View style={styles.unitImageListItem}>
+    {/* <Image
+      style={styles.unitImage}
+      source={unitImagePathArray[item.unitId - 1]}
+    /> */}
+    <Text>{item.synergy}</Text>
+  </View>
+)
+
 export default class MyMatchRecordScreen extends React.Component {
   state = {
     isLoading: true,
@@ -50,7 +60,15 @@ export default class MyMatchRecordScreen extends React.Component {
           renderItem={({ item }) => <UnitImageListItem item={item} />}
         />
         <View>
-          <Text>{JSON.stringify(item.synergy)}</Text>
+          <FlatList
+            horizontal
+            // data={item.synergy}
+            data={[
+              { synergy: 'mech', synergyLevel: 1 },
+              { synergy: 'blaster', synergyLevel: 2 }
+            ]}
+            renderItem={({ item }) => <SynergyListItem item={item} />}
+          />
         </View>
       </View>
     )
@@ -61,13 +79,16 @@ export default class MyMatchRecordScreen extends React.Component {
   }
 
   render () {
-    const { myMatchRecord } = this.state
-    if (this.state.isLoading) return null
-    // alert(Localization.locale)
-    console.log({ myMatchRecord })
+    const { isLoading, myMatchRecord } = this.state
+    if (isLoading) return null
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>私の戦績</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{ flex: 1 }}>順位</Text>
+          <Text style={{ flex: 1 }}>ユニット</Text>
+          <Text style={{ flex: 1 }}>シナジー</Text>
+        </View>
         <FlatList data={myMatchRecord} renderItem={this.matchRecordListItem} />
         <Button
           block
@@ -86,7 +107,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingHorizontal: '10%'
   },
   titleText: {
     fontSize: 20
