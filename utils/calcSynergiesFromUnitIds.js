@@ -19,7 +19,6 @@ const calcSynergiesFromUnitIds = arr => {
     (accumulator, currentValue) => {
       // const unit = unitData.find(unit => unit.unitId === currentValue)
       const unit = unitData.find(unit => unit.unitId === currentValue)
-      console.log(unit)
 
       const job = unit.job
       const race = unit.race

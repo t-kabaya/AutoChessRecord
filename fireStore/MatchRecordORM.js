@@ -1,6 +1,7 @@
 import { db } from './fireStoreSetup'
 import { Constants } from 'expo'
 import unitData from '../constants/UnitData'
+import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
 
 // 設計
 // record table
@@ -39,7 +40,14 @@ export const getMyMatchRecord = async () => {
 
     // const myMatchRecordHasImage = myMatchRecord.map(record => ({...record, }))
     // ここに、シナジーなどを計算する処理を書いていくが、また後日追加する。
-    return myMatchRecord
+    const myMatchRecordWithSynergyLevel = myMatchRecord.map(record => {
+      const synergy = calcSynergiesFromUnitIds(record.units)
+      debugger
+
+      return { ...record, synergy }
+    })
+    debugger
+    return myMatchRecordWithSynergyLevel
   } catch (error) {
     console.log('error')
   }
