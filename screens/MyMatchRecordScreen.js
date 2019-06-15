@@ -1,13 +1,7 @@
 import React from 'react'
-import {
-  ScrollView,
-  StyleSheet,
-  View,
-  Text,
-  FlatList,
-  Image
-} from 'react-native'
+import { ScrollView, StyleSheet, View, FlatList, Image } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import { Button, Text } from 'native-base'
 import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
@@ -62,15 +56,26 @@ export default class MyMatchRecordScreen extends React.Component {
     )
   }
 
+  onPressRecordMatchButton = () => {
+    this.props.navigation.navigate('SelectUnitsScreen')
+  }
+
   render () {
     const { myMatchRecord } = this.state
     if (this.state.isLoading) return null
-    alert(Localization.locale)
+    // alert(Localization.locale)
     console.log({ myMatchRecord })
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>私の戦績</Text>
         <FlatList data={myMatchRecord} renderItem={this.matchRecordListItem} />
+        <Button
+          block
+          onPress={this.onPressRecordMatchButton}
+          style={styles.recordMatchButton}
+        >
+          <Text>戦績を記録</Text>
+        </Button>
       </View>
     )
   }
@@ -98,5 +103,8 @@ const styles = StyleSheet.create({
   },
   starContainer: {
     flexDirection: 'row'
+  },
+  recordMatchButton: {
+    // width: width
   }
 })

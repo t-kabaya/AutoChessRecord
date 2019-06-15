@@ -4,7 +4,6 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   FlatList,
@@ -16,27 +15,27 @@ import {
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
-import {Badge, Button} from 'native-base'
-import {saveMatchRecordToFireStore} from '../fireStore/MatchRecordORM'
+import { Badge, Button, Text } from 'native-base'
+import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
 
 // unitの重複は考えない
 
 export default class SelectUnitsScreen extends React.Component {
   state = {
-    unitState: unitData.map(data => ({...data, level: 0})),
+    unitState: unitData.map(data => ({ ...data, level: 0 })),
     ranking: null
   }
 
-  onPressUnitListItem = (item) => {
+  onPressUnitListItem = item => {
     const unitId = item.id
     const unitState = this.state.unitState.map(unit => {
       if (unit.id === unitId) {
-        return ({...unit, level: (unit.level + 1) % 4})
+        return { ...unit, level: (unit.level + 1) % 4 }
       } else {
         return unit
       }
     })
-    this.setState({unitState})
+    this.setState({ unitState })
   }
 
   unitListItem = ({ item }) => {
@@ -47,15 +46,19 @@ export default class SelectUnitsScreen extends React.Component {
           <View>
             <Text>Lv{item.level}</Text>
           </View>
-          <Image resizeMode='contain' style={styles.unitListItemImage} source={unitImagePathArray[item.id - 1]} />
+          <Image
+            resizeMode='contain'
+            style={styles.unitListItemImage}
+            source={unitImagePathArray[item.id - 1]}
+          />
           <Text>{item.unitName}</Text>
         </View>
       </TouchableWithoutFeedback>
     )
   }
 
-  rankingItem = ({item}) => {
-    const isSelected = (item === this.state.ranking)
+  rankingItem = ({ item }) => {
+    const isSelected = item === this.state.ranking
     return (
       <Button
         onPress={() => this.onPressRankingItem(item)}
@@ -66,57 +69,78 @@ export default class SelectUnitsScreen extends React.Component {
     )
   }
 
-  onPressRankingItem = (item) => {
-    this.setState({ranking: item})
+  onPressRankingItem = item => {
+    this.setState({ ranking: item })
   }
 
-  onPressDecision = (unitState) => {
+  onPressDecision = unitState => {
     saveMatchRecordToFireStore(unitState, this.state.ranking)
     Alert.alert('成功')
     // stateをリセット
-    this.setState({unitState: unitData.map(data => ({...data, level: 0})), ranking: null})
+    this.setState({
+      unitState: unitData.map(data => ({ ...data, level: 0 })),
+      ranking: null
+    })
+  }
+
+  onPressGoBackButton = () => {
+    this.props.navigation.goBack()
   }
 
   render () {
-    const {unitState} = this.state
+    const { unitState } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
     console.log(selectedUnits)
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 3}}>
-          <Button full onPress={() => this.onPressDecision(unitState)}>
-            <Text style={styles.doneSelectButtonText}>決定</Text>
-            </Button>
-          <FlatList style={styles.unitListContainer} numColumns={4} data={unitState} renderItem={this.unitListItem} />
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 3 }}>
+          <FlatList
+            style={styles.unitListContainer}
+            numColumns={4}
+            data={unitState}
+            renderItem={this.unitListItem}
+          />
         </View>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <Text style={styles.text}>選択済み</Text>
-          <FlatList inverted horizontal data={selectedUnits} renderItem={this.unitListItem} />
+          <FlatList
+            inverted
+            horizontal
+            data={selectedUnits}
+            renderItem={this.unitListItem}
+          />
         </View>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <Text style={styles.text}>順位</Text>
           <FlatList
             scrollEnabled={false}
             contentContainerStyle={styles.rankingContainer}
             numColumns={4}
-            data={[1,2,3,4,5,6,7,8]}
+            data={[1, 2, 3, 4, 5, 6, 7, 8]}
             renderItem={this.rankingItem}
           />
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Button onPress={() => this.onPressDecision(unitState)}>
+            <Text style={styles.doneSelectButtonText}>決定</Text>
+          </Button>
+          <Button onPress={this.onPressGoBackButton} full>
+            <Text>戻る</Text>
+          </Button>
         </View>
       </SafeAreaView>
     )
   }
 }
 
-
 const styles = StyleSheet.create({
   unitListItemContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: Layout.width / 4,
+    width: Layout.width / 4
   },
   unitListContainer: {
-    height: Layout.height * 4 / 5
+    height: (Layout.height * 4) / 5
   },
   unitListItemImage: {
     width: Layout.width / 5,
@@ -131,13 +155,13 @@ const styles = StyleSheet.create({
   text: {
     alignSelf: 'center',
     paddingTop: 5,
-    fontSize: 18,
+    fontSize: 18
   },
   rankingContainer: {
     alignItems: 'center'
   },
-  rankingButton:  (isSelected) => ({
-    width: Layout.width * 1 / 5,
+  rankingButton: isSelected => ({
+    width: (Layout.width * 1) / 5,
     margin: 3,
     justifyContent: 'center',
     alignItems: 'center',

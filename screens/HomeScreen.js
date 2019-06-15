@@ -23,7 +23,7 @@ export default class HomeScreen extends React.Component {
 
   updateIndex = selectedIndex => {
     if (this.state.selectedIndex.has(selectedIndex)) {
-      alert('exist vaule')
+      // alert('exist vaule')
 
       this.state.selectedIndex.delete(selectedIndex)
     }
