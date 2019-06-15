@@ -18,6 +18,24 @@ import unitData, { unitImagePathArray } from '../constants/UnitData'
 import { Badge, Button, Text } from 'native-base'
 import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
 
+const SelectedUnitListItem = ({ item }) => {
+  return (
+    <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
+      <View style={styles.unitListItemContainer}>
+        <View>
+          <Text>Lv{item.level}</Text>
+        </View>
+        <Image
+          resizeMode='contain'
+          style={styles.selectedUnitListItemImage}
+          source={unitImagePathArray[item.id - 1]}
+        />
+        <Text>{item.unitName}</Text>
+      </View>
+    </TouchableWithoutFeedback>
+  )
+}
+
 // unitの重複は考えない
 
 export default class SelectUnitsScreen extends React.Component {
@@ -27,9 +45,8 @@ export default class SelectUnitsScreen extends React.Component {
   }
 
   onPressUnitListItem = item => {
-    const unitId = item.id
     const unitState = this.state.unitState.map(unit => {
-      if (unit.id === unitId) {
+      if (unit.unitId === item.unitId) {
         return { ...unit, level: (unit.level + 1) % 4 }
       } else {
         return unit
@@ -39,6 +56,7 @@ export default class SelectUnitsScreen extends React.Component {
   }
 
   unitListItem = ({ item }) => {
+    debugger
     let levelColor
     return (
       <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
@@ -49,7 +67,7 @@ export default class SelectUnitsScreen extends React.Component {
           <Image
             resizeMode='contain'
             style={styles.unitListItemImage}
-            source={unitImagePathArray[item.id - 1]}
+            source={unitImagePathArray[item.unitId - 1]}
           />
           <Text>{item.unitName}</Text>
         </View>
@@ -96,17 +114,8 @@ export default class SelectUnitsScreen extends React.Component {
         <View style={{ flex: 3 }}>
           <FlatList
             style={styles.unitListContainer}
-            numColumns={4}
+            numColumns={7}
             data={unitState}
-            renderItem={this.unitListItem}
-          />
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.text}>選択済み</Text>
-          <FlatList
-            inverted
-            horizontal
-            data={selectedUnits}
             renderItem={this.unitListItem}
           />
         </View>
@@ -115,17 +124,30 @@ export default class SelectUnitsScreen extends React.Component {
           <FlatList
             scrollEnabled={false}
             contentContainerStyle={styles.rankingContainer}
-            numColumns={4}
+            numColumns={8}
             data={[1, 2, 3, 4, 5, 6, 7, 8]}
             renderItem={this.rankingItem}
           />
         </View>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Button onPress={() => this.onPressDecision(unitState)}>
-            <Text style={styles.doneSelectButtonText}>決定</Text>
-          </Button>
-          <Button onPress={this.onPressGoBackButton} full>
+        <View style={styles.selectedUnitsContainer}>
+          <Text style={styles.text}>選択済み</Text>
+          <FlatList
+            inverted
+            horizontal
+            data={selectedUnits}
+            renderItem={item => <SelectedUnitListItem item={item} />}
+          />
+          <Button
+            style={styles.goBackButton}
+            onPress={this.onPressGoBackButton}
+          >
             <Text>戻る</Text>
+          </Button>
+          <Button
+            style={styles.decisionButton}
+            onPress={() => this.onPressDecision(unitState)}
+          >
+            <Text style={styles.doneSelectButtonText}>決定</Text>
           </Button>
         </View>
       </SafeAreaView>
@@ -137,14 +159,14 @@ const styles = StyleSheet.create({
   unitListItemContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: Layout.width / 4
+    width: Layout.width / 8
   },
   unitListContainer: {
     height: (Layout.height * 4) / 5
   },
   unitListItemImage: {
-    width: Layout.width / 5,
-    height: Layout.width / 5,
+    width: Layout.width / 10,
+    height: Layout.width / 10,
     borderWidth: 5,
     borderColor: '#ffe084'
   },
@@ -161,7 +183,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   rankingButton: isSelected => ({
-    width: (Layout.width * 1) / 5,
+    width: (Layout.width * 1) / 10,
     margin: 3,
     justifyContent: 'center',
     alignItems: 'center',
@@ -171,5 +193,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white',
     fontSize: 20
+  },
+  selectedUnitsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  goBackButton: {
+    width: 80
+  },
+  decisionButton: {
+    width: 80
+  },
+  selectedUnitListItemImage: {
+    width: 50,
+    height: 50
   }
 })

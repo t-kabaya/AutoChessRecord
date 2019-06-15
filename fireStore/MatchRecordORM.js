@@ -18,7 +18,7 @@ import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
 export const saveMatchRecordToFireStore = async (units, ranking) => {
   const unitDataToStore = units
     .filter(unit => !(unit.level === 0))
-    .map(unit => ({ unitId: unit.id, level: unit.level }))
+    .map(unit => ({ unitId: unit.unitId, level: unit.level }))
   try {
     db.collection('matchRecord').add({
       userId: Constants.installationId,

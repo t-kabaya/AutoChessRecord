@@ -13,8 +13,8 @@ import SettingsScreen from '../screens/SettingsScreen'
 
 export const HomeStack = createStackNavigator(
   {
+    SelectUnitsScreen,
     MyMatchRecordScreen,
-    SelectUnitsScreen
   },
   {
     mode: 'modal',
