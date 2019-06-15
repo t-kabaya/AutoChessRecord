@@ -2,17 +2,15 @@ import { en } from './I18n'
 
 export const synergyLevel2Condition = [
   // サモナーとライダーとウォーカーとパンダはlevel1のみ。
-  // シージェは６(全６体)でlevel2
+  // シージェとロングショットは６(全６体)でlevel2
   { synergy: en.siegeBreaker, count: 6 },
-  // イモータルは３で(全３体)level2
-  { synergy: en.immortal, count: 3 },
+  { synergy: en.longShot, count: 6 },
 
   /* -------------------- 4 units --------------------- */
   /* -------------------- job --------------------- */
   { synergy: en.guardian, count: 5 },
   { synergy: en.blaster, count: 5 },
   { synergy: en.supporter, count: 5 },
-  { synergy: en.longShot, count: 5 },
   { synergy: en.assassin, count: 5 },
   { synergy: en.vanguard, count: 5 },
   /* -------------------- race --------------------- */
@@ -24,13 +22,11 @@ export const synergyLevel2Condition = [
   { synergy: en.kraken, count: 5 },
   { synergy: en.beast, count: 5 },
   { synergy: en.rapter, count: 5 },
-  { synergy: en.insectoid, count: 5 },
 
   /* -------------------- 5 units --------------------- */
   /* -------------------- job --------------------- */
   { synergy: en.guardian, count: 5 },
   { synergy: en.blaster, count: 5 },
-  { synergy: en.longShot, count: 5 },
   { synergy: en.assassin, count: 5 },
   { synergy: en.vanguard, count: 5 },
   /* -------------------- race --------------------- */
@@ -45,21 +41,21 @@ export const synergyLevel2Condition = [
 export const synergyLevel1Condition = [
   // ウォーカーは１(全3体)でlevel1。
   { synergy: en.walker, count: 1 },
-  { synergy: en.walker, count: 2 },
-  { synergy: en.walker, count: 3 },
 
   // サモナーとパンダは３（全３体）でlevel1
   { synergy: en.summoner, count: 3 },
   { synergy: en.panda, count: 3 },
-  // シージェは3でlevel1
+  // シージェとロングショットは3でlevel1
   { synergy: en.siegeBreaker, count: 3 },
   { synergy: en.siegeBreaker, count: 4 },
   { synergy: en.siegeBreaker, count: 5 },
+  { synergy: en.longShot, count: 3 },
+  { synergy: en.longShot, count: 4 },
+  { synergy: en.longShot, count: 5 },
 
   /* -------------------- count 2 --------------------- */
   { synergy: en.guardian, count: 2 },
   { synergy: en.supporter, count: 2 },
-  { synergy: en.longShot, count: 2 },
   { synergy: en.assassin, count: 2 },
   { synergy: en.vanguard, count: 2 },
   { synergy: en.marine, count: 2 },
@@ -78,7 +74,6 @@ export const synergyLevel1Condition = [
   { synergy: en.guardian, count: 3 },
   { synergy: en.blaster, count: 3 },
   { synergy: en.supporter, count: 3 },
-  { synergy: en.longShot, count: 3 },
   { synergy: en.assassin, count: 3 },
   { synergy: en.vanguard, count: 3 },
   { synergy: en.marine, count: 3 },

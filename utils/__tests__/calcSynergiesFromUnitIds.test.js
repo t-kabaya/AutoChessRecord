@@ -12,39 +12,43 @@ import {
 } from '../../constants/SynergyLevelCondition'
 import { en } from '../../constants/I18n'
 
+/* -------------------- calcSynergiesFromUnitIds --------------------- */
+
 // 何もシナジーがない
-const noSynergyInput = [{ unitId: 8, level: 2 }, { unitId: 10, level: 1 }]
+test('noSynergyInput must return blank array', () => {
+  const noSynergyInput = [{ unitId: 8, level: 2 }, { unitId: 10, level: 1 }]
+  expect(calcSynergiesFromUnitIds(noSynergyInput)).toEqual([])
+})
 
-// test('noSynergyInput must return blank array', () => {
-//   expect(calcSynergiesFromUnitIds(noSynergyInput)).toEqual([]);
-// });
-
-// ロングショットのみシナジーがある
-const onlyMechSynergyInput = [{ unitId: 9, level: 1 }, { unitId: 19, level: 1 }]
-
+// メカのみシナジーがある
 test('must return mechLevel1', () => {
+  const onlyMechSynergyInput = [
+    { unitId: 9, level: 1 },
+    { unitId: 19, level: 1 }
+  ]
   expect(calcSynergiesFromUnitIds(onlyMechSynergyInput)).toEqual(
-    [{ synergy: 'mech', level: 1 }].sort()
+    [{ synergy: en.mech, synergyLevel: 2 }].sort()
   )
 })
 
 const insectoid1Psyker2Blaster1Input = [
-  { unitId: 10, level: 1 },
-  { unitId: 39, level: 1 },
-  { unitId: 22, level: 1 },
-  { unitId: 48, level: 1 },
   { unitId: 4, level: 1 },
   { unitId: 5, level: 1 },
+  { unitId: 8, level: 2 },
+  { unitId: 10, level: 1 },
+  { unitId: 13, level: 1 },
   { unitId: 15, level: 1 },
-  { unitId: 13, level: 1 }
+  { unitId: 22, level: 1 },
+  { unitId: 39, level: 1 },
+  { unitId: 48, level: 1 }
 ]
 
 test('must return insectoidLevel1, psykerLevel2, BlasterLevel1', () => {
-  expect(calcSynergiesFromUnitIds(noSynergyInput)).toEqual(
+  expect(calcSynergiesFromUnitIds(insectoid1Psyker2Blaster1Input)).toEqual(
     [
-      { synergy: 'insectoid', level: 1 },
-      { synergy: 'psyker', level: 2 },
-      { synergy: 'blaster', level: 1 }
+      { synergy: en.blaster, synergyLevel: 3 },
+      { synergy: en.insectoid, synergyLevel: 2 },
+      { synergy: en.longShot, synergyLevel: 3 }
     ].sort()
   )
 })
@@ -133,6 +137,7 @@ test('calcSynergy must detect mech level 1', () => {
     { count: 1, synergy: 'blaster' }
   ]
 
+  // オートチェスでは、synergyLevelは、最小コマ数として扱う。
   expect(calcSynergyLevel(calcSynergyLevelInput)).toEqual([
     { synergyLevel: 2, synergy: 'mech' }
   ])

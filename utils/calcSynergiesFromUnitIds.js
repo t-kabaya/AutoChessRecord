@@ -52,7 +52,8 @@ const calcSynergiesFromUnitIds = arr => {
   // level 3, 2, 1の順に、シナジーが発動した順にreturnしていく。
   const synergies = calcSynergyLevel(countedUpSynergiesArray)
 
-  return synergies
+  // sort for test
+  return synergies.sort()
 }
 
 export default calcSynergiesFromUnitIds
@@ -96,36 +97,30 @@ export const isLevel1 = condition => {
   }
 }
 
-export const calcSynergyLevel = synergiesWithoutLevel => {
-  return synergiesWithoutLevel.reduce((accumulator, currentValue) => {
-    // lv3の時
+export const calcSynergyLevel = synergiesWithoutLevel =>
+  synergiesWithoutLevel.reduce((accumulator, currentValue) => {
     if (isLevel3(currentValue)) {
-      return [...accumulator, { lol: 'name' }]
-      // lv2の時
-    } else if (isLevel2(currentValue)) {
-      return [...accumulator, { lol: 'name' }]
-
-      // lv1の時
-    } else if (isLevel1(currentValue)) {
-      // synergyLevel1Conditionから、countが最小の条件を探す。
-      const sameSynergyArray = synergyLevel1Condition.filter(
-        item => item.synergy === currentValue.synergy
+      const synergyLevel = convertCountIntoSynergyLevel(
+        synergyLevel3Condition,
+        currentValue
       )
-      const minCount = sameSynergyArray.reduce((accumulator, currentValue) => {
-        if (accumulator > currentValue.count) {
-          return currentValue.count
-        }
-        return accumulator
-      }, 10)
-      return [
-        ...accumulator,
-        { synergyLevel: minCount, synergy: currentValue.synergy }
-      ]
+      return [...accumulator, { synergyLevel, synergy: currentValue.synergy }]
+    } else if (isLevel2(currentValue)) {
+      const synergyLevel = convertCountIntoSynergyLevel(
+        synergyLevel2Condition,
+        currentValue
+      )
+      return [...accumulator, { synergyLevel, synergy: currentValue.synergy }]
+    } else if (isLevel1(currentValue)) {
+      const synergyLevel = convertCountIntoSynergyLevel(
+        synergyLevel1Condition,
+        currentValue
+      )
+      return [...accumulator, { synergyLevel, synergy: currentValue.synergy }]
     } else {
       return accumulator
     }
   }, [])
-}
 
 export const countUpSynergyAndCount = data => {
   const result = data.reduce((accumulator, currentValue) => {
@@ -143,12 +138,12 @@ export const countUpSynergyAndCount = data => {
     }
   }, [])
 
-  // テストのためソート
+  // need sort for unit test
   return result.sort()
 }
 
 // shallow equal?を行う。
-function areEqualShallow (a, b) {
+const areEqualShallow = (a, b) => {
   for (var key in a) {
     if (!(key in b) || a[key] !== b[key]) {
       return false
@@ -160,4 +155,19 @@ function areEqualShallow (a, b) {
     }
   }
   return true
+}
+
+// countが３の時、ライダー２と表示するための関数
+export const convertCountIntoSynergyLevel = (
+  synergyCondition,
+  currentValue
+) => {
+  return synergyCondition
+    .filter(item => item.synergy === currentValue.synergy)
+    .reduce((accumulator, currentValue) => {
+      if (accumulator > currentValue.count) {
+        return currentValue.count
+      }
+      return accumulator
+    }, 10)
 }
