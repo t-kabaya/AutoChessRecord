@@ -32,6 +32,9 @@ export const saveMatchRecordToFireStore = async (units, ranking) => {
 }
 
 export const getMyMatchRecord = async () => {
+  // 開発のため、モックデータを使用する。
+  return mockDataOfOpDeck
+
   try {
     const response = await db.collection('matchRecord').get()
     const myMatchRecord = await response.docs
@@ -52,3 +55,75 @@ export const getMyMatchRecord = async () => {
     console.log('error')
   }
 }
+
+const mockDataOfOpDeck = [
+  {
+    date: '"2019-06-16T14:16:57.161Z"',
+    ranking: 3,
+    units: [
+      {
+        level: 1,
+        unitId: 2
+      },
+      {
+        level: 1,
+        unitId: 3
+      },
+      {
+        level: 1,
+        unitId: 4
+      },
+      {
+        level: 1,
+        unitId: 5
+      },
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 1,
+        unitId: 7
+      }
+    ],
+    userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
+    synergy: [
+      {
+        synergyLevel: 2,
+        synergy: 'marine'
+      },
+      {
+        synergyLevel: 2,
+        synergy: 'psyker'
+      },
+      {
+        synergyLevel: 2,
+        synergy: 'supporter'
+      }
+    ]
+  },
+  {
+    date: '"2019-06-16T07:33:36.358Z"',
+    ranking: 3,
+    units: [
+      {
+        level: 1,
+        unitId: 2
+      },
+      {
+        level: 1,
+        unitId: 3
+      },
+      {
+        level: 1,
+        unitId: 4
+      },
+      {
+        level: 1,
+        unitId: 6
+      }
+    ],
+    userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
+    synergy: []
+  }
+]

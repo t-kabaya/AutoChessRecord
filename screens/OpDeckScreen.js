@@ -1,5 +1,12 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View, FlatList, Image } from 'react-native'
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  FlatList,
+  Image,
+  Dimensions
+} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { Button, Text } from 'native-base'
 import {
@@ -10,6 +17,8 @@ import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
 
+const { height, width } = Dimensions.get('window')
+
 const UnitImageListItem = ({ item }) => {
   return (
     <View style={styles.unitImageListItem}>
@@ -17,19 +26,19 @@ const UnitImageListItem = ({ item }) => {
         style={styles.unitImage}
         source={unitImagePathArray[item.unitId - 1]}
       />
-      <Text>{unitData[item.unitId - 1].unitName}</Text>
-      <Text>{item.level}</Text>
-      <View style={styles.starContainer}>
+      {/* <Text>{unitData[item.unitId - 1].unitName}</Text> */}
+      {/* <Text>{item.level}</Text> */}
+      {/* <View style={styles.starContainer}>
         {[...Array(item.level)].map(level => (
           <Ionicons name='ios-star' size={12} color='#FBC02D' />
         ))}
-      </View>
+      </View> */}
     </View>
   )
 }
 
 const SynergyListItem = ({ item }) => (
-  <View style={styles.unitImageListItem}>
+  <View style={styles.synergyListItem}>
     {/* <Image
       style={styles.unitImage}
       source={unitImagePathArray[item.unitId - 1]}
@@ -57,6 +66,7 @@ export default class OpDeckScreen extends React.Component {
     return (
       <View style={styles.cardContainer}>
         <Text>{item.ranking}位</Text>
+        <Text>使用率</Text>
         {/* <Text>{JSON.stringify(item.units)}位</Text> */}
         <FlatList
           horizontal
@@ -65,7 +75,6 @@ export default class OpDeckScreen extends React.Component {
         />
         <View>
           <FlatList
-            horizontal
             // data={item.synergy}
             data={[
               { synergy: 'mech', synergyLevel: 1 },
@@ -87,11 +96,10 @@ export default class OpDeckScreen extends React.Component {
     if (isLoading) return null
     return (
       <View style={styles.container}>
-        <Text>あなたがよく使うユニット</Text>
-        <Text style={styles.titleText}>私の戦績</Text>
+        <Text style={styles.titleText}>勝率の高いデッキ</Text>
 
         <View style={{ flexDirection: 'row' }}>
-          <Text style={{ flex: 1 }}>順位</Text>
+          <Text style={{ flex: 1 }}>勝率</Text>
           <Text style={{ flex: 1 }}>ユニット</Text>
           <Text style={{ flex: 1 }}>シナジー</Text>
         </View>
@@ -122,8 +130,10 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flexDirection: 'row',
-    // width: hp('90%'),
-    borderWidth: 1
+    width: wp('80%'),
+    borderWidth: 1,
+    margin: 3,
+    padding: 3
   },
   unitImageListItem: {},
   unitImage: {
@@ -135,5 +145,8 @@ const styles = StyleSheet.create({
   },
   recordMatchButton: {
     // width: width
+  },
+  synergyListItem: {
+    flexDirection: 'column'
   }
 })
