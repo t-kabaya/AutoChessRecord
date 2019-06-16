@@ -12,6 +12,10 @@ import {
   SafeAreaView,
   Alert
 } from 'react-native'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
@@ -19,10 +23,9 @@ import { Badge, Button, Text } from 'native-base'
 import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
 
 const SelectedUnitListItem = ({ item }) => {
-  debugger
   return (
     <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
-      <View style={styles.unitListItemContainer}>
+      <View style={styles.selectedUnitListItemContainer}>
         <View>
           <Text>Lv{item.level}</Text>
         </View>
@@ -119,7 +122,16 @@ export default class SelectUnitsScreen extends React.Component {
             renderItem={this.unitListItem}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={styles.selectedUnitsContainer}>
+          {/* <Text style={styles.text}>選択済み</Text> */}
+          <FlatList
+            inverted
+            horizontal
+            data={selectedUnits}
+            renderItem={({ item }) => <SelectedUnitListItem item={item} />}
+          />
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
           <Text style={styles.text}>順位</Text>
           <FlatList
             scrollEnabled={false}
@@ -127,15 +139,6 @@ export default class SelectUnitsScreen extends React.Component {
             numColumns={8}
             data={[1, 2, 3, 4, 5, 6, 7, 8]}
             renderItem={this.rankingItem}
-          />
-        </View>
-        <View style={styles.selectedUnitsContainer}>
-          <Text style={styles.text}>選択済み</Text>
-          <FlatList
-            inverted
-            horizontal
-            data={selectedUnits}
-            renderItem={({ item }) => <SelectedUnitListItem item={item} />}
           />
           <Button
             style={styles.goBackButton}
@@ -184,6 +187,7 @@ const styles = StyleSheet.create({
   },
   rankingButton: isSelected => ({
     width: (Layout.width * 1) / 10,
+    height: 40,
     margin: 3,
     justifyContent: 'center',
     alignItems: 'center',
@@ -200,13 +204,19 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   goBackButton: {
-    width: 80
+    width: 80,
+    margin: 3
   },
   decisionButton: {
-    width: 80
+    width: 80,
+    margin: 3
   },
   selectedUnitListItemImage: {
     width: 50,
     height: 50
+  },
+  selectedUnitListItemContainer: {
+    height: wp('8%'),
+    width: wp('8%')
   }
 })
