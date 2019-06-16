@@ -2,6 +2,10 @@ import React from 'react'
 import { ScrollView, StyleSheet, View, FlatList, Image } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { Button, Text } from 'native-base'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
@@ -83,13 +87,16 @@ export default class MyMatchRecordScreen extends React.Component {
     if (isLoading) return null
     return (
       <View style={styles.container}>
+        <Text>あなたがよく使うユニット</Text>
         <Text style={styles.titleText}>私の戦績</Text>
+
         <View style={{ flexDirection: 'row' }}>
           <Text style={{ flex: 1 }}>順位</Text>
           <Text style={{ flex: 1 }}>ユニット</Text>
           <Text style={{ flex: 1 }}>シナジー</Text>
         </View>
         <FlatList data={myMatchRecord} renderItem={this.matchRecordListItem} />
+
         <Button
           block
           onPress={this.onPressRecordMatchButton}
@@ -108,14 +115,14 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingHorizontal: '10%'
+    paddingHorizontal: '5%'
   },
   titleText: {
     fontSize: 20
   },
   cardContainer: {
     flexDirection: 'row',
-    width: '100%',
+    // width: hp('90%'),
     borderWidth: 1
   },
   unitImageListItem: {},
