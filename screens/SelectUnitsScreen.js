@@ -24,15 +24,24 @@ import { Badge, Button, Text } from 'native-base'
 import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
 
 const SelectedUnitListItem = ({ item }) => {
+  let levelStar = []
+  for (i = 0; i < item.level; i++) {
+    levelStar.push(<Ionicons name='md-star' size={13} color='orange' />)
+  }
   return (
     <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
       <View style={styles.selectedUnitListItemContainer}>
-        <Badge>
-          <Text style={styles.selectedUnitListItemBadgeText}>
-            Lv{item.level}
-          </Text>
-        </Badge>
-        <Ionicons name='md-star' size={32} color='green' />
+        <View
+          style={{
+            flexDirection: 'row',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: 1
+          }}
+        >
+          {levelStar}
+        </View>
         <Image
           resizeMode='contain'
           style={styles.selectedUnitListItemImage}
@@ -98,7 +107,7 @@ export default class SelectUnitsScreen extends React.Component {
 
   onPressDecision = unitState => {
     saveMatchRecordToFireStore(unitState, this.state.ranking)
-    Alert.alert('成功')
+    Alert.alert('保存しました')
     // stateをリセット
     this.setState({
       unitState: unitData.map(data => ({ ...data, level: 0 })),
