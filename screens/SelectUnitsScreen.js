@@ -31,15 +31,7 @@ const SelectedUnitListItem = ({ item }) => {
   return (
     <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
       <View style={styles.selectedUnitListItemContainer}>
-        <View
-          style={{
-            flexDirection: 'row',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            zIndex: 1
-          }}
-        >
+        <View style={styles.selectedUnitListItemStarContainer}>
           {levelStar}
         </View>
         <Image
@@ -72,11 +64,15 @@ export default class SelectUnitsScreen extends React.Component {
   }
 
   unitListItem = ({ item }) => {
+    let levelStar = []
+    for (i = 0; i < item.level; i++) {
+      levelStar.push(<Ionicons name='md-star' size={18} color='orange' />)
+    }
     return (
       <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
         <View style={styles.unitListItemContainer}>
-          <View>
-            <Text>Lv{item.level}</Text>
+          <View style={styles.selectedUnitListItemStarContainer}>
+            {levelStar}
           </View>
           <Image
             resizeMode='contain'
@@ -137,7 +133,7 @@ export default class SelectUnitsScreen extends React.Component {
             style={styles.goBackButton}
             onPress={this.onPressGoBackButton}
           >
-            <Text>戻る</Text>
+            <Text style={styles.doneSelectButtonText}>戻る</Text>
           </Button>
           <Button
             style={styles.decisionButton}
@@ -155,7 +151,7 @@ export default class SelectUnitsScreen extends React.Component {
           />
         </View>
         <View style={styles.selectedUnitsContainer}>
-          {/* <Text style={styles.text}>選択済み</Text> */}
+          <Text style={styles.text}>選択済み</Text>
           <FlatList
             inverted
             horizontal
@@ -225,11 +221,15 @@ const styles = StyleSheet.create({
   },
   goBackButton: {
     width: 80,
-    margin: 3
+    margin: 3,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   decisionButton: {
     width: 80,
-    margin: 3
+    margin: 3,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   selectedUnitListItemImage: {
     width: 50,
@@ -241,5 +241,12 @@ const styles = StyleSheet.create({
   },
   selectedUnitListItemBadgeText: {
     fontSize: 8
+  },
+  selectedUnitListItemStarContainer: {
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 1
   }
 })
