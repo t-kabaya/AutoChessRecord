@@ -8,12 +8,14 @@ import {
 import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
 import SelectUnitsScreen from '../screens/SelectUnitsScreen'
-import MyMatchRecordScreen from '../screens/MyMatchRecordScreen'
+import OpDeckScreen from '../screens/OpDeckScreen'
 import SettingsScreen from '../screens/SettingsScreen'
+import OpSynergyAndUnitsScreen from '../screens/OpSynergyAndUnitsScreen'
 
 export const HomeStack = createStackNavigator(
   {
-    MyMatchRecordScreen,
+    OpDeckScreen,
+    OpSynergyAndUnitsScreen,
     SelectUnitsScreen
   },
   {

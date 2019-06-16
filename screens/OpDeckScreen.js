@@ -38,7 +38,7 @@ const SynergyListItem = ({ item }) => (
   </View>
 )
 
-export default class MyMatchRecordScreen extends React.Component {
+export default class OpDeckScreen extends React.Component {
   state = {
     isLoading: true,
     myMatchRecord: null
