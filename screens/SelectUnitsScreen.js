@@ -16,6 +16,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
+import { Ionicons } from '@expo/vector-icons'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
@@ -26,15 +27,17 @@ const SelectedUnitListItem = ({ item }) => {
   return (
     <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
       <View style={styles.selectedUnitListItemContainer}>
-        <View>
-          <Text>Lv{item.level}</Text>
-        </View>
+        <Badge>
+          <Text style={styles.selectedUnitListItemBadgeText}>
+            Lv{item.level}
+          </Text>
+        </Badge>
+        <Ionicons name='md-star' size={32} color='green' />
         <Image
           resizeMode='contain'
           style={styles.selectedUnitListItemImage}
           source={unitImagePathArray[item.unitId - 1]}
         />
-        <Text>{item.unitName}</Text>
       </View>
     </TouchableWithoutFeedback>
   )
@@ -84,7 +87,7 @@ export default class SelectUnitsScreen extends React.Component {
         onPress={() => this.onPressRankingItem(item)}
         style={styles.rankingButton(isSelected)}
       >
-        <Text style={styles.rankingButtonText}>{item}</Text>
+        <Text style={styles.rankingButtonText}>{item}位</Text>
       </Button>
     )
   }
@@ -114,6 +117,26 @@ export default class SelectUnitsScreen extends React.Component {
     console.log(selectedUnits)
     return (
       <SafeAreaView style={{ flex: 1 }}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Button
+            style={styles.goBackButton}
+            onPress={this.onPressGoBackButton}
+          >
+            <Text>戻る</Text>
+          </Button>
+          <Button
+            style={styles.decisionButton}
+            onPress={() => this.onPressDecision(unitState)}
+          >
+            <Text style={styles.doneSelectButtonText}>保存</Text>
+          </Button>
+        </View>
         <View style={{ flex: 3 }}>
           <FlatList
             style={styles.unitListContainer}
@@ -132,7 +155,7 @@ export default class SelectUnitsScreen extends React.Component {
           />
         </View>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Text style={styles.text}>順位</Text>
+          {/* <Text style={styles.text}>順位</Text> */}
           <FlatList
             scrollEnabled={false}
             contentContainerStyle={styles.rankingContainer}
@@ -140,18 +163,6 @@ export default class SelectUnitsScreen extends React.Component {
             data={[1, 2, 3, 4, 5, 6, 7, 8]}
             renderItem={this.rankingItem}
           />
-          <Button
-            style={styles.goBackButton}
-            onPress={this.onPressGoBackButton}
-          >
-            <Text>戻る</Text>
-          </Button>
-          <Button
-            style={styles.decisionButton}
-            onPress={() => this.onPressDecision(unitState)}
-          >
-            <Text style={styles.doneSelectButtonText}>決定</Text>
-          </Button>
         </View>
       </SafeAreaView>
     )
@@ -187,7 +198,7 @@ const styles = StyleSheet.create({
   },
   rankingButton: isSelected => ({
     width: (Layout.width * 1) / 10,
-    height: 40,
+    height: 35,
     margin: 3,
     justifyContent: 'center',
     alignItems: 'center',
@@ -218,5 +229,8 @@ const styles = StyleSheet.create({
   selectedUnitListItemContainer: {
     height: wp('8%'),
     width: wp('8%')
+  },
+  selectedUnitListItemBadgeText: {
+    fontSize: 8
   }
 })
