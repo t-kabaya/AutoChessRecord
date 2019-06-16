@@ -19,6 +19,7 @@ import { Badge, Button, Text } from 'native-base'
 import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
 
 const SelectedUnitListItem = ({ item }) => {
+  debugger
   return (
     <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
       <View style={styles.unitListItemContainer}>
@@ -28,7 +29,7 @@ const SelectedUnitListItem = ({ item }) => {
         <Image
           resizeMode='contain'
           style={styles.selectedUnitListItemImage}
-          source={unitImagePathArray[item.id - 1]}
+          source={unitImagePathArray[item.unitId - 1]}
         />
         <Text>{item.unitName}</Text>
       </View>
@@ -56,8 +57,6 @@ export default class SelectUnitsScreen extends React.Component {
   }
 
   unitListItem = ({ item }) => {
-    debugger
-    let levelColor
     return (
       <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
         <View style={styles.unitListItemContainer}>
@@ -108,6 +107,7 @@ export default class SelectUnitsScreen extends React.Component {
   render () {
     const { unitState } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
+    debugger
     console.log(selectedUnits)
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -135,7 +135,7 @@ export default class SelectUnitsScreen extends React.Component {
             inverted
             horizontal
             data={selectedUnits}
-            renderItem={item => <SelectedUnitListItem item={item} />}
+            renderItem={({ item }) => <SelectedUnitListItem item={item} />}
           />
           <Button
             style={styles.goBackButton}
