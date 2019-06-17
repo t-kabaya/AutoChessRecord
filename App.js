@@ -3,6 +3,7 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 import { AppLoading, Asset, Font, Icon } from 'expo'
 import AppNavigator from './navigation/AppNavigator'
 import fireStoreSetup from './fireStore/fireStoreSetup'
+import { unitImagePathArray } from './constants/UnitData'
 console.disableYellowBox = true
 
 export default class App extends React.Component {
@@ -31,10 +32,7 @@ export default class App extends React.Component {
 
   _loadResourcesAsync = async () => {
     return Promise.all([
-      // Asset.loadAsync([
-      //   require('./assets/images/robot-dev.png'),
-      //   require('./assets/images/robot-prod.png'),
-      // ]),
+      Asset.loadAsync(unitImagePathArray),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
         ...Icon.Ionicons.font,

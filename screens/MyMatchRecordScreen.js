@@ -1,23 +1,10 @@
 import React from 'react'
-import {
-  ScrollView,
-  StyleSheet,
-  View,
-  FlatList,
-  Image,
-  Dimensions
-} from 'react-native'
+import { ScrollView, StyleSheet, View, FlatList, Image } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { Button, Text } from 'native-base'
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from 'react-native-responsive-screen'
+import { Button, Text, Card } from 'native-base'
 import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
-
-const { height, width } = Dimensions.get('window')
 
 const UnitImageListItem = ({ item }) => {
   return (
@@ -26,31 +13,28 @@ const UnitImageListItem = ({ item }) => {
         style={styles.unitImage}
         source={unitImagePathArray[item.unitId - 1]}
       />
-      {/* <Text>{unitData[item.unitId - 1].unitName}</Text> */}
-      {/* <Text>{item.level}</Text> */}
-      {/* <View style={styles.starContainer}>
+      <Text>{unitData[item.unitId - 1].unitName}</Text>
+      <Text>{item.level}</Text>
+      <View style={styles.starContainer}>
         {[...Array(item.level)].map(level => (
           <Ionicons name='ios-star' size={12} color='#FBC02D' />
         ))}
-      </View> */}
+      </View>
     </View>
   )
 }
 
 const SynergyListItem = ({ item }) => (
-  <View style={styles.synergyListItem}>
+  <View style={styles.unitImageListItem}>
     {/* <Image
       style={styles.unitImage}
       source={unitImagePathArray[item.unitId - 1]}
     /> */}
-    <Text>
-      {item.synergy}
-      {item.synergyLevel}
-    </Text>
+    <Text>{item.synergy}</Text>
   </View>
 )
 
-export default class OpDeckScreen extends React.Component {
+export default class MyMatchRecordScreen extends React.Component {
   state = {
     isLoading: true,
     myMatchRecord: null
@@ -67,9 +51,8 @@ export default class OpDeckScreen extends React.Component {
 
   matchRecordListItem = ({ item }) => {
     return (
-      <View style={styles.cardContainer}>
-        <Text>勝率</Text>
-        {/* <Text>使用率</Text> */}
+      <Card style={styles.cardContainer}>
+        <Text>{item.ranking}位</Text>
         {/* <Text>{JSON.stringify(item.units)}位</Text> */}
         <FlatList
           horizontal
@@ -78,15 +61,16 @@ export default class OpDeckScreen extends React.Component {
         />
         <View>
           <FlatList
+            horizontal
             // data={item.synergy}
             data={[
-              { synergy: 'メカ', synergyLevel: 2 },
-              { synergy: 'ブラスター', synergyLevel: 3 }
+              { synergy: 'mech', synergyLevel: 1 },
+              { synergy: 'blaster', synergyLevel: 2 }
             ]}
             renderItem={({ item }) => <SynergyListItem item={item} />}
           />
         </View>
-      </View>
+      </Card>
     )
   }
 
@@ -99,20 +83,13 @@ export default class OpDeckScreen extends React.Component {
     if (isLoading) return null
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>勝率の高いデッキ</Text>
-
-        {/* <View style={{ flexDirection: 'row' }}>
-          <Text style={{ flex: 1 }}>勝率</Text>
+        <Text style={styles.titleText}>私の戦績</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{ flex: 1 }}>順位</Text>
           <Text style={{ flex: 1 }}>ユニット</Text>
           <Text style={{ flex: 1 }}>シナジー</Text>
-        </View> */}
-        <FlatList
-          // numColumns={2}
-          data={myMatchRecord}
-          renderItem={this.matchRecordListItem}
-          listKey={(item, index) => index.toString()}
-        />
-
+        </View>
+        <FlatList data={myMatchRecord} renderItem={this.matchRecordListItem} />
         <Button
           block
           onPress={this.onPressRecordMatchButton}
@@ -131,18 +108,15 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingHorizontal: '5%'
+    paddingHorizontal: '10%'
   },
   titleText: {
-    fontSize: 20,
-    fontWeight: 'bold'
+    fontSize: 20
   },
   cardContainer: {
     flexDirection: 'row',
-    width: wp('80%'),
-    borderWidth: 1,
-    margin: 3,
-    padding: 3
+    width: '100%',
+    borderWidth: 1
   },
   unitImageListItem: {},
   unitImage: {
@@ -154,8 +128,5 @@ const styles = StyleSheet.create({
   },
   recordMatchButton: {
     // width: width
-  },
-  synergyListItem: {
-    flexDirection: 'column'
   }
 })
