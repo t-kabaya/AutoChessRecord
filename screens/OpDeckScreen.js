@@ -8,7 +8,7 @@ import {
   Dimensions
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { Button, Text } from 'native-base'
+import { Button, Text, Card, Container } from 'native-base'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -26,13 +26,6 @@ const UnitImageListItem = ({ item }) => {
         style={styles.unitImage}
         source={unitImagePathArray[item.unitId - 1]}
       />
-      {/* <Text>{unitData[item.unitId - 1].unitName}</Text> */}
-      {/* <Text>{item.level}</Text> */}
-      {/* <View style={styles.starContainer}>
-        {[...Array(item.level)].map(level => (
-          <Ionicons name='ios-star' size={12} color='#FBC02D' />
-        ))}
-      </View> */}
     </View>
   )
 }
@@ -67,15 +60,32 @@ export default class OpDeckScreen extends React.Component {
 
   matchRecordListItem = ({ item }) => {
     return (
-      <View style={styles.cardContainer}>
-        <Text>勝率</Text>
+      <Card style={styles.cardContainer}>
+        <View style={{ margin: 3 }}>
+          <Text>TOP3率</Text>
+          <Text style={{ fontSize: 20, paddingTop: 5 }}>50%</Text>
+        </View>
         {/* <Text>使用率</Text> */}
         {/* <Text>{JSON.stringify(item.units)}位</Text> */}
-        <FlatList
-          horizontal
-          data={item.units}
-          renderItem={({ item }) => <UnitImageListItem item={item} />}
-        />
+        <View style={{ flexDirection: 'column' }}>
+          {/* <FlatList
+            // horizontal
+            // numColumns={2}
+            contentContainerStyle={{ flexDirection: 'column' }}
+            data={item.units}
+            renderItem={({ item }) => <UnitImageListItem item={item} />}
+          /> */}
+          <View style={{ flexDirection: 'row' }}>
+            {item.units.slice(0, 5).map(item => (
+              <UnitImageListItem item={item} />
+            ))}
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            {item.units.slice(5, 10).map(item => (
+              <UnitImageListItem item={item} />
+            ))}
+          </View>
+        </View>
         <View>
           <FlatList
             // data={item.synergy}
@@ -86,7 +96,7 @@ export default class OpDeckScreen extends React.Component {
             renderItem={({ item }) => <SynergyListItem item={item} />}
           />
         </View>
-      </View>
+      </Card>
     )
   }
 
@@ -98,7 +108,7 @@ export default class OpDeckScreen extends React.Component {
     const { isLoading, myMatchRecord } = this.state
     if (isLoading) return null
     return (
-      <View style={styles.container}>
+      <Container style={styles.container}>
         <Text style={styles.titleText}>勝率の高いデッキ</Text>
 
         {/* <View style={{ flexDirection: 'row' }}>
@@ -120,7 +130,7 @@ export default class OpDeckScreen extends React.Component {
         >
           <Text>戦績を記録</Text>
         </Button>
-      </View>
+      </Container>
     )
   }
 }
@@ -129,25 +139,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#eaecef',
     alignItems: 'center',
     paddingHorizontal: '5%'
   },
   titleText: {
-    fontSize: 20,
+    fontSize: 23,
     fontWeight: 'bold'
   },
   cardContainer: {
     flexDirection: 'row',
+    justifyContent: 'space-around',
     width: wp('80%'),
     borderWidth: 1,
     margin: 3,
-    padding: 3
+    padding: 3,
+    paddingVertical: 15
   },
-  unitImageListItem: {},
+  unitImageListItem: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
   unitImage: {
-    height: 50,
-    width: 50
+    height: 60,
+    width: 60,
+    margin: 5
   },
   starContainer: {
     flexDirection: 'row'
