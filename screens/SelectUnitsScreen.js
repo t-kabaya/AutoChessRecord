@@ -22,6 +22,11 @@ import Colors from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import { Badge, Button, Text, Toast, Container } from 'native-base'
 import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
+import {
+  primaryColor,
+  darkPrimaryColor,
+  secondaryColor
+} from '../constants/Colors'
 
 const SelectedUnitListItem = ({ item }) => {
   let levelStar = []
@@ -106,7 +111,13 @@ export default class SelectUnitsScreen extends React.Component {
     Toast.show({
       text: '保存しました',
       // buttonText: 'Okay',
-      duration: 3000
+      duration: 2000,
+      position: 'top',
+      style: {
+        backgroundColor: secondaryColor,
+        alignItems: 'center',
+        width: 150
+      }
     })
     // stateをリセット
     this.setState({
@@ -189,9 +200,9 @@ const styles = StyleSheet.create({
   },
   unitListItemImage: {
     width: Layout.width / 10,
-    height: Layout.width / 10,
-    borderWidth: 5,
-    borderColor: '#ffe084'
+    height: Layout.width / 10
+    // borderWidth: 5
+    // borderColor: primaryColor
   },
   doneSelectButtonText: {
     color: 'white',
@@ -211,7 +222,7 @@ const styles = StyleSheet.create({
     margin: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: isSelected ? 'blue' : 'gray'
+    backgroundColor: isSelected ? primaryColor : 'gray'
   }),
   rankingButtonText: {
     alignSelf: 'center',
@@ -224,12 +235,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   goBackButton: {
+    backgroundColor: primaryColor,
     width: 80,
     margin: 3,
     alignItems: 'center',
     justifyContent: 'center'
   },
   decisionButton: {
+    backgroundColor: primaryColor,
     width: 80,
     margin: 3,
     alignItems: 'center',

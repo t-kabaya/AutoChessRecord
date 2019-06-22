@@ -193,7 +193,8 @@ const styles = StyleSheet.create({
   },
   matchRecordListItemLeftPart: {
     // margin: 3,
-    width: wp('10%')
+    width: wp('10%'),
+    alignItems: 'center'
     // backgroundColor: 'green'
   },
   matchRecordListItemCenterPart: {
@@ -202,7 +203,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red'
   },
   matchRecordListItemRightPart: {
-    width: wp('20%')
+    width: wp('20%'),
+    alignItems: 'center'
     // backgroundColor: 'yellow'
   }
 })
