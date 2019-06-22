@@ -16,6 +16,11 @@ import {
 import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
+import {
+  primaryColor,
+  darkPrimaryColor,
+  secondaryColor
+} from '../constants/Colors'
 
 const { height, width } = Dimensions.get('window')
 
@@ -61,13 +66,13 @@ export default class OpDeckScreen extends React.Component {
   matchRecordListItem = ({ item }) => {
     return (
       <Card style={styles.cardContainer}>
-        <View style={{ margin: 3 }}>
+        <View style={styles.matchRecordListItemLeftPart}>
           <Text>TOP3率</Text>
           <Text style={{ fontSize: 20, paddingTop: 5 }}>50%</Text>
         </View>
         {/* <Text>使用率</Text> */}
         {/* <Text>{JSON.stringify(item.units)}位</Text> */}
-        <View style={{ flexDirection: 'column' }}>
+        <View style={styles.matchRecordListItemCenterPart}>
           {/* <FlatList
             // horizontal
             // numColumns={2}
@@ -86,7 +91,7 @@ export default class OpDeckScreen extends React.Component {
             ))}
           </View>
         </View>
-        <View>
+        <View style={styles.matchRecordListItemRightPart}>
           <FlatList
             // data={item.synergy}
             data={[
@@ -109,7 +114,9 @@ export default class OpDeckScreen extends React.Component {
     if (isLoading) return null
     return (
       <Container style={styles.container}>
-        <Text style={styles.titleText}>勝率の高いデッキ</Text>
+        <View style={styles.screenTitle}>
+          <Text style={styles.titleText}>勝率の高いデッキ</Text>
+        </View>
 
         {/* <View style={{ flexDirection: 'row' }}>
           <Text style={{ flex: 1 }}>勝率</Text>
@@ -138,15 +145,43 @@ export default class OpDeckScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    // paddingTop: 15,
     backgroundColor: '#eaecef',
     alignItems: 'center',
     paddingHorizontal: '5%'
   },
-  titleText: {
-    fontSize: 23,
-    fontWeight: 'bold'
+  screenTitle: {
+    backgroundColor: primaryColor,
+    justifyContent: 'center',
+    width: wp('100%'),
+    height: 40
   },
+  titleText: {
+    marginLeft: wp('10%'),
+    fontSize: 23,
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  unitImageListItem: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
+  },
+  unitImage: {
+    height: wp('9%'),
+    width: wp('9%'),
+    margin: wp('0.5%')
+  },
+  starContainer: {
+    flexDirection: 'row'
+  },
+  recordMatchButton: {
+    // width: width
+    backgroundColor: secondaryColor
+  },
+  synergyListItem: {
+    flexDirection: 'column'
+  },
+  // matchRecordListItemの合計で、width 80%になるようにする。
   cardContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -156,22 +191,18 @@ const styles = StyleSheet.create({
     padding: 3,
     paddingVertical: 15
   },
-  unitImageListItem: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+  matchRecordListItemLeftPart: {
+    // margin: 3,
+    width: wp('10%')
+    // backgroundColor: 'green'
   },
-  unitImage: {
-    height: 60,
-    width: 60,
-    margin: 5
+  matchRecordListItemCenterPart: {
+    flexDirection: 'column',
+    width: wp('50%')
+    // backgroundColor: 'red'
   },
-  starContainer: {
-    flexDirection: 'row'
-  },
-  recordMatchButton: {
-    // width: width
-  },
-  synergyListItem: {
-    flexDirection: 'column'
+  matchRecordListItemRightPart: {
+    width: wp('20%')
+    // backgroundColor: 'yellow'
   }
 })

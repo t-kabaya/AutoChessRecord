@@ -20,7 +20,7 @@ import { Ionicons } from '@expo/vector-icons'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
-import { Badge, Button, Text } from 'native-base'
+import { Badge, Button, Text, Toast, Container } from 'native-base'
 import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
 
 const SelectedUnitListItem = ({ item }) => {
@@ -103,7 +103,11 @@ export default class SelectUnitsScreen extends React.Component {
 
   onPressDecision = unitState => {
     saveMatchRecordToFireStore(unitState, this.state.ranking)
-    Alert.alert('保存しました')
+    Toast.show({
+      text: '保存しました',
+      // buttonText: 'Okay',
+      duration: 3000
+    })
     // stateをリセット
     this.setState({
       unitState: unitData.map(data => ({ ...data, level: 0 })),
