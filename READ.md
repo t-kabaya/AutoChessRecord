@@ -15,4 +15,6 @@ unitの名前が二段になると、表示が崩れる。
 
 勝率の高いデッキを並べる。
 
+selectUnitsScreenで、unitsの名前が二段になるとunitsが縦方向にずれる問題を解決
+
 OPDeckScreenは、クラロワのopggを参照。

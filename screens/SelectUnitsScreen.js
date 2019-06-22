@@ -84,7 +84,7 @@ export default class SelectUnitsScreen extends React.Component {
             style={styles.unitListItemImage}
             source={unitImagePathArray[item.unitId - 1]}
           />
-          <Text>{item.unitName}</Text>
+          <Text numberOfLines={2}>{item.unitName}</Text>
         </View>
       </TouchableWithoutFeedback>
     )
@@ -137,52 +137,50 @@ export default class SelectUnitsScreen extends React.Component {
     console.log(selectedUnits)
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-between'
-          }}
-        >
-          <Button
-            style={styles.goBackButton}
-            onPress={this.onPressGoBackButton}
-          >
-            <Text style={styles.doneSelectButtonText}>戻る</Text>
-          </Button>
-          <Button
-            style={styles.decisionButton}
-            onPress={() => this.onPressDecision(unitState)}
-          >
-            <Text style={styles.doneSelectButtonText}>保存</Text>
-          </Button>
-        </View>
-        <View style={{ flex: 3 }}>
-          <FlatList
-            style={styles.unitListContainer}
-            numColumns={7}
-            data={unitState}
-            renderItem={this.unitListItem}
-          />
-        </View>
-        <View style={styles.selectedUnitsContainer}>
-          <Text style={styles.text}>選択済み</Text>
-          <FlatList
-            inverted
-            horizontal
-            data={selectedUnits}
-            renderItem={({ item }) => <SelectedUnitListItem item={item} />}
-          />
-        </View>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          {/* <Text style={styles.text}>順位</Text> */}
-          <FlatList
-            scrollEnabled={false}
-            contentContainerStyle={styles.rankingContainer}
-            numColumns={8}
-            data={[1, 2, 3, 4, 5, 6, 7, 8]}
-            renderItem={this.rankingItem}
-          />
+        <View style={styles.container}>
+          <View style={styles.topButtonContainer}>
+            <Button
+              style={styles.goBackButton}
+              onPress={this.onPressGoBackButton}
+            >
+              <Text style={styles.doneSelectButtonText}>戻る</Text>
+            </Button>
+            <Button
+              style={styles.decisionButton}
+              onPress={() => this.onPressDecision(unitState)}
+            >
+              <Text style={styles.doneSelectButtonText}>保存</Text>
+            </Button>
+          </View>
+
+          <View style={{ flex: 3 }}>
+            <FlatList
+              style={styles.unitListContainer}
+              numColumns={7}
+              data={unitState}
+              renderItem={this.unitListItem}
+            />
+          </View>
+          <View style={styles.selectedUnitsContainer}>
+            <Text style={styles.text}>選択済み</Text>
+            <FlatList
+              inverted
+              horizontal
+              data={selectedUnits}
+              renderItem={({ item }) => <SelectedUnitListItem item={item} />}
+            />
+          </View>
+
+          <View style={styles.rankingContainer}>
+            {/* <Text style={styles.text}>順位</Text> */}
+            <FlatList
+              scrollEnabled={false}
+              contentContainerStyle={styles.rankingContentContainer}
+              numColumns={8}
+              data={[1, 2, 3, 4, 5, 6, 7, 8]}
+              renderItem={this.rankingItem}
+            />
+          </View>
         </View>
       </SafeAreaView>
     )
@@ -190,10 +188,24 @@ export default class SelectUnitsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: wp('90%'),
+    marginHorizontal: wp('5%')
+    // alignItems: '',
+    // backgroundColor: 'red'
+  },
+  topButtonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
   unitListItemContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
-    width: Layout.width / 8
+    justifyContent: 'flex-start',
+    width: wp('12.5%'),
+    height: wp('15%')
   },
   unitListContainer: {
     height: (Layout.height * 4) / 5
@@ -214,6 +226,10 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   rankingContainer: {
+    flex: 0.8,
+    flexDirection: 'row'
+  },
+  rankingContentContainer: {
     alignItems: 'center'
   },
   rankingButton: isSelected => ({
@@ -230,7 +246,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   selectedUnitsContainer: {
-    flex: 1,
+    flex: 0.8,
     flexDirection: 'row',
     alignItems: 'center'
   },
