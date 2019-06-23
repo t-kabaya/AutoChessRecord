@@ -71,9 +71,11 @@ export const getWinRateOfUnit = async () => {
 
   // const snapShot = await db.collection('users').get();
   // docsをmapする
+
   const data = response.docs.map(doc => {
     return doc.data();
   });
+  debugger;
 
   return data;
 };
