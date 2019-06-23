@@ -3,7 +3,7 @@ import { calcWinRateRankingOfUnit } from "../calcHeighWinRateUnits";
 
 // top3WinRate = そのユニットがデッキ内にいる時にtop3に入る確率。
 
-const inputData = [
+const input1 = [
   {
     ranking: 1,
     units: [
@@ -45,7 +45,7 @@ const inputData = [
   },
 ];
 
-const output = [
+const output1 = [
   {
     unitId: 1,
     top3WinRate: 1,
@@ -74,8 +74,50 @@ const output = [
 /*------   calcWinRanknigOfUnit   ------*/
 
 test("blackbox test calcWinRankingOfUnit", () => {
-  const response = calcWinRateRankingOfUnit(inputData);
-  expect(response).toEqual(output);
+  const response = calcWinRateRankingOfUnit(input1);
+  expect(response).toEqual(output1);
 });
 
-// unit id は重複していてはならない。
+const input2 = [
+  {
+    ranking: 1,
+    units: [
+      {
+        level: 2,
+        unitId: 1,
+      },
+    ],
+  },
+  {
+    ranking: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 1,
+      },
+    ],
+  },
+  {
+    ranking: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 1,
+      },
+    ],
+  },
+];
+
+const output2 = [
+  {
+    unitId: 1,
+    top3WinRate: 0.333,
+  },
+];
+
+// top3winRateの小数点第２位は切り上げであること
+// 0.3333を0.334に丸める
+test("round up to the 2 decimal places", () => {
+  const response = calcWinRateRankingOfUnit(input2);
+  expect(response).toEqual(output2);
+});

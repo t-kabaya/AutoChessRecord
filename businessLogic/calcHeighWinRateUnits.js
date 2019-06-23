@@ -1,38 +1,45 @@
 export const calcWinRateRankingOfUnit = inputArray => {
-  const resultArray = [];
+  // temporaryなarray。要リファクタリング
+  const mArray = [];
 
   // ここの設計は考えたほうがいいな。
   // findIndexで返り値を取得して、
   inputArray.forEach(data => {
     data.units.forEach(unitsData => {
-      if (resultArray.some(item => item.unitId === unitsData.unitId)) {
-        const index = resultArray.findIndex(
-          element => element.unitId === unitsData.unitId
-        );
-        // resultArray.push({
-        //   unitId: unitsData.unitId,
-        //   top3Count: data.ranking > 4,
-        // });
+      const index = mArray.findIndex(x => x.unitId === unitsData.unitId);
+      // findIndexでは、indexが見つからなかった場合は、-1が帰る
+      if (index >= 0) {
         const isTop3 = data.ranking <= 3;
-        resultArray[index] = {
+        mArray[index] = {
           unitId: unitsData.unitId,
-          top3Count: isTop3 ? resultArray[index] + 1 : resultArray[index],
-          notTop3Count: isTop3 ? resultArray[index] : resultArray[index] + 1,
+          top3Count: isTop3
+            ? mArray[index].top3Count + 1
+            : mArray[index].top3Count,
+          notTop3Count: isTop3
+            ? mArray[index].notTop3Count
+            : mArray[index].notTop3Count + 1,
         };
       } else {
-        resultArray.push({
+        const isTop3 = data.ranking <= 3;
+        mArray.push({
           unitId: unitsData.unitId,
-          top3Count: data.ranking > 3 ? 0 : 1,
-          notTop3Count: data.ranking > 3 ? 1 : 0,
+          top3Count: isTop3 ? 1 : 0,
+          notTop3Count: isTop3 ? 0 : 1,
         });
       }
     });
   });
 
-  const unitsOfTop3WinRate = resultArray.map(item => ({
-    unitId: item.unitId,
-    top3WinRate: item.top3Count / (item.top3Count + item.notTop3Count),
-  }));
+  const unitsOfTop3WinRate = mArray.map(item => {
+    // 3位率 = 3位の数 / 全体の数
+    const top3WinRate = item.top3Count / (item.top3Count + item.notTop3Count);
+    // 小数点第３位を丸める。
+    const roundUpTop3WinRate = Math.round(top3WinRate * 1000) / 1000;
+    return {
+      unitId: item.unitId,
+      top3WinRate: roundUpTop3WinRate,
+    };
+  });
 
   // rankingSumから、実際のtop3率を計算する。
 
