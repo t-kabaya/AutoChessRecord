@@ -2,19 +2,26 @@ TODO:  
 ここから丸い画像を取ってくる。
 https://evolutionchess.github.io/mix.html
 
-unitの名前が二段になると、表示が崩れる。
-
-アイコンを作成する。
-スプラッシュスクリーンを作成する。
-
-保存ボタンを押しても保存されない？
 成功のトーストを綺麗にする。
 
-一番強いデッキをランキング形式で示す。
-ユニットのtierリストも必要だな。
+ユニットの tier リストも必要だな。
 
 勝率の高いデッキを並べる。
+opUnitsScreen を作成する。(top3 率で、ユニットをランキングする。)
 
-selectUnitsScreenで、unitsの名前が二段になるとunitsが縦方向にずれる問題を解決
+OPDeckScreen は、クラロワの opgg を参照。
 
-OPDeckScreenは、クラロワのopggを参照。
+## ランキングの作り方。
+
+一週間に一回ランキングを更新するだけでいいか。
+
+勝率が高いデッキの判定
+ranking が、1,2,3 / all が大きいデッキ。
+
+勝率の高いユニットの判定
+ranking が、1,2,3 / all の数が大きいユニット
+
+where クエリを使う。
+// Create a query against the collection
+var queryRef = citiesRef.where('ranking', '<=', 3);
+自分のデッキだけ取ってくる方法に応用できそう。

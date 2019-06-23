@@ -2,6 +2,7 @@ import { db } from "./fireStoreSetup";
 import { Constants } from "expo";
 import unitData from "../constants/UnitData";
 import calcSynergiesFromUnitIds from "../utils/calcSynergiesFromUnitIds";
+import { calcWinRateRankingOfUnit } from "../businessLogic/calcHeighWinRateUnits";
 
 // 設計
 // record table
@@ -55,29 +56,15 @@ export const getMyMatchRecord = async () => {
 };
 
 // top3率が高いユニットを示す。
-export const getWinRateOfUnit = async () => {
+export const getWinRateOfUnits = async () => {
   const response = await db.collection("matchRecord").get();
-  // const myMatchRecord = await response.docs.map(item => item.data());
-  //   var citiesRef = db.collection('cities');
-  // var allCities = citiesRef.get()
-  //     .then(snapshot => {
-  //       snapshot.forEach(doc => {
-  //         console.log(doc.id, '=>', doc.data());
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log('Error getting documents', err);
-  //     });
+  const data = response.docs.map(doc => 
+    doc.data();
+  );
 
-  // const snapShot = await db.collection('users').get();
-  // docsをmapする
+  const top3WinRateOfUnits = calcWinRateRankingOfUnit(data);
 
-  const data = response.docs.map(doc => {
-    return doc.data();
-  });
-  debugger;
-
-  return data;
+  return top3WinRateOfUnits;
 };
 
 const mockDataOfOpDeck = [
