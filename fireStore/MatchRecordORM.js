@@ -1,8 +1,8 @@
-import { db } from "./fireStoreSetup";
-import { Constants } from "expo";
-import unitData from "../constants/UnitData";
-import calcSynergiesFromUnitIds from "../utils/calcSynergiesFromUnitIds";
-import { calcWinRateRankingOfUnit } from "../businessLogic/calcHeighWinRateUnits";
+import { db } from './fireStoreSetup'
+import { Constants } from 'expo'
+import unitData from '../constants/UnitData'
+import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
+import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
 
 // 設計
 // record table
@@ -19,53 +19,51 @@ import { calcWinRateRankingOfUnit } from "../businessLogic/calcHeighWinRateUnits
 export const saveMatchRecordToFireStore = async (units, ranking) => {
   const unitDataToStore = units
     .filter(unit => !(unit.level === 0))
-    .map(unit => ({ unitId: unit.unitId, level: unit.level }));
+    .map(unit => ({ unitId: unit.unitId, level: unit.level }))
   try {
-    db.collection("matchRecord").add({
+    db.collection('matchRecord').add({
       userId: Constants.installationId,
       ranking: 3,
       units: unitDataToStore,
-      date: JSON.stringify(new Date()),
-    });
+      date: JSON.stringify(new Date())
+    })
   } catch (error) {
-    throw new Error("error at saveMatchRecordToFireStore");
+    throw new Error('error at saveMatchRecordToFireStore')
   }
-};
+}
 
 export const getMyMatchRecord = async () => {
   // 開発のため、モックデータを使用する。
-  return mockDataOfOpDeck;
+  return mockDataOfOpDeck
 
   try {
-    const response = await db.collection("matchRecord").get();
+    const response = await db.collection('matchRecord').get()
     const myMatchRecord = await response.docs
       .map(item => item.data())
-      .filter(data => data.userId === Constants.installationId);
+      .filter(data => data.userId === Constants.installationId)
 
     // const myMatchRecordHasImage = myMatchRecord.map(record => ({...record, }))
     // ここに、シナジーなどを計算する処理を書いていくが、また後日追加する。
     const myMatchRecordWithSynergyLevel = myMatchRecord.map(record => {
-      const synergy = calcSynergiesFromUnitIds(record.units);
+      const synergy = calcSynergiesFromUnitIds(record.units)
 
-      return { ...record, synergy };
-    });
-    return myMatchRecordWithSynergyLevel;
+      return { ...record, synergy }
+    })
+    return myMatchRecordWithSynergyLevel
   } catch (error) {
-    console.log("error");
+    console.log('error')
   }
-};
+}
 
 // top3率が高いユニットを示す。
 export const getWinRateOfUnits = async () => {
-  const response = await db.collection("matchRecord").get();
-  const data = response.docs.map(doc => 
-    doc.data();
-  );
+  const response = await db.collection('matchRecord').get()
+  const data = response.docs.map(doc => doc.data())
 
-  const top3WinRateOfUnits = calcWinRateRankingOfUnit(data);
+  const top3WinRateOfUnits = calcWinRateRankingOfUnit(data)
 
-  return top3WinRateOfUnits;
-};
+  return top3WinRateOfUnits
+}
 
 const mockDataOfOpDeck = [
   {
@@ -74,44 +72,44 @@ const mockDataOfOpDeck = [
     units: [
       {
         level: 1,
-        unitId: 2,
+        unitId: 2
       },
       {
         level: 1,
-        unitId: 3,
+        unitId: 3
       },
       {
         level: 1,
-        unitId: 4,
+        unitId: 4
       },
       {
         level: 1,
-        unitId: 5,
+        unitId: 5
       },
       {
         level: 2,
-        unitId: 6,
+        unitId: 6
       },
       {
         level: 1,
-        unitId: 7,
-      },
+        unitId: 7
+      }
     ],
-    userId: "1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2",
+    userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
     synergy: [
       {
         synergyLevel: 2,
-        synergy: "marine",
+        synergy: 'marine'
       },
       {
         synergyLevel: 2,
-        synergy: "psyker",
+        synergy: 'psyker'
       },
       {
         synergyLevel: 2,
-        synergy: "supporter",
-      },
-    ],
+        synergy: 'supporter'
+      }
+    ]
   },
   {
     date: '"2019-06-16T07:33:36.358Z"',
@@ -119,22 +117,22 @@ const mockDataOfOpDeck = [
     units: [
       {
         level: 1,
-        unitId: 2,
+        unitId: 2
       },
       {
         level: 1,
-        unitId: 3,
+        unitId: 3
       },
       {
         level: 1,
-        unitId: 4,
+        unitId: 4
       },
       {
         level: 1,
-        unitId: 6,
-      },
+        unitId: 6
+      }
     ],
-    userId: "1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2",
-    synergy: [],
-  },
-];
+    userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
+    synergy: []
+  }
+]

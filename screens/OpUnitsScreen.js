@@ -115,7 +115,7 @@ export default class OpDeckScreen extends React.Component {
     return (
       <Container style={styles.container}>
         <View style={styles.screenTitle}>
-          <Text style={styles.titleText}>デッキ</Text>
+          <Text style={styles.titleText}>勝率の高いデッキ</Text>
         </View>
 
         {/* <View style={{ flexDirection: 'row' }}>

@@ -2,7 +2,8 @@ import React from 'react'
 import { Platform } from 'react-native'
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createMaterialTopTabNavigator
 } from 'react-navigation'
 
 import TabBarIcon from '../components/TabBarIcon'
@@ -11,10 +12,24 @@ import SelectUnitsScreen from '../screens/SelectUnitsScreen'
 import OpDeckScreen from '../screens/OpDeckScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import OpSynergyAndUnitsScreen from '../screens/OpSynergyAndUnitsScreen'
+import OpUnitsScreen from '../screens/OpUnitsScreen'
+import { primaryColor } from '../constants/Colors'
 
 export const HomeStack = createStackNavigator(
   {
     OpDeckScreen,
+    OpSynergyAndUnitsScreen,
+    SelectUnitsScreen
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+)
+
+export const OpUnitsStack = createStackNavigator(
+  {
+    OpUnitsScreen,
     OpSynergyAndUnitsScreen,
     SelectUnitsScreen
   },
@@ -52,8 +67,28 @@ export const HomeStack = createStackNavigator(
 //   )
 // }
 
-// export default createBottomTabNavigator({
-//   LinksStack,
-//   HomeStack
-//   // SettingsStack
-// })
+export default createMaterialTopTabNavigator(
+  {
+    HomeStack: {
+      screen: HomeStack,
+      navigationOptions: {
+        tabBarLabel: 'デッキ'
+      }
+    },
+    OpUnitsStack: {
+      screen: OpUnitsStack,
+      navigationOptions: {
+        tabBarLabel: 'ユニット'
+      }
+    }
+  },
+  {
+    animationEnabled: false,
+    tabBarOptions: {
+      style: {
+        backgroundColor: primaryColor,
+        pressOpacity: 1
+      }
+    }
+  }
+)
