@@ -24,31 +24,7 @@ import {
 
 const { height, width } = Dimensions.get('window')
 
-const UnitImageListItem = ({ item }) => {
-  return (
-    <View style={styles.unitImageListItem}>
-      <Image
-        style={styles.unitImage}
-        source={unitImagePathArray[item.unitId - 1]}
-      />
-    </View>
-  )
-}
-
-const SynergyListItem = ({ item }) => (
-  <View style={styles.synergyListItem}>
-    {/* <Image
-      style={styles.unitImage}
-      source={unitImagePathArray[item.unitId - 1]}
-    /> */}
-    <Text>
-      {item.synergy}
-      {item.synergyLevel}
-    </Text>
-  </View>
-)
-
-export default class OpDeckScreen extends React.Component {
+export default class OpUnitsScreen extends React.Component {
   state = {
     isLoading: true,
     myMatchRecord: null
@@ -63,73 +39,33 @@ export default class OpDeckScreen extends React.Component {
     this.setState({ myMatchRecord, isLoading: false })
   }
 
-  matchRecordListItem = ({ item }) => {
-    return (
-      <Card style={styles.cardContainer}>
-        <View style={styles.matchRecordListItemLeftPart}>
-          <Text>TOP3率</Text>
-          <Text style={{ fontSize: 20, paddingTop: 5 }}>50%</Text>
-        </View>
-        {/* <Text>使用率</Text> */}
-        {/* <Text>{JSON.stringify(item.units)}位</Text> */}
-        <View style={styles.matchRecordListItemCenterPart}>
-          {/* <FlatList
-            // horizontal
-            // numColumns={2}
-            contentContainerStyle={{ flexDirection: 'column' }}
-            data={item.units}
-            renderItem={({ item }) => <UnitImageListItem item={item} />}
-          /> */}
-          <View style={{ flexDirection: 'row' }}>
-            {item.units.slice(0, 5).map(item => (
-              <UnitImageListItem item={item} />
-            ))}
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            {item.units.slice(5, 10).map(item => (
-              <UnitImageListItem item={item} />
-            ))}
-          </View>
-        </View>
-        <View style={styles.matchRecordListItemRightPart}>
-          <FlatList
-            // data={item.synergy}
-            data={[
-              { synergy: 'メカ', synergyLevel: 2 },
-              { synergy: 'ブラスター', synergyLevel: 3 }
-            ]}
-            renderItem={({ item }) => <SynergyListItem item={item} />}
-          />
-        </View>
-      </Card>
-    )
-  }
-
   onPressRecordMatchButton = () => {
     this.props.navigation.navigate('SelectUnitsScreen')
   }
 
+  unitImageListItem = ({ item }) => {
+    return (
+      <View style={styles.unitImageListItem}>
+        <Image
+          style={styles.unitImage}
+          source={unitImagePathArray[item.unitId - 1]}
+        />
+        <Text>{item.top3WinRate * 100}%</Text>
+      </View>
+    )
+  }
+
   render () {
-    const { isLoading, myMatchRecord } = this.state
+    const { isLoading } = this.state
     if (isLoading) return null
     return (
       <Container style={styles.container}>
-        <View style={styles.screenTitle}>
-          <Text style={styles.titleText}>勝率の高いデッキ</Text>
-        </View>
-
-        {/* <View style={{ flexDirection: 'row' }}>
-          <Text style={{ flex: 1 }}>勝率</Text>
-          <Text style={{ flex: 1 }}>ユニット</Text>
-          <Text style={{ flex: 1 }}>シナジー</Text>
-        </View> */}
         <FlatList
-          // numColumns={2}
-          data={myMatchRecord}
-          renderItem={this.matchRecordListItem}
-          listKey={(item, index) => index.toString()}
+          numColumns={10}
+          data={mockData}
+          renderItem={this.unitImageListItem}
+          // listKey={(item, index) => index.toString()}
         />
-
         <Button
           block
           onPress={this.onPressRecordMatchButton}
@@ -164,7 +100,7 @@ const styles = StyleSheet.create({
   },
   unitImageListItem: {
     justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    alignItems: 'center'
   },
   unitImage: {
     height: wp('9%'),
@@ -208,3 +144,42 @@ const styles = StyleSheet.create({
     // backgroundColor: 'yellow'
   }
 })
+
+const mockData = [
+  {
+    unitId: 1,
+    top3WinRate: 1
+  },
+  {
+    unitId: 2,
+    top3WinRate: 1
+  },
+  {
+    unitId: 3,
+    top3WinRate: 1
+  },
+  {
+    unitId: 4,
+    top3WinRate: 1
+  },
+  {
+    unitId: 5,
+    top3WinRate: 0
+  },
+  {
+    unitId: 6,
+    top3WinRate: 0
+  },
+  {
+    unitId: 7,
+    top3WinRate: 0.9
+  },
+  {
+    unitId: 8,
+    top3WinRate: 0.874
+  },
+  {
+    unitId: 9,
+    top3WinRate: 0.235
+  }
+]

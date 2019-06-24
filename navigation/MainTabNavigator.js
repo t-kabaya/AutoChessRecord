@@ -83,6 +83,7 @@ export default createMaterialTopTabNavigator(
     }
   },
   {
+    initialRouteName: 'OpUnitsStack',
     animationEnabled: false,
     tabBarOptions: {
       style: {
