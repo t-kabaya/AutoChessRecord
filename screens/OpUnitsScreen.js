@@ -13,7 +13,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
+import {
+  getMyMatchRecord,
+  getWinRateOfUnits
+} from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
 import {
@@ -27,7 +30,7 @@ const { height, width } = Dimensions.get('window')
 export default class OpUnitsScreen extends React.Component {
   state = {
     isLoading: true,
-    myMatchRecord: null
+    top3WinRateOfUnits: null
   }
 
   componentDidMount = () => {
@@ -35,8 +38,8 @@ export default class OpUnitsScreen extends React.Component {
   }
 
   setInitialState = async () => {
-    const myMatchRecord = await getMyMatchRecord()
-    this.setState({ myMatchRecord, isLoading: false })
+    const top3WinRateOfUnits = await getWinRateOfUnits()
+    this.setState({ top3WinRateOfUnits, isLoading: false })
   }
 
   onPressRecordMatchButton = () => {
@@ -50,19 +53,23 @@ export default class OpUnitsScreen extends React.Component {
           style={styles.unitImage}
           source={unitImagePathArray[item.unitId - 1]}
         />
-        <Text>{item.top3WinRate * 100}%</Text>
+        {/* なぜか、34.0002などとなってしまう。workaroundとしてroundを適用 */}
+        <Text>{Math.round(item.top3WinRate * 100, 3)}%</Text>
       </View>
     )
   }
 
   render () {
-    const { isLoading } = this.state
+    const { isLoading, top3WinRateOfUnits } = this.state
     if (isLoading) return null
     return (
       <Container style={styles.container}>
+        <View style={{ alignItems: 'center', padding: 5 }}>
+          <Text>top3位率</Text>
+        </View>
         <FlatList
-          numColumns={10}
-          data={mockData}
+          numColumns={7}
+          data={top3WinRateOfUnits}
           renderItem={this.unitImageListItem}
           // listKey={(item, index) => index.toString()}
         />
@@ -100,7 +107,8 @@ const styles = StyleSheet.create({
   },
   unitImageListItem: {
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 5
   },
   unitImage: {
     height: wp('9%'),

@@ -114,9 +114,7 @@ export default class OpDeckScreen extends React.Component {
     if (isLoading) return null
     return (
       <Container style={styles.container}>
-        <View style={styles.screenTitle}>
-          <Text style={styles.titleText}>デッキ</Text>
-        </View>
+     
 
         {/* <View style={{ flexDirection: 'row' }}>
           <Text style={{ flex: 1 }}>勝率</Text>
