@@ -24,6 +24,8 @@ import {
 
 const { height, width } = Dimensions.get('window')
 
+const OpDeckFlatListHeader = ({ item }) => <Text>勝率の高いデッキ</Text>
+
 const UnitImageListItem = ({ item }) => {
   return (
     <View style={styles.unitImageListItem}>
@@ -114,20 +116,12 @@ export default class OpDeckScreen extends React.Component {
     if (isLoading) return null
     return (
       <Container style={styles.container}>
-     
-
-        {/* <View style={{ flexDirection: 'row' }}>
-          <Text style={{ flex: 1 }}>勝率</Text>
-          <Text style={{ flex: 1 }}>ユニット</Text>
-          <Text style={{ flex: 1 }}>シナジー</Text>
-        </View> */}
         <FlatList
-          // numColumns={2}
+          ListHeaderComponent={<OpDeckFlatListHeader />}
           data={myMatchRecord}
           renderItem={this.matchRecordListItem}
           listKey={(item, index) => index.toString()}
         />
-
         <Button
           block
           onPress={this.onPressRecordMatchButton}

@@ -13,6 +13,7 @@ import OpDeckScreen from '../screens/OpDeckScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import OpSynergyAndUnitsScreen from '../screens/OpSynergyAndUnitsScreen'
 import OpUnitsScreen from '../screens/OpUnitsScreen'
+import MyPageScreen from '../screens/MyPageScreen'
 import { primaryColor } from '../constants/Colors'
 
 export const HomeStack = createStackNavigator(
@@ -31,6 +32,17 @@ export const OpUnitsStack = createStackNavigator(
   {
     OpUnitsScreen,
     OpSynergyAndUnitsScreen,
+    SelectUnitsScreen
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+)
+
+export const MyPageStack = createStackNavigator(
+  {
+    MyPageScreen,
     SelectUnitsScreen
   },
   {
@@ -81,6 +93,12 @@ export default createMaterialTopTabNavigator(
         tabBarLabel: 'ユニット'
       }
     }
+    // MyPageStack: {
+    //   screen: MyPageStack,
+    //   navigationOptions: {
+    //     tabBarLabel: 'マイページ'
+    //   }
+    // }
   },
   {
     initialRouteName: 'OpUnitsStack',

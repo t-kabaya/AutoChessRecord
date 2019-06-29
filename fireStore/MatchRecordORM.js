@@ -66,33 +66,46 @@ export const getWinRateOfUnits = async () => {
 }
 
 const mockDataOfOpDeck = [
+  // sampleDeck1,
   {
     date: '"2019-06-16T14:16:57.161Z"',
     ranking: 3,
     units: [
       {
         level: 1,
-        unitId: 2
+        unitId: 9
       },
       {
         level: 1,
-        unitId: 3
+        unitId: 23
       },
       {
         level: 1,
-        unitId: 4
+        unitId: 27
       },
       {
         level: 1,
-        unitId: 5
+        unitId: 19
       },
       {
         level: 2,
-        unitId: 6
+        unitId: 49
       },
       {
         level: 1,
-        unitId: 7
+        unitId: 52
+      },
+      {
+        level: 1,
+        unitId: 18
+      },
+      {
+        level: 1,
+        unitId: 51
+      },
+      {
+        level: 1,
+        unitId: 46
       }
     ],
     userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
@@ -111,13 +124,18 @@ const mockDataOfOpDeck = [
       }
     ]
   },
+  // アサシンパンダ
   {
     date: '"2019-06-16T07:33:36.358Z"',
     ranking: 3,
     units: [
       {
         level: 1,
-        unitId: 2
+        unitId: 16
+      },
+      {
+        level: 1,
+        unitId: 12
       },
       {
         level: 1,
@@ -125,14 +143,120 @@ const mockDataOfOpDeck = [
       },
       {
         level: 1,
-        unitId: 4
+        unitId: 11
       },
       {
         level: 1,
+        unitId: 14
+      },
+      {
+        level: 1,
+        unitId: 32
+      },
+      {
+        level: 1,
+        unitId: 37
+      },
+      {
+        level: 1,
+        unitId: 45
+      },
+      {
+        level: 1,
+        unitId: 50
+      }
+    ],
+    userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
+    synergy: []
+  },
+  {
+    date: '"2019-06-16T07:33:36.358Z"',
+    ranking: 3,
+    units: [
+      {
+        level: 1,
         unitId: 6
+      },
+      {
+        level: 1,
+        unitId: 23
+      },
+      {
+        level: 1,
+        unitId: 35
+      },
+      {
+        level: 1,
+        unitId: 21
+      },
+      {
+        level: 1,
+        unitId: 31
+      },
+      {
+        level: 1,
+        unitId: 44
+      },
+      {
+        level: 1,
+        unitId: 18
+      },
+      {
+        level: 1,
+        unitId: 41
+      },
+      {
+        level: 1,
+        unitId: 49
       }
     ],
     userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
     synergy: []
   }
 ]
+
+// 強いデッキ１パンダアサシン
+const sampleDeck1 = {
+  date: '"2019-06-16T07:33:36.358Z"',
+  ranking: 3,
+  units: [
+    {
+      level: 1,
+      unitId: 9
+    },
+    {
+      level: 1,
+      unitId: 23
+    },
+    {
+      level: 1,
+      unitId: 27
+    },
+    {
+      level: 1,
+      unitId: 19
+    },
+    {
+      level: 1,
+      unitId: 49
+    },
+    {
+      level: 1,
+      unitId: 52
+    },
+    {
+      level: 1,
+      unitId: 18
+    },
+    {
+      level: 1,
+      unitId: 51
+    },
+    {
+      level: 1,
+      unitId: 46
+    }
+  ],
+  userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
+  synergy: []
+}

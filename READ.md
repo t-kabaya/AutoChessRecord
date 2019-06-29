@@ -13,8 +13,6 @@ OPDeckScreen は、クラロワの opgg を参照。
 
 ## ランキングの作り方。
 
-一週間に一回ランキングを更新するだけでいいか。
-
 勝率が高いデッキの判定
 ranking が、1,2,3 / all が大きいデッキ。
 
@@ -25,3 +23,5 @@ where クエリを使う。
 // Create a query against the collection
 var queryRef = citiesRef.where('ranking', '<=', 3);
 自分のデッキだけ取ってくる方法に応用できそう。
+
+opUnitsscreenでsortがfloatと一緒に使うとうまくいかない。
