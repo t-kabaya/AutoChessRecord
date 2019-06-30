@@ -22,6 +22,7 @@ import {
   secondaryColor
 } from '../constants/Colors'
 import i18n from '../constants/I18n'
+import SaveMatchButton from '../components/SaveMatchButton'
 
 const { height, width } = Dimensions.get('window')
 
@@ -126,6 +127,7 @@ export default class OpDeckScreen extends React.Component {
         >
           <Text>戦績を記録</Text>
         </Button>
+        <SaveMatchButton />
       </Container>
     )
   }
