@@ -61,7 +61,7 @@ export const ja = {
   panda: "パンダ",
 
   /* -------------------- text --------------------- */
-  deckText: "デッキ",
+  deckText: "おすすめデッキ",
   unitText: "ユニット",
   top3WinRate: "top3勝率",
   best3DeckText: "勝率の高いデッキtop3",
