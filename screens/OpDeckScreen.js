@@ -1,32 +1,32 @@
-import React from 'react'
+import React from "react";
 import {
   ScrollView,
   StyleSheet,
   View,
   FlatList,
   Image,
-  Dimensions
-} from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-import { Button, Text, Card, Container } from 'native-base'
+  Dimensions,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Button, Text, Card, Container } from "native-base";
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from 'react-native-responsive-screen'
-import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
-import unitData, { unitImagePathArray } from '../constants/UnitData'
-import * as Localization from 'expo-localization'
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import { getMyMatchRecord } from "../fireStore/MatchRecordORM";
+import unitData, { unitImagePathArray } from "../constants/UnitData";
+import * as Localization from "expo-localization";
 import {
   primaryColor,
   darkPrimaryColor,
-  secondaryColor
-} from '../constants/Colors'
-import i18n from '../constants/I18n'
-import SaveMatchButton from '../components/SaveMatchButton'
+  secondaryColor,
+} from "../constants/Colors";
+import i18n from "../constants/I18n";
+import SaveMatchButton from "../components/SaveMatchButton";
 
-const { height, width } = Dimensions.get('window')
+const { height, width } = Dimensions.get("window");
 
-const OpDeckFlatListHeader = ({ item }) => <Text>{i18n.t('top3WinRate')}</Text>
+const OpDeckFlatListHeader = ({ item }) => <Text>{i18n.t("top3WinRate")}</Text>;
 
 const UnitImageListItem = ({ item }) => {
   return (
@@ -36,8 +36,8 @@ const UnitImageListItem = ({ item }) => {
         source={unitImagePathArray[item.unitId - 1]}
       />
     </View>
-  )
-}
+  );
+};
 
 const SynergyListItem = ({ item }) => (
   <View style={styles.synergyListItem}>
@@ -49,22 +49,22 @@ const SynergyListItem = ({ item }) => (
       {item.synergy} {item.synergyLevel}
     </Text>
   </View>
-)
+);
 
 export default class OpDeckScreen extends React.Component {
   state = {
     isLoading: true,
-    myMatchRecord: null
-  }
+    myMatchRecord: null,
+  };
 
   componentDidMount = () => {
-    this.setInitialState()
-  }
+    this.setInitialState();
+  };
 
   setInitialState = async () => {
-    const myMatchRecord = await getMyMatchRecord()
-    this.setState({ myMatchRecord, isLoading: false })
-  }
+    const myMatchRecord = await getMyMatchRecord();
+    this.setState({ myMatchRecord, isLoading: false });
+  };
 
   matchRecordListItem = ({ item }) => {
     return (
@@ -83,12 +83,12 @@ export default class OpDeckScreen extends React.Component {
             data={item.units}
             renderItem={({ item }) => <UnitImageListItem item={item} />}
           /> */}
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: "row" }}>
             {item.units.slice(0, 5).map(item => (
               <UnitImageListItem item={item} />
             ))}
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: "row" }}>
             {item.units.slice(5, 10).map(item => (
               <UnitImageListItem item={item} />
             ))}
@@ -102,16 +102,16 @@ export default class OpDeckScreen extends React.Component {
           />
         </View>
       </Card>
-    )
-  }
+    );
+  };
 
   onPressRecordMatchButton = () => {
-    this.props.navigation.navigate('SelectUnitsScreen')
-  }
+    this.props.navigation.navigate("SelectUnitsScreen");
+  };
 
-  render () {
-    const { isLoading, myMatchRecord } = this.state
-    if (isLoading) return null
+  render() {
+    const { isLoading, myMatchRecord } = this.state;
+    if (isLoading) return null;
     return (
       <Container style={styles.container}>
         <FlatList
@@ -127,9 +127,9 @@ export default class OpDeckScreen extends React.Component {
         >
           <Text>戦績を記録</Text>
         </Button>
-        <SaveMatchButton />
+        {/* <SaveMatchButton onPress={this.onPressRecordMatchButton} /> */}
       </Container>
-    )
+    );
   }
 }
 
@@ -137,68 +137,68 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // paddingTop: 15,
-    backgroundColor: '#eaecef',
-    alignItems: 'center',
-    paddingHorizontal: '5%'
+    backgroundColor: "#eaecef",
+    alignItems: "center",
+    paddingHorizontal: "5%",
   },
   screenTitle: {
     backgroundColor: primaryColor,
-    justifyContent: 'center',
-    width: wp('100%'),
-    height: 40
+    justifyContent: "center",
+    width: wp("100%"),
+    height: 40,
   },
   titleText: {
-    marginLeft: wp('10%'),
+    marginLeft: wp("10%"),
     fontSize: 23,
-    fontWeight: 'bold',
-    color: 'white'
+    fontWeight: "bold",
+    color: "white",
   },
   unitImageListItem: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   unitImage: {
-    height: wp('9%'),
-    width: wp('9%'),
-    margin: wp('0.5%')
+    height: wp("9%"),
+    width: wp("9%"),
+    margin: wp("0.5%"),
   },
   starContainer: {
-    flexDirection: 'row'
+    flexDirection: "row",
   },
   recordMatchButton: {
     // width: width
-    backgroundColor: secondaryColor
+    backgroundColor: secondaryColor,
   },
   synergyListItem: {
-    flexDirection: 'column'
+    flexDirection: "column",
   },
   // matchRecordListItemの合計で、width 80%になるようにする。
   cardContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: wp('80%'),
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: wp("80%"),
     borderWidth: 1,
     margin: 3,
     padding: 3,
-    paddingVertical: 15
+    paddingVertical: 15,
   },
   matchRecordListItemLeftPart: {
     // margin: 3,
-    width: wp('10%'),
-    alignItems: 'center'
+    width: wp("10%"),
+    alignItems: "center",
     // backgroundColor: 'green'
   },
   matchRecordListItemCenterPart: {
-    flexDirection: 'column',
-    width: wp('50%')
+    flexDirection: "column",
+    width: wp("50%"),
     // backgroundColor: 'red'
   },
   matchRecordListItemRightPart: {
-    width: wp('20%'),
-    alignItems: 'center'
+    width: wp("20%"),
+    alignItems: "center",
     // backgroundColor: 'yellow'
   },
   synergyListItemText: {
-    fontSize: 20
-  }
-})
+    fontSize: 20,
+  },
+});
