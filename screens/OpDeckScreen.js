@@ -43,9 +43,8 @@ const SynergyListItem = ({ item }) => (
       style={styles.unitImage}
       source={unitImagePathArray[item.unitId - 1]}
     /> */}
-    <Text>
-      {item.synergy}
-      {item.synergyLevel}
+    <Text style={styles.synergyListItemText}>
+      {item.synergy} {item.synergyLevel}
     </Text>
   </View>
 )
@@ -96,10 +95,7 @@ export default class OpDeckScreen extends React.Component {
         <View style={styles.matchRecordListItemRightPart}>
           <FlatList
             // data={item.synergy}
-            data={[
-              { synergy: 'メカ', synergyLevel: 2 },
-              { synergy: 'ブラスター', synergyLevel: 3 }
-            ]}
+            data={item.synergy}
             renderItem={({ item }) => <SynergyListItem item={item} />}
           />
         </View>
@@ -198,5 +194,8 @@ const styles = StyleSheet.create({
     width: wp('20%'),
     alignItems: 'center'
     // backgroundColor: 'yellow'
+  },
+  synergyListItemText: {
+    fontSize: 20
   }
 })

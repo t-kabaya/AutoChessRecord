@@ -2,6 +2,7 @@ import { db } from './fireStoreSetup'
 import { Constants } from 'expo'
 import unitData from '../constants/UnitData'
 import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
+import { en } from '../constants/I18n'
 import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
 
 // 設計
@@ -66,7 +67,7 @@ export const getWinRateOfUnits = async () => {
 }
 
 const mockDataOfOpDeck = [
-  // sampleDeck1,
+  // シージェ６,
   {
     date: '"2019-06-16T14:16:57.161Z"',
     ranking: 3,
@@ -106,22 +107,20 @@ const mockDataOfOpDeck = [
       {
         level: 1,
         unitId: 46
+      },
+      {
+        level: 1,
+        unitId: 41
       }
     ],
     userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
     synergy: [
-      {
-        synergyLevel: 2,
-        synergy: 'marine'
-      },
-      {
-        synergyLevel: 2,
-        synergy: 'psyker'
-      },
-      {
-        synergyLevel: 2,
-        synergy: 'supporter'
-      }
+      { synergy: en.mech, synergyLevel: 4 },
+      { synergy: en.blaster, synergyLevel: 3 },
+      { synergy: en.siegeBreaker, synergyLevel: 6 },
+      { synergy: en.immortal, synergyLevel: 2 },
+      { synergy: en.kraken, synergyLevel: 2 },
+      { synergy: en.walker, synergyLevel: 1 }
     ]
   },
   // アサシンパンダ
@@ -167,7 +166,11 @@ const mockDataOfOpDeck = [
       }
     ],
     userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
-    synergy: []
+    synergy: [
+      { synergy: en.assassin, synergyLevel: 6 },
+      { synergy: en.panda, synergyLevel: 3 },
+      { synergy: en.walker, synergyLevel: 1 }
+    ]
   },
   {
     date: '"2019-06-16T07:33:36.358Z"',
@@ -211,52 +214,14 @@ const mockDataOfOpDeck = [
       }
     ],
     userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
-    synergy: []
+    synergy: [
+      { synergy: en.marine, synergyLevel: 4 },
+      { synergy: en.immortal, synergyLevel: 2 },
+      { synergy: en.longShot, synergyLevel: 3 },
+      { synergy: en.specialist, synergyLevel: 2 },
+      { synergy: en.siegeBreaker, synergyLevel: 3 },
+      { synergy: en.rapter, synergyLevel: 2 },
+      { synergy: en.walker, synergyLevel: 1 }
+    ]
   }
 ]
-
-// 強いデッキ１パンダアサシン
-const sampleDeck1 = {
-  date: '"2019-06-16T07:33:36.358Z"',
-  ranking: 3,
-  units: [
-    {
-      level: 1,
-      unitId: 9
-    },
-    {
-      level: 1,
-      unitId: 23
-    },
-    {
-      level: 1,
-      unitId: 27
-    },
-    {
-      level: 1,
-      unitId: 19
-    },
-    {
-      level: 1,
-      unitId: 49
-    },
-    {
-      level: 1,
-      unitId: 52
-    },
-    {
-      level: 1,
-      unitId: 18
-    },
-    {
-      level: 1,
-      unitId: 51
-    },
-    {
-      level: 1,
-      unitId: 46
-    }
-  ],
-  userId: '1802A72F-12B4-4EA7-86E1-D6BDFA60F5A2',
-  synergy: []
-}

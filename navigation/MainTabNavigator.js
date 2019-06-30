@@ -101,7 +101,8 @@ export default createMaterialTopTabNavigator(
     // }
   },
   {
-    initialRouteName: 'OpUnitsStack',
+    // initialRouteName: 'OpUnitsStack',
+    initialRouteName: 'HomeStack',
     animationEnabled: false,
     tabBarOptions: {
       style: {
