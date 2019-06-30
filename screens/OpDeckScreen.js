@@ -26,7 +26,9 @@ import SaveMatchButton from "../components/SaveMatchButton";
 
 const { height, width } = Dimensions.get("window");
 
-const OpDeckFlatListHeader = ({ item }) => <Text>{i18n.t("top3WinRate")}</Text>;
+const OpDeckFlatListHeader = ({ item }) => (
+  <Text style={styles.subTitle}>{i18n.t("top3WinRate")}</Text>
+);
 
 const UnitImageListItem = ({ item }) => {
   return (
@@ -46,7 +48,7 @@ const SynergyListItem = ({ item }) => (
       source={unitImagePathArray[item.unitId - 1]}
     /> */}
     <Text style={styles.synergyListItemText}>
-      {item.synergy} {item.synergyLevel}
+      {i18n.t(item.synergy)} {item.synergyLevel}
     </Text>
   </View>
 );
@@ -70,8 +72,10 @@ export default class OpDeckScreen extends React.Component {
     return (
       <Card style={styles.cardContainer}>
         <View style={styles.matchRecordListItemLeftPart}>
-          <Text>TOP3率</Text>
-          <Text style={{ fontSize: 20, paddingTop: 5 }}>50%</Text>
+          <Text style={{ fontSize: 15 }}>TOP3率</Text>
+          <Text style={{ fontSize: 20, paddingTop: 5 }}>
+            {item.top3WinRateOfDeck}
+          </Text>
         </View>
         {/* <Text>使用率</Text> */}
         {/* <Text>{JSON.stringify(item.units)}位</Text> */}
@@ -115,7 +119,7 @@ export default class OpDeckScreen extends React.Component {
     return (
       <Container style={styles.container}>
         <FlatList
-          ListHeaderComponent={<OpDeckFlatListHeader />}
+          // ListHeaderComponent={<OpDeckFlatListHeader />}
           data={myMatchRecord}
           renderItem={this.matchRecordListItem}
           listKey={(item, index) => index.toString()}
@@ -200,5 +204,9 @@ const styles = StyleSheet.create({
   },
   synergyListItemText: {
     fontSize: 20,
+  },
+  subTitle: {
+    fontSize: 20,
+    margin: 2,
   },
 });

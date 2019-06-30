@@ -28,10 +28,11 @@ export const en = {
   panda: "panda",
 
   /* -------------------- text --------------------- */
-  deckText: "deck",
+  deckText: "rocommended deck",
   unitText: "unit",
   top3WinRate: "top 3 win rate",
   best3DeckText: "top 3 deck",
+  saveMatchText: "save match",
 };
 
 export const ja = {
@@ -61,10 +62,11 @@ export const ja = {
   panda: "パンダ",
 
   /* -------------------- text --------------------- */
-  deckText: "デッキ",
+  deckText: "おすすめデッキ",
   unitText: "ユニット",
   top3WinRate: "top3勝率",
   best3DeckText: "勝率の高いデッキtop3",
+  saveMatchText: "戦績を記録",
 };
 
 i18n.fallbacks = true;
