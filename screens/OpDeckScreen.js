@@ -21,10 +21,11 @@ import {
   darkPrimaryColor,
   secondaryColor
 } from '../constants/Colors'
+import i18n from '../constants/I18n'
 
 const { height, width } = Dimensions.get('window')
 
-const OpDeckFlatListHeader = ({ item }) => <Text>勝率の高いデッキ</Text>
+const OpDeckFlatListHeader = ({ item }) => <Text>{i18n.t('top3WinRate')}</Text>
 
 const UnitImageListItem = ({ item }) => {
   return (
