@@ -1,56 +1,56 @@
-import React from "react";
-import { Platform } from "react-native";
+import React from 'react'
+import { Platform } from 'react-native'
 import {
   createStackNavigator,
   createBottomTabNavigator,
-  createMaterialTopTabNavigator,
-} from "react-navigation";
+  createMaterialTopTabNavigator
+} from 'react-navigation'
 
-import TabBarIcon from "../components/TabBarIcon";
-import HomeScreen from "../screens/HomeScreen";
-import SelectUnitsScreen from "../screens/SelectUnitsScreen";
-import OpDeckScreen from "../screens/OpDeckScreen";
-import SettingsScreen from "../screens/SettingsScreen";
-import OpSynergyAndUnitsScreen from "../screens/OpSynergyAndUnitsScreen";
-import OpUnitsScreen from "../screens/OpUnitsScreen";
-import MyPageScreen from "../screens/MyPageScreen";
-import { primaryColor } from "../constants/Colors";
-import i18n from "../constants/I18n";
+import TabBarIcon from '../components/TabBarIcon'
+import HomeScreen from '../screens/HomeScreen'
+import SelectUnitsScreen from '../screens/SelectUnitsScreen'
+import OpDeckScreen from '../screens/OpDeckScreen'
+import SettingsScreen from '../screens/SettingsScreen'
+import OpSynergyAndUnitsScreen from '../screens/OpSynergyAndUnitsScreen'
+import OpUnitsScreen from '../screens/OpUnitsScreen'
+import MyPageScreen from '../screens/MyPageScreen'
+import { primaryColor } from '../constants/Colors'
+import i18n from '../constants/I18n'
 
 export const HomeStack = createStackNavigator(
   {
     OpDeckScreen,
     OpSynergyAndUnitsScreen,
-    SelectUnitsScreen,
+    SelectUnitsScreen
   },
   {
-    mode: "modal",
-    headerMode: "none",
+    mode: 'modal',
+    headerMode: 'none'
   }
-);
+)
 
 export const OpUnitsStack = createStackNavigator(
   {
     OpUnitsScreen,
     OpSynergyAndUnitsScreen,
-    SelectUnitsScreen,
+    SelectUnitsScreen
   },
   {
-    mode: "modal",
-    headerMode: "none",
+    mode: 'modal',
+    headerMode: 'none'
   }
-);
+)
 
 export const MyPageStack = createStackNavigator(
   {
     MyPageScreen,
-    SelectUnitsScreen,
+    SelectUnitsScreen
   },
   {
-    mode: "modal",
-    headerMode: "none",
+    mode: 'modal',
+    headerMode: 'none'
   }
-);
+)
 
 // const LinksStack = createStackNavigator({
 //   Links: MyMatchRecordScreen
@@ -85,15 +85,15 @@ export default createMaterialTopTabNavigator(
     HomeStack: {
       screen: HomeStack,
       navigationOptions: {
-        tabBarLabel: i18n.t("deckText"),
-      },
+        tabBarLabel: i18n.t('deckText')
+      }
     },
     OpUnitsStack: {
       screen: OpUnitsStack,
       navigationOptions: {
-        tabBarLabel: i18n.t("unitText"),
-      },
-    },
+        tabBarLabel: i18n.t('unitText')
+      }
+    }
     // MyPageStack: {
     //   screen: MyPageStack,
     //   navigationOptions: {
@@ -103,13 +103,13 @@ export default createMaterialTopTabNavigator(
   },
   {
     // initialRouteName: 'OpUnitsStack',
-    initialRouteName: "HomeStack",
+    initialRouteName: 'HomeStack',
     animationEnabled: false,
     tabBarOptions: {
       style: {
         backgroundColor: primaryColor,
-        pressOpacity: 1,
-      },
-    },
+        pressOpacity: 1
+      }
+    }
   }
-);
+)
