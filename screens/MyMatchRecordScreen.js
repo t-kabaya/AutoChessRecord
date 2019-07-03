@@ -5,6 +5,7 @@ import { Button, Text, Card } from 'native-base'
 import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
+import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
 
 const UnitImageListItem = ({ item }) => {
   return (
@@ -90,13 +91,9 @@ export default class MyMatchRecordScreen extends React.Component {
           <Text style={{ flex: 1 }}>シナジー</Text>
         </View>
         <FlatList data={myMatchRecord} renderItem={this.matchRecordListItem} />
-        <Button
-          block
-          onPress={this.onPressRecordMatchButton}
-          style={styles.recordMatchButton}
-        >
-          <Text>戦績を記録</Text>
-        </Button>
+        <SaveMatchRecordButton
+          onPressRecordMatchButton={this.onPressRecordMatchButton}
+        />
       </View>
     )
   }

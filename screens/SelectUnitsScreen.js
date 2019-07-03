@@ -27,6 +27,7 @@ import {
   darkPrimaryColor,
   secondaryColor
 } from '../constants/Colors'
+import I18n from '../constants/I18n'
 
 const SelectedUnitListItem = ({ item }) => {
   let levelStar = []
@@ -143,13 +144,17 @@ export default class SelectUnitsScreen extends React.Component {
               style={styles.goBackButton}
               onPress={this.onPressGoBackButton}
             >
-              <Text style={styles.doneSelectButtonText}>戻る</Text>
+              <Text style={styles.doneSelectButtonText}>
+                {I18n.t('backButtonText')}
+              </Text>
             </Button>
             <Button
               style={styles.decisionButton}
               onPress={() => this.onPressDecision(unitState)}
             >
-              <Text style={styles.doneSelectButtonText}>保存</Text>
+              <Text style={styles.doneSelectButtonText}>
+                {I18n.t('saveButtonText')}
+              </Text>
             </Button>
           </View>
 

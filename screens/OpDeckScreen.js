@@ -22,7 +22,7 @@ import {
   secondaryColor
 } from '../constants/Colors'
 import i18n from '../constants/I18n'
-import SaveMatchButton from '../components/SaveMatchButton'
+import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
 
 const { height, width } = Dimensions.get('window')
 
@@ -117,14 +117,9 @@ export default class OpDeckScreen extends React.Component {
           renderItem={this.matchRecordListItem}
           listKey={(item, index) => index.toString()}
         />
-        <Button
-          block
-          onPress={this.onPressRecordMatchButton}
-          style={styles.recordMatchButton}
-        >
-          <Text>戦績を記録</Text>
-        </Button>
-        {/* <SaveMatchButton onPress={this.onPressRecordMatchButton} /> */}
+        <SaveMatchRecordButton
+          onPressRecordMatchButton={this.onPressRecordMatchButton}
+        />
       </Container>
     )
   }

@@ -28,3 +28,11 @@ var queryRef = citiesRef.where('ranking', '<=', 3);
 opUnitsscreenでsortがfloatと一緒に使うとうまくいかない。
 
 モックデータとシナジーを合わせる。
+
+## TODO
+english対応
+
+戻る。
+保存
+戦績を記録
+位

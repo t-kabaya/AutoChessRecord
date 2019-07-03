@@ -24,6 +24,7 @@ import {
   darkPrimaryColor,
   secondaryColor
 } from '../constants/Colors'
+import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
 
 const { height, width } = Dimensions.get('window')
 
@@ -73,13 +74,9 @@ export default class OpUnitsScreen extends React.Component {
           renderItem={this.unitImageListItem}
           // listKey={(item, index) => index.toString()}
         />
-        <Button
-          block
-          onPress={this.onPressRecordMatchButton}
-          style={styles.recordMatchButton}
-        >
-          <Text>戦績を記録</Text>
-        </Button>
+        <SaveMatchRecordButton
+          onPressRecordMatchButton={this.onPressRecordMatchButton}
+        />
       </Container>
     )
   }
