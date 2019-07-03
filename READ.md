@@ -12,6 +12,7 @@ opUnitsScreen を作成する。(top3 率で、ユニットをランキングす
 OPDeckScreen は、クラロワの opgg を参照。
 
 ## ランキングの作り方。
+
 クライアントサイドジョイン万歳
 
 勝率が高いデッキの判定
@@ -25,14 +26,12 @@ where クエリを使う。
 var queryRef = citiesRef.where('ranking', '<=', 3);
 自分のデッキだけ取ってくる方法に応用できそう。
 
-opUnitsscreenでsortがfloatと一緒に使うとうまくいかない。
+opUnitsscreen で sort が float と一緒に使うとうまくいかない。
 
 モックデータとシナジーを合わせる。
 
 ## TODO
-english対応
 
-戻る。
-保存
-戦績を記録
-位
+english 対応
+
+expo 33 対応
