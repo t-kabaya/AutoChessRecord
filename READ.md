@@ -34,4 +34,9 @@ opUnitsscreen で sort が float と一緒に使うとうまくいかない。
 
 english 対応
 
-expo 33 対応
+expo 33 対応(expo installコマンドを試す。)
+app storeに公開
+google play storeに英語の翻訳を追加。
+フェニックス対応
+新キャラ２体追加
+p12を使った証明書のマニュアルでの追加

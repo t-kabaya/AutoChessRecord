@@ -6,7 +6,6 @@ import {
   createMaterialTopTabNavigator
 } from 'react-navigation'
 
-import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
 import SelectUnitsScreen from '../screens/SelectUnitsScreen'
 import OpDeckScreen from '../screens/OpDeckScreen'

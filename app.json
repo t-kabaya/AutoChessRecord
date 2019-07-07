@@ -4,7 +4,10 @@
     "slug": "autoChessRecord",
     "privacy": "public",
     "sdkVersion": "33.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon_512.png",
@@ -16,12 +19,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["assets/*"],
+    "assetBundlePatterns": [
+      "assets/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kabainc.autoChessRecord"
     },
     "android": {
-      "package": "com.kabaya.autoChessRecord",
+      "package": "com.kabainc.autoChessRecord",
       "permissions": [],
       "versionCode": 2
     },
