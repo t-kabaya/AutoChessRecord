@@ -79,9 +79,8 @@ export const ja = {
 
 i18n.fallbacks = true
 i18n.translations = { en, ja }
-// 開発のため、一旦jaを代入
-console.warn({ locale: Localization.locale })
-// i18n.locale = Localization.locale;
-i18n.locale = 'ja'
+// can not test without real devaice
+i18n.locale = Localization.locale
+// i18n.locale = 'ja'
 
 export default i18n
