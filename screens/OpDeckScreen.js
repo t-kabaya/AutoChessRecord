@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   ScrollView,
   StyleSheet,
@@ -30,16 +30,14 @@ const OpDeckFlatListHeader = ({ item }) => (
   <Text style={styles.subTitle}>{i18n.t('top3WinRate')}</Text>
 )
 
-const UnitImageListItem = ({ item }) => {
-  return (
-    <View style={styles.unitImageListItem}>
-      <Image
-        style={styles.unitImage}
-        source={unitImagePathArray[item.unitId - 1]}
-      />
-    </View>
-  )
-}
+const UnitImageListItem = ({ item }) => (
+  <View style={styles.unitImageListItem}>
+    <Image
+      style={styles.unitImage}
+      source={unitImagePathArray[item.unitId - 1]}
+    />
+  </View>
+)
 
 const SynergyListItem = ({ item }) => (
   <View style={styles.synergyListItem}>
@@ -53,77 +51,83 @@ const SynergyListItem = ({ item }) => (
   </View>
 )
 
-export default class OpDeckScreen extends React.Component {
-  state = {
-    isLoading: true,
-    myMatchRecord: null
-  }
+const MatchRecordListItem = item => (
+  <Card style={styles.cardContainer}>
+    <View style={styles.matchRecordListItemLeftPart}>
+      <Text style={{ fontSize: 15 }}>{i18n.t('top3WinRate')}</Text>
+      <View style={styles.matchRecordListItemLeftPartRow}>
+        <Text style={styles.top3WinRateNumberText}>
+          {item.top3WinRateOfDeck}
+        </Text>
+        <Text style={styles.percentText}>%</Text>
+      </View>
+    </View>
+    <View style={styles.matchRecordListItemCenterPart}>
+      <View style={{ flexDirection: 'row' }}>
+        {item.units.slice(0, 5).map(item => (
+          <UnitImageListItem item={item} />
+        ))}
+      </View>
+      <View style={{ flexDirection: 'row' }}>
+        {item.units.slice(5, 10).map(item => (
+          <UnitImageListItem item={item} />
+        ))}
+      </View>
+    </View>
+    <View style={styles.matchRecordListItemRightPart}>
+      <FlatList
+        data={item.synergy}
+        renderItem={({ item }) => <SynergyListItem item={item} />}
+      />
+    </View>
+  </Card>
+)
 
-  componentDidMount = () => {
-    this.setInitialState()
-  }
+/* -------------------- main --------------------- */
 
-  setInitialState = async () => {
-    const myMatchRecord = await getMyMatchRecord()
-    this.setState({ myMatchRecord, isLoading: false })
-  }
+const useOpDeckStatus = () => {
+  const [isLoading, setIsLoadingAsFalse] = useState(true)
+  const [myMatchRecord, setMyMatchRecord] = useState(null)
+  useEffect(
+    async () => {
+      const myMatchRecord = await getMyMatchRecord()
+      // isLoadingをfalseに変更
+      setIsLoadingAsFalse(false)
+      setMyMatchRecord(myMatchRecord)
+    },
+    // hooksは、renderのたびに呼ばれてしまう。
+    //　以下の記述で、一回しか呼ばれないようにする。
+    [setMyMatchRecord]
+  )
 
-  matchRecordListItem = ({ item }) => {
-    return (
-      <Card style={styles.cardContainer}>
-        <View style={styles.matchRecordListItemLeftPart}>
-          <Text style={{ fontSize: 15 }}>{i18n.t('top3WinRate')}</Text>
-          <View style={styles.matchRecordListItemLeftPartRow}>
-            <Text style={styles.top3WinRateNumberText}>
-              {item.top3WinRateOfDeck}
-            </Text>
-            <Text style={styles.percentText}>%</Text>
-          </View>
-        </View>
-        <View style={styles.matchRecordListItemCenterPart}>
-          <View style={{ flexDirection: 'row' }}>
-            {item.units.slice(0, 5).map(item => (
-              <UnitImageListItem item={item} />
-            ))}
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            {item.units.slice(5, 10).map(item => (
-              <UnitImageListItem item={item} />
-            ))}
-          </View>
-        </View>
-        <View style={styles.matchRecordListItemRightPart}>
-          <FlatList
-            data={item.synergy}
-            renderItem={({ item }) => <SynergyListItem item={item} />}
-          />
-        </View>
-      </Card>
-    )
-  }
-
-  onPressRecordMatchButton = () => {
-    this.props.navigation.navigate('SelectUnitsScreen')
-  }
-
-  render () {
-    const { isLoading, myMatchRecord } = this.state
-    if (isLoading) return null
-    return (
-      <Container style={styles.container}>
-        <FlatList
-          // ListHeaderComponent={<OpDeckFlatListHeader />}
-          data={myMatchRecord}
-          renderItem={this.matchRecordListItem}
-          listKey={(item, index) => index.toString()}
-        />
-        <SaveMatchRecordButton
-          onPressRecordMatchButton={this.onPressRecordMatchButton}
-        />
-      </Container>
-    )
-  }
+  return { isLoading, myMatchRecord }
 }
+
+const onPressRecordMatchButton = props => {
+  props.navigation.navigate('SelectUnitsScreen')
+}
+
+const OpDeckScreen = props => {
+  const { isLoading, myMatchRecord } = useOpDeckStatus()
+
+  if (isLoading) return null
+  return (
+    <Container style={styles.container}>
+      <FlatList
+        // ListHeaderComponent={<OpDeckFlatListHeader />}
+        data={myMatchRecord}
+        renderItem={({ item }) => MatchRecordListItem(item)}
+        listKey={(item, index) => index.toString()}
+      />
+      <SaveMatchRecordButton
+        onPressRecordMatchButton={() => onPressRecordMatchButton(props)}
+      />
+      <Text>{isLoading ? 'loading' : 'loaded'}</Text>
+    </Container>
+  )
+}
+
+export default OpDeckScreen
 
 const styles = StyleSheet.create({
   container: {
