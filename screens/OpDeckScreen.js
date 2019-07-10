@@ -122,7 +122,6 @@ const OpDeckScreen = props => {
       <SaveMatchRecordButton
         onPressRecordMatchButton={() => onPressRecordMatchButton(props)}
       />
-      <Text>{isLoading ? 'loading' : 'loaded'}</Text>
     </Container>
   )
 }
