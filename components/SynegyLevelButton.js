@@ -14,24 +14,20 @@ const mockData = [
   { race: 'ビースト', level: 1 }
 ]
 
-const BaseButton = props => {
-  return (
-    <Button style={{ borderRadius: 0, backgroundColor: props.color }}>
-      {props.children}
-    </Button>
-  )
-}
+const BaseButton = props => (
+  <Button style={{ borderRadius: 0, backgroundColor: props.color }}>
+    {props.children}
+  </Button>
+)
 
-const SynergyLevelButton = ({ item }) => {
-  return (
-    <BaseButton color='gray'>
-      <View style={styles.container}>
-        <Text>{item.race}</Text>
-        <Text>lv{item.level}</Text>
-      </View>
-    </BaseButton>
-  )
-}
+const SynergyLevelButton = ({ item }) => (
+  <BaseButton color='gray'>
+    <View style={styles.container}>
+      <Text>{item.race}</Text>
+      <Text>lv{item.level}</Text>
+    </View>
+  </BaseButton>
+)
 
 // 二回タップすると、lv3に。 レベルに応じて色が変わる。
 const SynergyLevelButtonGroup = () => (
@@ -76,8 +72,6 @@ export const RankingButtonGroup = () => (
   />
 )
 
-export default SynergyLevelButtonGroup
-
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -87,3 +81,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   }
 })
+
+export default SynergyLevelButtonGroup
