@@ -1,12 +1,5 @@
-import React from 'react'
-import {
-  ScrollView,
-  StyleSheet,
-  View,
-  FlatList,
-  Image,
-  Dimensions
-} from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { ScrollView, StyleSheet, View, FlatList, Image } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { Button, Text, Card, Container } from 'native-base'
 import {
@@ -26,25 +19,31 @@ import {
 } from '../constants/Colors'
 import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
 
-const { height, width } = Dimensions.get('window')
+/* -------------------- hooks --------------------- */
 
-export default class OpUnitsScreen extends React.Component {
-  state = {
-    isLoading: true,
-    top3WinRateOfUnits: null
-  }
+const useOpUnitsScreen = () => {
+  const [isLoading, setIsLoadingAsFalse] = useState(true)
+  const [top3WinRateOfUnits, setTop3WinRateOfUnits] = useState(null)
 
-  componentDidMount = () => {
-    this.setInitialState()
-  }
+  useEffect(
+    async () => {
+      const response = await getWinRateOfUnits()
+      setIsLoadingAsFalse(false)
+      setTop3WinRateOfUnits(response)
+    },
+    [] // []を入れることで、componentDidMount相当に。ただ非推奨のやり方らしい。
+  )
 
-  setInitialState = async () => {
-    const top3WinRateOfUnits = await getWinRateOfUnits()
-    this.setState({ top3WinRateOfUnits, isLoading: false })
-  }
+  return { isLoading, top3WinRateOfUnits }
+}
+
+/* -------------------- jsx --------------------- */
+
+const OpUnitsScreen = props => {
+  const { isLoading, top3WinRateOfUnits } = useOpUnitsScreen()
 
   onPressRecordMatchButton = () => {
-    this.props.navigation.navigate('SelectUnitsScreen')
+    props.navigation.navigate('SelectUnitsScreen')
   }
 
   unitImageListItem = ({ item }) => {
@@ -59,33 +58,28 @@ export default class OpUnitsScreen extends React.Component {
       </View>
     )
   }
-
-  render () {
-    const { isLoading, top3WinRateOfUnits } = this.state
-    if (isLoading) return null
-    return (
-      <Container style={styles.container}>
-        <View style={{ alignItems: 'center', padding: 5 }}>
-          <Text>top3位率</Text>
-        </View>
-        <FlatList
-          numColumns={7}
-          data={top3WinRateOfUnits}
-          renderItem={this.unitImageListItem}
-          // listKey={(item, index) => index.toString()}
-        />
-        <SaveMatchRecordButton
-          onPressRecordMatchButton={this.onPressRecordMatchButton}
-        />
-      </Container>
-    )
-  }
+  if (isLoading) return null
+  return (
+    <Container style={styles.container}>
+      <View style={{ alignItems: 'center', padding: 5 }}>
+        <Text>top3位率</Text>
+      </View>
+      <FlatList
+        numColumns={7}
+        data={top3WinRateOfUnits}
+        renderItem={this.unitImageListItem}
+        listKey={(item, index) => index}
+      />
+      <SaveMatchRecordButton
+        onPressRecordMatchButton={this.onPressRecordMatchButton}
+      />
+    </Container>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingTop: 15,
     backgroundColor: '#eaecef',
     alignItems: 'center',
     paddingHorizontal: '5%'
@@ -116,7 +110,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   recordMatchButton: {
-    // width: width
     backgroundColor: secondaryColor
   },
   synergyListItem: {
@@ -133,7 +126,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15
   },
   matchRecordListItemLeftPart: {
-    // margin: 3,
     width: wp('10%'),
     alignItems: 'center'
     // backgroundColor: 'green'
@@ -150,41 +142,4 @@ const styles = StyleSheet.create({
   }
 })
 
-const mockData = [
-  {
-    unitId: 1,
-    top3WinRate: 1
-  },
-  {
-    unitId: 2,
-    top3WinRate: 1
-  },
-  {
-    unitId: 3,
-    top3WinRate: 1
-  },
-  {
-    unitId: 4,
-    top3WinRate: 1
-  },
-  {
-    unitId: 5,
-    top3WinRate: 0
-  },
-  {
-    unitId: 6,
-    top3WinRate: 0
-  },
-  {
-    unitId: 7,
-    top3WinRate: 0.9
-  },
-  {
-    unitId: 8,
-    top3WinRate: 0.874
-  },
-  {
-    unitId: 9,
-    top3WinRate: 0.235
-  }
-]
+export default OpUnitsScreen
