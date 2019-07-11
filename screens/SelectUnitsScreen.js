@@ -29,13 +29,13 @@ import {
 } from '../constants/Colors'
 import I18n from '../constants/I18n'
 
-const SelectedUnitListItem = ({ item }) => {
+const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   let levelStar = []
   for (i = 0; i < item.level; i++) {
     levelStar.push(<Ionicons name='md-star' size={13} color='orange' />)
   }
   return (
-    <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
+    <TouchableWithoutFeedback onPress={() => onPressUnitListItem(item)}>
       <View style={styles.selectedUnitListItemContainer}>
         <View style={styles.selectedUnitListItemStarContainer}>
           {levelStar}
@@ -172,7 +172,12 @@ export default class SelectUnitsScreen extends React.Component {
               inverted
               horizontal
               data={selectedUnits}
-              renderItem={({ item }) => <SelectedUnitListItem item={item} />}
+              renderItem={({ item }) => (
+                <SelectedUnitListItem
+                  item={item}
+                  onPressUnitListItem={this.onPressUnitListItem}
+                />
+              )}
             />
           </View>
 
