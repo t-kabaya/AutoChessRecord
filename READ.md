@@ -32,6 +32,9 @@ opUnitsscreen で sort が float と一緒に使うとうまくいかない。
 
 ## TODO
 
-english 対応
+english 対応（google play store）
+chinese 対応
+iosアプリをリリース。
 
-expo 33 対応
+selectUnitスクリーンの使い勝手を向上
+新しいユニット追加（イモータルアサシン、）
