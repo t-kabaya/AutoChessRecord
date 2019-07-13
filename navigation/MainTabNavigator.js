@@ -64,17 +64,18 @@ export default createMaterialTopTabNavigator(
       navigationOptions: {
         tabBarLabel: i18n.t('unitText')
       }
+    },
+    MyPageStack: {
+      screen: MyPageStack,
+      navigationOptions: {
+        tabBarLabel: 'マイページ'
+      }
     }
-    // MyPageStack: {
-    //   screen: MyPageStack,
-    //   navigationOptions: {
-    //     tabBarLabel: 'マイページ'
-    //   }
-    // }
   },
   {
+    initialRouteName: 'MyPageStack',
     // initialRouteName: 'OpUnitsStack',
-    initialRouteName: 'HomeStack',
+    // initialRouteName: 'HomeStack',
     animationEnabled: false,
     tabBarOptions: {
       style: {
