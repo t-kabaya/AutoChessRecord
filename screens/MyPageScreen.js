@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Image,
   Platform,
@@ -13,7 +13,12 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import { BackGround } from '../constants/Colors'
+import {
+  BackGround,
+  separateLineGray,
+  baseBackgroundColor
+} from '../constants/Colors'
+import { synergyImagePathArray } from '../constants/synergyData'
 
 // import View from '../utils/cView'
 
@@ -50,16 +55,40 @@ const mockData = [
   }
 ]
 
+const useMyDeckStatus = () => {
+  const [isLoading, setIsLoadingAsFalse] = useState(true)
+  // useEffect(async () => {
+  //   return Promise.all([
+  //     setIsLoadingAsFalse(false),
+  //     Asset.loadAsync(synergyImagePathArray)
+  //     // Font.loadAsync({
+  //     //   // This is the font that we are using for our tab bar
+  //     //   ...Icon.Ionicons.font,
+  //     //   // We include SpaceMono because we use it in HomeScreen.js. Feel free
+  //     //   // to remove this if you are not using it in your app
+  //     //   'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
+  //     // })
+  //   ])
+  // }, [])
+
+  return { isLoading }
+}
+
 const MyPageScreen = props => {
+  const { isLoading } = useMyDeckStatus()
   return (
     <View style={styles.container}>
-      <Text style={styles.comingSoonText}>よく使うシナジー</Text>
+      {/* <Text style={styles.comingSoonText}>よく使うシナジー</Text> */}
       <FlatList
         data={mockData}
         contentContainerStyle={styles.synergyTableWrapper}
         renderItem={({ item }) => (
           <View style={styles.synergyTableListItem}>
             <View style={styles.synergyTableListItemSynergyWrapper}>
+              <Image
+                source={require('../assets/images/assassin.png')}
+                style={styles.smallSynergyIcon}
+              />
               <Text>{item.synergy}</Text>
             </View>
             <View style={styles.myAverageRankWrapper}>
@@ -74,8 +103,8 @@ const MyPageScreen = props => {
           </View>
         )}
         ListHeaderComponent={
-          <View style={styles.synergyTableListItem}>
-            <View style={styles.synergyTableListItemSynergyWrapper}>
+          <View style={styles.synergyTableHeaderWrapper}>
+            <View style={styles.synergyTableListHeaderWrapper}>
               <Text>シナジー</Text>
             </View>
             <View style={styles.myAverageRankWrapper}>
@@ -98,9 +127,9 @@ const baseStyles = StyleSheet.create({
   cell: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: wp('20%'),
-    borderLeftWidth: 1,
-    borderTopWidth: 1
+    width: wp('20%')
+    // borderLeftWidth: 1,
+    // borderTopWidth: 1
   }
 })
 
@@ -109,11 +138,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: BackGround
+    backgroundColor: baseBackgroundColor
   },
   synergyTableWrapper: {
-    borderBottomWidth: 1,
-    borderRightWidth: 1
+    paddingTop: hp('5%')
   },
   baseText: {
     fontSize: 20
@@ -123,10 +151,26 @@ const styles = StyleSheet.create({
   },
   synergyTableListItem: {
     flexDirection: 'row',
-    height: 40
+    height: 50,
+    borderTopWidth: 1,
+    borderColor: separateLineGray
+  },
+  synergyTableHeaderWrapper: {
+    flexDirection: 'row',
+    height: 50
+    // borderTopWidth: 1
+  },
+  synergyTableListHeaderWrapper: {
+    ...baseStyles.cell,
+    borderTopWidth: 0,
+    borderRightWidth: 1,
+    borderColor: separateLineGray
   },
   synergyTableListItemSynergyWrapper: {
-    ...baseStyles.cell
+    ...baseStyles.cell,
+    flexDirection: 'row',
+    borderRightWidth: 1,
+    borderColor: separateLineGray
   },
   myAverageRankWrapper: {
     ...baseStyles.cell
@@ -138,7 +182,13 @@ const styles = StyleSheet.create({
     ...baseStyles.cell
   },
   listHeaderWrapper: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  smallSynergyIcon: {
+    height: 20,
+    width: 20,
+    marginRight: 10
   }
 })
 

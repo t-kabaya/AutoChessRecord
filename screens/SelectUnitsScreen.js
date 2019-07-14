@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: wp('90%'),
     marginHorizontal: wp('5%'),
-    backgroundColor: baseBackgroundColor
+    // backgroundColor: baseBackgroundColor
   },
   topButtonContainer: {
     flex: 1,
