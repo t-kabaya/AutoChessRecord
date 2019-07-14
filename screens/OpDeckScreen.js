@@ -19,7 +19,8 @@ import * as Localization from 'expo-localization'
 import {
   primaryColor,
   darkPrimaryColor,
-  secondaryColor
+  secondaryColor,
+  baseBackgroundColor
 } from '../constants/Colors'
 import i18n from '../constants/I18n'
 import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // paddingTop: 15,
-    backgroundColor: '#eaecef',
+    backgroundColor: baseBackgroundColor,
     alignItems: 'center',
     paddingHorizontal: '5%'
   },

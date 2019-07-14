@@ -18,7 +18,7 @@ import {
 } from 'react-native-responsive-screen'
 import { Ionicons } from '@expo/vector-icons'
 import Layout from '../constants/Layout'
-import Colors from '../constants/Colors'
+import Colors, { baseBackgroundColor } from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import { Badge, Button, Text, Toast, Container } from 'native-base'
 import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
@@ -201,9 +201,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: wp('90%'),
-    marginHorizontal: wp('5%')
-    // alignItems: '',
-    // backgroundColor: 'red'
+    marginHorizontal: wp('5%'),
+    backgroundColor: baseBackgroundColor
   },
   topButtonContainer: {
     flex: 1,

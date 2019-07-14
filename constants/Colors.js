@@ -33,3 +33,6 @@ export default {
 export const primaryColor = '#6200EE'
 export const darkPrimaryColor = '#3700B3'
 export const secondaryColor = '#03DAC5'
+
+export const separateLineGray = '#9B9B9B'
+export const baseBackgroundColor = '#eaecef'
