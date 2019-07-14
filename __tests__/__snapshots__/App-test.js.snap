@@ -11,75 +11,1026 @@ exports[`App snapshot renders the root without loading screen 1`] = `
   }
 >
   <View
-    onLayout={[Function]}
+    collapsable={false}
     style={
-      Object {
-        "flex": 1,
-      }
+      Array [
+        Object {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
     }
   >
     <View
-      enabled={false}
-      hitSlop={
+      style={
         Object {
-          "bottom": 135,
+          "backgroundColor": "#6200EE",
+          "elevation": 4,
+          "pressOpacity": 1,
+          "shadowColor": "black",
+          "shadowOffset": Object {
+            "height": 0.5,
+          },
+          "shadowOpacity": 0.1,
+          "shadowRadius": 0.5,
+          "zIndex": 1,
         }
       }
-      maxDeltaX={15}
-      minOffsetY={5}
-      onGestureEvent={[Function]}
-      onHandlerStateChange={[Function]}
     >
       <View
+        pointerEvents="none"
         style={
           Object {
-            "backgroundColor": "#eee",
-            "flex": 1,
-            "flexDirection": "column-reverse",
-            "overflow": "hidden",
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
+              "backgroundColor": "#ffeb3b",
+              "bottom": 0,
+              "height": 2,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "transform": Array [
+                Object {
+                  "translateX": 0,
+                },
+              ],
+              "width": 0,
             }
           }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "overflow": "scroll",
+          }
+        }
+      >
+        <RCTScrollView
+          alwaysBounceHorizontal={false}
+          automaticallyAdjustContentInsets={false}
+          contentContainerStyle={
+            Array [
+              Object {
+                "flexDirection": "row",
+                "flexWrap": "nowrap",
+              },
+              Object {
+                "flex": 1,
+              },
+            ]
+          }
+          horizontal={true}
+          keyboardShouldPersistTaps="handled"
+          onMomentumScrollBegin={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          overScrollMode="never"
+          scrollEventThrottle={1}
+          scrollsToTop={false}
+          showsHorizontalScrollIndicator={false}
         >
+          <View>
+            <View
+              accessibilityLabel="rocommended deck, tab, 1 of 3"
+              accessibilityRole="button"
+              accessibilityStates={Array []}
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "flex": 1,
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                pointerEvents="none"
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flex": 1,
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    allowFontScaling={true}
+                    style={
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "rgba(255, 255, 255, 1)",
+                        "fontSize": 13,
+                        "margin": 8,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    ROCOMMENDED DECK
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="unit, tab, 2 of 3"
+              accessibilityRole="button"
+              accessibilityStates={Array []}
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "flex": 1,
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                pointerEvents="none"
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flex": 1,
+                      "justifyContent": "center",
+                      "opacity": 0.7,
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    allowFontScaling={true}
+                    style={
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "rgba(255, 255, 255, 1)",
+                        "fontSize": 13,
+                        "margin": 8,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    UNIT
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="my page, tab, 3 of 3"
+              accessibilityRole="button"
+              accessibilityStates={
+                Array [
+                  "selected",
+                ]
+              }
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "flex": 1,
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                pointerEvents="none"
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flex": 1,
+                      "justifyContent": "center",
+                      "opacity": 0.7,
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    allowFontScaling={true}
+                    style={
+                      Object {
+                        "backgroundColor": "transparent",
+                        "color": "rgba(255, 255, 255, 1)",
+                        "fontSize": 13,
+                        "margin": 8,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    MY PAGE
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <RCTScrollView
+        alwaysBounceHorizontal={false}
+        automaticallyAdjustContentInsets={false}
+        bounces={false}
+        contentContainerStyle={
+          Object {
+            "flex": 1,
+          }
+        }
+        contentOffset={
+          Object {
+            "x": 0,
+            "y": 0,
+          }
+        }
+        directionalLockEnabled={true}
+        horizontal={true}
+        keyboardDismissMode="on-drag"
+        keyboardShouldPersistTaps="always"
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        overScrollMode="never"
+        pagingEnabled={true}
+        scrollEventThrottle={1}
+        scrollToOverflowEnabled={true}
+        scrollsToTop={false}
+        showsHorizontalScrollIndicator={false}
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <View>
           <View
-            pointerEvents="auto"
+            accessibilityElementsHidden={true}
+            importantForAccessibility="no-hide-descendants"
+            style={null}
+          />
+          <View
+            accessibilityElementsHidden={true}
+            importantForAccessibility="no-hide-descendants"
+            style={null}
+          />
+          <View
+            accessibilityElementsHidden={false}
+            importantForAccessibility="auto"
             style={
               Object {
-                "bottom": 0,
-                "left": 0,
-                "opacity": 1,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-                "transform": Array [
-                  Object {
-                    "translateX": 0,
-                  },
-                  Object {
-                    "translateY": 0,
-                  },
-                ],
+                "flex": 1,
+                "overflow": "hidden",
               }
             }
           >
             <View
-              accessibilityElementsHidden={false}
+              onLayout={[Function]}
               style={
                 Object {
-                  "backgroundColor": "#fff",
                   "flex": 1,
                 }
               }
-            />
+            >
+              <View
+                enabled={false}
+                hitSlop={
+                  Object {
+                    "bottom": 135,
+                  }
+                }
+                maxDeltaX={15}
+                minOffsetY={5}
+                onGestureEvent={[Function]}
+                onHandlerStateChange={[Function]}
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#eee",
+                      "flex": 1,
+                      "flexDirection": "column-reverse",
+                      "overflow": "hidden",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Object {
+                        "flex": 1,
+                      }
+                    }
+                  >
+                    <View
+                      pointerEvents="auto"
+                      style={
+                        Object {
+                          "bottom": 0,
+                          "left": 0,
+                          "opacity": 1,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                          "transform": Array [
+                            Object {
+                              "translateX": 0,
+                            },
+                            Object {
+                              "translateY": 0,
+                            },
+                          ],
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityElementsHidden={false}
+                        style={
+                          Object {
+                            "backgroundColor": "#fff",
+                            "flex": 1,
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "backgroundColor": "#eaecef",
+                              "flex": 1,
+                              "justifyContent": "center",
+                            }
+                          }
+                        >
+                          <RCTScrollView
+                            ListHeaderComponent={
+                              <View
+                                style={
+                                  Object {
+                                    "flexDirection": "row",
+                                    "height": 50,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "alignItems": "center",
+                                      "borderColor": "#9B9B9B",
+                                      "borderRightWidth": 1,
+                                      "borderTopWidth": 0,
+                                      "justifyContent": "center",
+                                      "width": 150,
+                                    }
+                                  }
+                                >
+                                  <Text>
+                                    synergy
+                                  </Text>
+                                </View>
+                                <View
+                                  style={
+                                    Object {
+                                      "alignItems": "center",
+                                      "justifyContent": "center",
+                                      "width": 150,
+                                    }
+                                  }
+                                >
+                                  <Text>
+                                    average of you(place)
+                                  </Text>
+                                </View>
+                                <View
+                                  style={
+                                    Object {
+                                      "alignItems": "center",
+                                      "justifyContent": "center",
+                                      "width": 150,
+                                    }
+                                  }
+                                >
+                                  <Text>
+                                    average of all user (place)
+                                  </Text>
+                                </View>
+                                <View
+                                  style={
+                                    Object {
+                                      "alignItems": "center",
+                                      "justifyContent": "center",
+                                      "width": 150,
+                                    }
+                                  }
+                                >
+                                  <Text>
+                                    count of play(times)
+                                  </Text>
+                                </View>
+                              </View>
+                            }
+                            contentContainerStyle={
+                              Object {
+                                "paddingTop": 66.5,
+                              }
+                            }
+                            data={
+                              Array [
+                                Object {
+                                  "allUserAverageRankOfSynergy": 3.5,
+                                  "myAverageRankOfSynergy": 2.3,
+                                  "synergy": "assassin",
+                                  "totalPlayCount": 10,
+                                },
+                                Object {
+                                  "allUserAverageRankOfSynergy": 3.5,
+                                  "myAverageRankOfSynergy": 2.3,
+                                  "synergy": "assassin",
+                                  "totalPlayCount": 10,
+                                },
+                                Object {
+                                  "allUserAverageRankOfSynergy": 3.5,
+                                  "myAverageRankOfSynergy": 2.3,
+                                  "synergy": "assassin",
+                                  "totalPlayCount": 10,
+                                },
+                                Object {
+                                  "allUserAverageRankOfSynergy": 3.5,
+                                  "myAverageRankOfSynergy": 2.3,
+                                  "synergy": "assassin",
+                                  "totalPlayCount": 10,
+                                },
+                                Object {
+                                  "allUserAverageRankOfSynergy": 3.5,
+                                  "myAverageRankOfSynergy": 2.3,
+                                  "synergy": "assassin",
+                                  "totalPlayCount": 10,
+                                },
+                              ]
+                            }
+                            disableVirtualization={false}
+                            getItem={[Function]}
+                            getItemCount={[Function]}
+                            horizontal={false}
+                            initialNumToRender={10}
+                            keyExtractor={[Function]}
+                            maxToRenderPerBatch={10}
+                            numColumns={1}
+                            onContentSizeChange={[Function]}
+                            onEndReachedThreshold={2}
+                            onLayout={[Function]}
+                            onMomentumScrollEnd={[Function]}
+                            onScroll={[Function]}
+                            onScrollBeginDrag={[Function]}
+                            onScrollEndDrag={[Function]}
+                            removeClippedSubviews={false}
+                            renderItem={[Function]}
+                            scrollEventThrottle={50}
+                            stickyHeaderIndices={Array []}
+                            updateCellsBatchingPeriod={50}
+                            viewabilityConfigCallbackPairs={Array []}
+                            windowSize={21}
+                          >
+                            <View>
+                              <View
+                                onLayout={[Function]}
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "flexDirection": "row",
+                                      "height": 50,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderColor": "#9B9B9B",
+                                        "borderRightWidth": 1,
+                                        "borderTopWidth": 0,
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      synergy
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      average of you(place)
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      average of all user (place)
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      count of play(times)
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                              <View
+                                onLayout={[Function]}
+                                style={null}
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "borderColor": "#9B9B9B",
+                                      "borderTopWidth": 1,
+                                      "flexDirection": "row",
+                                      "height": 50,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderColor": "#9B9B9B",
+                                        "borderRightWidth": 1,
+                                        "flexDirection": "row",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Image
+                                      source={1}
+                                      style={
+                                        Object {
+                                          "height": 20,
+                                          "marginRight": 10,
+                                          "width": 20,
+                                        }
+                                      }
+                                    />
+                                    <Text>
+                                      assassin
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      2.3
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      3.5
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      10
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                              <View
+                                onLayout={[Function]}
+                                style={null}
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "borderColor": "#9B9B9B",
+                                      "borderTopWidth": 1,
+                                      "flexDirection": "row",
+                                      "height": 50,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderColor": "#9B9B9B",
+                                        "borderRightWidth": 1,
+                                        "flexDirection": "row",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Image
+                                      source={1}
+                                      style={
+                                        Object {
+                                          "height": 20,
+                                          "marginRight": 10,
+                                          "width": 20,
+                                        }
+                                      }
+                                    />
+                                    <Text>
+                                      assassin
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      2.3
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      3.5
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      10
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                              <View
+                                onLayout={[Function]}
+                                style={null}
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "borderColor": "#9B9B9B",
+                                      "borderTopWidth": 1,
+                                      "flexDirection": "row",
+                                      "height": 50,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderColor": "#9B9B9B",
+                                        "borderRightWidth": 1,
+                                        "flexDirection": "row",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Image
+                                      source={1}
+                                      style={
+                                        Object {
+                                          "height": 20,
+                                          "marginRight": 10,
+                                          "width": 20,
+                                        }
+                                      }
+                                    />
+                                    <Text>
+                                      assassin
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      2.3
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      3.5
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      10
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                              <View
+                                onLayout={[Function]}
+                                style={null}
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "borderColor": "#9B9B9B",
+                                      "borderTopWidth": 1,
+                                      "flexDirection": "row",
+                                      "height": 50,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderColor": "#9B9B9B",
+                                        "borderRightWidth": 1,
+                                        "flexDirection": "row",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Image
+                                      source={1}
+                                      style={
+                                        Object {
+                                          "height": 20,
+                                          "marginRight": 10,
+                                          "width": 20,
+                                        }
+                                      }
+                                    />
+                                    <Text>
+                                      assassin
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      2.3
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      3.5
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      10
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                              <View
+                                onLayout={[Function]}
+                                style={null}
+                              >
+                                <View
+                                  style={
+                                    Object {
+                                      "borderColor": "#9B9B9B",
+                                      "borderTopWidth": 1,
+                                      "flexDirection": "row",
+                                      "height": 50,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderColor": "#9B9B9B",
+                                        "borderRightWidth": 1,
+                                        "flexDirection": "row",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Image
+                                      source={1}
+                                      style={
+                                        Object {
+                                          "height": 20,
+                                          "marginRight": 10,
+                                          "width": 20,
+                                        }
+                                      }
+                                    />
+                                    <Text>
+                                      assassin
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      2.3
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      3.5
+                                    </Text>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "width": 150,
+                                      }
+                                    }
+                                  >
+                                    <Text>
+                                      10
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </RCTScrollView>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
-      </View>
+      </RCTScrollView>
     </View>
   </View>
   <Modal
@@ -127,7 +1078,41 @@ exports[`App snapshot renders the root without loading screen 1`] = `
             "padding": 15,
           }
         }
-      />
+      >
+        <RCTScrollView
+          data={Array []}
+          disableVirtualization={false}
+          getItem={[Function]}
+          getItemCount={[Function]}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          numColumns={1}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={2}
+          onLayout={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          stickyHeaderIndices={Array []}
+          style={
+            Object {
+              "marginHorizontal": -15,
+              "marginTop": 0,
+            }
+          }
+          updateCellsBatchingPeriod={50}
+          viewabilityConfigCallbackPairs={Array []}
+          windowSize={21}
+        >
+          <View />
+        </RCTScrollView>
+      </View>
     </View>
   </Modal>
 </View>

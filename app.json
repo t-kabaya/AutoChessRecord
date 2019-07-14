@@ -29,7 +29,7 @@
     "android": {
       "package": "com.kabainc.autoChessRecord",
       "permissions": [],
-      "versionCode": 2
+      "versionCode": 3
     },
     "orientation": "landscape"
   }

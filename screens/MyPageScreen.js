@@ -62,17 +62,20 @@ const useMyPageScreenState = () => {
   const [yourSynergyAverageWinRate, setYourSynergyAverageWinRate] = useState(
     null
   )
-  useEffect(async () => {
-    const response = await getYourWinRateOfSynergy()
-    setYourSynergyAverageWinRate(response)
-  }, [])
+  useEffect(
+    async () => {
+      const response = await getYourWinRateOfSynergy()
+      setYourSynergyAverageWinRate(response)
+    },
+    [yourSynergyAverageWinRate]
+  )
 
   return { isLoading, yourSynergyAverageWinRate }
 }
 
 const MyPageScreen = props => {
   const { isLoading, yourSynergyAverageWinRate } = useMyPageScreenState()
-  console.log(yourSynergyAverageWinRate)
+  console.log({ yourSynergyAverageWinRate })
   return (
     <View style={styles.container}>
       {/* <Text style={styles.comingSoonText}>よく使うシナジー</Text> */}

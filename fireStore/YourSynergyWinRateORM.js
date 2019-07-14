@@ -8,10 +8,10 @@ import { databaseENV } from '../config/environmentConfig'
 const matchRecord = `${databaseENV}matchRecord`
 
 export const getYourWinRateOfSynergy = async () => {
-  const response = await db.collection('matchRecord').get()
+  console.log({ matchRecord })
+
+  const response = await db.collection('devmatchRecord').get()
   const data = response.docs.map(doc => doc.data())
 
-  const top3WinRateOfUnits = calcWinRateRankingOfUnit(data)
-
-  return top3WinRateOfUnits
+  return data
 }
