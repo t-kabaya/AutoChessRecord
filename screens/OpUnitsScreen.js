@@ -61,9 +61,9 @@ const OpUnitsScreen = props => {
   if (isLoading) return null
   return (
     <Container style={styles.container}>
-      <View style={{ alignItems: 'center', padding: 5 }}>
+      {/* <View style={{ alignItems: 'center', padding: 5 }}>
         <Text>top3位率</Text>
-      </View>
+      </View> */}
       <FlatList
         numColumns={7}
         data={top3WinRateOfUnits}

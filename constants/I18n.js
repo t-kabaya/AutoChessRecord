@@ -36,7 +36,12 @@ export const en = {
   backButtonText: 'back',
   saveButtonText: 'save',
   saveMatchRecordButtonText: 'save match',
-  rankingText: 'place'
+  rankingText: 'place',
+  myPageTabTitle: 'my page',
+  synergy: 'synergy',
+  yourAverageText: 'average of you(place)',
+  averageOfAllUserText: 'average of all user (place)',
+  playCountText: 'count of play(times)'
 }
 
 export const ja = {
@@ -74,7 +79,12 @@ export const ja = {
   backButtonText: '戻る',
   saveButtonText: '保存',
   saveMatchRecordButtonText: '戦績を保存',
-  rankingText: '位'
+  rankingText: '位',
+  myPageTabTitle: 'マイページ',
+  synergy: 'シナジー',
+  yourAverageText: 'あなたの平均（位）',
+  averageOfAllUserText: '全体の平均（位）',
+  playCountText: '使用数（回）'
 }
 
 i18n.fallbacks = true

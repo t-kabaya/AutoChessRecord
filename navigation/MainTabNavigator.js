@@ -14,7 +14,7 @@ import OpSynergyAndUnitsScreen from '../screens/OpSynergyAndUnitsScreen'
 import OpUnitsScreen from '../screens/OpUnitsScreen'
 import MyPageScreen from '../screens/MyPageScreen'
 import { primaryColor } from '../constants/Colors'
-import i18n from '../constants/I18n'
+import i18n, { en } from '../constants/I18n'
 
 export const HomeStack = createStackNavigator(
   {
@@ -68,7 +68,7 @@ export default createMaterialTopTabNavigator(
     MyPageStack: {
       screen: MyPageStack,
       navigationOptions: {
-        tabBarLabel: 'マイページ'
+        tabBarLabel: i18n.t('myPageTabTitle')
       }
     }
   },

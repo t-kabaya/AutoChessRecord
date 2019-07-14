@@ -19,36 +19,37 @@ import {
   baseBackgroundColor
 } from '../constants/Colors'
 import { synergyImagePathArray } from '../constants/synergyData'
+import I18n from '../constants/I18n'
 
 // import View from '../utils/cView'
 
 const mockData = [
   {
-    synergy: '海兵',
+    synergy: 'assassin',
     myAverageRankOfSynergy: 2.3,
     allUserAverageRankOfSynergy: 3.5,
     totalPlayCount: 10
   },
   {
-    synergy: '海兵',
+    synergy: 'assassin',
     myAverageRankOfSynergy: 2.3,
     allUserAverageRankOfSynergy: 3.5,
     totalPlayCount: 10
   },
   {
-    synergy: '海兵',
+    synergy: 'assassin',
     myAverageRankOfSynergy: 2.3,
     allUserAverageRankOfSynergy: 3.5,
     totalPlayCount: 10
   },
   {
-    synergy: '海兵',
+    synergy: 'assassin',
     myAverageRankOfSynergy: 2.3,
     allUserAverageRankOfSynergy: 3.5,
     totalPlayCount: 10
   },
   {
-    synergy: '海兵',
+    synergy: 'assassin',
     myAverageRankOfSynergy: 2.3,
     allUserAverageRankOfSynergy: 3.5,
     totalPlayCount: 10
@@ -89,7 +90,7 @@ const MyPageScreen = props => {
                 source={require('../assets/images/assassin.png')}
                 style={styles.smallSynergyIcon}
               />
-              <Text>{item.synergy}</Text>
+              <Text>{I18n.t(item.synergy)}</Text>
             </View>
             <View style={styles.myAverageRankWrapper}>
               <Text>{item.myAverageRankOfSynergy}</Text>
@@ -105,16 +106,16 @@ const MyPageScreen = props => {
         ListHeaderComponent={
           <View style={styles.synergyTableHeaderWrapper}>
             <View style={styles.synergyTableListHeaderWrapper}>
-              <Text>シナジー</Text>
+              <Text>{I18n.t('synergy')}</Text>
             </View>
             <View style={styles.myAverageRankWrapper}>
-              <Text>あなたの平均（位）</Text>
+              <Text>{I18n.t('yourAverageText')}</Text>
             </View>
             <View style={styles.allUserAverageRankOfSynergy}>
-              <Text>全体の平均順位（位）</Text>
+              <Text>{I18n.t('averageOfAllUserText')}</Text>
             </View>
             <View style={styles.totalPlayCountWrapper}>
-              <Text>使用数（回）</Text>
+              <Text>{I18n.t('playCountText')}</Text>
             </View>
           </View>
         }
