@@ -20,6 +20,7 @@ import {
 } from '../constants/Colors'
 import { synergyImagePathArray } from '../constants/synergyData'
 import I18n from '../constants/I18n'
+import { getYourWinRateOfSynergy } from '../fireStore/YourSynergyWinRateORM'
 
 // import View from '../utils/cView'
 
@@ -56,27 +57,22 @@ const mockData = [
   }
 ]
 
-const useMyDeckStatus = () => {
+const useMyPageScreenState = () => {
   const [isLoading, setIsLoadingAsFalse] = useState(true)
-  // useEffect(async () => {
-  //   return Promise.all([
-  //     setIsLoadingAsFalse(false),
-  //     Asset.loadAsync(synergyImagePathArray)
-  //     // Font.loadAsync({
-  //     //   // This is the font that we are using for our tab bar
-  //     //   ...Icon.Ionicons.font,
-  //     //   // We include SpaceMono because we use it in HomeScreen.js. Feel free
-  //     //   // to remove this if you are not using it in your app
-  //     //   'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
-  //     // })
-  //   ])
-  // }, [])
+  const [yourSynergyAverageWinRate, setYourSynergyAverageWinRate] = useState(
+    null
+  )
+  useEffect(async () => {
+    const response = await getYourWinRateOfSynergy()
+    setYourSynergyAverageWinRate(response)
+  }, [])
 
-  return { isLoading }
+  return { isLoading, yourSynergyAverageWinRate }
 }
 
 const MyPageScreen = props => {
-  const { isLoading } = useMyDeckStatus()
+  const { isLoading, yourSynergyAverageWinRate } = useMyPageScreenState()
+  console.log(yourSynergyAverageWinRate)
   return (
     <View style={styles.container}>
       {/* <Text style={styles.comingSoonText}>よく使うシナジー</Text> */}
