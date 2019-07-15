@@ -3,7 +3,7 @@ import { synergyEnum } from '../../constants/synergyData'
 
 import {
   calcYourSynergyWinRate,
-  countUpTotalCountOfSynergy,
+  convertFromUnitIdsToSynergyWithRanking,
   convertFromUnitIdsToSynergy
 } from '../calcYuorSynergyWinRate'
 
@@ -32,7 +32,7 @@ import {
 //   totalLoopCount: 9
 // }
 
-/* ------   countUpTotalCountOfSynergy   ------ */
+/* ------   convertFromUnitIdsToSynergyWithRanking   ------ */
 
 test('mustCountUpTotalCount from array', () => {
   const input = mockInput
@@ -105,7 +105,7 @@ test('mustCountUpTotalCount from array', () => {
   //     sumCount: 1
   //   }
   // ]
-  expect(countUpTotalCountOfSynergy(input)).toEqual(output)
+  expect(convertFromUnitIdsToSynergyWithRanking(input)).toEqual(output)
 })
 
 /* ------   convertFromUnitIdsToSynergy   ------ */

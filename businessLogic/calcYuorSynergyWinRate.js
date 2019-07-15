@@ -16,7 +16,7 @@ export const calcYourSynergyWinRate = response => {
   return response
 }
 
-export const countUpTotalCountOfSynergy = input => {
+export const convertFromUnitIdsToSynergyWithRanking = input => {
   const res = input.reduce((accumulator, currentValue) => {
     const synergy = convertFromUnitIdsToSynergy(currentValue.units)
     const countedUpSynergy = synergy.map(item => {
