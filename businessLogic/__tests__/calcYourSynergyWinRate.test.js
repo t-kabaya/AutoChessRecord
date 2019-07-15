@@ -3,7 +3,7 @@ import { synergyEnum } from '../../constants/synergyData'
 
 import {
   calcYourSynergyWinRate,
-  countUpTotalCountOfSynergyFromUnitIds,
+  countUpTotalCountOfSynergy,
   convertFromUnitIdsToSynergy
 } from '../calcYuorSynergyWinRate'
 
@@ -32,21 +32,69 @@ import {
 //   totalLoopCount: 9
 // }
 
-test('sandbox', () => {
-  const response = convertFromUnitIdsToSynergy(mockInput)
-  const output = [
-    [
-      synergyEnum.assassin,
-      synergyEnum.puppet,
-      synergyEnum.supporter,
-      synergyEnum.psyker
-    ],
-    [
-      synergyEnum.vanguard,
-      synergyEnum.beast,
-      synergyEnum.assassin,
-      synergyEnum.puppet
-    ]
+/* ------   countUpTotalCountOfSynergy   ------ */
+
+// test('mustCountUpTotalCount from array', () => {
+//   const input = [
+//     [
+//       synergyEnum.assassin,
+//       synergyEnum.puppet,
+//       synergyEnum.supporter,
+//       synergyEnum.psyker
+//     ],
+//     [
+//       synergyEnum.vanguard,
+//       synergyEnum.beast,
+//       synergyEnum.assassin,
+//       synergyEnum.puppet
+//     ]
+//   ]
+//   const output = {
+//   }
+//   expect().toEqual()
+// }
+
+/* ------   convertFromUnitIdsToSynergy   ------ */
+
+test('convertFromUnitIdsToSynergy', () => {
+  const input1 = [
+    // 鋭いエッジ、アサシン、パペット
+    {
+      level: 1,
+      unitId: 3
+    },
+    // 歌手、サイカー、サポーター
+    {
+      level: 1,
+      unitId: 4
+    }
   ]
-  expect(response).toEqual(output)
+  const output1 = [
+    synergyEnum.assassin,
+    synergyEnum.puppet,
+    synergyEnum.supporter,
+    synergyEnum.psyker
+  ]
+  const input2 = [
+    // 酸の歯、ビースト、ヴァンガード
+    {
+      level: 1,
+      unitId: 2
+    },
+    // 鋭いエッジ、アサシン、パペット
+    {
+      level: 1,
+      unitId: 3
+    }
+  ]
+  const output2 = [
+    synergyEnum.vanguard,
+    synergyEnum.beast,
+    synergyEnum.assassin,
+    synergyEnum.puppet
+  ]
+
+  expect(convertFromUnitIdsToSynergy(input1)).toEqual(output1)
+
+  expect(convertFromUnitIdsToSynergy(input2)).toEqual(output2)
 })

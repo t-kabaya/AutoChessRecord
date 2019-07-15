@@ -2,16 +2,12 @@ import { synergyEnum } from '../constants/synergyData'
 import unitData from '../constants/UnitData'
 
 // rankingがnullの時と、unitsがnullの時は考慮しない。
-export const convertFromUnitIdsToSynergy = input => {
-  const res = input.map(item =>
-    item.units.reduce((accumulator, currentValue) => {
-      const unit = unitData.find(x => x.unitId === currentValue.unitId)
+export const convertFromUnitIdsToSynergy = units =>
+  units.reduce((accumulator, currentValue) => {
+    const unit = unitData.find(x => x.unitId === currentValue.unitId)
 
-      return [...accumulator, ...unit.job, ...unit.race]
-    }, [])
-  )
-  return res
-}
+    return [...accumulator, ...unit.job, ...unit.race]
+  }, [])
 
 export const calcYourSynergyWinRate = response => {
   // 1. unitIdから、シナジーを取り出す。
@@ -20,7 +16,7 @@ export const calcYourSynergyWinRate = response => {
   return response
 }
 
-export const countUpTotalCountOfSynergyFromUnitIds = input => {
+export const countUpTotalCountOfSynergy = input => {
   const res = input.reduce((accumulator, currentValue) => {
     if (accumulator) return 888
   }, {})
