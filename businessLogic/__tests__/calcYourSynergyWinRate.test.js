@@ -10,6 +10,11 @@ import calcYourSynergyWinRate, {
 
 /* -------------------- formatAverageRankOfSynergyOfMeAndAllUser --------------------- */
 
+// test('must return correctValue', () => {
+
+//   expect().toEqual(false)
+// })
+
 /* ------   calcYourSynergyWinRate   ------ */
 
 test('response keys must have all synergy', () => {

@@ -59,29 +59,30 @@ const mockData = [
 
 const useMyPageScreenState = () => {
   const [isLoading, setIsLoadingAsFalse] = useState(true)
-  const [yourSynergyAverageWinRate, setYourSynergyAverageWinRate] = useState(
-    null
-  )
+  const [yourSynergyAverageRank, setYourSynergyAverageRank] = useState(null)
   useEffect(() => {
     // このfetchData関数は、useEffect自体を同期的に実行するため必要。
     const fetchData = async () => {
       const response = await getYourWinRateOfSynergy()
-      setYourSynergyAverageWinRate(response)
+      setYourSynergyAverageRank(response)
+      console.log({ response })
     }
     fetchData()
   }, [])
 
-  return { isLoading, yourSynergyAverageWinRate }
+  return { isLoading, yourSynergyAverageRank }
 }
 
 const MyPageScreen = props => {
-  const { isLoading, yourSynergyAverageWinRate } = useMyPageScreenState()
-  console.log({ yourSynergyAverageWinRate })
+  const { isLoading, yourSynergyAverageRank } = useMyPageScreenState()
+  console.log({ yourSynergyAverageRank })
+
+  // if (isLoading) return null
   return (
     <View style={styles.container}>
       {/* <Text style={styles.comingSoonText}>よく使うシナジー</Text> */}
       <FlatList
-        data={mockData}
+        data={yourSynergyAverageRank}
         contentContainerStyle={styles.synergyTableWrapper}
         renderItem={({ item }) => (
           <View style={styles.synergyTableListItem}>
@@ -93,13 +94,13 @@ const MyPageScreen = props => {
               <Text>{I18n.t(item.synergy)}</Text>
             </View>
             <View style={styles.myAverageRankWrapper}>
-              <Text>{item.myAverageRankOfSynergy}</Text>
+              <Text>{item.mySynergyAverage}</Text>
             </View>
             <View style={styles.allUserAverageRankOfSynergy}>
-              <Text>{item.allUserAverageRankOfSynergy}</Text>
+              <Text>{item.allUserSynergyRankAverage}</Text>
             </View>
             <View style={styles.totalPlayCountWrapper}>
-              <Text>{item.totalPlayCount}</Text>
+              <Text>{item.mySynergyPlayCount}</Text>
             </View>
           </View>
         )}

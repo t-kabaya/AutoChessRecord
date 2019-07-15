@@ -1,11 +1,32 @@
 import { synergyEnum } from '../constants/synergyData'
 import unitData from '../constants/UnitData'
 
+// 全ユーザーと、myUserの二つの配列が生成される。この二つをマージし、一つの配列にして、flatListに渡しやすくする
 export const formatAverageRankOfSynergyOfMeAndAllUser = (data, userId) => {
+  const averageRankOfMeAndAllUser = []
   const allUserSynergyRankAverage = main(data)
   const mySynergyRankAverage = main(data.filter(x => x.userId === userId))
 
-  return { allUserSynergyRankAverage, mySynergyRankAverage }
+  for (var key in synergyEnum) {
+    const allUserAverage = allUserSynergyRankAverage.find(
+      x => x.synergy === key
+    )
+    const mySynergyAverage = mySynergyRankAverage.find(x => x.synergy === key)
+
+    // undefinedを許容
+    averageRankOfMeAndAllUser.push({
+      synergy: key,
+      allUserSynergyRankAverage:
+        (allUserAverage && allUserAverage.averageRank) || 'no data',
+      allUserSynergyPlayCount:
+        (allUserAverage && allUserAverage.playCount) || 0,
+      mySynergyAverage:
+        (mySynergyAverage && mySynergyAverage.averageRank) || 'no data',
+      mySynergyPlayCount: (mySynergyAverage && mySynergyAverage.playCount) || 0
+    })
+  }
+
+  return averageRankOfMeAndAllUser
 }
 
 const main = apiResponse =>

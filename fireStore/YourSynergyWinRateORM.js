@@ -14,8 +14,5 @@ export const getYourWinRateOfSynergy = async () => {
   const response = await db.collection('devmatchRecord').get()
   const data = response.docs.map(doc => doc.data())
 
-  console.log(
-    formatAverageRankOfSynergyOfMeAndAllUser(data, Constants.installationID)
-  )
   return formatAverageRankOfSynergyOfMeAndAllUser(data)
 }
