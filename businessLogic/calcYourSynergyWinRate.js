@@ -1,16 +1,18 @@
 import { synergyEnum } from '../constants/synergyData'
 import unitData from '../constants/UnitData'
 
-export const formatAverageRankOfSynergyForMyPage = (data, userId) => {
+export const formatAverageRankOfSynergyOfMeAndAllUser = (data, userId) => {
   const allUserSynergyRankAverage = main(data)
   const mySynergyRankAverage = main(data.filter(x => x.userId === userId))
+
+  return { allUserSynergyRankAverage, mySynergyRankAverage }
 }
 
-const main = response =>
+const main = apiResponse =>
   // 1. unitIdから、シナジーを取り出す。
   // 2. 取り出したシナジーを足す
-  // 2. 試行回数で割る。
-  calcAverageRankOfSynergy(convertFromUnitIdsToSynergyWithRanking(response))
+  // 3. 試行回数で割る。
+  calcAverageRankOfSynergy(convertFromUnitIdsToSynergyWithRanking(apiResponse))
 export default main
 
 // rankingがnullの時と、unitsがnullの時は考慮しない。

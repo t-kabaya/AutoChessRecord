@@ -4,6 +4,7 @@ import unitData from '../constants/UnitData'
 import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
 import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
 import { databaseENV } from '../config/environmentConfig'
+import { formatAverageRankOfSynergyOfMeAndAllUser } from '../businessLogic/calcYourSynergyWinRate'
 
 const matchRecord = `${databaseENV}matchRecord`
 
@@ -13,5 +14,8 @@ export const getYourWinRateOfSynergy = async () => {
   const response = await db.collection('devmatchRecord').get()
   const data = response.docs.map(doc => doc.data())
 
-  return data
+  console.log(
+    formatAverageRankOfSynergyOfMeAndAllUser(data, Constants.installationID)
+  )
+  return formatAverageRankOfSynergyOfMeAndAllUser(data)
 }

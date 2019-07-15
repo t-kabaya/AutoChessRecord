@@ -5,10 +5,10 @@ import calcYourSynergyWinRate, {
   convertFromUnitIdsToSynergyWithRanking,
   convertFromUnitIdsToSynergy,
   calcAverageRankOfSynergy,
-  formatAverageRankOfSynergyForMyPage
+  formatAverageRankOfSynergyOfMeAndAllUser
 } from '../calcYourSynergyWinRate'
 
-/* -------------------- formatAverageRankOfSynergyForMyPage --------------------- */
+/* -------------------- formatAverageRankOfSynergyOfMeAndAllUser --------------------- */
 
 /* ------   calcYourSynergyWinRate   ------ */
 
