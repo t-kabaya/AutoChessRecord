@@ -62,13 +62,14 @@ const useMyPageScreenState = () => {
   const [yourSynergyAverageWinRate, setYourSynergyAverageWinRate] = useState(
     null
   )
-  useEffect(
-    async () => {
+  useEffect(() => {
+    // このfetchData関数は、useEffect自体を同期的に実行するため必要。
+    const fetchData = async () => {
       const response = await getYourWinRateOfSynergy()
       setYourSynergyAverageWinRate(response)
-    },
-    [yourSynergyAverageWinRate]
-  )
+    }
+    fetchData()
+  }, [])
 
   return { isLoading, yourSynergyAverageWinRate }
 }
