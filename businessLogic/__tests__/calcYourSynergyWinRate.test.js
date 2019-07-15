@@ -1,37 +1,45 @@
 import mockInput from '../mockData/calcYourSynergyWinRate'
 import { synergyEnum } from '../../constants/synergyData'
 
-import {
-  calcYourSynergyWinRate,
+import calcYourSynergyWinRate, {
   convertFromUnitIdsToSynergyWithRanking,
   convertFromUnitIdsToSynergy,
   calcAverageRankOfSynergy
-} from '../calcYuorSynergyWinRate'
+} from '../calcYourSynergyWinRate'
 
 /* ------   calcYourSynergyWinRate   ------ */
 
-// test('response keys must have all synergy', () => {
-//   const response = calcYourSynergyWinRate(mockInput)
-//   for (let synergy in synergyEnum) {
-//     const isContainSynergy = response.some(x => x.synergy === synergy)
-//     expect(isContainSynergy).toEqual(true)
-//   }
-// })
-
-// const output1 = [
-//   {
-//     synergy: synergyEnum.marine
-//   }
-// ]
-// const output = {
-//   assassin: 2,
-//   puppet: 2,
-//   psyker: 1,
-//   supporter: 1,
-//   beast: 1,
-//   vanguard: 1,
-//   totalLoopCount: 9
-// }
+test('response keys must have all synergy', () => {
+  const output = [
+    {
+      synergy: synergyEnum.assassin,
+      averageRank: 4.5
+    },
+    {
+      synergy: synergyEnum.puppet,
+      averageRank: 4.5
+    },
+    {
+      synergy: synergyEnum.psyker,
+      averageRank: 1
+    },
+    {
+      synergy: synergyEnum.supporter,
+      averageRank: 1
+    },
+    {
+      synergy: synergyEnum.beast,
+      averageRank: 8
+    },
+    {
+      synergy: synergyEnum.vanguard,
+      averageRank: 8
+    }
+  ]
+  expect(calcYourSynergyWinRate(mockInput)).toEqual(
+    expect.arrayContaining(output)
+  )
+})
 
 /* ------   convertFromUnitIdsToSynergyWithRanking   ------ */
 
@@ -166,6 +174,8 @@ test('calcAverageRankOfSynergy must return correct value', () => {
       averageRank: 8
     }
   ]
+  // 配列の順列を無視するために、expect.arrayContainingを使った。
+  // もっと簡単な方法を見つけたらリファクタリング。
   expect(calcAverageRankOfSynergy(input)).toEqual(
     expect.arrayContaining(output)
   )
