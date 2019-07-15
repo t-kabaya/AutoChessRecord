@@ -27,3 +27,40 @@ export const convertFromUnitIdsToSynergyWithRanking = input => {
   }, [])
   return res
 }
+
+export const calcAverageRankOfSynergy = input => {
+  const countedUpSynergy = input.reduce((accumulator, currentValue) => {
+    const isContainKey = accumulator.some(
+      item => item.synergy === currentValue.synergy
+    )
+    if (isContainKey) {
+      return accumulator.map(x => {
+        if (x.synergy === currentValue.synergy) {
+          return {
+            ...x,
+            sumOfRank: x.sumOfRank + currentValue.rank,
+            sumCount: x.sumCount + 1
+          }
+        }
+        return x
+      })
+    } else {
+      return [
+        ...accumulator,
+        {
+          sumOfRank: currentValue.rank,
+          sumCount: 1,
+          synergy: currentValue.synergy
+        }
+      ]
+    }
+  }, [])
+
+  // calc average
+  const synergyRankAverage = countedUpSynergy.map(x => ({
+    synergy: x.synergy,
+    averageRank: x.sumOfRank / x.sumCount
+  }))
+
+  return synergyRankAverage
+}

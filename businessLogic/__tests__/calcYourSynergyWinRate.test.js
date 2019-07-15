@@ -4,7 +4,8 @@ import { synergyEnum } from '../../constants/synergyData'
 import {
   calcYourSynergyWinRate,
   convertFromUnitIdsToSynergyWithRanking,
-  convertFromUnitIdsToSynergy
+  convertFromUnitIdsToSynergy,
+  calcAverageRankOfSynergy
 } from '../calcYuorSynergyWinRate'
 
 /* ------   calcYourSynergyWinRate   ------ */
@@ -36,33 +37,6 @@ import {
 
 test('mustCountUpTotalCount from array', () => {
   const input = mockInput
-  // const output = [
-  //   {
-  //     synergy: synergyEnum.assassin,
-  //     averageRank: 4.5
-  //   },
-  //   {
-  //     synergy: synergyEnum.puppet,
-  //     averageRank: 4.5
-  //   },
-  //   {
-  //     synergy: synergyEnum.psyker,
-  //     averageRank: 1
-  //   },
-  //   {
-  //     synergy: synergyEnum.supporter,
-  //     averageRank: 1
-  //   },
-  //   {
-  //     synergy: synergyEnum.beast,
-  //     averageRank: 8
-  //   },
-  //   {
-  //     synergy: synergyEnum.vanguard,
-  //     averageRank: 8
-  //   }
-  // ]
-
   const output = [
     { rank: 1, synergy: 'assassin' },
     { rank: 1, synergy: 'puppet' },
@@ -151,4 +125,48 @@ test('convertFromUnitIdsToSynergy', () => {
   expect(convertFromUnitIdsToSynergy(input1)).toEqual(output1)
 
   expect(convertFromUnitIdsToSynergy(input2)).toEqual(output2)
+})
+
+/* -------------------- calcAverageRankOfSynergy --------------------- */
+
+test('calcAverageRankOfSynergy must return correct value', () => {
+  const input = [
+    { rank: 1, synergy: 'assassin' },
+    { rank: 1, synergy: 'puppet' },
+    { rank: 1, synergy: 'supporter' },
+    { rank: 1, synergy: 'psyker' },
+    { rank: 8, synergy: 'vanguard' },
+    { rank: 8, synergy: 'beast' },
+    { rank: 8, synergy: 'assassin' },
+    { rank: 8, synergy: 'puppet' }
+  ]
+  const output = [
+    {
+      synergy: synergyEnum.assassin,
+      averageRank: 4.5
+    },
+    {
+      synergy: synergyEnum.puppet,
+      averageRank: 4.5
+    },
+    {
+      synergy: synergyEnum.psyker,
+      averageRank: 1
+    },
+    {
+      synergy: synergyEnum.supporter,
+      averageRank: 1
+    },
+    {
+      synergy: synergyEnum.beast,
+      averageRank: 8
+    },
+    {
+      synergy: synergyEnum.vanguard,
+      averageRank: 8
+    }
+  ]
+  expect(calcAverageRankOfSynergy(input)).toEqual(
+    expect.arrayContaining(output)
+  )
 })
