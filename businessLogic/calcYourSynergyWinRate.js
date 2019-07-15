@@ -1,15 +1,21 @@
 import { synergyEnum } from '../constants/synergyData'
 import unitData from '../constants/UnitData'
+import { Constants } from 'expo'
 
-export default (calcYourSynergyWinRate = response => {
+const calcFinalResult = data => {
+  const installationID = Constants.installationID
+  const allUserSynergyRankAverage = main(data)
+  const mySynergyRankAverage = main(
+    data.filter(x => x.userId === Constants.installationID)
+  )
+}
+
+const main = response =>
   // 1. unitIdから、シナジーを取り出す。
   // 2. 取り出したシナジーを足す
   // 2. 試行回数で割る。
-  return calcAverageRankOfSynergy(
-    convertFromUnitIdsToSynergyWithRanking(response)
-  )
-  return response
-})
+  calcAverageRankOfSynergy(convertFromUnitIdsToSynergyWithRanking(response))
+export default main
 
 // rankingがnullの時と、unitsがnullの時は考慮しない。
 export const convertFromUnitIdsToSynergy = units =>
