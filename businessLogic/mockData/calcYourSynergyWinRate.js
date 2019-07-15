@@ -1,6 +1,6 @@
 export default [
   {
-    ranking: 3,
+    ranking: 1,
     units: [
       // 鋭いエッジ、アサシン、パペット
       {
@@ -16,7 +16,7 @@ export default [
     userId: 'AF7878FB-ACEA-41D9-BF94-9A52C7033D89'
   },
   {
-    ranking: 3,
+    ranking: 8,
     units: [
       // 酸の歯、ビースト、ヴァンガード
       {

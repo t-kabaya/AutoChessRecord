@@ -34,25 +34,36 @@ import {
 
 /* ------   countUpTotalCountOfSynergy   ------ */
 
-// test('mustCountUpTotalCount from array', () => {
-//   const input = [
-//     [
-//       synergyEnum.assassin,
-//       synergyEnum.puppet,
-//       synergyEnum.supporter,
-//       synergyEnum.psyker
-//     ],
-//     [
-//       synergyEnum.vanguard,
-//       synergyEnum.beast,
-//       synergyEnum.assassin,
-//       synergyEnum.puppet
-//     ]
-//   ]
-//   const output = {
-//   }
-//   expect().toEqual()
-// }
+test('mustCountUpTotalCount from array', () => {
+  const input = mockInput
+  const output = [
+    {
+      synergy: synergyEnum.assassin,
+      averageRank: 4.5
+    },
+    {
+      synergy: synergyEnum.puppet,
+      averageRank: 4.5
+    },
+    {
+      synergy: synergyEnum.psyker,
+      averageRank: 1
+    },
+    {
+      synergy: synergyEnum.supporter,
+      averageRank: 1
+    },
+    {
+      synergy: synergyEnum.beast,
+      averageRank: 8
+    },
+    {
+      synergy: synergyEnum.vanguard,
+      averageRank: 8
+    }
+  ]
+  expect(countUpTotalCountOfSynergy(input)).toEqual(output)
+})
 
 /* ------   convertFromUnitIdsToSynergy   ------ */
 
