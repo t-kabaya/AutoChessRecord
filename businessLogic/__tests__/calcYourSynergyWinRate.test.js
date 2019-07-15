@@ -36,32 +36,75 @@ import {
 
 test('mustCountUpTotalCount from array', () => {
   const input = mockInput
+  // const output = [
+  //   {
+  //     synergy: synergyEnum.assassin,
+  //     averageRank: 4.5
+  //   },
+  //   {
+  //     synergy: synergyEnum.puppet,
+  //     averageRank: 4.5
+  //   },
+  //   {
+  //     synergy: synergyEnum.psyker,
+  //     averageRank: 1
+  //   },
+  //   {
+  //     synergy: synergyEnum.supporter,
+  //     averageRank: 1
+  //   },
+  //   {
+  //     synergy: synergyEnum.beast,
+  //     averageRank: 8
+  //   },
+  //   {
+  //     synergy: synergyEnum.vanguard,
+  //     averageRank: 8
+  //   }
+  // ]
+
   const output = [
-    {
-      synergy: synergyEnum.assassin,
-      averageRank: 4.5
-    },
-    {
-      synergy: synergyEnum.puppet,
-      averageRank: 4.5
-    },
-    {
-      synergy: synergyEnum.psyker,
-      averageRank: 1
-    },
-    {
-      synergy: synergyEnum.supporter,
-      averageRank: 1
-    },
-    {
-      synergy: synergyEnum.beast,
-      averageRank: 8
-    },
-    {
-      synergy: synergyEnum.vanguard,
-      averageRank: 8
-    }
+    { sumOfRank: 1, synergy: 'assassin' },
+    { sumOfRank: 1, synergy: 'puppet' },
+    { sumOfRank: 1, synergy: 'supporter' },
+    { sumOfRank: 1, synergy: 'psyker' },
+    { sumOfRank: 8, synergy: 'vanguard' },
+    { sumOfRank: 8, synergy: 'beast' },
+    { sumOfRank: 8, synergy: 'assassin' },
+    { sumOfRank: 8, synergy: 'puppet' }
   ]
+  // const output = [
+  //   {
+  //     synergy: synergyEnum.assassin,
+  //     sumOfRank: 9,
+  //     sumCount: 2
+  //   },
+  //   {
+  //     synergy: synergyEnum.puppet,
+  //     sumOfRank: 9,
+  //     sumCount: 2
+  //   },
+  //   {
+  //     synergy: synergyEnum.psyker,
+  //     sumOfRank: 1,
+  //     sumCount: 1
+  //   },
+  //   {
+  //     synergy: synergyEnum.supporter,
+  //     sumOfRank: 1,
+  //     sumCount: 1
+  //   },
+  //   {
+  //     synergy: synergyEnum.vanguard,
+  //     sumOfRank: 8,
+  //     sumCount: 1
+  //   },
+  //   {
+  //     synergy: synergyEnum.beast,
+  //     sumOfRank: 8,
+  //     sumCount: 1
+  //   }
+  // ]
   expect(countUpTotalCountOfSynergy(input)).toEqual(output)
 })
 
