@@ -1,13 +1,9 @@
 import { synergyEnum } from '../constants/synergyData'
 import unitData from '../constants/UnitData'
-import { Constants } from 'expo'
 
-const calcFinalResult = data => {
-  const installationID = Constants.installationID
+export const formatAverageRankOfSynergyForMyPage = (data, userId) => {
   const allUserSynergyRankAverage = main(data)
-  const mySynergyRankAverage = main(
-    data.filter(x => x.userId === Constants.installationID)
-  )
+  const mySynergyRankAverage = main(data.filter(x => x.userId === userId))
 }
 
 const main = response =>
@@ -67,7 +63,8 @@ export const calcAverageRankOfSynergy = input => {
   // rank合計を足した回数で割る
   const synergyRankAverage = countedUpSynergy.map(x => ({
     synergy: x.synergy,
-    averageRank: x.sumOfRank / x.sumCount
+    averageRank: x.sumOfRank / x.sumCount,
+    playCount: x.sumCount
   }))
 
   return synergyRankAverage

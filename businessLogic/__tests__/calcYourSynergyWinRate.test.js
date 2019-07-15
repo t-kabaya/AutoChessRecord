@@ -4,8 +4,11 @@ import { synergyEnum } from '../../constants/synergyData'
 import calcYourSynergyWinRate, {
   convertFromUnitIdsToSynergyWithRanking,
   convertFromUnitIdsToSynergy,
-  calcAverageRankOfSynergy
+  calcAverageRankOfSynergy,
+  formatAverageRankOfSynergyForMyPage
 } from '../calcYourSynergyWinRate'
+
+/* -------------------- formatAverageRankOfSynergyForMyPage --------------------- */
 
 /* ------   calcYourSynergyWinRate   ------ */
 
@@ -13,27 +16,33 @@ test('response keys must have all synergy', () => {
   const output = [
     {
       synergy: synergyEnum.assassin,
-      averageRank: 4.5
+      averageRank: 4.5,
+      playCount: 2
     },
     {
       synergy: synergyEnum.puppet,
-      averageRank: 4.5
+      averageRank: 4.5,
+      playCount: 2
     },
     {
       synergy: synergyEnum.psyker,
-      averageRank: 1
+      averageRank: 1,
+      playCount: 1
     },
     {
       synergy: synergyEnum.supporter,
-      averageRank: 1
+      averageRank: 1,
+      playCount: 1
     },
     {
       synergy: synergyEnum.beast,
-      averageRank: 8
+      averageRank: 8,
+      playCount: 1
     },
     {
       synergy: synergyEnum.vanguard,
-      averageRank: 8
+      averageRank: 8,
+      playCount: 1
     }
   ]
   expect(calcYourSynergyWinRate(mockInput)).toEqual(
@@ -151,27 +160,33 @@ test('calcAverageRankOfSynergy must return correct value', () => {
   const output = [
     {
       synergy: synergyEnum.assassin,
-      averageRank: 4.5
+      averageRank: 4.5,
+      playCount: 2
     },
     {
       synergy: synergyEnum.puppet,
-      averageRank: 4.5
+      averageRank: 4.5,
+      playCount: 2
     },
     {
       synergy: synergyEnum.psyker,
-      averageRank: 1
+      averageRank: 1,
+      playCount: 1
     },
     {
       synergy: synergyEnum.supporter,
-      averageRank: 1
+      averageRank: 1,
+      playCount: 1
     },
     {
       synergy: synergyEnum.beast,
-      averageRank: 8
+      averageRank: 8,
+      playCount: 1
     },
     {
       synergy: synergyEnum.vanguard,
-      averageRank: 8
+      averageRank: 8,
+      playCount: 1
     }
   ]
   // 配列の順列を無視するために、expect.arrayContainingを使った。
