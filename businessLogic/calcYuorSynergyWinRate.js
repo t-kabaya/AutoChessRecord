@@ -20,7 +20,7 @@ export const countUpTotalCountOfSynergy = input => {
   const res = input.reduce((accumulator, currentValue) => {
     const synergy = convertFromUnitIdsToSynergy(currentValue.units)
     const countedUpSynergy = synergy.map(item => {
-      return { synergy: item, sumOfRank: currentValue.ranking }
+      return { synergy: item, rank: currentValue.ranking }
     })
 
     return [...accumulator, ...countedUpSynergy]

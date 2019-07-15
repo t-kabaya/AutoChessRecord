@@ -64,14 +64,14 @@ test('mustCountUpTotalCount from array', () => {
   // ]
 
   const output = [
-    { sumOfRank: 1, synergy: 'assassin' },
-    { sumOfRank: 1, synergy: 'puppet' },
-    { sumOfRank: 1, synergy: 'supporter' },
-    { sumOfRank: 1, synergy: 'psyker' },
-    { sumOfRank: 8, synergy: 'vanguard' },
-    { sumOfRank: 8, synergy: 'beast' },
-    { sumOfRank: 8, synergy: 'assassin' },
-    { sumOfRank: 8, synergy: 'puppet' }
+    { rank: 1, synergy: 'assassin' },
+    { rank: 1, synergy: 'puppet' },
+    { rank: 1, synergy: 'supporter' },
+    { rank: 1, synergy: 'psyker' },
+    { rank: 8, synergy: 'vanguard' },
+    { rank: 8, synergy: 'beast' },
+    { rank: 8, synergy: 'assassin' },
+    { rank: 8, synergy: 'puppet' }
   ]
   // const output = [
   //   {
