@@ -1,10 +1,9 @@
-import { db } from './fireStoreSetup'
+import { db, dbKey } from './fireStoreSetup'
 import { Constants } from 'expo'
 import unitData from '../constants/UnitData'
 import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
 import { en } from '../constants/I18n'
 import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
-import { databaseENV } from '../config/environmentConfig'
 
 // 設計
 // record table
@@ -17,15 +16,13 @@ import { databaseENV } from '../config/environmentConfig'
 //   }
 // ]
 
-const matchRecord = `${databaseENV}matchRecord`
-
 // 順位は押さなくてもいい。
 export const saveMatchRecordToFireStore = async (units, ranking) => {
   const unitDataToStore = units
     .filter(unit => !(unit.level === 0))
     .map(unit => ({ unitId: unit.unitId, level: unit.level }))
   try {
-    db.collection(matchRecord).add({
+    db.collection(dbKey.matchRecord).add({
       userId: Constants.installationId,
       ranking: 3,
       units: unitDataToStore,
@@ -41,7 +38,7 @@ export const getMyMatchRecord = async () => {
   return mockDataOfOpDeck
 
   try {
-    const response = await db.collection(matchRecord).get()
+    const response = await db.collection(dbKey.matchRecord).get()
     const myMatchRecord = await response.docs
       .map(item => item.data())
       .filter(data => data.userId === Constants.installationId)
