@@ -41,7 +41,8 @@ export const en = {
   synergy: 'synergy',
   yourAverageText: 'average of you(place)',
   averageOfAllUserText: 'average of all user (place)',
-  playCountText: 'count of play(times)'
+  playCountText: 'count of play(times)',
+  noDataText: 'no data'
 }
 
 export const ja = {
@@ -84,7 +85,8 @@ export const ja = {
   synergy: 'シナジー',
   yourAverageText: 'あなたの平均（位）',
   averageOfAllUserText: '全体の平均（位）',
-  playCountText: '使用数（回）'
+  playCountText: '使用数（回）',
+  noDataText: 'データがありません'
 }
 
 i18n.fallbacks = true

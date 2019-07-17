@@ -21,6 +21,7 @@ import {
 import { synergyImagePathArray } from '../constants/synergyData'
 import I18n from '../constants/I18n'
 import { getYourWinRateOfSynergy } from '../fireStore/YourSynergyWinRateORM'
+// import { synergyImagePathArray } from '../constants/synergyData'
 
 // import View from '../utils/cView'
 
@@ -88,7 +89,7 @@ const MyPageScreen = props => {
           <View style={styles.synergyTableListItem}>
             <View style={styles.synergyTableListItemSynergyWrapper}>
               <Image
-                source={require('../assets/images/assassin.png')}
+                source={synergyImagePathArray[item.synergy]}
                 style={styles.smallSynergyIcon}
               />
               <Text>{I18n.t(item.synergy)}</Text>
@@ -172,7 +173,8 @@ const styles = StyleSheet.create({
     ...baseStyles.cell,
     flexDirection: 'row',
     borderRightWidth: 1,
-    borderColor: separateLineGray
+    borderColor: separateLineGray,
+    justifyContent: 'flex-start'
   },
   myAverageRankWrapper: {
     ...baseStyles.cell
