@@ -11,8 +11,11 @@ const matchRecord = `${databaseENV}matchRecord`
 export const getYourWinRateOfSynergy = async () => {
   console.log({ matchRecord })
 
-  const response = await db.collection('devmatchRecord').get()
+  const response = await db.collection(matchRecord).get()
   const data = response.docs.map(doc => doc.data())
 
-  return formatAverageRankOfSynergyOfMeAndAllUser(data)
+  return formatAverageRankOfSynergyOfMeAndAllUser(
+    data,
+    Constants.installationId
+  )
 }

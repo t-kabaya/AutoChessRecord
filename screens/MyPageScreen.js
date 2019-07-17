@@ -130,9 +130,10 @@ const baseStyles = StyleSheet.create({
   cell: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: wp('20%')
+    width: wp('24%'),
     // borderLeftWidth: 1,
-    // borderTopWidth: 1
+    // borderTopWidth: 1,
+    backgroundColor: 'white'
   }
 })
 
@@ -174,7 +175,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRightWidth: 1,
     borderColor: separateLineGray,
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    paddingLeft: wp('1%')
   },
   myAverageRankWrapper: {
     ...baseStyles.cell
@@ -190,9 +192,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   smallSynergyIcon: {
-    height: 20,
-    width: 20,
-    marginRight: 10
+    height: 22,
+    width: 22,
+    marginRight: 8
   }
 })
 

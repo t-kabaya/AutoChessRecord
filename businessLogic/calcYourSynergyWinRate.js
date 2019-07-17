@@ -13,15 +13,18 @@ export const formatAverageRankOfSynergyOfMeAndAllUser = (data, userId) => {
     )
     const mySynergyAverage = mySynergyRankAverage.find(x => x.synergy === key)
 
+    const roundRank = num => Math.round(num * 10) / 10
+
     // undefinedを許容
     averageRankOfMeAndAllUser.push({
       synergy: key,
       allUserSynergyRankAverage:
-        (allUserAverage && allUserAverage.averageRank) || 'no data',
+        (allUserAverage && roundRank(allUserAverage.averageRank)) || 'no data',
       allUserSynergyPlayCount:
         (allUserAverage && allUserAverage.playCount) || 0,
       mySynergyAverage:
-        (mySynergyAverage && mySynergyAverage.averageRank) || 'no data',
+        (mySynergyAverage && roundRank(mySynergyAverage.averageRank)) ||
+        'no data',
       mySynergyPlayCount: (mySynergyAverage && mySynergyAverage.playCount) || 0
     })
   }

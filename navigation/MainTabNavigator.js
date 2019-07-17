@@ -73,9 +73,9 @@ export default createMaterialTopTabNavigator(
     }
   },
   {
-    initialRouteName: 'MyPageStack',
+    // initialRouteName: 'MyPageStack',
     // initialRouteName: 'OpUnitsStack',
-    // initialRouteName: 'HomeStack',
+    initialRouteName: 'HomeStack',
     animationEnabled: false,
     tabBarOptions: {
       style: {

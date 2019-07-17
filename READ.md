@@ -47,6 +47,7 @@ selectUnitスクリーンの使い勝手を向上
 synergyの画像を追加
 
 マイページのbusinessLogicの作成(main関数などを変更。)
+マイページで、実際のデータが参照されるように変更。
 
 
 
