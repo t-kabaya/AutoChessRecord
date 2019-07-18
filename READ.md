@@ -41,6 +41,9 @@ selectUnitスクリーンの使い勝手を向上(種族ごとの洗濯、コイ
 ユニットの名前をupdate。（後回し）
 
 マイページのbusinessLogicの作成(main関数などを変更。)
-
-
+Sentryでバグ検知
+fireStoreにセキュリティルール追加
+一番最初にモーダルを追加。
+save match buttonをマテリアルデザイン標準のボタンにして、説明を追加。
+unitスクリーンを見やすく。  
 

@@ -65,12 +65,12 @@ export default createMaterialTopTabNavigator(
         tabBarLabel: i18n.t('unitText')
       }
     },
-    // MyPageStack: {
-    //   screen: MyPageStack,
-    //   navigationOptions: {
-    //     tabBarLabel: i18n.t('myPageTabTitle')
-    //   }
-    // }
+    MyPageStack: {
+      screen: MyPageStack,
+      navigationOptions: {
+        tabBarLabel: i18n.t('myPageTabTitle')
+      }
+    }
   },
   {
     // initialRouteName: 'MyPageStack',
