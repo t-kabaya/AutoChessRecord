@@ -35,13 +35,15 @@ export const saveMatchRecordToFireStore = async (units, ranking) => {
 
 export const getMyMatchRecord = async () => {
   // 開発のため、モックデータを使用する。
-  return mockDataOfOpDeck
+  // return mockDataOfOpDeck
 
   try {
     const response = await db.collection(dbKey.matchRecord).get()
-    const myMatchRecord = await response.docs
-      .map(item => item.data())
-      .filter(data => data.userId === Constants.installationId)
+    const myMatchRecord = await response.docs.map(item => item.data())
+    debugger
+    // .filter(data => data.userId === Constants.installationId)
+
+    debugger
 
     // const myMatchRecordHasImage = myMatchRecord.map(record => ({...record, }))
     // ここに、シナジーなどを計算する処理を書いていくが、また後日追加する。
