@@ -1,10 +1,15 @@
 import React from 'react'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native'
-import { AppLoading, Asset, Font, Icon } from 'expo'
+import { AppLoading, Asset, Font, Icon, Constants } from 'expo'
 import { Root } from 'native-base'
 import AppNavigator from './navigation/AppNavigator'
 import fireStoreSetup from './fireStore/fireStoreSetup'
 import { unitImagePathArray } from './constants/UnitData'
+import Sentry from 'sentry-expo'
+// sentryがうまく動かない。
+// Sentry.enableInExpoDevelopment = true
+Sentry.config(Constants.manifest.extra.sentryPublicDsn).install()
+// 黄色のアラートを削除
 console.disableYellowBox = true
 
 export default class App extends React.Component {

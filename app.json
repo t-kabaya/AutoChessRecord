@@ -41,7 +41,22 @@
         "storageBucket": "autochessrecord.appspot.com",
         "messagingSenderId": "990548586835",
         "appId": "1:990548586835:web:5a00c7cd7b232d99"
-      }
+      },
+      "sentryPublicDsn": "https://d1c85586a8b94c8e98aa7e45718d6b5a@sentry.io/1509498"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "//": "sentry",
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "kabaya",
+            "project": "autoChessRecord",
+            "authToken": "5a12429075b34b26a492d16ca2ed909209de626f56e045e99243dd83284951ff",
+            "url": "https://sentry.io/oauth/authorize/"
+          }
+        }
+      ]
     }
   }
 }
