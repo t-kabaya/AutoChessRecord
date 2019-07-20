@@ -1,7 +1,7 @@
 import { db, dbKey } from './fireStoreSetup'
 import { Constants } from 'expo'
 import unitData from '../constants/UnitData'
-import calcSynergiesFromUnitIds from '../utils/calcSynergiesFromUnitIds'
+import calcSynergiesFromUnitIds from '../businessLogic/calcSynergiesFromUnitIds'
 import { en } from '../constants/I18n'
 import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
 
