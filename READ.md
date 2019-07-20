@@ -46,4 +46,7 @@ fireStoreにセキュリティルール追加
 一番最初にモーダルを追加。
 save match buttonをマテリアルデザイン標準のボタンにして、説明を追加。
 unitスクリーンを見やすく。  
+selectunitスクリーンで種族によりフィルター
+selectUnitスクリーンも多言語対応化
+selectUnitスクリーンも日本語に直す。
 
