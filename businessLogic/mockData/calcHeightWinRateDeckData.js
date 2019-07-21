@@ -91,3 +91,34 @@ export const output1 = [
     ]
   }
 ]
+
+export const isContainThisDeckInput1 = [
+  {
+    averageRanking: 1,
+    units: [
+      {
+        level: 1,
+        unitId: 3
+      },
+      {
+        level: 1,
+        unitId: 17
+      }
+    ]
+  },
+  {
+    averageRanking: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  }
+]
+
+// export const isContainThisDeckOutput1
