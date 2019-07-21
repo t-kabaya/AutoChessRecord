@@ -1,17 +1,27 @@
 import {
   apiResponse,
   output1,
-  isContainThisDeckInput1
+  isContainThisDeckInput1,
+  calcHighWinRateDeckInput1,
+  calcHighWinRateDeckOutput1
 } from '../mockData/calcHeightWinRateDeckData'
 
 import {
+  calcHighWinRateDeckList,
   sumDeckRankToCalcHighWinRateDeck,
   findIndexOfDeckFromHighWinRateDeckList
 } from '../calcHighWinRateDeck'
 
-/* ------   calcWinRanknigOfUnit   ------ */
+/* ------   calcHighWinRateDeckList   ------ */
 
-test('must return two object', () => {
+test('return value must be sorted by averageRank', () => {
+  const result = calcHighWinRateDeckList(calcHighWinRateDeckInput1)
+  expect(result).toEqual(calcHighWinRateDeckOutput1)
+})
+
+/* ------   usmDeckRankTocalcHighWinRateDeck   ------ */
+
+test('must return correct value', () => {
   const response = sumDeckRankToCalcHighWinRateDeck(apiResponse)
 
   expect(response).toEqual(output1)

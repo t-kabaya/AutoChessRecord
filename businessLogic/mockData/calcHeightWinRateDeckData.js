@@ -65,7 +65,7 @@ export const apiResponse = [
 
 export const output1 = [
   {
-    averageRanking: 2,
+    averageRank: 2,
     units: [
       {
         level: 1,
@@ -78,7 +78,7 @@ export const output1 = [
     ]
   },
   {
-    averageRanking: 8,
+    averageRank: 8,
     units: [
       {
         level: 2,
@@ -94,7 +94,7 @@ export const output1 = [
 
 export const isContainThisDeckInput1 = [
   {
-    averageRanking: 1,
+    totalSumOfRank: 1,
     units: [
       {
         level: 1,
@@ -107,7 +107,7 @@ export const isContainThisDeckInput1 = [
     ]
   },
   {
-    averageRanking: 8,
+    totalSumOfRank: 8,
     units: [
       {
         level: 2,
@@ -122,3 +122,168 @@ export const isContainThisDeckInput1 = [
 ]
 
 // export const isContainThisDeckOutput1
+
+export const calcHighWinRateDecklistInput1 = [
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    totalSumOfRank: 8,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  }
+]
+
+export const calcHighWinRateDeckInput1 = [
+  {
+    averageRank: 8,
+    units: [
+      {
+        level: 1,
+        unitId: 3
+      },
+      {
+        level: 1,
+        unitId: 17
+      }
+    ]
+  },
+  {
+    averageRank: 1,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  }
+]
+
+export const calcHighWinRateDeckOutput1 = [
+  {
+    averageRank: 1,
+    units: [
+      {
+        level: 2,
+        unitId: 6
+      },
+      {
+        level: 2,
+        unitId: 31
+      }
+    ]
+  },
+  {
+    averageRank: 8,
+    units: [
+      {
+        level: 1,
+        unitId: 3
+      },
+      {
+        level: 1,
+        unitId: 17
+      }
+    ]
+  }
+]
