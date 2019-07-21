@@ -4,11 +4,11 @@ import _ from 'lodash'
 // しかし、今回は試しに非関数志向でreduceを排除して書いてみる。
 
 // averageRankでソートする。
-export const calcHighWinRateDeckList = notSortedHighWinRateDeckList => {
-  return _.sortBy(notSortedHighWinRateDeckList, x => x.averageRank)
-}
+// export const calcHighWinRateDeckList = notSortedHighWinRateDeckList => {
+//   return _.sortBy(notSortedHighWinRateDeckList, x => x.averageRank)
+// }
 
-export const sumDeckRankToCalcHighWinRateDeck = apiResponse => {
+export const calcHighWinRateDeckList = apiResponse => {
   const highWinRateDeckList = []
   apiResponse.forEach(data => {
     const index = findIndexOfDeckFromHighWinRateDeckList(
@@ -36,10 +36,13 @@ export const sumDeckRankToCalcHighWinRateDeck = apiResponse => {
   })
 
   // 平均勝率を求め、小数点第二を四捨五入
-  return highWinRateDeckList.map(x => ({
-    averageRank: Math.round((x.totalSumOfRank / x.sumCount) * 10) / 10,
-    units: x.units
-  }))
+  // averageRankでソート
+  return _.sortBy(
+    highWinRateDeckList.map(x => ({
+      averageRank: Math.round((x.totalSumOfRank / x.sumCount) * 10) / 10,
+      units: x.units
+    }))
+  )
 }
 
 // unitsという配列が渡された時に、その配列が、既存array of objectの中にあるか確認

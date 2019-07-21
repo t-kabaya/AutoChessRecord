@@ -8,21 +8,21 @@ import {
 
 import {
   calcHighWinRateDeckList,
-  sumDeckRankToCalcHighWinRateDeck,
+  // sumDeckRankToCalcHighWinRateDeck,
   findIndexOfDeckFromHighWinRateDeckList
 } from '../calcHighWinRateDeck'
 
 /* ------   calcHighWinRateDeckList   ------ */
 
-test('return value must be sorted by averageRank', () => {
-  const result = calcHighWinRateDeckList(calcHighWinRateDeckInput1)
-  expect(result).toEqual(calcHighWinRateDeckOutput1)
-})
+// test('return value must be sorted by averageRank', () => {
+//   const result = calcHighWinRateDeckList(calcHighWinRateDeckInput1)
+//   expect(result).toEqual(calcHighWinRateDeckOutput1)
+// })
 
-/* ------   usmDeckRankTocalcHighWinRateDeck   ------ */
+// /* ------   usmDeckRankTocalcHighWinRateDeck   ------ */
 
 test('must return correct value', () => {
-  const response = sumDeckRankToCalcHighWinRateDeck(apiResponse)
+  const response = calcHighWinRateDeckList(apiResponse)
 
   expect(response).toEqual(output1)
 })

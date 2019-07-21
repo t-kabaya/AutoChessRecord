@@ -4,6 +4,7 @@ import unitData from '../constants/UnitData'
 import calcSynergiesFromUnitIds from '../businessLogic/calcSynergiesFromUnitIds'
 import { en } from '../constants/I18n'
 import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
+import { calcHighWinRateDeckList } from '../businessLogic/calcHighWinRateDeck'
 
 // 設計
 // record table
@@ -39,20 +40,18 @@ export const getMyMatchRecord = async () => {
 
   try {
     const response = await db.collection(dbKey.matchRecord).get()
-    const myMatchRecord = await response.docs.map(item => item.data())
-    debugger
-    // .filter(data => data.userId === Constants.installationId)
-
+    const data = response.docs.map(doc => doc.data())
+    // const myMatchRecord = await response.docs.map(item => item.data())
+    const highWinRateDeck = calcHighWinRateDeckList(data)
     debugger
 
     // const myMatchRecordHasImage = myMatchRecord.map(record => ({...record, }))
     // ここに、シナジーなどを計算する処理を書いていくが、また後日追加する。
-    const myMatchRecordWithSynergyLevel = myMatchRecord.map(record => {
+    return highWinRateDeck.map(record => {
       const synergy = calcSynergiesFromUnitIds(record.units)
 
       return { ...record, synergy }
     })
-    return myMatchRecordWithSynergyLevel
   } catch (error) {
     console.log('error')
   }

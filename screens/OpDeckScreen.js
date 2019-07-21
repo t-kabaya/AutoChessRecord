@@ -57,10 +57,8 @@ const MatchRecordListItem = item => (
     <View style={styles.matchRecordListItemLeftPart}>
       <Text style={{ fontSize: 15 }}>{i18n.t('top3WinRate')}</Text>
       <View style={styles.matchRecordListItemLeftPartRow}>
-        <Text style={styles.top3WinRateNumberText}>
-          {item.top3WinRateOfDeck}
-        </Text>
-        <Text style={styles.percentText}>%</Text>
+        <Text style={styles.top3WinRateNumberText}>{item.averageRank}</Text>
+        <Text style={styles.percentText} />
       </View>
     </View>
     <View style={styles.matchRecordListItemCenterPart}>
@@ -94,6 +92,7 @@ const useOpDeckStatus = () => {
       const myMatchRecord = await getMyMatchRecord()
       // isLoadingをfalseに変更
       setIsLoadingAsFalse(false)
+      debugger
       setMyMatchRecord(myMatchRecord)
     },
     // hooksは、renderのたびに呼ばれてしまう。
@@ -110,6 +109,7 @@ const onPressRecordMatchButton = props => {
 
 const OpDeckScreen = props => {
   const { isLoading, myMatchRecord } = useOpDeckStatus()
+  debugger
 
   if (isLoading) return null
   return (
