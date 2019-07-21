@@ -3,7 +3,7 @@ import { en } from '../constants/I18n'
 const unitData = [
   {
     unitId: 1,
-    unitName: 'ゾウ',
+    unitName: en.tusker,
     race: [en.beast],
     job: [en.vanguard],
     class: 'タンク',
@@ -11,7 +11,7 @@ const unitData = [
   },
   {
     unitId: 2,
-    unitName: '酸の歯',
+    unitName: en.acidtooth,
     race: [en.beast],
     job: [en.vanguard],
     class: 'タンク',
@@ -19,7 +19,7 @@ const unitData = [
   },
   {
     unitId: 3,
-    unitName: '鋭いエッジ',
+    unitName: en.keenedge,
     race: [en.puppet],
     job: [en.assassin],
     class: 'ベーシックアタック',
@@ -27,7 +27,7 @@ const unitData = [
   },
   {
     unitId: 4,
-    unitName: '歌手',
+    unitName: en.chanter,
     race: [en.psyker],
     job: [en.supporter],
     class: 'supporter',
@@ -35,7 +35,7 @@ const unitData = [
   },
   {
     unitId: 5,
-    unitName: '法王',
+    unitName: en.hierophant,
     race: [en.psyker],
     job: [en.blaster],
     class: 'アビリティダメージ',
@@ -43,7 +43,7 @@ const unitData = [
   },
   {
     unitId: 6,
-    unitName: '狙撃兵',
+    unitName: en.sniper,
     race: [en.marine],
     job: [en.longShot],
     class: 'ベーシックアタック',
@@ -51,7 +51,7 @@ const unitData = [
   },
   {
     unitId: 7,
-    unitName: '医者',
+    unitName: en.medic,
     race: [en.marine],
     job: [en.supporter],
     class: 'supporter',
@@ -59,7 +59,7 @@ const unitData = [
   },
   {
     unitId: 8,
-    unitName: 'アイアンバードライダー',
+    unitName: en.ironbirdRider,
     race: [en.rider],
     job: [en.longShot],
     class: 'ベーシックアタック',
@@ -67,7 +67,7 @@ const unitData = [
   },
   {
     unitId: 9,
-    unitName: '略奪者',
+    unitName: en.marauder,
     race: [en.mech],
     job: [en.blaster],
     class: 'コントロール',
@@ -75,7 +75,7 @@ const unitData = [
   },
   {
     unitId: 10,
-    unitName: '目玉の男',
+    unitName: en.oculus,
     race: [en.insectoid],
     job: [en.specialist],
     class: 'コントロール',
@@ -83,7 +83,7 @@ const unitData = [
   },
   {
     unitId: 11,
-    unitName: 'レーザーの爪',
+    unitName: en.razorclaw,
     race: [en.beast],
     job: [en.assassin],
     class: 'ベーシックアタック',
@@ -91,7 +91,7 @@ const unitData = [
   },
   {
     unitId: 12,
-    unitName: 'パンダ僧',
+    unitName: en.pandaMonk,
     race: [en.panda],
     job: [en.vanguard],
     class: 'タンク',
@@ -99,7 +99,7 @@ const unitData = [
   },
   {
     unitId: 13,
-    unitName: '手品師',
+    unitName: en.illusionist,
     race: [en.psyker],
     job: [en.summoner],
     class: '召喚',
@@ -107,7 +107,7 @@ const unitData = [
   },
   {
     unitId: 14,
-    unitName: 'セイレーン',
+    unitName: en.siren,
     race: [en.kraken],
     job: [en.assassin],
     class: 'アビリティダメージ',
@@ -115,7 +115,7 @@ const unitData = [
   },
   {
     unitId: 15,
-    unitName: '雷を呼ぶ者',
+    unitName: en.thunderer,
     race: [en.psyker],
     job: [en.longShot],
     class: 'レイトゲームキャリー',
@@ -123,7 +123,7 @@ const unitData = [
   },
   {
     unitId: 16,
-    unitName: '金剛杵',
+    unitName: en.vajra,
     race: [en.walker],
     job: [en.guardian],
     class: 'タンク、ベーシックアタック',
@@ -131,7 +131,7 @@ const unitData = [
   },
   {
     unitId: 17,
-    unitName: '刃のマスター',
+    unitName: en.blademaster,
     race: [en.puppet],
     job: [en.vanguard],
     class: 'アビリティダメージ',
@@ -139,7 +139,7 @@ const unitData = [
   },
   {
     unitId: 18,
-    unitName: '空のカニ',
+    unitName: en.skycrab,
     race: [en.kraken],
     job: [en.siegeBreaker],
     class: 'アビリティダメージ',
@@ -147,7 +147,7 @@ const unitData = [
   },
   {
     unitId: 19,
-    unitName: 'ゴリラ',
+    unitName: en.gorilla,
     race: [en.mech],
     job: [en.blaster],
     class: 'アビリティダメージ',
@@ -155,7 +155,7 @@ const unitData = [
   },
   {
     unitId: 20,
-    unitName: 'ドラゴンの息',
+    unitName: en.dragonBreath,
     race: [en.marine],
     job: [en.vanguard],
     class: 'アビリティダメージ',
@@ -163,7 +163,7 @@ const unitData = [
   },
   {
     unitId: 21,
-    unitName: '大盾の歩兵',
+    unitName: en.paviser,
     race: [en.marine],
     job: [en.guardian],
     class: 'タンク',
@@ -171,7 +171,7 @@ const unitData = [
   },
   {
     unitId: 22,
-    unitName: 'カミカゼ',
+    unitName: en.kamikaze,
     race: [en.insectoid],
     job: [en.blaster],
     class: 'アビリティダメージ',
@@ -179,7 +179,7 @@ const unitData = [
   },
   {
     unitId: 23,
-    unitName: '緑の大男',
+    unitName: en.vinewarden,
     race: [en.immortal],
     job: [en.specialist],
     class: 'コントロール',
@@ -187,7 +187,7 @@ const unitData = [
   },
   {
     unitId: 24,
-    unitName: '暗殺剣士',
+    unitName: en.slasher,
     race: [en.puppet],
     job: [en.vanguard],
     class: 'ベーシックアタック',
@@ -195,7 +195,7 @@ const unitData = [
   },
   {
     unitId: 25,
-    unitName: '嵐を呼ぶ者',
+    unitName: en.electrocutioner,
     race: [en.kraken],
     job: [en.specialist],
     class: 'アビリティダメージ',
@@ -203,7 +203,7 @@ const unitData = [
   },
   {
     unitId: 26,
-    unitName: '阿羅漢',
+    unitName: en.arhat,
     race: [en.walker],
     job: [en.longShot],
     class: 'アビリティダメージ',
@@ -211,7 +211,7 @@ const unitData = [
   },
   {
     unitId: 27,
-    unitName: '石弓',
+    unitName: en.catapult,
     race: [en.mech],
     job: [en.siegeBreaker],
     class: 'レイトゲームキャリー',
@@ -219,7 +219,7 @@ const unitData = [
   },
   {
     unitId: 28,
-    unitName: '先導者',
+    unitName: en.outrider,
     race: [en.rider],
     job: [en.blaster],
     class: 'アビリティダメージ',
@@ -227,7 +227,7 @@ const unitData = [
   },
   {
     unitId: 29,
-    unitName: '恐れを知らぬ者',
+    unitName: en.dauntless,
     race: [en.airForce],
     job: [en.blaster],
     class: 'アビリティダメージ',
@@ -235,7 +235,7 @@ const unitData = [
   },
   {
     unitId: 30,
-    unitName: '技術者',
+    unitName: en.engineer,
     race: [en.airForce],
     job: [en.supporter],
     class: 'supporter',
@@ -243,7 +243,7 @@ const unitData = [
   },
   {
     unitId: 31,
-    unitName: 'ゲリラ隊',
+    unitName: en.commando,
     race: [en.marine],
     job: [en.longShot],
     class: 'アビリティダメージ',
@@ -251,7 +251,7 @@ const unitData = [
   },
   {
     unitId: 32,
-    unitName: '半魚人',
+    unitName: en.mortus,
     race: [en.airForce],
     job: [en.assassin],
     class: 'ベーシックアタック',
@@ -259,7 +259,7 @@ const unitData = [
   },
   {
     unitId: 33,
-    unitName: '悪魔の手',
+    unitName: en.dreadpaw,
     race: [en.beast],
     job: [en.summoner],
     class: '召喚',
@@ -267,7 +267,7 @@ const unitData = [
   },
   {
     unitId: 34,
-    unitName: 'クモ',
+    unitName: en.mindbreaker,
     race: [en.insectoid],
     job: [en.specialist],
     class: 'コントロール',
@@ -275,7 +275,7 @@ const unitData = [
   },
   {
     unitId: 35,
-    unitName: 'オオコウモリ',
+    unitName: en.direwing,
     race: [en.rapter],
     job: [en.longShot],
     class: 'アビリティダメージ',
@@ -283,7 +283,7 @@ const unitData = [
   },
   {
     unitId: 36,
-    unitName: 'ワシ',
+    unitName: en.skyclaw,
     race: [en.rapter, en.beast],
     job: [en.vanguard],
     class: 'タンク',
@@ -291,7 +291,7 @@ const unitData = [
   },
   {
     unitId: 37,
-    unitName: 'シュリケンパンダ',
+    unitName: en.shurikenPanda,
     race: [en.panda],
     job: [en.assassin],
     class: 'アビリティダメージ',
@@ -299,7 +299,7 @@ const unitData = [
   },
   {
     unitId: 38,
-    unitName: '黄金の鬣',
+    unitName: en.goldmane,
     race: [en.beast],
     job: [en.guardian],
     class: 'コントロール、タンク',
@@ -307,7 +307,7 @@ const unitData = [
   },
   {
     unitId: 39,
-    unitName: 'フェニックス',
+    unitName: en.sunfire,
     race: [en.rapter],
     job: [en.blaster, en.specialist],
     class: 'アビリティダメージ',
@@ -315,7 +315,7 @@ const unitData = [
   },
   {
     unitId: 40,
-    unitName: '塁壁',
+    unitName: en.bulwark,
     race: [en.puppet],
     job: [en.guardian],
     class: 'タンク',
@@ -323,7 +323,7 @@ const unitData = [
   },
   {
     unitId: 41,
-    unitName: '嵐の守護者',
+    unitName: en.tempestKeeper,
     race: [en.walker],
     job: [en.siegeBreaker],
     class: 'アビリティダメージ、コントロール',
@@ -331,7 +331,7 @@ const unitData = [
   },
   {
     unitId: 42,
-    unitName: 'シュメールの神',
+    unitName: en.mantakor,
     race: [en.puppet, en.kraken],
     job: [en.summoner],
     class: '召喚',
@@ -339,7 +339,7 @@ const unitData = [
   },
   {
     unitId: 43,
-    unitName: '戦を呼ぶ者',
+    unitName: en.warbringer,
     race: [en.puppet],
     job: [en.guardian],
     class: 'レイトゲームキャリー',
@@ -347,7 +347,7 @@ const unitData = [
   },
   {
     unitId: 44,
-    unitName: 'てき弾兵',
+    unitName: en.grenadier,
     race: [en.marine],
     job: [en.specialist],
     class: 'コントロール',
@@ -355,7 +355,7 @@ const unitData = [
   },
   {
     unitId: 45,
-    unitName: '見張り',
+    unitName: en.sentinel,
     race: [en.mech],
     job: [en.assassin],
     class: 'ベーシックアタック',
@@ -363,7 +363,7 @@ const unitData = [
   },
   {
     unitId: 46,
-    unitName: '巡視船',
+    unitName: en.cruiser,
     race: [en.airForce],
     job: [en.siegeBreaker],
     class: 'アビリティダメージ',
@@ -371,7 +371,7 @@ const unitData = [
   },
   {
     unitId: 47,
-    unitName: '魂の導師',
+    unitName: en.soulmentor,
     race: [en.beast],
     job: [en.supporter],
     class: 'supporter',
@@ -379,7 +379,7 @@ const unitData = [
   },
   {
     unitId: 48,
-    unitName: '巣箱の女王',
+    unitName: en.hiveQueen,
     race: [en.insectoid],
     job: [en.longShot],
     class: 'アビリティダメージ',
@@ -387,7 +387,7 @@ const unitData = [
   },
   {
     unitId: 49,
-    unitName: '骨の竜',
+    unitName: en.bonewyrn,
     race: [en.rapter, en.immortal],
     job: [en.siegeBreaker],
     class: 'アビリティダメージ',
@@ -395,7 +395,7 @@ const unitData = [
   },
   {
     unitId: 50,
-    unitName: 'チャン・マスター',
+    unitName: en.chanMaster,
     race: [en.panda],
     job: [en.specialist],
     class: 'アビリティダメージ',
@@ -403,7 +403,7 @@ const unitData = [
   },
   {
     unitId: 51,
-    unitName: 'クジラ',
+    unitName: en.mirageCaller,
     race: [en.kraken],
     job: [en.siegeBreaker],
     class: 'アビリティダメージ',
@@ -411,7 +411,7 @@ const unitData = [
   },
   {
     unitId: 52,
-    unitName: '嵐',
+    unitName: en.hailstorm,
     race: [en.mech],
     job: [en.blaster],
     class: 'アビリティダメージ',
@@ -419,7 +419,7 @@ const unitData = [
   },
   {
     unitId: 53,
-    unitName: '食らう者',
+    unitName: en.devourer,
     race: [en.rapter],
     job: [en.specialist],
     class: 'コントロール',
@@ -427,7 +427,7 @@ const unitData = [
   },
   {
     unitId: 54,
-    unitName: '木の芽の竜',
+    unitName: en.forestRager,
     race: [en.immortal],
     job: [en.vanguard],
     class: 'コントロール',
@@ -435,7 +435,7 @@ const unitData = [
   },
   {
     unitId: 55,
-    unitName: '玄亀',
+    unitName: en.ironshell,
     race: [en.psyker],
     job: [en.guardian],
     class: 'コントロール',
@@ -443,7 +443,7 @@ const unitData = [
   },
   {
     unitId: 56,
-    unitName: '勾魂使者',
+    unitName: en.soulTaker,
     race: [en.immortal],
     job: [en.assassin],
     class: 'アビリティダメージ',

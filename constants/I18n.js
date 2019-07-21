@@ -27,6 +27,95 @@ export const en = {
   immortal: 'immortal',
   panda: 'panda',
 
+  /* -------------------   unitName   -------------------- */
+
+  // エアフォ
+  mortus: 'mortus',
+  dauntless: 'dauntless',
+  cruiser: 'cruiser',
+  engineer: 'engineer',
+
+  // ビースト
+  razorclaw: 'razorclaw',
+  goldmane: 'goldmane',
+  dreadpaw: 'dreadpaw',
+  soulmentor: 'soulmentor',
+  acidtooth: 'acidtooth',
+  skyclaw: 'skyclaw',
+  tusker: 'tusker',
+
+  // イモータル
+  bonewyrn: 'bonewyrn',
+  vinewarden: 'vinewarden',
+  soulTaker: 'soulTaker',
+  forestRager: 'forestRager',
+
+  // インセクトイド
+  kamikaze: 'kamikaze',
+  hiveQueen: 'hiveQueen',
+  mindbreaker: 'mindbreaker',
+  oculus: 'oculus',
+
+  // クラーケン
+  siren: 'siren',
+  mirageCaller: 'mirageCaller',
+  skycrab: 'skycrab',
+  electrocutioner: 'electrocutioner',
+  mantakor: 'mantakor',
+
+  // マリーン
+  paviser: 'paviser',
+  commando: 'commando',
+  sniper: 'sniper',
+  grenadier: 'grenadier',
+  medic: 'medic',
+  dragonBreath: 'dragonBreath',
+
+  // メカ
+  sentinel: 'sentinel',
+  gorilla: 'gorilla',
+  hailstorm: 'hailstorm',
+  marauder: 'marauder',
+  catapult: 'catapult',
+
+  // パンダ
+  shurikenPanda: 'shurikenPanda',
+  chanMaster: 'chanMaster',
+  pandaMonk: 'pandaMonk',
+
+  // サイカー
+  hierophant: 'hierophant',
+  ironshell: 'ironshell',
+  thunderer: 'thunderer',
+  illusionist: 'illusionist',
+  chanter: 'chanter',
+
+  // パペット
+  keenedge: 'keenedge',
+  bulwark: 'bulwark',
+  illusionist: 'illusionist',
+  mantakor: 'mantakor',
+  blademaster: 'blademaster',
+  slasher: 'slasher',
+  warbringer: 'warbringer',
+
+  // ラプター
+  sunfire: 'sunfire',
+  direwing: 'direwing',
+  bonewyrn: 'bonewyrn',
+  devourer: 'devourer',
+  sunfire: 'sunfire',
+  skyclaw: 'skyclaw',
+
+  // ライダー
+  outrider: 'outrider',
+  ironbirdRider: 'ironbirdRider',
+
+  // ウォーカー
+  vajra: 'vajra',
+  arhat: 'arhat',
+  tempestKeeper: 'tempestKeeper',
+
   /* -------------------- text --------------------- */
   deckText: 'rocommended deck',
   unitText: 'unit',
@@ -71,6 +160,95 @@ export const ja = {
   insectoid: 'インセクトイド',
   immortal: 'イモータル',
   panda: 'パンダ',
+
+  /* -------------------   unitName   -------------------- */
+
+  // エアフォ
+  mortus: 'mortus',
+  dauntless: 'dauntless',
+  cruiser: 'cruiser',
+  engineer: 'engineer',
+
+  // ビースト
+  razorclaw: 'razorclaw',
+  goldmane: 'goldmane',
+  dreadpaw: 'dreadpaw',
+  soulmentor: 'soulmentor',
+  acidtooth: 'acidtooth',
+  skyclaw: 'skyclaw',
+  tusker: 'tusker',
+
+  // イモータル
+  bonewyrn: 'bonewyrn',
+  vinewarden: 'vinewarden',
+  soulTaker: 'soulTaker',
+  forestRager: 'forestRager',
+
+  // インセクトイド
+  kamikaze: 'kamikaze',
+  hiveQueen: 'hiveQueen',
+  mindbreaker: 'mindbreaker',
+  oculus: 'oculus',
+
+  // クラーケン
+  siren: 'siren',
+  mirageCaller: 'mirageCaller',
+  skycrab: 'skycrab',
+  electrocutioner: 'electrocutioner',
+  mantakor: 'mantakor',
+
+  // マリーン
+  paviser: 'paviser',
+  commando: 'commando',
+  sniper: 'sniper',
+  grenadier: 'grenadier',
+  medic: 'medic',
+  dragonBreath: 'dragonBreath',
+
+  // メカ
+  sentinel: 'sentinel',
+  gorilla: 'gorilla',
+  hailstorm: 'hailstorm',
+  marauder: 'marauder',
+  catapult: 'catapult',
+
+  // パンダ
+  shurikenPanda: 'shurikenPanda',
+  chanMaster: 'chanMaster',
+  pandaMonk: 'pandaMonk',
+
+  // サイカー
+  hierophant: 'hierophant',
+  ironshell: 'ironshell',
+  thunderer: 'thunderer',
+  illusionist: 'illusionist',
+  chanter: 'chanter',
+
+  // パペット
+  keenedge: 'keenedge',
+  bulwark: 'bulwark',
+  illusionist: 'illusionist',
+  mantakor: 'mantakor',
+  blademaster: 'blademaster',
+  slasher: 'slasher',
+  warbringer: 'warbringer',
+
+  // ラプター
+  sunfire: 'sunfire',
+  direwing: 'direwing',
+  bonewyrn: 'bonewyrn',
+  devourer: 'devourer',
+  sunfire: 'sunfire',
+  skyclaw: 'skyclaw',
+
+  // ライダー
+  outrider: 'outrider',
+  ironbirdRider: 'ironbirdRider',
+
+  // ウォーカー
+  vajra: 'vajra',
+  arhat: 'arhat',
+  tempestKeeper: 'tempestKeeper',
 
   /* -------------------- text --------------------- */
   deckText: 'おすすめデッキ',

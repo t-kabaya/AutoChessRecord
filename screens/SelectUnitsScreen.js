@@ -85,7 +85,7 @@ export default class SelectUnitsScreen extends React.Component {
             style={styles.unitListItemImage}
             source={unitImagePathArray[item.unitId - 1]}
           />
-          <Text numberOfLines={2}>{item.unitName}</Text>
+          <Text numberOfLines={2}>{I18n.t(item.unitName)}</Text>
         </View>
       </TouchableWithoutFeedback>
     )
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: wp('90%'),
-    marginHorizontal: wp('5%'),
+    marginHorizontal: wp('5%')
     // backgroundColor: baseBackgroundColor
   },
   topButtonContainer: {
