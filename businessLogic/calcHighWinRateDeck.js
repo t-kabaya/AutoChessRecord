@@ -3,28 +3,46 @@ import _ from 'lodash'
 // apiResponseをreduceしてカウントしていけば良い。
 // しかし、今回は試しに非関数志向でreduceを排除して書いてみる。
 
-export const calcHighWinRateDeck = apiResponse => {
-  const result = []
+export const sumDeckRankToCalcHighWinRateDeck = apiResponse => {
+  const highWinRateDeckList = []
   apiResponse.forEach(data => {
-    if (isContainThisDeck()) {
-      // デッキがすでに存在していた場合
+    const index = findIndexOfDeckFromHighWinRateDeckList(
+      highWinRateDeckList,
+      data.units
+    )
+    if (index === -1) {
+      // デッキが存在していなかった場合
+      highWinRateDeckList.push({
+        totalSumOfRank: data.ranking,
+        units: data.units,
+        sumCount: 1
+      })
     } else {
-      // デッキが、resultに存在していなかった場合
-      result.push({ averageRank: data.ranking, units: data.units })
+      // デッキが存在している場合
+      // dataのindexを探す。
+      const deck = highWinRateDeckList[index]
+      // indexに対応するelementを書き換えた新しいarrayを作成
+      highWinRateDeckList[index] = {
+        totalSumOfRank: deck.totalSumOfRank + data.ranking,
+        units: deck.units,
+        sumCount: deck.sumCount + 1
+      }
     }
   })
 
-  return result
+  return highWinRateDeckList
 }
 
 // unitsという配列が渡された時に、その配列が、既存array of objectの中にあるか確認
 // unitIdが、同じなら同じと見なす。uintIdの重複は許可しない。(保留)
 // 鋭いエッジが２体いた場合は、１体とみなす。(保留)
-export const isContainThisDeck = (deckList, deck) => {
-  // [[3, 17], [6, 13]]
+// indexが見つからない時は-1を返す。
+export const findIndexOfDeckFromHighWinRateDeckList = (deckList, deck) => {
   const unitIdsOfDeckList = deckList.map(x => x.units.map(y => y.unitId))
   const unitIdsOfDeck = deck.map(x => x.unitId)
 
   // orderを無視して比較。
-  return unitIdsOfDeckList.some(x => _.isEqual(x.sort(), unitIdsOfDeck.sort()))
+  return unitIdsOfDeckList.findIndex(x =>
+    _.isEqual(x.sort(), unitIdsOfDeck.sort())
+  )
 }

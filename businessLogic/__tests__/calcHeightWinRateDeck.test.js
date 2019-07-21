@@ -4,18 +4,21 @@ import {
   isContainThisDeckInput1
 } from '../mockData/calcHeightWinRateDeckData'
 
-import { calcHighWinRateDeck, isContainThisDeck } from '../calcHighWinRateDeck'
+import {
+  sumDeckRankToCalcHighWinRateDeck,
+  findIndexOfDeckFromHighWinRateDeckList
+} from '../calcHighWinRateDeck'
 
 /* ------   calcWinRanknigOfUnit   ------ */
 
-// test('must return two object', () => {
-//   const response = calcHighWinRateDeck(apiResponse)
+test('must return two object', () => {
+  const response = sumDeckRankToCalcHighWinRateDeck(apiResponse)
 
-//   expect(response).toEqual(output1)
-// })
+  expect(response).toEqual(output1)
+})
 
-/* ------   isContainThisDeck   ------ */
-test('isContainThisDeck', () => {
+/* ------   findIndexOfDeckFromHighWinRateDeckList   ------ */
+test('findIndexOfDeckFromHighWinRateDeckList must return 0', () => {
   const deck = [
     {
       level: 1,
@@ -26,6 +29,9 @@ test('isContainThisDeck', () => {
       unitId: 17
     }
   ]
-  const output = isContainThisDeck(isContainThisDeckInput1, deck)
-  expect(output).toEqual(true)
+  const output = findIndexOfDeckFromHighWinRateDeckList(
+    isContainThisDeckInput1,
+    deck
+  )
+  expect(output).toEqual(0)
 })
