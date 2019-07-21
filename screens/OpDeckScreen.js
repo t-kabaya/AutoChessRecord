@@ -55,10 +55,9 @@ const SynergyListItem = ({ item }) => (
 const MatchRecordListItem = item => (
   <Card style={styles.cardContainer}>
     <View style={styles.matchRecordListItemLeftPart}>
-      <Text style={{ fontSize: 15 }}>{i18n.t('top3WinRate')}</Text>
+      <Text style={{ fontSize: 15 }}>{i18n.t('averageRankText')}</Text>
       <View style={styles.matchRecordListItemLeftPartRow}>
-        <Text style={styles.top3WinRateNumberText}>{item.averageRank}</Text>
-        <Text style={styles.percentText} />
+        <Text style={styles.averageRankText}>{item.averageRank}</Text>
       </View>
     </View>
     <View style={styles.matchRecordListItemCenterPart}>
@@ -92,7 +91,6 @@ const useOpDeckStatus = () => {
       const myMatchRecord = await getMyMatchRecord()
       // isLoadingをfalseに変更
       setIsLoadingAsFalse(false)
-      debugger
       setMyMatchRecord(myMatchRecord)
     },
     // hooksは、renderのたびに呼ばれてしまう。
@@ -109,7 +107,6 @@ const onPressRecordMatchButton = props => {
 
 const OpDeckScreen = props => {
   const { isLoading, myMatchRecord } = useOpDeckStatus()
-  debugger
 
   if (isLoading) return null
   return (
@@ -206,11 +203,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 2
   },
-  percentText: {
-    fontSize: 15,
-    paddingLeft: wp('1%')
-  },
-  top3WinRateNumberText: {
+  averageRankText: {
     fontSize: 25,
     paddingTop: 5,
     fontWeight: 'bold'

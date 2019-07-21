@@ -42,7 +42,8 @@ export const en = {
   yourAverageText: 'average of you(place)',
   averageOfAllUserText: 'average of all user (place)',
   playCountText: 'count of play(times)',
-  noDataText: 'no data'
+  noDataText: 'no data',
+  averageRankText: 'average rank (place)'
 }
 
 export const ja = {
@@ -86,7 +87,8 @@ export const ja = {
   yourAverageText: 'あなたの平均（位）',
   averageOfAllUserText: '全体の平均（位）',
   playCountText: '使用数（回）',
-  noDataText: 'データがありません'
+  noDataText: 'データがありません',
+  averageRankText: '平均ランク(位)'
 }
 
 i18n.fallbacks = true

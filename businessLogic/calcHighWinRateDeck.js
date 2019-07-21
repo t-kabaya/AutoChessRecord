@@ -37,12 +37,30 @@ export const calcHighWinRateDeckList = apiResponse => {
 
   // 平均勝率を求め、小数点第二を四捨五入
   // averageRankでソート
-  return _.sortBy(
-    highWinRateDeckList.map(x => ({
-      averageRank: Math.round((x.totalSumOfRank / x.sumCount) * 10) / 10,
-      units: x.units
-    }))
+  return validateData(roundUpAndSortData(highWinRateDeckList))
+}
+
+export const roundUpAndSortData = highWinRateDeckList => {
+  const result = highWinRateDeckList.map(x => ({
+    averageRank: Math.round((x.totalSumOfRank / x.sumCount) * 10) / 10,
+    units: x.units
+  }))
+
+  return _.sortBy(result, x => x.averageRank)
+}
+
+// TODO: データ整形の前にこのvalidateを行いたい。（計算量削減）
+export const validateData = rawData => {
+  // ユニット数が7以下は表示させない。
+  const noTooLessUnitArray = _.remove(rawData, x => x.units.length >= 8)
+  // averageRankが、４以上のデッキは取り除く。
+  const noLowAverageRankArray = _.remove(
+    noTooLessUnitArray,
+    x => x.averageRank < 3
   )
+
+  // return noTooLessUnitArray
+  return noLowAverageRankArray
 }
 
 // unitsという配列が渡された時に、その配列が、既存array of objectの中にあるか確認

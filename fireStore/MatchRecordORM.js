@@ -41,12 +41,7 @@ export const getMyMatchRecord = async () => {
   try {
     const response = await db.collection(dbKey.matchRecord).get()
     const data = response.docs.map(doc => doc.data())
-    // const myMatchRecord = await response.docs.map(item => item.data())
     const highWinRateDeck = calcHighWinRateDeckList(data)
-    debugger
-
-    // const myMatchRecordHasImage = myMatchRecord.map(record => ({...record, }))
-    // ここに、シナジーなどを計算する処理を書いていくが、また後日追加する。
     return highWinRateDeck.map(record => {
       const synergy = calcSynergiesFromUnitIds(record.units)
 
