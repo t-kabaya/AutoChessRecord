@@ -116,6 +116,11 @@ export const en = {
   arhat: 'arhat',
   tempestKeeper: 'tempestKeeper',
 
+  /* ------   tabBar   ------ */
+  HomeStack: 'op deck',
+  OpUnitsStack: 'op unit',
+  MyPageStack: 'my page',
+
   /* -------------------- text --------------------- */
   deckText: 'rocommended deck',
   unitText: 'unit',
@@ -246,6 +251,11 @@ export const ja = {
   vajra: '金剛力士',
   arhat: '阿修羅',
   tempestKeeper: '嵐の守護者',
+
+  /* ------   tabBar   ------ */
+  HomeStack: 'デッキ',
+  OpUnitsStack: 'ユニット',
+  MyPageStack: 'マイページ',
 
   /* -------------------- text --------------------- */
   deckText: 'おすすめデッキ',

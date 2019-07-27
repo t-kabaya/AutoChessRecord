@@ -164,6 +164,7 @@ export default class SelectUnitsScreen extends React.Component {
               numColumns={7}
               data={unitState}
               renderItem={this.unitListItem}
+              keyExtractor={item => item.unitId}
             />
           </View>
           <View style={styles.selectedUnitsContainer}>
@@ -178,6 +179,7 @@ export default class SelectUnitsScreen extends React.Component {
                   onPressUnitListItem={this.onPressUnitListItem}
                 />
               )}
+              keyExtractor={item => item.unitId}
             />
           </View>
 
@@ -189,6 +191,7 @@ export default class SelectUnitsScreen extends React.Component {
               numColumns={8}
               data={[1, 2, 3, 4, 5, 6, 7, 8]}
               renderItem={this.rankingItem}
+              keyExtractor={item => item}
             />
           </View>
         </View>

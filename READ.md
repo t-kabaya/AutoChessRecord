@@ -49,6 +49,10 @@ unitスクリーンを見やすく。
 selectunitスクリーンで種族によりフィルター
 selectUnitスクリーンも日本語に直す。
 
-resetOnBlurと、modalを連携させる。
+resetOnBlurと、modalを連携させる。[難しそう]
 素敵なチュートリアル用の一枚モーダルを探す。
 FlatListにkeyExtractorを付けておく。
+
+selectUnitScreenの時は、tabを消す。
+// つまり以下のような
+https://dev.to/hrastnik/lets-create-a-custom-animated-tab-bar-with-react-native-3496

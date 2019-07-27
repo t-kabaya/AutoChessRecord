@@ -1,10 +1,11 @@
 import React from 'react'
-import { Platform } from 'react-native'
+import { Platform, Text } from 'react-native'
 import {
   createStackNavigator,
   createBottomTabNavigator,
   createMaterialTopTabNavigator
 } from 'react-navigation'
+import TabBar from '../components/TabBar'
 
 import HomeScreen from '../screens/HomeScreen'
 import SelectUnitsScreen from '../screens/SelectUnitsScreen'
@@ -24,7 +25,8 @@ export const HomeStack = createStackNavigator(
       screen: SelectUnitsScreen,
       // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
       navigationOptions: {
-        gesturesEnabled: false
+        gesturesEnabled: false,
+        headerMode: 'none'
       }
     }
   },
@@ -69,7 +71,7 @@ export const MyPageStack = createStackNavigator(
   }
 )
 
-export default createMaterialTopTabNavigator(
+export default createBottomTabNavigator(
   {
     HomeStack: {
       screen: HomeStack,
@@ -91,17 +93,31 @@ export default createMaterialTopTabNavigator(
     }
   },
   {
+    // tabBarComponent: props => (
+    //   <Text
+    //     style={{
+    //       backgroundColor: 'green',
+    //       height: 100,
+    //       justifyContent: 'center',
+    //       alignItems: 'center'
+    //     }}
+    //   >
+    //     aa
+    //   </Text>
+    // ),
+    tabBarComponent: TabBar,
     // initialRouteName: 'MyPageStack',
     // initialRouteName: 'OpUnitsStack',
     initialRouteName: 'HomeStack',
-    animationEnabled: false,
+    animationEnabled: false
     // タブをタップでタブ毎のstackをリセット
     // resetOnBlur: true,
-    tabBarOptions: {
-      style: {
-        backgroundColor: primaryColor,
-        pressOpacity: 1
-      }
-    }
+    // tabBarOptions: {
+    //   style: {
+    //     backgroundColor: primaryColor,
+    //     pressOpacity: 1,
+    //     height: 50
+    //   }
+    // }
   }
 )
