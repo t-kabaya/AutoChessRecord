@@ -24,7 +24,7 @@ export const saveMatchRecordToFireStore = async (units, ranking) => {
   try {
     db.collection(dbKey.matchRecord).add({
       userId: Constants.installationId,
-      ranking: 3,
+      ranking: ranking,
       units: unitDataToStore,
       date: JSON.stringify(new Date())
     })

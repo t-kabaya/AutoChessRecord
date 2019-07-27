@@ -432,6 +432,22 @@ const unitData = [
     job: [en.vanguard],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit54.jpeg')
+  },
+  {
+    unitId: 55,
+    unitName: '玄亀',
+    race: [en.psyker],
+    job: [en.guardian],
+    class: 'コントロール',
+    imageUrl: require('../assets/images/unit55.png')
+  },
+  {
+    unitId: 56,
+    unitName: '勾魂使者',
+    race: [en.immortal],
+    job: [en.assassin],
+    class: 'アビリティダメージ',
+    imageUrl: require('../assets/images/unit56.png')
   }
 ]
 
@@ -490,7 +506,10 @@ export const unitImagePathArray = [
   require('../assets/images/unit51.jpeg'),
   require('../assets/images/unit52.jpeg'),
   require('../assets/images/unit53.jpeg'),
-  require('../assets/images/unit54.jpeg')
+  require('../assets/images/unit54.jpeg'),
+  // pngが混ざるので注意。
+  require('../assets/images/unit55.png'),
+  require('../assets/images/unit56.png')
 ]
 
 export default unitData
