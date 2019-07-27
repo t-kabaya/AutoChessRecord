@@ -20,7 +20,13 @@ export const HomeStack = createStackNavigator(
   {
     OpDeckScreen,
     OpSynergyAndUnitsScreen,
-    SelectUnitsScreen
+    SelectUnitsScreen: {
+      screen: SelectUnitsScreen,
+      // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    }
   },
   {
     mode: 'modal',
@@ -32,7 +38,13 @@ export const OpUnitsStack = createStackNavigator(
   {
     OpUnitsScreen,
     OpSynergyAndUnitsScreen,
-    SelectUnitsScreen
+    SelectUnitsScreen: {
+      screen: SelectUnitsScreen,
+      // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    }
   },
   {
     mode: 'modal',
@@ -43,7 +55,13 @@ export const OpUnitsStack = createStackNavigator(
 export const MyPageStack = createStackNavigator(
   {
     MyPageScreen,
-    SelectUnitsScreen
+    SelectUnitsScreen: {
+      screen: SelectUnitsScreen,
+      // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    }
   },
   {
     mode: 'modal',
@@ -77,6 +95,8 @@ export default createMaterialTopTabNavigator(
     // initialRouteName: 'OpUnitsStack',
     initialRouteName: 'HomeStack',
     animationEnabled: false,
+    // タブをタップでタブ毎のstackをリセット
+    // resetOnBlur: true,
     tabBarOptions: {
       style: {
         backgroundColor: primaryColor,
