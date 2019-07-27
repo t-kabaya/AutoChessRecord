@@ -41,6 +41,3 @@ selectUnitスクリーンの使い勝手を向上(種族ごとの洗濯、コイ
 ユニットの名前をupdate。（後回し）
 
 マイページのbusinessLogicの作成(main関数などを変更。)
-
-
-
