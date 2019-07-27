@@ -65,8 +65,8 @@ const unitNameEnum = {
   // パペット
   keenedge: 'keenedge',
   bulwark: 'bulwark',
-  illusionist: 'illusionist',
-  mantakor: 'mantakor',
+  // illusionist: 'illusionist',
+  // mantakor: 'mantakor',
   blademaster: 'blademaster',
   slasher: 'slasher',
   warbringer: 'warbringer',
@@ -74,10 +74,18 @@ const unitNameEnum = {
   // ラプター
   sunfire: 'sunfire',
   direwing: 'direwing',
-  bonewyrn: 'bonewyrn',
+  // bonewyrn: 'bonewyrn',
   devourer: 'devourer',
-  sunfire: 'sunfire',
-  skyclaw: 'skyclaw'
+  // skyclaw: 'skyclaw',
+
+  // ライダー
+  ironbirdRider: 'ironbirdRider',
+  outrider: 'outrider',
+
+  // ウォーカー
+  vajra: 'vajra',
+  arhat: 'arhat',
+  tempestKeeper: 'tempestKeeper'
 }
 
 const unitData = [
