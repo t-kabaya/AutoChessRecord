@@ -164,91 +164,88 @@ export const ja = {
   /* -------------------   unitName   -------------------- */
 
   // エアフォ
-  mortus: 'mortus',
-  dauntless: 'dauntless',
-  cruiser: 'cruiser',
-  engineer: 'engineer',
+  mortus: '幽霊',
+  dauntless: '恐れを知らぬ者',
+  cruiser: '巡視船',
+  engineer: '支援兵',
 
   // ビースト
-  razorclaw: 'razorclaw',
-  goldmane: 'goldmane',
-  dreadpaw: 'dreadpaw',
-  soulmentor: 'soulmentor',
-  acidtooth: 'acidtooth',
-  skyclaw: 'skyclaw',
-  tusker: 'tusker',
+  razorclaw: '鉤爪の竜',
+  goldmane: '黄金の鼠',
+  dreadpaw: '悪魔の手',
+  soulmentor: '魂の導師',
+  acidtooth: '酸の歯',
+  skyclaw: 'タカ',
+  tusker: 'ゾウ',
 
   // イモータル
-  bonewyrn: 'bonewyrn',
-  vinewarden: 'vinewarden',
-  soulTaker: 'soulTaker',
-  forestRager: 'forestRager',
+  vinewarden: '緑の大男',
+  soulTaker: '勾魂使者',
+  forestRager: '木眼の竜',
 
   // インセクトイド
-  kamikaze: 'kamikaze',
-  hiveQueen: 'hiveQueen',
-  mindbreaker: 'mindbreaker',
-  oculus: 'oculus',
+  kamikaze: '爆弾虫',
+  hiveQueen: '巣箱の女王',
+  mindbreaker: 'クモ',
+  oculus: '目玉の男',
 
   // クラーケン
-  siren: 'siren',
-  mirageCaller: 'mirageCaller',
-  skycrab: 'skycrab',
-  electrocutioner: 'electrocutioner',
-  mantakor: 'mantakor',
+  siren: 'セイレーン',
+  mirageCaller: 'クジラ',
+  skycrab: '空のカニ',
+  electrocutioner: '嵐を呼ぶ者',
+  // mantakor: '',
 
   // マリーン
-  paviser: 'paviser',
-  commando: 'commando',
-  sniper: 'sniper',
-  grenadier: 'grenadier',
-  medic: 'medic',
-  dragonBreath: 'dragonBreath',
+  paviser: '大楯の歩兵',
+  commando: 'ゲリラ隊',
+  sniper: '狙撃兵',
+  grenadier: '擲弾兵',
+  medic: '医者',
+  dragonBreath: '火炎放兵',
 
   // メカ
-  sentinel: 'sentinel',
-  gorilla: 'gorilla',
-  hailstorm: 'hailstorm',
-  marauder: 'marauder',
-  catapult: 'catapult',
+  sentinel: '自律自走砲・改',
+  gorilla: '武装ゴリラ',
+  hailstorm: '鋼の巨人',
+  marauder: '自律自走砲',
+  catapult: 'カタパルト',
 
   // パンダ
-  shurikenPanda: 'shurikenPanda',
-  chanMaster: 'chanMaster',
-  pandaMonk: 'pandaMonk',
+  shurikenPanda: 'パンダ忍者',
+  chanMaster: 'チャン・マスター',
+  pandaMonk: 'パンダ僧',
 
   // サイカー
-  hierophant: 'hierophant',
-  ironshell: 'ironshell',
-  thunderer: 'thunderer',
-  illusionist: 'illusionist',
-  chanter: 'chanter',
+  hierophant: '法王',
+  ironshell: '玄亀',
+  thunderer: '雷を呼ぶ者',
+  // illusionist: 'illusionist',
+  chanter: 'エネルギーロボット',
 
   // パペット
-  keenedge: 'keenedge',
-  bulwark: 'bulwark',
-  illusionist: 'illusionist',
-  mantakor: 'mantakor',
-  blademaster: 'blademaster',
-  slasher: 'slasher',
-  warbringer: 'warbringer',
+  keenedge: '鋭いエッジ',
+  bulwark: '塁壁',
+  illusionist: '幻術師',
+  mantakor: '須弥の主',
+  blademaster: '刃のマスター',
+  slasher: '暗殺剣士',
+  warbringer: '戦を呼ぶ者',
 
   // ラプター
-  sunfire: 'sunfire',
-  direwing: 'direwing',
-  bonewyrn: 'bonewyrn',
-  devourer: 'devourer',
-  sunfire: 'sunfire',
-  skyclaw: 'skyclaw',
+  sunfire: 'フェニックス',
+  direwing: 'オオコウモリ',
+  bonewyrn: '骨の竜',
+  devourer: 'ツァトゥグァ',
 
   // ライダー
-  outrider: 'outrider',
-  ironbirdRider: 'ironbirdRider',
+  outrider: '先導者',
+  ironbirdRider: '鳥騎兵',
 
   // ウォーカー
-  vajra: 'vajra',
-  arhat: 'arhat',
-  tempestKeeper: 'tempestKeeper',
+  vajra: '金剛力士',
+  arhat: '阿修羅',
+  tempestKeeper: '嵐の守護者',
 
   /* -------------------- text --------------------- */
   deckText: 'おすすめデッキ',
@@ -273,6 +270,6 @@ i18n.fallbacks = true
 i18n.translations = { en, ja }
 // can not test without real devaice
 i18n.locale = Localization.locale
-// i18n.locale = 'ja'
+i18n.locale = 'ja'
 
 export default i18n
