@@ -5,7 +5,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   NativeModules,
-  LayoutAnimation
+  LayoutAnimation,
+  Animated
 } from 'react-native'
 
 const { UIManager } = NativeModules
@@ -38,23 +39,37 @@ class TabBar extends Component {
 
 class TabBarItem extends Component {
   state = {
-    animationStyle: {}
+    // animationStyle: {},
+    colorBoxHeight: new Animated.Value(10)
   }
 
   componentDidMount = () => {
     // 初期アニメーションをセット
-    LayoutAnimation.spring()
-    this.setState({ animationStyle: this.inactivieAnimationStyle })
+    // LayoutAnimation.spring()
+    // this.setState({ animationStyle: this.inactivieAnimationStyle })
+    // this.startAnimation()
   }
 
-  inactivieAnimationStyle = {
-    height: 50,
-    backgroundColor: 'green'
+  expandBox = () => {
+    Animated.timing(
+      // Animate over time
+      this.state.colorBoxHeight, // The animated value to drive
+      {
+        toValue: 100,
+        duration: 1000
+      }
+    ).start()
   }
 
-  activeAnimationStyle = {
-    height: 20,
-    backgroundColor: 'blue'
+  shrinkBox = () => {
+    Animated.timing(
+      // Animate over time
+      this.state.colorBoxHeight, // The animated value to drive
+      {
+        toValue: 0,
+        duration: 1000
+      }
+    ).start()
   }
 
   componentDidUpdate (prevProps) {
@@ -62,14 +77,15 @@ class TabBarItem extends Component {
       prevProps.tabProps.navigation.state.index !==
       this.props.tabProps.navigation.state.index
     if (isTabSelectionChanged) {
+      this.expandBox()
       // alert(this.props.props.navigation.state.index)
       isTabItemSelected =
         this.props.tabProps.navigation.state.index == this.props.routeIndex
       if (isTabItemSelected) {
         // LayoutAnimation.spring()
-        this.setState({ animationStyle: this.activeAnimationStyle })
+        this.expandBox()
       } else {
-        this.setState({ animationStyle: this.inactivieAnimationStyle })
+        this.shrinkBox()
       }
     }
   }
@@ -91,17 +107,19 @@ class TabBarItem extends Component {
       <TouchableOpacity
         activeOpacity={0.8}
         key={routeIndex}
-        style={[
-          S.tabButton,
-          { backgroundColor: isActiveRoute ? 'red' : 'white' }
-        ]}
+        style={[S.tabButton]}
         onPress={() => onTabPress({ route })}
         onLongPress={() => onTabLongPress({ route })}
         accessibilityLabel={getAccessibilityLabel({ route })}
       >
-        <View style={this.state.animationStyle}>
+        <Animated.View
+          style={{
+            height: this.state.colorBoxHeight,
+            backgroundColor: isActiveRoute ? 'red' : 'white'
+          }}
+        >
           <Text>{getLabelText({ route })}</Text>
-        </View>
+        </Animated.View>
       </TouchableOpacity>
     )
   }
