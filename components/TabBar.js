@@ -8,6 +8,7 @@ import {
   LayoutAnimation,
   Animated
 } from 'react-native'
+import { primaryColor } from '../constants/Colors'
 
 const { UIManager } = NativeModules
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -115,10 +116,12 @@ class TabBarItem extends Component {
         <Animated.View
           style={{
             height: this.state.colorBoxHeight,
-            backgroundColor: isActiveRoute ? 'red' : 'white'
+            backgroundColor: isActiveRoute ? primaryColor : 'white'
           }}
         >
-          <Text>{getLabelText({ route })}</Text>
+          <Text style={{ color: isActiveRoute ? 'white' : primaryColor }}>
+            {getLabelText({ route })}
+          </Text>
         </Animated.View>
       </TouchableOpacity>
     )

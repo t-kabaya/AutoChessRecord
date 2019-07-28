@@ -71,7 +71,8 @@ export const MyPageStack = createStackNavigator(
   }
 )
 
-export default createBottomTabNavigator(
+// tabBarをtopに配置するためだけに、createMaterialTopTabNavigatorを使用
+export default createMaterialTopTabNavigator(
   {
     HomeStack: {
       screen: HomeStack,
