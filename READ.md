@@ -54,5 +54,6 @@ resetOnBlurと、modalを連携させる。[難しそう]
 FlatListにkeyExtractorを付けておく。
 
 selectUnitScreenの時は、tabを消す。
-// つまり以下のような
-https://dev.to/hrastnik/lets-create-a-custom-animated-tab-bar-with-react-native-3496
+訂正グノシーのようなタブを作る。
+
+初期レンダリングの時、アニメーションがうまく動かない。

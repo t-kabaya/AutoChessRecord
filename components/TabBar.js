@@ -37,6 +37,8 @@ class TabBar extends Component {
   }
 }
 
+const BOX_HEIGHT = 50
+
 class TabBarItem extends Component {
   state = {
     // animationStyle: {},
@@ -48,6 +50,18 @@ class TabBarItem extends Component {
     // LayoutAnimation.spring()
     // this.setState({ animationStyle: this.inactivieAnimationStyle })
     // this.startAnimation()
+    this.setInitialBoxHeight()
+  }
+
+  setInitialBoxHeight = () => {
+    Animated.timing(
+      // Animate over time
+      this.state.colorBoxHeight, // The animated value to drive
+      {
+        toValue: BOX_HEIGHT,
+        duration: 1
+      }
+    ).start()
   }
 
   expandBox = () => {
@@ -55,7 +69,7 @@ class TabBarItem extends Component {
       // Animate over time
       this.state.colorBoxHeight, // The animated value to drive
       {
-        toValue: 50,
+        toValue: BOX_HEIGHT,
         duration: 100
       }
     ).start()
@@ -107,7 +121,7 @@ class TabBarItem extends Component {
       <TouchableOpacity
         activeOpacity={0.8}
         key={routeIndex}
-        style={[S.tabButton]}
+        style={[S.tabItemContainer]}
         onPress={() => onTabPress({ route })}
         onLongPress={() => onTabLongPress({ route })}
         accessibilityLabel={getAccessibilityLabel({ route })}
@@ -117,7 +131,7 @@ class TabBarItem extends Component {
             position: 'absolute',
             bottom: 0,
             height: this.state.colorBoxHeight,
-            width: wp('20%'),
+            width: wp('33%'),
             backgroundColor: isActiveRoute ? primaryColor : baseBackgroundColor,
             borderTopRightRadius: 10,
             borderTopLeftRadius: 10
@@ -126,9 +140,7 @@ class TabBarItem extends Component {
           {/* 要リファクタリング: なぜか、Animated.Viewの中が空だと動かない。仕方なしに空のTextを入れる */}
           <Text />
         </Animated.View>
-        <Text
-          style={{ color: isActiveRoute ? baseBackgroundColor : primaryColor }}
-        >
+        <Text style={S.tabItemText(isActiveRoute)}>
           {getLabelText({ route })}
         </Text>
       </TouchableOpacity>
@@ -145,7 +157,12 @@ const S = StyleSheet.create({
     borderBottomColor: primaryColor,
     borderBottomWidth: 2
   },
-  tabButton: { flex: 1, justifyContent: 'center', alignItems: 'center' }
+  tabItemContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  tabItemText: isActiveRoute => ({
+    color: isActiveRoute ? baseBackgroundColor : primaryColor,
+    fontSize: 20,
+    fontWeight: 'bold'
+  })
 })
 
 export default TabBar
