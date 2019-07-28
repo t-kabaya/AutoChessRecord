@@ -11,7 +11,7 @@ import SelectUnitsScreen from '../screens/SelectUnitsScreen'
 import OpDeckScreen from '../screens/OpDeckScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import OpUnitsScreen from '../screens/OpUnitsScreen'
-import MyPageScreen from '../screens/MyPageScreen'
+import MyPageScreen from '../screens/MyPage/Screen'
 import { primaryColor } from '../constants/Colors'
 import i18n, { en } from '../constants/I18n'
 

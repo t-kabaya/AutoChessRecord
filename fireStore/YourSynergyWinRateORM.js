@@ -3,7 +3,7 @@ import { Constants } from 'expo'
 import unitData from '../constants/UnitData'
 import calcSynergiesFromUnitIds from '../businessLogic/calcSynergiesFromUnitIds'
 import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
-import { formatAverageRankOfSynergyOfMeAndAllUser } from '../businessLogic/calcYourSynergyWinRate'
+import { formatAverageRankOfSynergyOfMeAndAllUser } from '../screens/MyPage/calcYourSynergyWinRate'
 
 export const getYourWinRateOfSynergy = async () => {
   const response = await db.collection(dbKey.matchRecord).get()

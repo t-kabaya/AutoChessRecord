@@ -57,3 +57,15 @@ selectUnitScreenの時は、tabを消す。
 訂正グノシーのようなタブを作る。
 
 初期レンダリングの時、アニメーションがうまく動かない。
+
+## アーキテクチャ
+ducksデザインパターンを参考にした独自アーキテクチャを採用
+screen以下、画面に関連するファイルを一つのフォルダにまとめる。
+
+以下が例
+このことにより、抽象度を上げ過ぎることを防ぎ、かつ疎結合なコードを構築可能に。
+
+MyPage - BusinessLogic.js
+       - BusinessLogic.test.js
+       - Screen.js
+       - Screen.test.js
