@@ -134,7 +134,6 @@ export default class SelectUnitsScreen extends React.Component {
   render () {
     const { unitState } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
-    debugger
     console.log(selectedUnits)
     return (
       <SafeAreaView style={{ flex: 1 }}>

@@ -280,6 +280,6 @@ i18n.fallbacks = true
 i18n.translations = { en, ja }
 // can not test without real devaice
 i18n.locale = Localization.locale
-i18n.locale = 'ja'
+// i18n.locale = 'ja'
 
 export default i18n
