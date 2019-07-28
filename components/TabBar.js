@@ -8,16 +8,15 @@ import {
   LayoutAnimation,
   Animated
 } from 'react-native'
-import { primaryColor } from '../constants/Colors'
+import { primaryColor, baseBackgroundColor } from '../constants/Colors'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 
 const { UIManager } = NativeModules
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true)
-
-const S = StyleSheet.create({
-  container: { flexDirection: 'row', height: 52, elevation: 2 },
-  tabButton: { flex: 1, justifyContent: 'center', alignItems: 'center' }
-})
 
 class TabBar extends Component {
   render () {
@@ -56,8 +55,8 @@ class TabBarItem extends Component {
       // Animate over time
       this.state.colorBoxHeight, // The animated value to drive
       {
-        toValue: 100,
-        duration: 1000
+        toValue: 50,
+        duration: 100
       }
     ).start()
   }
@@ -68,7 +67,7 @@ class TabBarItem extends Component {
       this.state.colorBoxHeight, // The animated value to drive
       {
         toValue: 0,
-        duration: 1000
+        duration: 70
       }
     ).start()
   }
@@ -115,17 +114,38 @@ class TabBarItem extends Component {
       >
         <Animated.View
           style={{
+            position: 'absolute',
+            bottom: 0,
             height: this.state.colorBoxHeight,
-            backgroundColor: isActiveRoute ? primaryColor : 'white'
+            width: wp('20%'),
+            backgroundColor: isActiveRoute ? primaryColor : baseBackgroundColor,
+            borderTopRightRadius: 10,
+            borderTopLeftRadius: 10
           }}
         >
-          <Text style={{ color: isActiveRoute ? 'white' : primaryColor }}>
-            {getLabelText({ route })}
-          </Text>
+          {/* 要リファクタリング: なぜか、Animated.Viewの中が空だと動かない。仕方なしに空のTextを入れる */}
+          <Text />
         </Animated.View>
+        <Text
+          style={{ color: isActiveRoute ? baseBackgroundColor : primaryColor }}
+        >
+          {getLabelText({ route })}
+        </Text>
       </TouchableOpacity>
     )
   }
 }
+
+const S = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    height: 52,
+    elevation: 2,
+    backgroundColor: baseBackgroundColor,
+    borderBottomColor: primaryColor,
+    borderBottomWidth: 2
+  },
+  tabButton: { flex: 1, justifyContent: 'center', alignItems: 'center' }
+})
 
 export default TabBar
