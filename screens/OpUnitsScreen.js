@@ -6,10 +6,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import {
-  getMyMatchRecord,
-  getWinRateOfUnits
-} from '../fireStore/MatchRecordORM'
+import { getMyMatchRecord, getWinRateOfUnits } from './OpDeckScreen/FireStore'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
 import {
@@ -58,6 +55,7 @@ const OpUnitsScreen = props => {
       </View>
     )
   }
+
   if (isLoading) return null
   return (
     <Container style={styles.container}>

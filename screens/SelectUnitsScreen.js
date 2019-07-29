@@ -21,7 +21,7 @@ import Layout from '../constants/Layout'
 import Colors, { baseBackgroundColor } from '../constants/Colors'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import { Badge, Button, Text, Toast, Container } from 'native-base'
-import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
+import { saveMatchRecordToFireStore } from './OpDeckScreen/FireStore'
 import {
   primaryColor,
   darkPrimaryColor,

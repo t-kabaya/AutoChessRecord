@@ -1,10 +1,10 @@
-import { db, dbKey } from './fireStoreSetup'
+import { db, dbKey } from '../../fireStore/fireStoreSetup'
 import { Constants } from 'expo'
-import unitData from '../constants/UnitData'
-import calcSynergiesFromUnitIds from '../businessLogic/calcSynergiesFromUnitIds'
-import { en } from '../constants/I18n'
-import { calcWinRateRankingOfUnit } from '../businessLogic/calcHeighWinRateUnits'
-import { calcHighWinRateDeckList } from '../businessLogic/calcHighWinRateDeck'
+import unitData from '../../constants/UnitData'
+import calcSynergiesFromUnitIds from '../../businessLogic/calcSynergiesFromUnitIds'
+import { en } from '../../constants/I18n'
+import { calcWinRateRankingOfUnit } from '../../businessLogic/calcHeighWinRateUnits'
+import { calcHighWinRateDeckList } from './BusinessLogic'
 
 // 設計
 // record table

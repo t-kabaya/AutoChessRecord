@@ -8,7 +8,7 @@ import {
 import TabBar from '../components/TabBar'
 
 import SelectUnitsScreen from '../screens/SelectUnitsScreen'
-import OpDeckScreen from '../screens/OpDeckScreen'
+import OpDeckScreen from '../screens/OpDeckScreen/Screen'
 import SettingsScreen from '../screens/SettingsScreen'
 import OpUnitsScreen from '../screens/OpUnitsScreen'
 import MyPageScreen from '../screens/MyPage/Screen'
