@@ -2,7 +2,7 @@ import { db, dbKey } from '../../fireStore/fireStoreSetup'
 import { Constants } from 'expo'
 import unitData from '../../constants/UnitData'
 import calcSynergiesFromUnitIds from '../../businessLogic/calcSynergiesFromUnitIds'
-import { calcWinRateRankingOfUnit } from '../../businessLogic/calcHeighWinRateUnits'
+import { calcWinRateRankingOfUnit } from '../OpUnitsScreen/calcHeighWinRateUnits'
 import { formatAverageRankOfSynergyOfMeAndAllUser } from './BusinessLogic'
 
 export const getYourWinRateOfSynergy = async () => {

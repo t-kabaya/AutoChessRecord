@@ -1,5 +1,5 @@
 import { db } from '../../fireStore/fireStoreSetup'
-import { calcWinRateRankingOfUnit } from '../calcHeighWinRateUnits'
+import { calcWinRateRankingOfUnit } from '../../screens/OpUnitsScreen/calcHeighWinRateUnits'
 
 // top3WinRate = そのユニットがデッキ内にいる時にtop3に入る確率。
 

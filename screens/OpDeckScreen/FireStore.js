@@ -3,7 +3,7 @@ import { Constants } from 'expo'
 import unitData from '../../constants/UnitData'
 import calcSynergiesFromUnitIds from '../../businessLogic/calcSynergiesFromUnitIds'
 import { en } from '../../constants/I18n'
-import { calcWinRateRankingOfUnit } from '../../businessLogic/calcHeighWinRateUnits'
+import { calcWinRateRankingOfUnit } from '../OpUnitsScreen/calcHeighWinRateUnits'
 import { calcHighWinRateDeckList } from './BusinessLogic'
 
 // 設計
@@ -54,7 +54,7 @@ export const getMyMatchRecord = async () => {
 
 // top3率が高いユニットを示す。
 export const getWinRateOfUnits = async () => {
-  const response = await db.collection('matchRecord').get()
+  const response = await db.collection(dbKey.matchRecord).get()
   const data = response.docs.map(doc => doc.data())
 
   const top3WinRateOfUnits = calcWinRateRankingOfUnit(data)
