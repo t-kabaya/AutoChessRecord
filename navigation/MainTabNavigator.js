@@ -36,7 +36,6 @@ export const HomeStack = createStackNavigator(
 export const OpUnitsStack = createStackNavigator(
   {
     OpUnitsScreen,
-    OpSynergyAndUnitsScreen,
     SelectUnitsScreen: {
       screen: SelectUnitsScreen,
       // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい

@@ -1,5 +1,5 @@
-import { synergyEnum } from '../constants/synergyData'
-import unitData from '../constants/UnitData'
+import { synergyEnum } from '../../constants/synergyData'
+import unitData from '../../constants/UnitData'
 
 // 全ユーザーと、myUserの二つの配列が生成される。この二つをマージし、一つの配列にして、flatListに渡しやすくする
 export const formatAverageRankOfSynergyOfMeAndAllUser = (data, userId) => {

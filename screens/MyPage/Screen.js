@@ -20,7 +20,7 @@ import {
 } from '../../constants/Colors'
 import { synergyImagePathArray } from '../../constants/synergyData'
 import I18n from '../../constants/I18n'
-import { getYourWinRateOfSynergy } from '../../fireStore/YourSynergyWinRateORM'
+import { getYourWinRateOfSynergy } from './YourSynergyWinRateORM'
 // import { synergyImagePathArray } from '../constants/synergyData'
 
 // import View from '../utils/cView'
