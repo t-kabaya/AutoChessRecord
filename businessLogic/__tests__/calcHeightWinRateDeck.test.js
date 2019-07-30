@@ -10,7 +10,8 @@ import {
   calcHighWinRateDeckList,
   // sumDeckRankToCalcHighWinRateDeck,
   findIndexOfDeckFromHighWinRateDeckList,
-  removeAbnormalData
+  removeAbnormalDataFromRawApiResponse,
+  removeRowAverageRankDeck
 } from '../calcHighWinRateDeck'
 
 /* ------   calcHighWinRateDeckList   ------ */
@@ -47,7 +48,14 @@ test('findIndexOfDeckFromHighWinRateDeckList must return 0', () => {
   expect(output).toEqual(0)
 })
 
-/* ----------------  removeAbnormalData    ---------------- */
+/* ----------------  removeAbnormalDataFromRawApiResponse    ---------------- */
 test('dont remove anything', () => {
-  expect(removeAbnormalData(apiResponse)).toEqual(apiResponse)
+  expect(removeAbnormalDataFromRawApiResponse(apiResponse)).toEqual(apiResponse)
+})
+
+/* ---------------------   removeRawAverageRankDeck   --------------------- */
+
+test('must return black array', () => {
+  const input = [{ averageRank: 6 }, { averageRank: 7 }, { averageRank: 8 }]
+  expect(removeRowAverageRankDeck(input)).toEqual([])
 })

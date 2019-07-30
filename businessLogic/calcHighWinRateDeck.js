@@ -34,18 +34,20 @@ export const calcHighWinRateDeckList = apiResponse => {
       }
     }
   })
-  return highWinRateDeckList
+
+  return roundUpAndSortData(highWinRateDeckList)
 
   // 平均勝率を求め、小数点第二を四捨五入
   // averageRankでソート
-  return validateData(roundUpAndSortData(highWinRateDeckList))
+  return removeRawAverageRankDeck(roundUpAndSortData(highWinRateDeckList))
 }
 
 // remove abnormal data, like units = null, ranknig = null
-export const removeAbnormalData = rawApiResponse => {
+export const removeAbnormalDataFromRawApiResponse = rawApiResponse => {
   // ranknigがnull又は、
   const isAbnormalData = data =>
     data.ranking !== null && data.units !== [] && data.units !== null
+  // TODO: ユニット数が7以下のデータを取り除く
 
   return rawApiResponse.filter(isAbnormalData)
 }
@@ -60,17 +62,11 @@ export const roundUpAndSortData = highWinRateDeckList => {
 }
 
 // TODO: データ整形の前にこのvalidateを行いたい。（計算量削減）
-export const validateData = rawData => {
+export const removeRowAverageRankDeck = rawData => {
   // ユニット数が7以下は表示させない。
-  const noTooLessUnitArray = _.remove(rawData, x => x.units.length >= 8)
   // averageRankが、４以上のデッキは取り除く。
-  const noLowAverageRankArray = _.remove(
-    noTooLessUnitArray,
-    x => x.averageRank < 3
-  )
-
-  // return noTooLessUnitArray
-  return noLowAverageRankArray
+  const isAverageRankHigherThanFour = data => data.averageRank <= 3
+  return rawData.filter(isAverageRankHigherThanFour)
 }
 
 // unitsという配列が渡された時に、その配列が、既存array of objectの中にあるか確認
