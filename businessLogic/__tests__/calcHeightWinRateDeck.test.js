@@ -51,7 +51,7 @@ test('findIndexOfDeckFromHighWinRateDeckList must return 0', () => {
 /* ----------------  removeAbnormalDataFromRawApiResponse    ---------------- */
 test('must retrun []', () => {
   // 入力値はユニットの数が全て7以下なので[]を返さなくてはいけないs
-  expect(removeAbnormalDataFromRawApiResponse(apiResponse)).toEqual(apiResponse)
+  expect(removeAbnormalDataFromRawApiResponse(apiResponse)).toEqual([])
 })
 
 /* ---------------------   removeRawAverageRankDeck   --------------------- */

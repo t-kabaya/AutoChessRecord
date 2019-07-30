@@ -20,7 +20,6 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 class TabBar extends Component {
   render () {
-    console.log({ propsInTabBar: this.props })
     const { routes } = this.props.navigation.state
     return (
       <View style={S.container}>

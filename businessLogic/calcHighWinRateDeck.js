@@ -44,11 +44,16 @@ export const calcHighWinRateDeckList = apiResponse => {
 
 // remove abnormal data, like units = null, ranknig = null
 export const removeAbnormalDataFromRawApiResponse = rawApiResponse => {
-  // ranknigがnull又は、unitsがabnormal又は、unit数が7以下のデータを取り除く
-  const isAbnormalData = data =>
-    data.ranking !== null && data.units && data.units.length > 7
+  // ranknigが1-8の間であること
+  const isCorrectRank = deck =>
+    deck.ranking && deck.ranking >= 1 && deck.ranking <= 8
+  // unitsの数が、8以上10以下であること。
+  const isCorrectUnit = deck =>
+    deck.units && deck.units.length >= 8 && deck.units.length <= 10
 
-  return rawApiResponse.filter(isAbnormalData)
+  const isCorrect = deck => isCorrectUnit(deck) && isCorrectRank(deck)
+
+  return rawApiResponse.filter(isCorrect)
 }
 
 export const roundUpAndSortData = highWinRateDeckList => {
