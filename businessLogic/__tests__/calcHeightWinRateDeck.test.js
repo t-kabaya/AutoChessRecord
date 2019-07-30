@@ -49,13 +49,14 @@ test('findIndexOfDeckFromHighWinRateDeckList must return 0', () => {
 })
 
 /* ----------------  removeAbnormalDataFromRawApiResponse    ---------------- */
-test('dont remove anything', () => {
+test('must retrun []', () => {
+  // 入力値はユニットの数が全て7以下なので[]を返さなくてはいけないs
   expect(removeAbnormalDataFromRawApiResponse(apiResponse)).toEqual(apiResponse)
 })
 
 /* ---------------------   removeRawAverageRankDeck   --------------------- */
 
-test('must return black array', () => {
+test('must return []', () => {
   const input = [{ averageRank: 6 }, { averageRank: 7 }, { averageRank: 8 }]
   expect(removeRowAverageRankDeck(input)).toEqual([])
 })

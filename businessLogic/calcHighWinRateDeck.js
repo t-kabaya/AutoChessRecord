@@ -44,10 +44,9 @@ export const calcHighWinRateDeckList = apiResponse => {
 
 // remove abnormal data, like units = null, ranknig = null
 export const removeAbnormalDataFromRawApiResponse = rawApiResponse => {
-  // ranknigがnull又は、
+  // ranknigがnull又は、unitsがabnormal又は、unit数が7以下のデータを取り除く
   const isAbnormalData = data =>
-    data.ranking !== null && data.units !== [] && data.units !== null
-  // TODO: ユニット数が7以下のデータを取り除く
+    data.ranking !== null && data.units && data.units.length > 7
 
   return rawApiResponse.filter(isAbnormalData)
 }
