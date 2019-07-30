@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import { getWinRateOfUnits } from '../OpDeckScreen/FireStore'
+import { getWinRateOfUnits } from '../OpDeck/FireStore'
 import { unitImagePathArray } from '../../constants/UnitData'
 import { primaryColor, secondaryColor } from '../../constants/Colors'
 import SaveMatchRecordButton from '../../components/SaveMatchRecordButton'

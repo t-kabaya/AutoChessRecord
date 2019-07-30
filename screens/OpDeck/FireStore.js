@@ -3,7 +3,7 @@ import { Constants } from 'expo'
 import unitData from '../../constants/UnitData'
 import calcSynergiesFromUnitIds from '../../businessLogic/calcSynergiesFromUnitIds'
 import { en } from '../../constants/I18n'
-import { calcWinRateRankingOfUnit } from '../OpUnitsScreen/calcHeighWinRateUnits'
+import { calcWinRateRankingOfUnit } from '../OpUnits/OpUnits.businessLogic'
 import { calcHighWinRateDeckList } from './BusinessLogic'
 
 // 設計
