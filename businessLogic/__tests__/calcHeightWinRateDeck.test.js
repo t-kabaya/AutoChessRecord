@@ -9,7 +9,8 @@ import {
 import {
   calcHighWinRateDeckList,
   // sumDeckRankToCalcHighWinRateDeck,
-  findIndexOfDeckFromHighWinRateDeckList
+  findIndexOfDeckFromHighWinRateDeckList,
+  removeAbnormalData
 } from '../calcHighWinRateDeck'
 
 /* ------   calcHighWinRateDeckList   ------ */
@@ -19,7 +20,7 @@ import {
 //   expect(result).toEqual(calcHighWinRateDeckOutput1)
 // })
 
-// /* ------   usmDeckRankTocalcHighWinRateDeck   ------ */
+// /* ------   calcHeghWinRateDeckList   ------ */
 
 test('must return correct value', () => {
   const response = calcHighWinRateDeckList(apiResponse)
@@ -44,4 +45,9 @@ test('findIndexOfDeckFromHighWinRateDeckList must return 0', () => {
     deck
   )
   expect(output).toEqual(0)
+})
+
+/* ----------------  removeAbnormalData    ---------------- */
+test('dont remove anything', () => {
+  expect(removeAbnormalData(apiResponse)).toEqual(apiResponse)
 })

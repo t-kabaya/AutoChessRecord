@@ -61,3 +61,6 @@ selectUnitScreenの時は、tabを消す。
 TODO: バグが発生。
 14行から38行の間にバグが発生し、例外が投げられている。
 このバグとは別問題だが、rankingと、unitsが0またはnullの時の以上データを取り除く処理が必要
+
+今日やること。
+rankingと、unitsが０または、nullの時の以上データを取り除く

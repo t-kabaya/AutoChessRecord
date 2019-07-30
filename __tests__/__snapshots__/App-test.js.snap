@@ -25,255 +25,152 @@ exports[`App snapshot renders the root without loading screen 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "#6200EE",
-          "elevation": 4,
-          "pressOpacity": 1,
-          "shadowColor": "black",
-          "shadowOffset": Object {
-            "height": 0.5,
-          },
-          "shadowOpacity": 0.1,
-          "shadowRadius": 0.5,
-          "zIndex": 1,
+          "backgroundColor": "#eaecef",
+          "borderBottomColor": "#6200EE",
+          "borderBottomWidth": 2,
+          "elevation": 2,
+          "flexDirection": "row",
+          "height": 52,
         }
       }
     >
       <View
-        pointerEvents="none"
+        accessibilityLabel="rocommended deck, tab, 1 of 3"
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+            "opacity": 1,
           }
         }
       >
         <View
           style={
             Object {
-              "backgroundColor": "#ffeb3b",
+              "backgroundColor": "#6200EE",
+              "borderTopLeftRadius": 10,
+              "borderTopRightRadius": 10,
               "bottom": 0,
-              "height": 2,
-              "left": 0,
+              "height": 10,
               "position": "absolute",
-              "right": 0,
-              "transform": Array [
-                Object {
-                  "translateX": 0,
-                },
-              ],
-              "width": 0,
+              "width": 247.5,
             }
           }
-        />
+        >
+          <Text />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#eaecef",
+              "fontSize": 20,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          rocommended deck
+        </Text>
       </View>
       <View
+        accessibilityLabel="unit, tab, 2 of 3"
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "overflow": "scroll",
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+            "opacity": 1,
           }
         }
       >
-        <RCTScrollView
-          alwaysBounceHorizontal={false}
-          automaticallyAdjustContentInsets={false}
-          contentContainerStyle={
-            Array [
-              Object {
-                "flexDirection": "row",
-                "flexWrap": "nowrap",
-              },
-              Object {
-                "flex": 1,
-              },
-            ]
+        <View
+          style={
+            Object {
+              "backgroundColor": "#eaecef",
+              "borderTopLeftRadius": 10,
+              "borderTopRightRadius": 10,
+              "bottom": 0,
+              "height": 10,
+              "position": "absolute",
+              "width": 247.5,
+            }
           }
-          horizontal={true}
-          keyboardShouldPersistTaps="handled"
-          onMomentumScrollBegin={[Function]}
-          onMomentumScrollEnd={[Function]}
-          onScroll={[Function]}
-          onScrollBeginDrag={[Function]}
-          onScrollEndDrag={[Function]}
-          overScrollMode="never"
-          scrollEventThrottle={1}
-          scrollsToTop={false}
-          showsHorizontalScrollIndicator={false}
         >
-          <View>
-            <View
-              accessibilityLabel="rocommended deck, tab, 1 of 3"
-              accessibilityRole="button"
-              accessibilityStates={
-                Array [
-                  "selected",
-                ]
-              }
-              accessible={true}
-              isTVSelectable={true}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "flex": 1,
-                  "opacity": 1,
-                }
-              }
-            >
-              <View
-                pointerEvents="none"
-                style={
-                  Object {
-                    "flex": 1,
-                  }
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
-                      "opacity": 1,
-                      "padding": 8,
-                    }
-                  }
-                >
-                  <Text
-                    allowFontScaling={true}
-                    style={
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "rgba(255, 255, 255, 1)",
-                        "fontSize": 13,
-                        "margin": 8,
-                        "textAlign": "center",
-                      }
-                    }
-                  >
-                    ROCOMMENDED DECK
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              accessibilityLabel="unit, tab, 2 of 3"
-              accessibilityRole="button"
-              accessibilityStates={Array []}
-              accessible={true}
-              isTVSelectable={true}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "flex": 1,
-                  "opacity": 1,
-                }
-              }
-            >
-              <View
-                pointerEvents="none"
-                style={
-                  Object {
-                    "flex": 1,
-                  }
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
-                      "opacity": 0.7,
-                      "padding": 8,
-                    }
-                  }
-                >
-                  <Text
-                    allowFontScaling={true}
-                    style={
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "rgba(255, 255, 255, 1)",
-                        "fontSize": 13,
-                        "margin": 8,
-                        "textAlign": "center",
-                      }
-                    }
-                  >
-                    UNIT
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              accessibilityLabel="my page, tab, 3 of 3"
-              accessibilityRole="button"
-              accessibilityStates={Array []}
-              accessible={true}
-              isTVSelectable={true}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "flex": 1,
-                  "opacity": 1,
-                }
-              }
-            >
-              <View
-                pointerEvents="none"
-                style={
-                  Object {
-                    "flex": 1,
-                  }
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "alignItems": "center",
-                      "flex": 1,
-                      "justifyContent": "center",
-                      "opacity": 0.7,
-                      "padding": 8,
-                    }
-                  }
-                >
-                  <Text
-                    allowFontScaling={true}
-                    style={
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "rgba(255, 255, 255, 1)",
-                        "fontSize": 13,
-                        "margin": 8,
-                        "textAlign": "center",
-                      }
-                    }
-                  >
-                    MY PAGE
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </RCTScrollView>
+          <Text />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#6200EE",
+              "fontSize": 20,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          unit
+        </Text>
+      </View>
+      <View
+        accessibilityLabel="my page, tab, 3 of 3"
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#eaecef",
+              "borderTopLeftRadius": 10,
+              "borderTopRightRadius": 10,
+              "bottom": 0,
+              "height": 10,
+              "position": "absolute",
+              "width": 247.5,
+            }
+          }
+        >
+          <Text />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#6200EE",
+              "fontSize": 20,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          my page
+        </Text>
       </View>
     </View>
     <View

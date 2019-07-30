@@ -34,10 +34,20 @@ export const calcHighWinRateDeckList = apiResponse => {
       }
     }
   })
+  return highWinRateDeckList
 
   // 平均勝率を求め、小数点第二を四捨五入
   // averageRankでソート
   return validateData(roundUpAndSortData(highWinRateDeckList))
+}
+
+// remove abnormal data, like units = null, ranknig = null
+export const removeAbnormalData = rawApiResponse => {
+  // ranknigがnull又は、
+  const isAbnormalData = data =>
+    data.ranking !== null && data.units !== [] && data.units !== null
+
+  return rawApiResponse.filter(isAbnormalData)
 }
 
 export const roundUpAndSortData = highWinRateDeckList => {
