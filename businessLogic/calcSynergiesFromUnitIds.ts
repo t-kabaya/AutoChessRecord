@@ -8,14 +8,14 @@ import {
 } from '../constants/SynergyLevelCondition'
 
 // unitIdから、シナジーを計算する。
-const calcSynergiesFromUnitIds = arr => {
+const calcSynergiesFromUnitIds = (arr: []): [] => {
   const unitIdsArray = arr.map(unit => unit.unitId)
   if (unitIdsArray.includes(undefined)) {
     throw new Error('error at uniqIdsArray')
   }
   debugger
   // 同じidのユニットの重複を考慮に入れる。
-  const uniqUnitIdsArray = _.uniq(unitIdsArray)
+  const uniqUnitIdsArray: [] = _.uniq(unitIdsArray)
 
   const unFormattedSynergiesList = uniqUnitIdsArray.reduce(
     (accumulator, currentValue) => {
@@ -65,7 +65,7 @@ export default calcSynergiesFromUnitIds
 
 /* -------------------- PRIVATE --------------------- */
 
-export const isLevel3 = input => {
+export const isLevel3 = (input: any): boolean => {
   if (
     // level3を達成出来る種族は限られている。
     [
@@ -85,7 +85,7 @@ export const isLevel3 = input => {
   return false
 }
 
-export const isLevel2 = condition => {
+export const isLevel2 = (condition: any): boolean => {
   if (synergyLevel2Condition.some(item => areEqualShallow(condition, item))) {
     return true
   } else {
@@ -93,7 +93,7 @@ export const isLevel2 = condition => {
   }
 }
 
-export const isLevel1 = condition => {
+export const isLevel1 = (condition: any): boolean => {
   // jsでは、object === objectは、エラーになる。object oriented programingだからね。
   if (synergyLevel1Condition.some(item => areEqualShallow(item, condition))) {
     return true
@@ -103,7 +103,7 @@ export const isLevel1 = condition => {
 }
 
 // ここでバグが起きている。
-export const calcSynergyLevel = synergiesWithoutLevel =>
+export const calcSynergyLevel = (synergiesWithoutLevel: any): any =>
   synergiesWithoutLevel.reduce((accumulator, currentValue) => {
     if (isLevel3(currentValue)) {
       const synergyLevel = convertCountIntoSynergyLevel(
@@ -149,7 +149,7 @@ export const countUpSynergyAndCount = data => {
 }
 
 // shallow equal?を行う。
-const areEqualShallow = (a, b) => {
+const areEqualShallow = (a, b): boolean => {
   for (var key in a) {
     if (!(key in b) || a[key] !== b[key]) {
       return false
