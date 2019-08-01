@@ -11,7 +11,8 @@ import {
   // sumDeckRankToCalcHighWinRateDeck,
   findIndexOfDeckFromHighWinRateDeckList,
   removeAbnormalDataFromRawApiResponse,
-  removeRowAverageRankDeck
+  removeRowAverageRankDeck,
+  roundUpAndSortData
 } from '../calcHighWinRateDeck'
 
 /* ------   calcHighWinRateDeckList   ------ */
@@ -59,4 +60,23 @@ test('must retrun []', () => {
 test('must return []', () => {
   const input = [{ averageRank: 6 }, { averageRank: 7 }, { averageRank: 8 }]
   expect(removeRowAverageRankDeck(input)).toEqual([])
+})
+
+test('dont remove', () => {
+  const input = [{ averageRank: 1 }, { averageRank: 2 }, { averageRank: 3 }]
+  expect(removeRowAverageRankDeck(input)).toEqual(input)
+})
+
+/* ---------------------   roundupAndSortData   --------------------- */
+
+test('must round up to 2decimal', () => {
+  const input = [
+    { averageRank: 2.2345, units: [] },
+    { averageRank: 1.25, units: [] }
+  ]
+  const output = [
+    { averageRank: 1.3, units: [] },
+    { averageRank: 2.2, units: [] }
+  ]
+  expect(roundUpAndSortData(input)).toEqual(output)
 })

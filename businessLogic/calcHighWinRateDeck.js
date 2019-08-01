@@ -35,11 +35,16 @@ export const calcHighWinRateDeckList = apiResponse => {
     }
   })
 
-  return roundUpAndSortData(highWinRateDeckList)
+  const decksWithAverageRank = highWinRateDeckList.map(deck => ({
+    units: deck.units,
+    averageRank: deck.totalSumOfRank / deck.sumCount
+  }))
+
+  // return roundUpAndSortData(decksWithAverageRank)
 
   // 平均勝率を求め、小数点第二を四捨五入
   // averageRankでソート
-  return removeRawAverageRankDeck(roundUpAndSortData(highWinRateDeckList))
+  return removeRowAverageRankDeck(roundUpAndSortData(highWinRateDeckList))
 }
 
 // remove abnormal data, like units = null, ranknig = null
@@ -58,7 +63,7 @@ export const removeAbnormalDataFromRawApiResponse = rawApiResponse => {
 
 export const roundUpAndSortData = highWinRateDeckList => {
   const result = highWinRateDeckList.map(x => ({
-    averageRank: Math.round((x.totalSumOfRank / x.sumCount) * 10) / 10,
+    averageRank: Math.round(x.averageRank * 10) / 10,
     units: x.units
   }))
 
