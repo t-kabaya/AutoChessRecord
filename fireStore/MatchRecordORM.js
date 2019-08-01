@@ -39,23 +39,28 @@ export const getMyMatchRecord = async () => {
   // return mockDataOfOpDeck
 
   try {
-    const response = await db.collection(dbKey.matchRecord).get()
+    const response = await db.collection('matchRecord').get()
     const data = response.docs.map(doc => doc.data())
+    // debugger
     const highWinRateDeck = calcHighWinRateDeckList(data)
-    return highWinRateDeck.map(record => {
+    // debugger
+    const deckListWithSynergy = highWinRateDeck.map(record => {
       const synergy = calcSynergiesFromUnitIds(record.units)
 
       return { ...record, synergy }
     })
+    debugger
+    return deckListWithSynergy
   } catch (error) {
-    console.log('error')
+    console.log('error at getMyMatchRecord')
   }
 }
 
 // top3率が高いユニットを示す。
 export const getWinRateOfUnits = async () => {
-  const response = await db.collection('matchRecord').get()
-  const data = response.docs.map(doc => doc.data())
+  const response = await db.collection(dbKey.matchRecord).get()
+  // 本番のコードが動かないので、データ量を減らしてみる。後でリファクタリング
+  const data = response.docs.map(doc => doc.data()).slice(0, 40)
 
   const top3WinRateOfUnits = calcWinRateRankingOfUnit(data)
 

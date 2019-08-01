@@ -9,8 +9,9 @@ import _ from 'lodash'
 // }
 
 export const calcHighWinRateDeckList = apiResponse => {
+  const correctData = removeAbnormalDataFromRawApiResponse(apiResponse)
   const highWinRateDeckList = []
-  apiResponse.forEach(data => {
+  correctData.forEach(data => {
     const index = findIndexOfDeckFromHighWinRateDeckList(
       highWinRateDeckList,
       data.units
@@ -44,11 +45,12 @@ export const calcHighWinRateDeckList = apiResponse => {
 
   // 平均勝率を求め、小数点第二を四捨五入
   // averageRankでソート
-  return removeRowAverageRankDeck(roundUpAndSortData(highWinRateDeckList))
+  return removeRowAverageRankDeck(roundUpAndSortData(decksWithAverageRank))
 }
 
 // remove abnormal data, like units = null, ranknig = null
 export const removeAbnormalDataFromRawApiResponse = rawApiResponse => {
+  const isNull = deck => deck == null || {}
   // ranknigが1-8の間であること
   const isCorrectRank = deck =>
     deck.ranking && deck.ranking >= 1 && deck.ranking <= 8
@@ -56,7 +58,8 @@ export const removeAbnormalDataFromRawApiResponse = rawApiResponse => {
   const isCorrectUnit = deck =>
     deck.units && deck.units.length >= 8 && deck.units.length <= 10
 
-  const isCorrect = deck => isCorrectUnit(deck) && isCorrectRank(deck)
+  const isCorrect = deck =>
+    isCorrectUnit(deck) && isCorrectRank(deck) && isNull(deck)
 
   return rawApiResponse.filter(isCorrect)
 }

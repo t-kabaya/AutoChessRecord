@@ -3,7 +3,8 @@ import _ from 'lodash'
 import { en } from '../constants/I18n'
 import {
   synergyLevel1Condition,
-  synergyLevel2Condition
+  synergyLevel2Condition,
+  synergyLevel3Condition
 } from '../constants/SynergyLevelCondition'
 
 // unitIdから、シナジーを計算する。
@@ -12,6 +13,7 @@ const calcSynergiesFromUnitIds = arr => {
   if (unitIdsArray.includes(undefined)) {
     throw new Error('error at uniqIdsArray')
   }
+  debugger
   // 同じidのユニットの重複を考慮に入れる。
   const uniqUnitIdsArray = _.uniq(unitIdsArray)
 
@@ -28,6 +30,7 @@ const calcSynergiesFromUnitIds = arr => {
     },
     []
   )
+  debugger
 
   const synergiesWithoutLevel = unFormattedSynergiesList.reduce(
     (accumulator, currentValue) => {
@@ -45,11 +48,14 @@ const calcSynergiesFromUnitIds = arr => {
     },
     []
   )
+  debugger
 
   const countedUpSynergiesArray = countUpSynergyAndCount(synergiesWithoutLevel)
+  debugger
 
   // level 3, 2, 1の順に、シナジーが発動した順にreturnしていく。
   const synergies = calcSynergyLevel(countedUpSynergiesArray)
+  debugger
 
   // sort for test
   return synergies.sort()
@@ -96,6 +102,7 @@ export const isLevel1 = condition => {
   }
 }
 
+// ここでバグが起きている。
 export const calcSynergyLevel = synergiesWithoutLevel =>
   synergiesWithoutLevel.reduce((accumulator, currentValue) => {
     if (isLevel3(currentValue)) {

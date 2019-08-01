@@ -1,4 +1,19 @@
 import { en } from './I18n'
+import { synergyEnum as S } from './synergyData'
+
+export const synergyLevel3Condition = [
+  // レベル３のシナジーは限られている。
+  { synergy: S.marine, count: 6 },
+  { synergy: S.puppet, count: 6 },
+  { synergy: S.puppet, count: 7 },
+  { synergy: S.beast, count: 6 },
+  { synergy: S.beast, count: 7 },
+  { synergy: S.vanguard, count: 9 },
+  { synergy: S.specialist, count: 6 },
+  { synergy: S.specialist, count: 7 },
+  { synergy: S.specialist, count: 8 },
+  { synergy: S.specialist, count: 9 }
+]
 
 export const synergyLevel2Condition = [
   // サモナーとライダーとウォーカーとパンダはlevel1のみ。
