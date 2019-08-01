@@ -167,7 +167,7 @@ export default class SelectUnitsScreen extends React.Component {
             />
           </View>
           <View style={styles.selectedUnitsContainer}>
-            <Text style={styles.text}>選択済み</Text>
+            <Text style={styles.text}>{selectedUnits.length}</Text>
             <FlatList
               inverted
               horizontal
