@@ -67,18 +67,15 @@ test('must return insectoidLevel1, psykerLevel2, BlasterLevel1', () => {
 /* -------------------- level function test --------------------- */
 
 const level3Input = [
-  en.marine,
-  en.puppet,
-  en.beast,
-  en.blaster,
-  en.longShot,
-  en.specialist,
-  en.assassin,
-  en.vanguard
+  { synergy: en.marine, count: 6 },
+  { synergy: en.puppet, count: 6 },
+  { synergy: en.beast, count: 6 },
+  { synergy: en.blaster, count: 6 },
+  { synergy: en.specialist, count: 6 },
+  { synergy: en.vanguard, count: 9 }
 ]
-level3Input.forEach(item => {
+level3Input.forEach(input => {
   test('must detect level3', () => {
-    const input = { synergy: item, count: 6 }
     expect(isLevel3(input)).toEqual(true)
   })
 })

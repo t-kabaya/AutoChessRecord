@@ -8,6 +8,8 @@ export const synergyLevel3Condition = [
   { synergy: S.puppet, count: 7 },
   { synergy: S.beast, count: 6 },
   { synergy: S.beast, count: 7 },
+  { synergy: S.blaster, count: 6 },
+  { synergy: S.blaster, count: 7 },
   { synergy: S.vanguard, count: 9 },
   { synergy: S.specialist, count: 6 },
   { synergy: S.specialist, count: 7 },

@@ -15,18 +15,14 @@ const calcSynergiesFromUnitIds = (arr: []): [] => {
   }
   debugger
   // 同じidのユニットの重複を考慮に入れる。
-  const uniqUnitIdsArray: [] = _.uniq(unitIdsArray)
+  const uniqUnitIdsArray: any[] = _.uniq(unitIdsArray)
 
   const unFormattedSynergiesList = uniqUnitIdsArray.reduce(
     (accumulator, currentValue) => {
       // const unit = unitData.find(unit => unit.unitId === currentValue)
       const unit = unitData.find(unit => unit.unitId === currentValue)
 
-      const job = unit.job
-      const race = unit.race
-      // accumulator.push(job)
-      // accumulator.push(race)
-      return [...accumulator, job, race].flat().sort()
+      return [...accumulator, unit.job, unit.race].flat().sort()
     },
     []
   )
@@ -65,42 +61,14 @@ export default calcSynergiesFromUnitIds
 
 /* -------------------- PRIVATE --------------------- */
 
-export const isLevel3 = (input: any): boolean => {
-  if (
-    // level3を達成出来る種族は限られている。
-    [
-      en.marine,
-      en.puppet,
-      en.beast,
-      en.blaster,
-      en.longShot,
-      en.specialist,
-      en.assassin,
-      en.vanguard
-    ].includes(input.synergy) &&
-    input.count >= 6
-  ) {
-    return true
-  }
-  return false
-}
+export const isLevel3 = (condition: any): boolean => synergyLevel3Condition.some(item => areEqualShallow(condition, item)) ? true : false
 
-export const isLevel2 = (condition: any): boolean => {
-  if (synergyLevel2Condition.some(item => areEqualShallow(condition, item))) {
-    return true
-  } else {
-    return false
-  }
-}
 
-export const isLevel1 = (condition: any): boolean => {
-  // jsでは、object === objectは、エラーになる。object oriented programingだからね。
-  if (synergyLevel1Condition.some(item => areEqualShallow(item, condition))) {
-    return true
-  } else {
-    return false
-  }
-}
+
+export const isLevel2 = (condition: any): boolean => synergyLevel2Condition.some(item => areEqualShallow(condition, item)) ? true : false
+
+// jsでは、object === objectは、エラーになる。object oriented programingだからね。
+export const isLevel1 = (condition: any): boolean => synergyLevel1Condition.some(item => areEqualShallow(item, condition)) ? true : false
 
 // ここでバグが起きている。
 export const calcSynergyLevel = (synergiesWithoutLevel: any): any =>
