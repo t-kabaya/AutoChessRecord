@@ -18,6 +18,7 @@ import {
   secondaryColor
 } from '../constants/Colors'
 import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
+import I18n from '../constants/I18n'
 
 /* -------------------- hooks --------------------- */
 
@@ -61,9 +62,9 @@ const OpUnitsScreen = props => {
   if (isLoading) return null
   return (
     <Container style={styles.container}>
-      {/* <View style={{ alignItems: 'center', padding: 5 }}>
-        <Text>top3位率</Text>
-      </View> */}
+      <View style={{ alignItems: 'center', padding: 5 }}>
+        <Text>{I18n.t('top3WinRate')}</Text>
+      </View>
       <FlatList
         numColumns={7}
         data={top3WinRateOfUnits}
