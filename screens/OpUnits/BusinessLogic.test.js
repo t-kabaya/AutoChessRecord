@@ -1,4 +1,3 @@
-import { db } from '../../fireStore/fireStoreSetup'
 import { calcWinRateRankingOfUnit } from '../../screens/OpUnits/OpUnits.businessLogic'
 
 // top3WinRate = そのユニットがデッキ内にいる時にtop3に入る確率。

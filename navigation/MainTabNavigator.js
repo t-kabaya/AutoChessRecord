@@ -7,11 +7,11 @@ import {
 } from 'react-navigation'
 import TabBar from '../components/TabBar'
 
-import SelectUnitsScreen from '../screens/SelectUnits/SelectUnitsScreen'
-import OpDeckScreen from '../screens/OpDeck/OpDeck.screen'
+import SelectUnitsScreen from '../screens/SelectUnits/Screen'
+import OpDeckScreen from '../screens/OpDeck/Screen'
 import SettingsScreen from '../screens/SettingsScreen'
-import OpUnitsScreen from '../screens/OpUnits/OpUnits.screen'
-import MyPageScreen from '../screens/MyPage/MyPage.screen'
+import OpUnitsScreen from '../screens/OpUnits/Screen'
+import MyPageScreen from '../screens/MyPage/Screen'
 import { primaryColor } from '../constants/Colors'
 import i18n, { en } from '../constants/I18n'
 
