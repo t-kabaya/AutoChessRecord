@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, StyleSheet, View, FlatList, Image } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-import { Button, Text, Card, Container } from 'native-base'
+import { StyleSheet, View, FlatList, Image } from 'react-native'
+import { Text, Container } from 'native-base'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import {
-  getMyMatchRecord,
-  getWinRateOfUnits
-} from '../fireStore/MatchRecordORM'
+import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
 import unitData, { unitImagePathArray } from '../constants/UnitData'
 import * as Localization from 'expo-localization'
 import {
@@ -19,6 +15,10 @@ import {
 } from '../constants/Colors'
 import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
 import I18n from '../constants/I18n'
+import { getWinRateOfUnits } from '../OpDeck/FireStore'
+import { unitImagePathArray } from '../../constants/UnitData'
+import { primaryColor, secondaryColor } from '../../constants/Colors'
+import SaveMatchRecordButton from '../../components/SaveMatchRecordButton'
 
 /* -------------------- hooks --------------------- */
 
@@ -59,6 +59,7 @@ const OpUnitsScreen = props => {
       </View>
     )
   }
+
   if (isLoading) return null
   return (
     <Container style={styles.container}>

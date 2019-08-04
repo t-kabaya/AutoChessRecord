@@ -68,3 +68,15 @@ rankingと、unitsが０または、nullの時の以上データを取り除く
 バグを直した。
 もう少し、テストを追加してからdevelopにマージする。
 その後、publishする。
+
+## アーキテクチャ
+ducksデザインパターンを参考にした独自アーキテクチャを採用
+screen以下、画面に関連するファイルを一つのフォルダにまとめる。
+
+以下が例
+このことにより、抽象度を上げ過ぎることを防ぎ、かつ疎結合なコードを構築可能に。
+
+MyPage - BusinessLogic.js
+       - BusinessLogic.test.js
+       - Screen.js
+       - Screen.test.js

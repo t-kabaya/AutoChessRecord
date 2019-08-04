@@ -4,7 +4,7 @@ import {
   isContainThisDeckInput1,
   calcHighWinRateDeckInput1,
   calcHighWinRateDeckOutput1
-} from '../mockData/calcHeightWinRateDeckData'
+} from '../../businessLogic/mockData/calcHeightWinRateDeckData'
 
 import {
   calcHighWinRateDeckList,
@@ -13,7 +13,7 @@ import {
   removeAbnormalDataFromRawApiResponse,
   removeRowAverageRankDeck,
   roundUpAndSortData
-} from '../calcHighWinRateDeck'
+} from './BusinessLogic'
 
 /* ------   calcHighWinRateDeckList   ------ */
 

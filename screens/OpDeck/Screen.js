@@ -13,17 +13,17 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import { getMyMatchRecord } from '../fireStore/MatchRecordORM'
-import unitData, { unitImagePathArray } from '../constants/UnitData'
+import { getMyMatchRecord } from './FireStore'
+import unitData, { unitImagePathArray } from '../../constants/UnitData'
 import * as Localization from 'expo-localization'
 import {
   primaryColor,
   darkPrimaryColor,
   secondaryColor,
   baseBackgroundColor
-} from '../constants/Colors'
-import i18n from '../constants/I18n'
-import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
+} from '../../constants/Colors'
+import i18n from '../../constants/I18n'
+import SaveMatchRecordButton from '../../components/SaveMatchRecordButton'
 
 const { height, width } = Dimensions.get('window')
 

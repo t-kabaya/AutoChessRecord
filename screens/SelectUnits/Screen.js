@@ -17,17 +17,17 @@ import {
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 import { Ionicons } from '@expo/vector-icons'
-import Layout from '../constants/Layout'
-import Colors, { baseBackgroundColor } from '../constants/Colors'
-import unitData, { unitImagePathArray } from '../constants/UnitData'
+import Layout from '../../constants/Layout'
+import Colors, { baseBackgroundColor } from '../../constants/Colors'
+import unitData, { unitImagePathArray } from '../../constants/UnitData'
 import { Badge, Button, Text, Toast, Container } from 'native-base'
-import { saveMatchRecordToFireStore } from '../fireStore/MatchRecordORM'
+import { saveMatchRecordToFireStore } from '../OpDeck/FireStore'
 import {
   primaryColor,
   darkPrimaryColor,
   secondaryColor
-} from '../constants/Colors'
-import I18n from '../constants/I18n'
+} from '../../constants/Colors'
+import I18n from '../../constants/I18n'
 
 const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   let levelStar = []

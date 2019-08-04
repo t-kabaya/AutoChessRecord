@@ -7,20 +7,17 @@ import {
 } from 'react-navigation'
 import TabBar from '../components/TabBar'
 
-import HomeScreen from '../screens/HomeScreen'
-import SelectUnitsScreen from '../screens/SelectUnitsScreen'
-import OpDeckScreen from '../screens/OpDeckScreen'
+import SelectUnitsScreen from '../screens/SelectUnits/Screen'
+import OpDeckScreen from '../screens/OpDeck/Screen'
 import SettingsScreen from '../screens/SettingsScreen'
-import OpSynergyAndUnitsScreen from '../screens/OpSynergyAndUnitsScreen'
-import OpUnitsScreen from '../screens/OpUnitsScreen'
-import MyPageScreen from '../screens/MyPageScreen'
+import OpUnitsScreen from '../screens/OpUnits/Screen'
+import MyPageScreen from '../screens/MyPage/Screen'
 import { primaryColor } from '../constants/Colors'
 import i18n, { en } from '../constants/I18n'
 
 export const HomeStack = createStackNavigator(
   {
     OpDeckScreen,
-    OpSynergyAndUnitsScreen,
     SelectUnitsScreen: {
       screen: SelectUnitsScreen,
       // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
@@ -39,7 +36,6 @@ export const HomeStack = createStackNavigator(
 export const OpUnitsStack = createStackNavigator(
   {
     OpUnitsScreen,
-    OpSynergyAndUnitsScreen,
     SelectUnitsScreen: {
       screen: SelectUnitsScreen,
       // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい

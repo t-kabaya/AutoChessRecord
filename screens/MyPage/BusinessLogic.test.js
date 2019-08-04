@@ -1,4 +1,4 @@
-import mockInput from '../mockData/calcYourSynergyWinRate'
+import mockInput from '../../businessLogic/mockData/calcYourSynergyWinRate'
 import { synergyEnum } from '../../constants/synergyData'
 
 import calcYourSynergyWinRate, {
@@ -6,7 +6,7 @@ import calcYourSynergyWinRate, {
   convertFromUnitIdsToSynergy,
   calcAverageRankOfSynergy,
   formatAverageRankOfSynergyOfMeAndAllUser
-} from '../calcYourSynergyWinRate'
+} from './calcYourSynergyWinRate'
 
 /* -------------------- formatAverageRankOfSynergyOfMeAndAllUser --------------------- */
 
