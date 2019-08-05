@@ -21,7 +21,7 @@ import Layout from '../../constants/Layout'
 import Colors, { baseBackgroundColor } from '../../constants/Colors'
 import unitData, { unitImagePathArray } from '../../constants/UnitData'
 import { Badge, Button, Text, Toast, Container } from 'native-base'
-import { saveMatchRecordToFireStore } from '../OpDeck/FireStore'
+import { saveMatchRecordToFireStore } from './FireStore'
 import {
   primaryColor,
   darkPrimaryColor,
@@ -127,9 +127,7 @@ export default class SelectUnitsScreen extends React.Component {
     })
   }
 
-  onPressGoBackButton = () => {
-    this.props.navigation.goBack()
-  }
+  onPressGoBackButton = () => this.props.navigation.goBack()
 
   render () {
     const { unitState } = this.state

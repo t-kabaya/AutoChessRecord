@@ -1,4 +1,3 @@
-import unitData from '../../constants/UnitData'
 import calcSynergiesFromUnitIds, {
   isLevel3,
   isLevel2,

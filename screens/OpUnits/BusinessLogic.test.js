@@ -1,4 +1,4 @@
-import { calcWinRateRankingOfUnit } from '../../screens/OpUnits/OpUnits.businessLogic'
+import { calcWinRateRankingOfUnit } from '../../screens/OpUnits/BusinessLogic'
 
 // top3WinRate = そのユニットがデッキ内にいる時にtop3に入る確率。
 
