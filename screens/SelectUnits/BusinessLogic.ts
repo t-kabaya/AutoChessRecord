@@ -1,5 +1,6 @@
-export const removeAbnormalUnit = (units) => {
-  return units
+export const isValidDeck = (units: any[], rank: number): any[] => {
+  
+  return units.some( unit => isValidUnit(unit)) && isValidRank(rank)
 }
 
 // rankは1 - 8の間でなければならない。 nullは不可

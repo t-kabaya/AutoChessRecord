@@ -1,6 +1,27 @@
-import { removeAbnormalUnit, isValidRank, isValidUnit } from './BusinessLogic'
+import { isValidDeck, isValidRank, isValidUnit } from './BusinessLogic'
 
-test('must remove', () => { })
+/*-------------------- removeAbnormalUnit --------------------*/
+
+test('correct inupt must return true', () => {
+  const input = [
+    {unitId: 8, level: 2}
+  ]
+  const rank = 7
+
+  expect(isValidDeck(input, rank)).toEqual(true)
+})
+
+test('must detect abnormal deck', () => {
+  const input1 = [
+    {unitId: 8, level: 8}
+  ]
+  const input2 = [{unitId: 9, level: 3}]
+  const rank1 = -1
+  const rank2 = 0
+
+  expect(isValidDeck(input1, rank1)).toEqual(false)
+  expect(isValidDeck(input2, rank2)).toEqual(false)
+})
 
 /* ---------------------   isValidRank   --------------------- */
 
