@@ -2,7 +2,7 @@ export const isValidDeck = (units: any[], rank: number): any[] => {
   
   return units.some( unit => isValidUnit(unit)) && isValidRank(rank)
 }
-
+  
 // rankは1 - 8の間でなければならない。 nullは不可
 export const isValidRank = (ranking: number): boolean => (
   typeof ranking === 'number' && ranking >= 1 && ranking <= 8

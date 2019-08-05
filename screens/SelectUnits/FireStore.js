@@ -1,21 +1,21 @@
 import { db, dbKey } from '../../fireStore/fireStoreSetup'
 import { Constants } from 'expo'
+import { isValidDeck, isValidRank, isValidUnit } from './BusinessLogic.ts'
 
-// 順位は押さなくてもいい。
 export const saveMatchRecordToFireStore = async (units, ranking) => {
-  const unitDataToStore = units
-    // unit
-    .filter(unit => !(unit.level === 0))
-    .map(unit => ({ unitId: unit.unitId, level: unit.level }))
+  // 異常データ
+  if (isValidRank(ranking)) return false
+  if (units.some(unit => isValidUnit(unit))) return false
 
   try {
     db.collection(dbKey.matchRecord).add({
       userId: Constants.installationId,
-      ranking: ranking,
-      units: unitDataToStore,
+      ranking,
+      units,
       date: JSON.stringify(new Date())
     })
-  } catch (error) {
-    throw new Error('error at saveMatchRecordToFireStore')
+    return true
+  } catch (e) {
+    return false
   }
 }

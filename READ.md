@@ -40,34 +40,20 @@ selectUnitスクリーンの使い勝手を向上(種族ごとの洗濯、コイ
 新しいユニット追加（イモータルアサシン、）
 ユニットの名前をupdate。（後回し）
 
-マイページのbusinessLogicの作成(main関数などを変更。)
-Sentryでバグ検知
+マイページのbusinessLogicのリファクタ(main関数などを変更。)
 fireStoreにセキュリティルール追加
 一番最初にアプリのチュートリアルモーダルを追加。
 save match buttonをマテリアルデザイン標準のボタンにして、説明を追加。
 unitスクリーンを見やすく。  
 selectunitスクリーンで種族によりフィルター
-selectUnitスクリーンも日本語に直す。
 
 resetOnBlurと、modalを連携させる。[難しそう]
 素敵なチュートリアル用の一枚モーダルを探す。
 FlatListにkeyExtractorを付けておく。
-
 selectUnitScreenの時は、tabを消す。
-訂正グノシーのようなタブを作る。
-
 初期レンダリングの時、アニメーションがうまく動かない。
-
-TODO: バグが発生。
-14行から38行の間にバグが発生し、例外が投げられている。
-このバグとは別問題だが、rankingと、unitsが0またはnullの時の以上データを取り除く処理が必要
-
-今日やること。
-rankingと、unitsが０または、nullの時の以上データを取り除く
-
-バグを直した。
-もう少し、テストを追加してからdevelopにマージする。
-その後、publishする。
+UIのスナップショットテスト
+FireStoreをjestでテスト
 
 ## アーキテクチャ
 ducksデザインパターンを参考にした独自アーキテクチャを採用
