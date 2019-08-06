@@ -7,14 +7,13 @@ import {
 } from 'react-native-responsive-screen'
 import { getMyMatchRecord } from '../OpDeck/FireStore'
 import unitData, { unitImagePathArray } from '../../constants/UnitData'
-import * as Localization from 'expo-localization'
 import {
   primaryColor,
   darkPrimaryColor,
   secondaryColor
-} from '../constants/Colors'
-import SaveMatchRecordButton from '../components/SaveMatchRecordButton'
-import I18n from '../constants/I18n'
+} from '../../constants/Colors'
+import SaveMatchRecordButton from '../../components/SaveMatchRecordButton'
+import I18n from '../../constants/I18n'
 import { getWinRateOfUnits } from '../OpDeck/FireStore'
 
 /* -------------------- hooks --------------------- */
