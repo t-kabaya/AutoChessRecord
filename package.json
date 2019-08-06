@@ -21,6 +21,7 @@
     "react-native-elements": "^1.1.0",
     "react-native-paper": "^2.16.0",
     "react-native-responsive-screen": "^1.2.2",
+    "react-native-root-toast": "^3.1.2",
     "react-navigation": "^3.0.9",
     "sentry-expo": "^1.13.0"
   },

@@ -17,10 +17,11 @@ import {
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 import { Ionicons } from '@expo/vector-icons'
+import Toast from 'react-native-root-toast'
 import Layout from '../../constants/Layout'
 import Colors, { baseBackgroundColor } from '../../constants/Colors'
 import unitData, { unitImagePathArray } from '../../constants/UnitData'
-import { Badge, Button, Text, Toast, Container } from 'native-base'
+import { Badge, Button, Text, Container } from 'native-base'
 import { saveMatchRecordToFireStore } from './FireStore'
 import {
   primaryColor,
@@ -109,15 +110,36 @@ export default class SelectUnitsScreen extends React.Component {
 
   onPressDecision = unitState => {
     saveMatchRecordToFireStore(unitState, this.state.ranking)
-    Toast.show({
-      text: '保存しました',
-      // buttonText: 'Okay',
-      duration: 2000,
-      position: 'top',
-      style: {
-        backgroundColor: secondaryColor,
-        alignItems: 'center',
-        width: 150
+    // Toast.show({
+    //   text: '保存しました',
+    //   // buttonText: 'Okay',
+    //   duration: 2000,
+    //   position: 'top',
+    //   style: {
+    //     backgroundColor: secondaryColor,
+    //     alignItems: 'center',
+    //     width: 150
+    //   }
+    // })
+    Toast.show('This is a message', {
+      backgroundColor: Colors.primaryColor,
+      duration: 200,
+      position: 30,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+      onShow: () => {
+        // calls on toast\`s appear animation start
+      },
+      onShown: () => {
+        // calls on toast\`s appear animation end.
+      },
+      onHide: () => {
+        // calls on toast\`s hide animation start.
+      },
+      onHidden: () => {
+        // calls on toast\`s hide animation end.
       }
     })
     // stateをリセット

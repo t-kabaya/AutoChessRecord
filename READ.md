@@ -55,6 +55,8 @@ selectUnitScreenの時は、tabを消す。
 UIのスナップショットテスト
 FireStoreをjestでテスト
 
+  toastが、successとfailで、違う内容を保存できるように。
+
 ## アーキテクチャ
 ducksデザインパターンを参考にした独自アーキテクチャを採用
 screen以下、画面に関連するファイルを一つのフォルダにまとめる。
