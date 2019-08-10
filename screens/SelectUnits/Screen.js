@@ -29,6 +29,10 @@ import {
   secondaryColor
 } from '../../constants/Colors'
 import I18n from '../../constants/I18n'
+import {
+  showSaveSuccessToast,
+  showInvalidRankToast
+} from '../Common/Component/OnPressSaveToast'
 
 const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   let levelStar = []
@@ -109,39 +113,15 @@ export default class SelectUnitsScreen extends React.Component {
   }
 
   onPressDecision = unitState => {
+    // 無効な、rankの時はreturn
+    if (!this.state.ranking) {
+      showInvalidRankToast()
+
+      return
+    }
+
     saveMatchRecordToFireStore(unitState, this.state.ranking)
-    // Toast.show({
-    //   text: '保存しました',
-    //   // buttonText: 'Okay',
-    //   duration: 2000,
-    //   position: 'top',
-    //   style: {
-    //     backgroundColor: secondaryColor,
-    //     alignItems: 'center',
-    //     width: 150
-    //   }
-    // })
-    Toast.show('This is a message', {
-      backgroundColor: Colors.primaryColor,
-      duration: 200,
-      position: 30,
-      shadow: true,
-      animation: true,
-      hideOnPress: true,
-      delay: 0,
-      onShow: () => {
-        // calls on toast\`s appear animation start
-      },
-      onShown: () => {
-        // calls on toast\`s appear animation end.
-      },
-      onHide: () => {
-        // calls on toast\`s hide animation start.
-      },
-      onHidden: () => {
-        // calls on toast\`s hide animation end.
-      }
-    })
+    showSaveSuccessToast()
     // stateをリセット
     this.setState({
       unitState: unitData.map(data => ({ ...data, level: 0 })),

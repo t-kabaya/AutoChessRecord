@@ -137,7 +137,9 @@ export const en = {
   averageOfAllUserText: 'average of all user (place)',
   playCountText: 'count of play(times)',
   noDataText: 'no data',
-  averageRankText: 'average rank (place)'
+  averageRankText: 'average rank (place)',
+  saveSuccessToastText: 'saved!',
+  invalidRankingToastText: 'invalid rank'
 }
 
 export const ja = {
@@ -273,7 +275,9 @@ export const ja = {
   averageOfAllUserText: '全体の平均（位）',
   playCountText: '使用数（回）',
   noDataText: 'データがありません',
-  averageRankText: '平均ランク(位)'
+  averageRankText: '平均ランク(位)',
+  saveSuccessToastText: '保存しました',
+  invalidRankingToastText: '順位も教えて〜'
 }
 
 i18n.fallbacks = true
