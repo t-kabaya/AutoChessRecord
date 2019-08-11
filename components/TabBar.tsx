@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   NativeModules,
-  LayoutAnimation,
   Animated
 } from 'react-native'
 import { primaryColor, baseBackgroundColor } from '../constants/Colors'
@@ -13,10 +12,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-
-const { UIManager } = NativeModules
-UIManager.setLayoutAnimationEnabledExperimental &&
-  UIManager.setLayoutAnimationEnabledExperimental(true)
 
 class TabBar extends Component {
   render () {

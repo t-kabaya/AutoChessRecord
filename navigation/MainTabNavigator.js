@@ -17,58 +17,33 @@ import i18n, { en } from '../constants/I18n'
 
 export const HomeStack = createStackNavigator(
   {
-    OpDeckScreen,
-    SelectUnitsScreen: {
-      screen: SelectUnitsScreen,
-      // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
-      navigationOptions: {
-        gesturesEnabled: false,
-        headerMode: 'none'
-      }
-    }
+    OpDeckScreen
   },
   {
-    mode: 'modal',
     headerMode: 'none'
   }
 )
 
 export const OpUnitsStack = createStackNavigator(
   {
-    OpUnitsScreen,
-    SelectUnitsScreen: {
-      screen: SelectUnitsScreen,
-      // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
-      navigationOptions: {
-        gesturesEnabled: false
-      }
-    }
+    OpUnitsScreen
   },
   {
-    mode: 'modal',
     headerMode: 'none'
   }
 )
 
 export const MyPageStack = createStackNavigator(
   {
-    MyPageScreen,
-    SelectUnitsScreen: {
-      screen: SelectUnitsScreen,
-      // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
-      navigationOptions: {
-        gesturesEnabled: false
-      }
-    }
+    MyPageScreen
   },
   {
-    mode: 'modal',
     headerMode: 'none'
   }
 )
 
 // tabBarをtopに配置するためだけに、createMaterialTopTabNavigatorを使用
-export default createMaterialTopTabNavigator(
+const TabNavigator = createMaterialTopTabNavigator(
   {
     HomeStack: {
       screen: HomeStack,
@@ -90,31 +65,30 @@ export default createMaterialTopTabNavigator(
     }
   },
   {
-    // tabBarComponent: props => (
-    //   <Text
-    //     style={{
-    //       backgroundColor: 'green',
-    //       height: 100,
-    //       justifyContent: 'center',
-    //       alignItems: 'center'
-    //     }}
-    //   >
-    //     aa
-    //   </Text>
-    // ),
+    // 仕方なくカスタムタブバーを作る
     tabBarComponent: TabBar,
     // initialRouteName: 'MyPageStack',
     // initialRouteName: 'OpUnitsStack',
     initialRouteName: 'HomeStack',
     animationEnabled: false
-    // タブをタップでタブ毎のstackをリセット
-    // resetOnBlur: true,
-    // tabBarOptions: {
-    //   style: {
-    //     backgroundColor: primaryColor,
-    //     pressOpacity: 1,
-    //     height: 50
-    //   }
-    // }
   }
 )
+
+const MainNavigator = createStackNavigator(
+  {
+    TabNavigator,
+    SelectUnitsScreen: {
+      screen: SelectUnitsScreen,
+      // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    }
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+)
+
+export default MainNavigator

@@ -1,16 +1,3 @@
-TODO:  
-ここから丸い画像を取ってくる。
-https://evolutionchess.github.io/mix.html
-
-成功のトーストを綺麗にする。
-
-ユニットの tier リストも必要だな。
-
-勝率の高いデッキを並べる。
-opUnitsScreen を作成する。(top3 率で、ユニットをランキングする。)
-
-OPDeckScreen は、クラロワの opgg を参照。
-
 ## ランキングの作り方。
 
 クライアントサイドジョイン万歳
@@ -29,33 +16,6 @@ var queryRef = citiesRef.where('ranking', '<=', 3);
 opUnitsscreen で sort が float と一緒に使うとうまくいかない。
 
 モックデータとシナジーを合わせる。
-
-## TODO
-新キャラ２体追加
-p12を使った証明書のマニュアルでの追加
-chinese 対応
-iosアプリをリリース。
-
-selectUnitスクリーンの使い勝手を向上(種族ごとの洗濯、コインでの選択)
-新しいユニット追加（イモータルアサシン、）
-ユニットの名前をupdate。（後回し）
-
-マイページのbusinessLogicのリファクタ(main関数などを変更。)
-fireStoreにセキュリティルール追加
-一番最初にアプリのチュートリアルモーダルを追加。
-save match buttonをマテリアルデザイン標準のボタンにして、説明を追加。
-unitスクリーンを見やすく。  
-selectunitスクリーンで種族によりフィルター
-
-resetOnBlurと、modalを連携させる。[難しそう]
-素敵なチュートリアル用の一枚モーダルを探す。
-FlatListにkeyExtractorを付けておく。
-selectUnitScreenの時は、tabを消す。
-初期レンダリングの時、アニメーションがうまく動かない。
-UIのスナップショットテスト
-FireStoreをjestでテスト
-
-  toastが、successとfailで、違う内容を保存できるように。
 
 ## アーキテクチャ
 ducksデザインパターンを参考にした独自アーキテクチャを採用
