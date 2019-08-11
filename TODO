@@ -5,8 +5,6 @@
 fontを、google fontの、mplus1というフォントに変える。
 
 今日やること。
-selectUnitScreenを表示する際には、
-上部のタブを消す。
 
 p12を使った証明書のマニュアルでの追加
 chinese 対応
@@ -14,7 +12,6 @@ iosアプリをリリース。
 
 selectUnitスクリーンの使い勝手を向上(種族ごとの洗濯、コインでの選択)
 新しいユニット追加（イモータルアサシン、）
-ユニットの名前をupdate。（後回し）
 
 マイページのbusinessLogicのリファクタ(main関数などを変更。)
 fireStoreにセキュリティルール追加
