@@ -76,7 +76,7 @@ const TabNavigator = createMaterialTopTabNavigator(
 
 const MainNavigator = createStackNavigator(
   {
-    TabNavigator,
+    // TabNavigator,
     SelectUnitsScreen: {
       screen: SelectUnitsScreen,
       // スワイプダウンで、モーダルが閉じるのを防ぐ。記述量が多くダサい

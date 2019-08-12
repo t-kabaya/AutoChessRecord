@@ -33,6 +33,8 @@ import {
   showSaveSuccessToast,
   showInvalidRankToast
 } from '../Common/Component/OnPressSaveToast'
+import RaceSelectButton from './RaceSelectButton.component'
+import JobSelectButtons from './JobSelectButtons.component'
 
 const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   let levelStar = []
@@ -41,13 +43,11 @@ const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   }
   return (
     <TouchableWithoutFeedback onPress={() => onPressUnitListItem(item)}>
-      <View style={styles.selectedUnitListItemContainer}>
-        <View style={styles.selectedUnitListItemStarContainer}>
-          {levelStar}
-        </View>
+      <View style={S.selectedUnitListItemContainer}>
+        <View style={S.selectedUnitListItemStarContainer}>{levelStar}</View>
         <Image
           resizeMode='contain'
-          style={styles.selectedUnitListItemImage}
+          style={S.selectedUnitListItemImage}
           source={unitImagePathArray[item.unitId - 1]}
         />
       </View>
@@ -81,13 +81,11 @@ export default class SelectUnitsScreen extends React.Component {
     }
     return (
       <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
-        <View style={styles.unitListItemContainer}>
-          <View style={styles.selectedUnitListItemStarContainer}>
-            {levelStar}
-          </View>
+        <View style={S.unitListItemContainer}>
+          <View style={S.selectedUnitListItemStarContainer}>{levelStar}</View>
           <Image
             resizeMode='contain'
-            style={styles.unitListItemImage}
+            style={S.unitListItemImage}
             source={unitImagePathArray[item.unitId - 1]}
           />
           <Text numberOfLines={2}>{I18n.t(item.unitName)}</Text>
@@ -101,9 +99,9 @@ export default class SelectUnitsScreen extends React.Component {
     return (
       <Button
         onPress={() => this.onPressRankingItem(item)}
-        style={styles.rankingButton(isSelected)}
+        style={S.rankingButton(isSelected)}
       >
-        <Text style={styles.rankingButtonText}>{item}位</Text>
+        <Text style={S.rankingButtonText}>{item}位</Text>
       </Button>
     )
   }
@@ -135,81 +133,88 @@ export default class SelectUnitsScreen extends React.Component {
     const { unitState } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <View style={styles.topButtonContainer}>
-            <Button
-              style={styles.goBackButton}
-              onPress={this.onPressGoBackButton}
-            >
-              <Text style={styles.doneSelectButtonText}>
-                {I18n.t('backButtonText')}
-              </Text>
-            </Button>
-            <Button
-              style={styles.decisionButton}
-              onPress={() => this.onPressDecision(unitState)}
-            >
-              <Text style={styles.doneSelectButtonText}>
-                {I18n.t('saveButtonText')}
-              </Text>
-            </Button>
-          </View>
-
-          <View style={{ flex: 3 }}>
-            <FlatList
-              style={styles.unitListContainer}
-              numColumns={7}
-              data={unitState}
-              renderItem={this.unitListItem}
-              keyExtractor={item => item.unitId}
-            />
-          </View>
-          <View style={styles.selectedUnitsContainer}>
-            <Text style={styles.text}>{selectedUnits.length}</Text>
-            <FlatList
-              inverted
-              horizontal
-              data={selectedUnits}
-              renderItem={({ item }) => (
-                <SelectedUnitListItem
-                  item={item}
-                  onPressUnitListItem={this.onPressUnitListItem}
-                />
-              )}
-              keyExtractor={item => item.unitId}
-            />
-          </View>
-
-          <View style={styles.rankingContainer}>
-            {/* <Text style={styles.text}>順位</Text> */}
-            <FlatList
-              scrollEnabled={false}
-              contentContainerStyle={styles.rankingContentContainer}
-              numColumns={8}
-              data={[1, 2, 3, 4, 5, 6, 7, 8]}
-              renderItem={this.rankingItem}
-              keyExtractor={item => item}
-            />
-          </View>
+      <SafeAreaView>
+        <View style={S.topButtonContainer}>
+          <Button style={S.goBackButton} onPress={this.onPressGoBackButton}>
+            <Text style={S.doneSelectButtonText}>
+              {I18n.t('backButtonText')}
+            </Text>
+          </Button>
+          <Button
+            style={S.decisionButton}
+            onPress={() => this.onPressDecision(unitState)}
+          >
+            <Text style={S.doneSelectButtonText}>
+              {I18n.t('saveButtonText')}
+            </Text>
+          </Button>
         </View>
+
+        <View style={S.raceSelectButtonsContainer}>
+          <RaceSelectButton />
+        </View>
+
+        <View style={S.jobSelectButtonsContainer}>
+          <JobSelectButtons />
+        </View>
+
+        <View style={S.unitsListContainer}>
+          <FlatList
+            style={S.unitListContainer}
+            numColumns={7}
+            data={unitState}
+            renderItem={this.unitListItem}
+            keyExtractor={item => item.unitId}
+          />
+        </View>
+        <View style={S.selectedUnitsContainer}>
+          <Text style={S.text}>{selectedUnits.length}</Text>
+          <FlatList
+            inverted
+            horizontal
+            data={selectedUnits}
+            renderItem={({ item }) => (
+              <SelectedUnitListItem
+                item={item}
+                onPressUnitListItem={this.onPressUnitListItem}
+              />
+            )}
+            keyExtractor={item => item.unitId}
+          />
+        </View>
+
+        <View style={S.rankingContainer}>
+          {/* <Text style={S.text}>順位</Text> */}
+          <FlatList
+            scrollEnabled={false}
+            contentContainerStyle={S.rankingContentContainer}
+            numColumns={8}
+            data={[1, 2, 3, 4, 5, 6, 7, 8]}
+            renderItem={this.rankingItem}
+            keyExtractor={item => item}
+          />
+        </View>
+        {/* </View> */}
       </SafeAreaView>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: wp('90%'),
-    marginHorizontal: wp('5%')
-    // backgroundColor: baseBackgroundColor
-  },
+// styleの
+const HEADER_HEIGHT = 15
+const SIDE_BAR_WIDTH = 15
+
+const S = StyleSheet.create({
   topButtonContainer: {
-    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: hp(HEADER_HEIGHT),
+    width: wp('100%'),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'green'
   },
   unitListItemContainer: {
     alignItems: 'center',
@@ -223,8 +228,6 @@ const styles = StyleSheet.create({
   unitListItemImage: {
     width: Layout.width / 10,
     height: Layout.width / 10
-    // borderWidth: 5
-    // borderColor: primaryColor
   },
   doneSelectButtonText: {
     color: 'white',
@@ -234,10 +237,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingTop: 5,
     fontSize: 18
-  },
-  rankingContainer: {
-    flex: 0.8,
-    flexDirection: 'row'
   },
   rankingContentContainer: {
     alignItems: 'center'
@@ -254,11 +253,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white',
     fontSize: 20
-  },
-  selectedUnitsContainer: {
-    flex: 0.8,
-    flexDirection: 'row',
-    alignItems: 'center'
   },
   goBackButton: {
     backgroundColor: primaryColor,
@@ -291,5 +285,32 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     zIndex: 1
+  },
+  raceSelectButtonsContainer: {
+    position: 'absolute',
+    top: hp(HEADER_HEIGHT),
+    left: 0
+  },
+  jobSelectButtonsContainer: {
+    position: 'absolute',
+    top: hp(HEADER_HEIGHT),
+    left: wp(SIDE_BAR_WIDTH)
+  },
+  unitsListContainer: {
+    position: 'absolute',
+    top: hp('30%'),
+    left: wp(SIDE_BAR_WIDTH)
+  },
+  selectedUnitsContainer: {
+    position: 'absolute',
+    top: hp('80%'),
+    left: wp(SIDE_BAR_WIDTH),
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  rankingContainer: {
+    position: 'absolute',
+    top: hp('90%'),
+    left: wp(SIDE_BAR_WIDTH)
   }
 })
