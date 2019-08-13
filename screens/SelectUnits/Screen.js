@@ -35,6 +35,7 @@ import {
 } from '../Common/Component/OnPressSaveToast'
 import RaceSelectButton from './RaceSelectButton.component'
 import JobSelectButtons from './JobSelectButtons.component'
+import { jobEnum } from '../../constants/synergyData.js'
 
 const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   let levelStar = []
@@ -55,8 +56,9 @@ const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   )
 }
 
-// unitの重複は考えない
+const jobNameList = ['all', ...Object.keys(jobEnum)]
 
+// unitの重複は考えない
 export default class SelectUnitsScreen extends React.Component {
   state = {
     unitState: unitData.map(data => ({ ...data, level: 0 })),
@@ -143,6 +145,11 @@ export default class SelectUnitsScreen extends React.Component {
   render () {
     const { unitState, selectedJobButtonsIndex } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
+    debugger
+
+    const filteredUnitsState = unitState.filter(unit =>
+      unit.job.includes(jobNameList[selectedJobButtonsIndex])
+    )
     return (
       <SafeAreaView>
         <View style={S.topButtonContainer}>
@@ -176,7 +183,7 @@ export default class SelectUnitsScreen extends React.Component {
           <FlatList
             style={S.unitListContainer}
             numColumns={6}
-            data={unitState}
+            data={filteredUnitsState}
             renderItem={this.unitListItem}
             keyExtractor={item => item.unitId}
           />

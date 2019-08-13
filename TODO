@@ -39,3 +39,15 @@ disboardで宣伝をする。
 
 今日やること
 raceSelectButtonの見た目を整える。
+selectされたボタンは、四辺が、primaryColorになるように。
+
+アクティブなボタンの背景色
+HTML code:	#F1EBF7
+RGB code:	R: 241 G: 235 B: 247
+
+アクティブなボタンの文字色
+HTML code:	#D4C1F1
+RGB code:	R: 212 G: 193 B: 241
+
+ボタンのグリッド
+:	#EFEFEF

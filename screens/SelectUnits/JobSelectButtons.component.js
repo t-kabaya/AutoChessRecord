@@ -34,6 +34,8 @@ const mockJob = [
   }))
 ]
 
+const jobs = ['all', ...Object.keys(jobEnum)]
+
 const SelectJobButtons = P => {
   JobButtons = ({ item, index }) => (
     <TouchableWithoutFeedback onPress={() => P.onPressSelectJobButton(index)}>
@@ -41,7 +43,7 @@ const SelectJobButtons = P => {
         style={S.jobButtonContainer(index === P.selectedJobButtonsIndex, index)}
       >
         <Text style={S.raceButtonText(index == P.selectedJobButtonsIndex)}>
-          {item.job}
+          {item}
         </Text>
       </View>
     </TouchableWithoutFeedback>
@@ -49,7 +51,7 @@ const SelectJobButtons = P => {
 
   return (
     <FlatList
-      data={mockJob}
+      data={jobs}
       renderItem={JobButtons}
       contentContainerStyle={S.raceButtonWrapper}
       numColumns={5}
