@@ -11,18 +11,27 @@ import {
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 import { primaryColor } from '../../constants/Colors'
+import { jobEnum } from '../../constants/synergyData'
+import I18n from '../../constants/I18n'
+
+// const mockJob = [
+//   { job: 'すべて' },
+//   { job: 'ガーディアン' },
+//   { job: 'ブラスター' },
+//   { job: 'サポーター' },
+//   { job: 'ロングショット' },
+//   { job: 'シェージェブレーカー' },
+//   { job: 'スペシャリスト' },
+//   { job: 'アサシン' },
+//   { job: 'サモナー' },
+//   { job: 'ヴァンガード' }
+// ]
 
 const mockJob = [
-  { job: 'すべて' },
-  { job: 'ガーディアン' },
-  { job: 'ブラスター' },
-  { job: 'サポーター' },
-  { job: 'ロングショット' },
-  { job: 'シェージェブレーカー' },
-  { job: 'スペシャリスト' },
-  { job: 'アサシン' },
-  { job: 'サモナー' },
-  { job: 'ヴァンガード' }
+  { job: 'all' },
+  ...Object.keys(jobEnum).map(job => ({
+    job: I18n.t(job)
+  }))
 ]
 
 const SelectJobButtons = P => {

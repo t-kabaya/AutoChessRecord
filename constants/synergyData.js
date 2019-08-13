@@ -1,3 +1,15 @@
+export const jobEnum = {
+  guardian: 'guardian',
+  blaster: 'blaster',
+  supporter: 'supporter',
+  longShot: 'longShot',
+  siegeBreaker: 'siegeBreaker',
+  specialist: 'specialist',
+  assassin: 'assassin',
+  summoner: 'summoner',
+  vanguard: 'vanguard'
+}
+
 export const synergyEnum = {
   /* -------------------- job --------------------- */
   guardian: 'guardian',
