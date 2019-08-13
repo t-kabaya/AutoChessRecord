@@ -161,7 +161,7 @@ export default class SelectUnitsScreen extends React.Component {
         <View style={S.unitsListContainer}>
           <FlatList
             style={S.unitListContainer}
-            numColumns={7}
+            numColumns={6}
             data={unitState}
             renderItem={this.unitListItem}
             keyExtractor={item => item.unitId}
@@ -201,7 +201,7 @@ export default class SelectUnitsScreen extends React.Component {
 }
 
 // styleの
-const HEADER_HEIGHT = 15
+const HEADER_HEIGHT = 13
 const SIDE_BAR_WIDTH = 15
 
 const S = StyleSheet.create({
@@ -213,8 +213,7 @@ const S = StyleSheet.create({
     width: wp('100%'),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'green'
+    alignItems: 'center'
   },
   unitListItemContainer: {
     alignItems: 'center',
@@ -298,8 +297,10 @@ const S = StyleSheet.create({
   },
   unitsListContainer: {
     position: 'absolute',
-    top: hp('30%'),
-    left: wp(SIDE_BAR_WIDTH)
+    top: hp(HEADER_HEIGHT + 18),
+    left: wp(SIDE_BAR_WIDTH),
+    backgroundColor: 'red',
+    height: hp('50%')
   },
   selectedUnitsContainer: {
     position: 'absolute',

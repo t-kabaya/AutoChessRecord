@@ -30,7 +30,7 @@ const SelectRaceButtons = props => {
     <TouchableWithoutFeedback>
       <View style={S.raceButtonContainer(false, index)}>
         <Text style={S.raceButtonText}>{item.race}</Text>
-        <Text>{index}</Text>
+        {/* <Text>{index}</Text> */}
       </View>
     </TouchableWithoutFeedback>
   )
@@ -42,8 +42,6 @@ const SelectRaceButtons = props => {
         renderItem={RaceButtons}
         contentContainerStyle={S.raceButtonWrapper}
       />
-      <View style={S.lastLineOfList(true)} />
-      {/* {[1,2,3,4].map( x => <Text></Text>)} */}
     </View>
   )
 }
@@ -60,7 +58,7 @@ const S = StyleSheet.create({
   },
   raceButtonContainer: (isActive, index) => ({
     width: wp('13%'),
-    height: hp('7%'),
+    height: hp('10%'),
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '',
@@ -74,11 +72,7 @@ const S = StyleSheet.create({
   }),
   raceButtonText: {
     color: primaryColor
-  },
-  lastLineOfList: isActive => ({
-    borderTopWidth: 2,
-    borderColor: primaryColor
-  })
+  }
 })
 
 export default SelectRaceButtons
