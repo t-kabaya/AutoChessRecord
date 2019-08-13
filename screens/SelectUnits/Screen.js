@@ -35,7 +35,7 @@ import {
 } from '../Common/Component/OnPressSaveToast'
 import RaceSelectButton from './RaceSelectButton.component'
 import JobSelectButtons from './JobSelectButtons.component'
-import { jobEnum } from '../../constants/synergyData.js'
+import { raceEnum, jobEnum } from '../../constants/synergyData.js'
 
 const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   let levelStar = []
@@ -57,6 +57,7 @@ const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
 }
 
 const jobNameList = ['all', ...Object.keys(jobEnum)]
+const raceNameList = ['all', ...Object.keys(raceEnum)]
 
 // unitの重複は考えない
 export default class SelectUnitsScreen extends React.Component {
@@ -69,6 +70,7 @@ export default class SelectUnitsScreen extends React.Component {
     // でも、オートチェスモバイルとの兼ね合いで、名前をハードコードすると、色々と大変そう。やっぱりindex保存で良いかな。
     // stateに保存して良いのはUIの更新に使う値だけ。
     // jobの、配列は、不変なので、stateに入れてはいけない。
+    selectedRaceButtonsIndex: 2,
     selectedJobButtonsIndex: 8
   }
 
@@ -138,18 +140,30 @@ export default class SelectUnitsScreen extends React.Component {
 
   onPressGoBackButton = () => this.props.navigation.goBack()
 
+  onPressSelectRaceButton = index => {
+    this.setState({ selectedRaceButtonsIndex: index })
+  }
+
   onPressSelectJobButton = index => {
     this.setState({ selectedJobButtonsIndex: index })
   }
 
   render () {
-    const { unitState, selectedJobButtonsIndex } = this.state
+    const {
+      unitState,
+      selectedJobButtonsIndex,
+      selectedRaceButtonsIndex
+    } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
-    debugger
 
-    const filteredUnitsState = unitState.filter(unit =>
-      unit.job.includes(jobNameList[selectedJobButtonsIndex])
-    )
+    const filteredUnitsState = unitState
+      .filter(unit =>
+        unit.job.some(job => job === jobNameList[selectedJobButtonsIndex])
+      )
+      .filter(unit =>
+        unit.race.some(race => race === raceNameList[selectedRaceButtonsIndex])
+      )
+
     return (
       <SafeAreaView>
         <View style={S.topButtonContainer}>
@@ -169,7 +183,11 @@ export default class SelectUnitsScreen extends React.Component {
         </View>
 
         <View style={S.raceSelectButtonsContainer}>
-          <RaceSelectButton />
+          <RaceSelectButton
+            raceNameList={raceNameList}
+            selectedRaceButtonsIndex={selectedRaceButtonsIndex}
+            onPressSelectRaceButton={this.onPressSelectRaceButton}
+          />
         </View>
 
         <View style={S.jobSelectButtonsContainer}>

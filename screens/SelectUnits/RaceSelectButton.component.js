@@ -25,12 +25,18 @@ const mockRace = [
   { race: 'ヴァンガード' }
 ]
 
-const SelectRaceButtons = props => {
+const SelectRaceButtons = P => {
   RaceButtons = ({ item, index }) => (
-    <TouchableWithoutFeedback>
-      <View style={S.raceButtonContainer(false, index)}>
-        <Text style={S.raceButtonText}>{item.race}</Text>
-        {/* <Text>{index}</Text> */}
+    <TouchableWithoutFeedback onPress={() => P.onPressSelectRaceButton(index)}>
+      <View
+        style={S.raceButtonContainer(
+          index === P.selectedRaceButtonsIndex,
+          index
+        )}
+      >
+        <Text style={S.raceButtonText(index === P.selectedRaceButtonsIndex)}>
+          {item}
+        </Text>
       </View>
     </TouchableWithoutFeedback>
   )
@@ -38,9 +44,10 @@ const SelectRaceButtons = props => {
   return (
     <View style={S.container}>
       <FlatList
-        data={mockRace}
+        data={P.raceNameList}
         renderItem={RaceButtons}
         contentContainerStyle={S.raceButtonWrapper}
+        extraData={P}
       />
     </View>
   )
@@ -56,7 +63,7 @@ const S = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  raceButtonContainer: (isActive, index) => ({
+  raceButtonContainer: (isSelected, index) => ({
     width: wp('13%'),
     height: hp('10%'),
     justifyContent: 'center',
@@ -67,12 +74,12 @@ const S = StyleSheet.create({
     borderBottomWidth: 2,
     borderRightWidth: 2,
     borderLeftWidth: 2,
-    borderColor: primaryColor,
+    borderColor: isSelected ? primaryColor : 'black',
     backgroundColor: '#F1EBF7'
   }),
-  raceButtonText: {
-    color: primaryColor
-  }
+  raceButtonText: isSelected => ({
+    color: isSelected ? primaryColor : 'black'
+  })
 })
 
 export default SelectRaceButtons

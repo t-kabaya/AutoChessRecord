@@ -1,5 +1,5 @@
-import { en } from '../constants/I18n'
 import { jobEnum as job } from './synergyData'
+import { raceEnum as race } from './synergyData'
 
 const unitNameEnum = {
   // エアフォ
@@ -93,7 +93,7 @@ const unitData = [
   {
     unitId: 1,
     unitName: unitNameEnum.tusker,
-    race: [en.beast],
+    race: [race.beast],
     job: [job.vanguard],
     class: 'タンク',
     imageUrl: require('../assets/images/unit1.jpeg')
@@ -101,7 +101,7 @@ const unitData = [
   {
     unitId: 2,
     unitName: unitNameEnum.acidtooth,
-    race: [en.beast],
+    race: [race.beast],
     job: [job.vanguard],
     class: 'タンク',
     imageUrl: require('../assets/images/unit2.jpeg')
@@ -109,7 +109,7 @@ const unitData = [
   {
     unitId: 3,
     unitName: unitNameEnum.keenedge,
-    race: [en.puppet],
+    race: [race.puppet],
     job: [job.assassin],
     class: 'ベーシックアタック',
     imageUrl: require('../assets/images/unit3.jpeg')
@@ -117,7 +117,7 @@ const unitData = [
   {
     unitId: 4,
     unitName: unitNameEnum.chanter,
-    race: [en.psyker],
+    race: [race.psyker],
     job: [job.supporter],
     class: 'supporter',
     imageUrl: require('../assets/images/unit4.jpeg')
@@ -125,7 +125,7 @@ const unitData = [
   {
     unitId: 5,
     unitName: unitNameEnum.hierophant,
-    race: [en.psyker],
+    race: [race.psyker],
     job: [job.blaster],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit5.jpeg')
@@ -133,7 +133,7 @@ const unitData = [
   {
     unitId: 6,
     unitName: unitNameEnum.sniper,
-    race: [en.marine],
+    race: [race.marine],
     job: [job.longShot],
     class: 'ベーシックアタック',
     imageUrl: require('../assets/images/unit6.jpeg')
@@ -141,7 +141,7 @@ const unitData = [
   {
     unitId: 7,
     unitName: unitNameEnum.medic,
-    race: [en.marine],
+    race: [race.marine],
     job: [job.supporter],
     class: 'supporter',
     imageUrl: '../assets/images/unit7.jpeg'
@@ -149,7 +149,7 @@ const unitData = [
   {
     unitId: 8,
     unitName: unitNameEnum.ironbirdRider,
-    race: [en.rider],
+    race: [race.rider],
     job: [job.longShot],
     class: 'ベーシックアタック',
     imageUrl: require('../assets/images/unit8.jpeg')
@@ -157,7 +157,7 @@ const unitData = [
   {
     unitId: 9,
     unitName: unitNameEnum.marauder,
-    race: [en.mech],
+    race: [race.mech],
     job: [job.blaster],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit9.jpeg')
@@ -165,7 +165,7 @@ const unitData = [
   {
     unitId: 10,
     unitName: unitNameEnum.oculus,
-    race: [en.insectoid],
+    race: [race.insectoid],
     job: [job.specialist],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit10.jpeg')
@@ -173,7 +173,7 @@ const unitData = [
   {
     unitId: 11,
     unitName: unitNameEnum.razorclaw,
-    race: [en.beast],
+    race: [race.beast],
     job: [job.assassin],
     class: 'ベーシックアタック',
     imageUrl: require('../assets/images/unit11.jpeg')
@@ -181,7 +181,7 @@ const unitData = [
   {
     unitId: 12,
     unitName: unitNameEnum.pandaMonk,
-    race: [en.panda],
+    race: [race.panda],
     job: [job.vanguard],
     class: 'タンク',
     imageUrl: require('../assets/images/unit12.jpeg')
@@ -189,7 +189,7 @@ const unitData = [
   {
     unitId: 13,
     unitName: unitNameEnum.illusionist,
-    race: [en.psyker],
+    race: [race.psyker],
     job: [job.summoner],
     class: '召喚',
     imageUrl: require('../assets/images/unit13.jpeg')
@@ -197,7 +197,7 @@ const unitData = [
   {
     unitId: 14,
     unitName: unitNameEnum.siren,
-    race: [en.kraken],
+    race: [race.kraken],
     job: [job.assassin],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit14.jpeg')
@@ -205,7 +205,7 @@ const unitData = [
   {
     unitId: 15,
     unitName: unitNameEnum.thunderer,
-    race: [en.psyker],
+    race: [race.psyker],
     job: [job.longShot],
     class: 'レイトゲームキャリー',
     imageUrl: require('../assets/images/unit15.jpeg')
@@ -213,7 +213,7 @@ const unitData = [
   {
     unitId: 16,
     unitName: unitNameEnum.vajra,
-    race: [en.walker],
+    race: [race.walker],
     job: [job.guardian],
     class: 'タンク、ベーシックアタック',
     imageUrl: require('../assets/images/unit16.jpeg')
@@ -221,7 +221,7 @@ const unitData = [
   {
     unitId: 17,
     unitName: unitNameEnum.blademaster,
-    race: [en.puppet],
+    race: [race.puppet],
     job: [job.vanguard],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit17.jpeg')
@@ -229,7 +229,7 @@ const unitData = [
   {
     unitId: 18,
     unitName: unitNameEnum.skycrab,
-    race: [en.kraken],
+    race: [race.kraken],
     job: [job.siegeBreaker],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit18.jpeg')
@@ -237,7 +237,7 @@ const unitData = [
   {
     unitId: 19,
     unitName: unitNameEnum.gorilla,
-    race: [en.mech],
+    race: [race.mech],
     job: [job.blaster],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit19.jpeg')
@@ -245,7 +245,7 @@ const unitData = [
   {
     unitId: 20,
     unitName: unitNameEnum.dragonBreath,
-    race: [en.marine],
+    race: [race.marine],
     job: [job.vanguard],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit20.jpeg')
@@ -253,7 +253,7 @@ const unitData = [
   {
     unitId: 21,
     unitName: unitNameEnum.paviser,
-    race: [en.marine],
+    race: [race.marine],
     job: [job.guardian],
     class: 'タンク',
     imageUrl: require('../assets/images/unit21.jpeg')
@@ -261,7 +261,7 @@ const unitData = [
   {
     unitId: 22,
     unitName: unitNameEnum.kamikaze,
-    race: [en.insectoid],
+    race: [race.insectoid],
     job: [job.blaster],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit22.jpeg')
@@ -269,7 +269,7 @@ const unitData = [
   {
     unitId: 23,
     unitName: unitNameEnum.vinewarden,
-    race: [en.immortal],
+    race: [race.immortal],
     job: [job.specialist],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit23.jpeg')
@@ -277,7 +277,7 @@ const unitData = [
   {
     unitId: 24,
     unitName: unitNameEnum.slasher,
-    race: [en.puppet],
+    race: [race.puppet],
     job: [job.vanguard],
     class: 'ベーシックアタック',
     imageUrl: require('../assets/images/unit24.jpeg')
@@ -285,7 +285,7 @@ const unitData = [
   {
     unitId: 25,
     unitName: unitNameEnum.electrocutioner,
-    race: [en.kraken],
+    race: [race.kraken],
     job: [job.specialist],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit25.jpeg')
@@ -293,7 +293,7 @@ const unitData = [
   {
     unitId: 26,
     unitName: unitNameEnum.arhat,
-    race: [en.walker],
+    race: [race.walker],
     job: [job.longShot],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit26.jpeg')
@@ -301,7 +301,7 @@ const unitData = [
   {
     unitId: 27,
     unitName: unitNameEnum.catapult,
-    race: [en.mech],
+    race: [race.mech],
     job: [job.siegeBreaker],
     class: 'レイトゲームキャリー',
     imageUrl: require('../assets/images/unit27.jpeg')
@@ -309,7 +309,7 @@ const unitData = [
   {
     unitId: 28,
     unitName: unitNameEnum.outrider,
-    race: [en.rider],
+    race: [race.rider],
     job: [job.blaster],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit28.jpeg')
@@ -317,7 +317,7 @@ const unitData = [
   {
     unitId: 29,
     unitName: unitNameEnum.dauntless,
-    race: [en.airForce],
+    race: [race.airForce],
     job: [job.blaster],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit29.jpeg')
@@ -325,7 +325,7 @@ const unitData = [
   {
     unitId: 30,
     unitName: unitNameEnum.engineer,
-    race: [en.airForce],
+    race: [race.airForce],
     job: [job.supporter],
     class: 'supporter',
     imageUrl: require('../assets/images/unit30.jpeg')
@@ -333,7 +333,7 @@ const unitData = [
   {
     unitId: 31,
     unitName: unitNameEnum.commando,
-    race: [en.marine],
+    race: [race.marine],
     job: [job.longShot],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit31.jpeg')
@@ -341,7 +341,7 @@ const unitData = [
   {
     unitId: 32,
     unitName: unitNameEnum.mortus,
-    race: [en.airForce],
+    race: [race.airForce],
     job: [job.assassin],
     class: 'ベーシックアタック',
     imageUrl: require('../assets/images/unit32.jpeg')
@@ -349,7 +349,7 @@ const unitData = [
   {
     unitId: 33,
     unitName: unitNameEnum.dreadpaw,
-    race: [en.beast],
+    race: [race.beast],
     job: [job.summoner],
     class: '召喚',
     imageUrl: require('../assets/images/unit33.jpeg')
@@ -357,7 +357,7 @@ const unitData = [
   {
     unitId: 34,
     unitName: unitNameEnum.mindbreaker,
-    race: [en.insectoid],
+    race: [race.insectoid],
     job: [job.specialist],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit34.jpeg')
@@ -365,7 +365,7 @@ const unitData = [
   {
     unitId: 35,
     unitName: unitNameEnum.direwing,
-    race: [en.rapter],
+    race: [race.rapter],
     job: [job.longShot],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit35.jpeg')
@@ -373,7 +373,7 @@ const unitData = [
   {
     unitId: 36,
     unitName: unitNameEnum.skyclaw,
-    race: [en.rapter, en.beast],
+    race: [race.rapter, race.beast],
     job: [job.vanguard],
     class: 'タンク',
     imageUrl: require('../assets/images/unit36.jpeg')
@@ -381,7 +381,7 @@ const unitData = [
   {
     unitId: 37,
     unitName: unitNameEnum.shurikenPanda,
-    race: [en.panda],
+    race: [race.panda],
     job: [job.assassin],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit37.jpeg')
@@ -389,7 +389,7 @@ const unitData = [
   {
     unitId: 38,
     unitName: unitNameEnum.goldmane,
-    race: [en.beast],
+    race: [race.beast],
     job: [job.guardian],
     class: 'コントロール、タンク',
     imageUrl: require('../assets/images/unit38.jpeg')
@@ -397,7 +397,7 @@ const unitData = [
   {
     unitId: 39,
     unitName: unitNameEnum.sunfire,
-    race: [en.rapter],
+    race: [race.rapter],
     job: [job.blaster, job.specialist],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit39.jpeg')
@@ -405,7 +405,7 @@ const unitData = [
   {
     unitId: 40,
     unitName: unitNameEnum.bulwark,
-    race: [en.puppet],
+    race: [race.puppet],
     job: [job.guardian],
     class: 'タンク',
     imageUrl: require('../assets/images/unit40.jpeg')
@@ -413,7 +413,7 @@ const unitData = [
   {
     unitId: 41,
     unitName: unitNameEnum.tempestKeeper,
-    race: [en.walker],
+    race: [race.walker],
     job: [job.siegeBreaker],
     class: 'アビリティダメージ、コントロール',
     imageUrl: require('../assets/images/unit41.jpeg')
@@ -421,7 +421,7 @@ const unitData = [
   {
     unitId: 42,
     unitName: unitNameEnum.mantakor,
-    race: [en.puppet, en.kraken],
+    race: [race.puppet, race.kraken],
     job: [job.summoner],
     class: '召喚',
     imageUrl: require('../assets/images/unit42.jpeg')
@@ -429,7 +429,7 @@ const unitData = [
   {
     unitId: 43,
     unitName: unitNameEnum.warbringer,
-    race: [en.puppet],
+    race: [race.puppet],
     job: [job.guardian],
     class: 'レイトゲームキャリー',
     imageUrl: require('../assets/images/unit43.jpeg')
@@ -437,7 +437,7 @@ const unitData = [
   {
     unitId: 44,
     unitName: unitNameEnum.grenadier,
-    race: [en.marine],
+    race: [race.marine],
     job: [job.specialist],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit44.jpeg')
@@ -445,7 +445,7 @@ const unitData = [
   {
     unitId: 45,
     unitName: unitNameEnum.sentinel,
-    race: [en.mech],
+    race: [race.mech],
     job: [job.assassin],
     class: 'ベーシックアタック',
     imageUrl: require('../assets/images/unit45.jpeg')
@@ -453,7 +453,7 @@ const unitData = [
   {
     unitId: 46,
     unitName: unitNameEnum.cruiser,
-    race: [en.airForce],
+    race: [race.airForce],
     job: [job.siegeBreaker],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit46.jpeg')
@@ -461,7 +461,7 @@ const unitData = [
   {
     unitId: 47,
     unitName: unitNameEnum.soulmentor,
-    race: [en.beast],
+    race: [race.beast],
     job: [job.supporter],
     class: 'supporter',
     imageUrl: require('../assets/images/unit47.jpeg')
@@ -469,7 +469,7 @@ const unitData = [
   {
     unitId: 48,
     unitName: unitNameEnum.hiveQueen,
-    race: [en.insectoid],
+    race: [race.insectoid],
     job: [job.longShot],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit48.jpeg')
@@ -477,7 +477,7 @@ const unitData = [
   {
     unitId: 49,
     unitName: unitNameEnum.bonewyrn,
-    race: [en.rapter, en.immortal],
+    race: [race.rapter, race.immortal],
     job: [job.siegeBreaker],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit49.jpeg')
@@ -485,7 +485,7 @@ const unitData = [
   {
     unitId: 50,
     unitName: unitNameEnum.chanMaster,
-    race: [en.panda],
+    race: [race.panda],
     job: [job.specialist],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit50.jpeg')
@@ -493,7 +493,7 @@ const unitData = [
   {
     unitId: 51,
     unitName: unitNameEnum.mirageCaller,
-    race: [en.kraken],
+    race: [race.kraken],
     job: [job.siegeBreaker],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit51.jpeg')
@@ -501,7 +501,7 @@ const unitData = [
   {
     unitId: 52,
     unitName: unitNameEnum.hailstorm,
-    race: [en.mech],
+    race: [race.mech],
     job: [job.blaster],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit52.jpeg')
@@ -509,7 +509,7 @@ const unitData = [
   {
     unitId: 53,
     unitName: unitNameEnum.devourer,
-    race: [en.rapter],
+    race: [race.rapter],
     job: [job.specialist],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit53.jpeg')
@@ -517,7 +517,7 @@ const unitData = [
   {
     unitId: 54,
     unitName: unitNameEnum.forestRager,
-    race: [en.immortal],
+    race: [race.immortal],
     job: [job.vanguard],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit54.jpeg')
@@ -525,7 +525,7 @@ const unitData = [
   {
     unitId: 55,
     unitName: unitNameEnum.ironshell,
-    race: [en.psyker],
+    race: [race.psyker],
     job: [job.guardian],
     class: 'コントロール',
     imageUrl: require('../assets/images/unit55.png')
@@ -533,7 +533,7 @@ const unitData = [
   {
     unitId: 56,
     unitName: unitNameEnum.soulTaker,
-    race: [en.immortal],
+    race: [race.immortal],
     job: [job.assassin],
     class: 'アビリティダメージ',
     imageUrl: require('../assets/images/unit56.png')

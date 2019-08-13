@@ -51,3 +51,6 @@ RGB code:	R: 212 G: 193 B: 241
 
 ボタンのグリッド
 :	#EFEFEF
+ 
+screenという名前は、よくない。
+containerという名前に戻す。
