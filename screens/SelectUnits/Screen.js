@@ -60,7 +60,14 @@ const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
 export default class SelectUnitsScreen extends React.Component {
   state = {
     unitState: unitData.map(data => ({ ...data, level: 0 })),
-    ranking: null
+    ranking: null,
+    // ここで、indexとかで、state内に保存すると、取り回しが面倒。英文字でstateに保存して良いか。
+    // 選択肢は三つある。index, name, array of json
+    // 迷うことなく、array of jsonが、一番、スケールする。
+    // でも、オートチェスモバイルとの兼ね合いで、名前をハードコードすると、色々と大変そう。やっぱりindex保存で良いかな。
+    // stateに保存して良いのはUIの更新に使う値だけ。
+    // jobの、配列は、不変なので、stateに入れてはいけない。
+    selectedJobButtonsIndex: 8
   }
 
   onPressUnitListItem = item => {
@@ -129,8 +136,12 @@ export default class SelectUnitsScreen extends React.Component {
 
   onPressGoBackButton = () => this.props.navigation.goBack()
 
+  onPressSelectJobButton = index => {
+    this.setState({ selectedJobButtonsIndex: index })
+  }
+
   render () {
-    const { unitState } = this.state
+    const { unitState, selectedJobButtonsIndex } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
     return (
       <SafeAreaView>
@@ -155,7 +166,10 @@ export default class SelectUnitsScreen extends React.Component {
         </View>
 
         <View style={S.jobSelectButtonsContainer}>
-          <JobSelectButtons />
+          <JobSelectButtons
+            selectedJobButtonsIndex={selectedJobButtonsIndex}
+            onPressSelectJobButton={this.onPressSelectJobButton}
+          />
         </View>
 
         <View style={S.unitsListContainer}>

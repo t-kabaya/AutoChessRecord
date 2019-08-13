@@ -12,37 +12,40 @@ import {
 } from 'react-native-responsive-screen'
 import { primaryColor } from '../../constants/Colors'
 
-const mockRace = [
-  { race: 'すべて' },
-  { race: 'ガーディアン' },
-  { race: 'ブラスター' },
-  { race: 'サポーター' },
-  { race: 'ロングショット' },
-  { race: 'シェージェブレーカー' },
-  { race: 'スペシャリスト' },
-  { race: 'アサシン' },
-  { race: 'サモナー' },
-  { race: 'ヴァンガード' }
+const mockJob = [
+  { job: 'すべて' },
+  { job: 'ガーディアン' },
+  { job: 'ブラスター' },
+  { job: 'サポーター' },
+  { job: 'ロングショット' },
+  { job: 'シェージェブレーカー' },
+  { job: 'スペシャリスト' },
+  { job: 'アサシン' },
+  { job: 'サモナー' },
+  { job: 'ヴァンガード' }
 ]
 
-const SelectJobButtons = props => {
+const SelectJobButtons = P => {
   JobButtons = ({ item, index }) => (
-    <TouchableWithoutFeedback>
-      <View style={S.jobButtonContainer(true, index)}>
-        <Text style={S.raceButtonText(true)}>{item.race}</Text>
+    <TouchableWithoutFeedback onPress={() => P.onPressSelectJobButton(index)}>
+      <View
+        style={S.jobButtonContainer(index === P.selectedJobButtonsIndex, index)}
+      >
+        <Text style={S.raceButtonText(index == P.selectedJobButtonsIndex)}>
+          {item.job}
+        </Text>
       </View>
     </TouchableWithoutFeedback>
   )
 
   return (
-    // <View style={S.container}>
     <FlatList
-      data={mockRace}
+      data={mockJob}
       renderItem={JobButtons}
       contentContainerStyle={S.raceButtonWrapper}
       numColumns={5}
+      extraData={P.selectedJobButtonsIndex}
     />
-    // </View>
   )
 }
 
@@ -51,20 +54,19 @@ const S = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  jobButtonContainer: (isActive, index) => ({
+  jobButtonContainer: (isSelected, index) => ({
     width: wp('16%'),
     height: hp('9%'),
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '',
     // listItemが、上端の時だけ、フチに線を与える。
     borderTopWidth: index < 5 ? 2 : 0,
     borderBottomWidth: 2,
     borderRightWidth: 2,
     // listItemが、左端の時だけ、フチに線を与える。
     borderLeftWidth: index === 0 || index === 5 ? 2 : 0,
-    borderColor: primaryColor,
-    backgroundColor: '#F1EBF7'
+    borderColor: isSelected ? primaryColor : 'black',
+    backgroundColor: isSelected ? '#F1EBF7' : 'white'
   }),
   raceButtonText: isSelected => ({
     color: isSelected ? primaryColor : 'black'
