@@ -77,10 +77,10 @@ const S = StyleSheet.create({
     // listItemが、左端の時だけ、フチに線を与える。
     borderLeftWidth: index === 0 || index === 5 ? 2 : 0,
     borderColor: isSelected ? primaryColor : 'black',
-    backgroundColor: isSelected ? '#F1EBF7' : 'white'
+    backgroundColor: isSelected ? primaryColor : 'white'
   }),
   raceButtonText: isSelected => ({
-    color: isSelected ? primaryColor : 'black'
+    color: isSelected ? 'white' : 'black'
   })
 })
 

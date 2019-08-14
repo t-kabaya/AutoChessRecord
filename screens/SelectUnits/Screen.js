@@ -70,8 +70,8 @@ export default class SelectUnitsScreen extends React.Component {
     // でも、オートチェスモバイルとの兼ね合いで、名前をハードコードすると、色々と大変そう。やっぱりindex保存で良いかな。
     // stateに保存して良いのはUIの更新に使う値だけ。
     // jobの、配列は、不変なので、stateに入れてはいけない。
-    selectedRaceButtonsIndex: 2,
-    selectedJobButtonsIndex: 8
+    selectedRaceButtonsIndex: 0,
+    selectedJobButtonsIndex: 0
   }
 
   onPressUnitListItem = item => {
@@ -158,10 +158,20 @@ export default class SelectUnitsScreen extends React.Component {
 
     const filteredUnitsState = unitState
       .filter(unit =>
-        unit.job.some(job => job === jobNameList[selectedJobButtonsIndex])
+        unit.job.some(job =>
+          jobNameList[selectedJobButtonsIndex] === 'all'
+            ? // allの時は、全ユニットを表示
+            true
+            : job === jobNameList[selectedJobButtonsIndex]
+        )
       )
       .filter(unit =>
-        unit.race.some(race => race === raceNameList[selectedRaceButtonsIndex])
+        unit.race.some(race =>
+          raceNameList[selectedRaceButtonsIndex] === 'all'
+            ? // all の時は、全ユニットを表示
+            true
+            : race === raceNameList[selectedRaceButtonsIndex]
+        )
       )
 
     return (
@@ -269,7 +279,9 @@ const S = StyleSheet.create({
   },
   doneSelectButtonText: {
     color: 'white',
-    fontSize: 20
+    fontSize: 22,
+    fontWeight: 'bold',
+    letterSpacing: 2
   },
   text: {
     alignSelf: 'center',
@@ -300,7 +312,7 @@ const S = StyleSheet.create({
     justifyContent: 'center'
   },
   decisionButton: {
-    backgroundColor: primaryColor,
+    backgroundColor: secondaryColor,
     width: 80,
     margin: 3,
     alignItems: 'center',
@@ -338,7 +350,6 @@ const S = StyleSheet.create({
     position: 'absolute',
     top: hp(HEADER_HEIGHT + 18),
     left: wp(SIDE_BAR_WIDTH),
-    backgroundColor: 'red',
     height: hp('50%')
   },
   selectedUnitsContainer: {

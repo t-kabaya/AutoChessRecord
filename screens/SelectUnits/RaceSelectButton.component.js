@@ -75,10 +75,10 @@ const S = StyleSheet.create({
     borderRightWidth: 2,
     borderLeftWidth: 2,
     borderColor: isSelected ? primaryColor : 'black',
-    backgroundColor: '#F1EBF7'
+    backgroundColor: isSelected ? primaryColor : 'transparent'
   }),
   raceButtonText: isSelected => ({
-    color: isSelected ? primaryColor : 'black'
+    color: isSelected ? 'white' : 'black'
   })
 })
 
