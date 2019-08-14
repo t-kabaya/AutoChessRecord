@@ -56,6 +56,7 @@ const SelectJobButtons = P => {
       contentContainerStyle={S.raceButtonWrapper}
       numColumns={5}
       extraData={P.selectedJobButtonsIndex}
+      scrollEnabled={false}
     />
   )
 }
@@ -80,7 +81,8 @@ const S = StyleSheet.create({
     backgroundColor: isSelected ? primaryColor : 'white'
   }),
   raceButtonText: isSelected => ({
-    color: isSelected ? 'white' : 'black'
+    color: isSelected ? 'white' : 'black',
+    fontSize: wp('2.2%')
   })
 })
 

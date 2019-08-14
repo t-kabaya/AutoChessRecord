@@ -78,7 +78,8 @@ const S = StyleSheet.create({
     backgroundColor: isSelected ? primaryColor : 'transparent'
   }),
   raceButtonText: isSelected => ({
-    color: isSelected ? 'white' : 'black'
+    color: isSelected ? 'white' : 'black',
+    fontSize: wp('2.2%')
   })
 })
 

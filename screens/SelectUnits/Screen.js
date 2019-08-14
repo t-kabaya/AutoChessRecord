@@ -207,15 +207,14 @@ export default class SelectUnitsScreen extends React.Component {
           />
         </View>
 
-        <View style={S.unitsListContainer}>
-          <FlatList
-            style={S.unitListContainer}
-            numColumns={6}
-            data={filteredUnitsState}
-            renderItem={this.unitListItem}
-            keyExtractor={item => item.unitId}
-          />
-        </View>
+        <FlatList
+          style={S.unitsListContainer}
+          numColumns={6}
+          data={filteredUnitsState}
+          renderItem={this.unitListItem}
+          keyExtractor={item => item.unitId}
+        />
+
         <View style={S.selectedUnitsContainer}>
           <Text style={S.text}>{selectedUnits.length}</Text>
           <FlatList
@@ -233,7 +232,6 @@ export default class SelectUnitsScreen extends React.Component {
         </View>
 
         <View style={S.rankingContainer}>
-          {/* <Text style={S.text}>順位</Text> */}
           <FlatList
             scrollEnabled={false}
             contentContainerStyle={S.rankingContentContainer}
@@ -243,7 +241,6 @@ export default class SelectUnitsScreen extends React.Component {
             keyExtractor={item => item}
           />
         </View>
-        {/* </View> */}
       </SafeAreaView>
     )
   }
@@ -251,6 +248,7 @@ export default class SelectUnitsScreen extends React.Component {
 
 // styleの
 const HEADER_HEIGHT = 13
+const HEADER_PADDING = 2
 const SIDE_BAR_WIDTH = 15
 
 const S = StyleSheet.create({
@@ -269,9 +267,6 @@ const S = StyleSheet.create({
     justifyContent: 'flex-start',
     width: wp('12.5%'),
     height: wp('15%')
-  },
-  unitListContainer: {
-    height: (Layout.height * 4) / 5
   },
   unitListItemImage: {
     width: Layout.width / 10,
@@ -338,17 +333,17 @@ const S = StyleSheet.create({
   },
   raceSelectButtonsContainer: {
     position: 'absolute',
-    top: hp(HEADER_HEIGHT),
+    top: hp(HEADER_HEIGHT + HEADER_PADDING),
     left: 0
   },
   jobSelectButtonsContainer: {
     position: 'absolute',
-    top: hp(HEADER_HEIGHT),
+    top: hp(HEADER_HEIGHT + HEADER_PADDING),
     left: wp(SIDE_BAR_WIDTH)
   },
   unitsListContainer: {
     position: 'absolute',
-    top: hp(HEADER_HEIGHT + 18),
+    top: hp(HEADER_HEIGHT + HEADER_PADDING + 18),
     left: wp(SIDE_BAR_WIDTH),
     height: hp('50%')
   },
