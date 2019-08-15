@@ -31,7 +31,8 @@ const SelectRaceButtons = P => {
       <View
         style={S.raceButtonContainer(
           index === P.selectedRaceButtonsIndex,
-          index
+          index,
+          P.raceNameList.length
         )}
       >
         <Text style={S.raceButtonText(index === P.selectedRaceButtonsIndex)}>
@@ -53,6 +54,8 @@ const SelectRaceButtons = P => {
   )
 }
 
+const RADIUS = 8
+
 const S = StyleSheet.create({
   container: {
     // backgroundColor: 'red',
@@ -63,9 +66,9 @@ const S = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  raceButtonContainer: (isSelected, index) => ({
+  raceButtonContainer: (isSelected, index, listLength) => ({
     width: wp('13%'),
-    height: hp('10%'),
+    height: hp('12%'),
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '',
@@ -75,11 +78,16 @@ const S = StyleSheet.create({
     borderRightWidth: 2,
     borderLeftWidth: 2,
     borderColor: isSelected ? primaryColor : 'black',
-    backgroundColor: isSelected ? primaryColor : 'transparent'
+    backgroundColor: isSelected ? primaryColor : 'transparent',
+    borderTopLeftRadius: index === 0 ? RADIUS : 0,
+    borderTopRightRadius: index === 0 ? RADIUS : 0,
+    borderBottomLeftRadius: index === listLength - 1 ? RADIUS : 0,
+    borderBottomRightRadius: index === listLength - 1 ? RADIUS : 0
   }),
   raceButtonText: isSelected => ({
     color: isSelected ? 'white' : 'black',
-    fontSize: wp('2.2%')
+    fontSize: wp('2.2%'),
+    letterSpacing: wp('0.15%')
   })
 })
 

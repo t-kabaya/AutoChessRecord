@@ -61,6 +61,8 @@ const SelectJobButtons = P => {
   )
 }
 
+const RADIUS = 8
+
 const S = StyleSheet.create({
   raceButtonWrapper: {
     justifyContent: 'center',
@@ -77,12 +79,18 @@ const S = StyleSheet.create({
     borderRightWidth: 2,
     // listItemが、左端の時だけ、フチに線を与える。
     borderLeftWidth: index === 0 || index === 5 ? 2 : 0,
-    borderColor: isSelected ? primaryColor : 'black',
-    backgroundColor: isSelected ? primaryColor : 'white'
+    borderColor: 'rgba(0, 0, 0)',
+    backgroundColor: isSelected ? primaryColor : 'white',
+    // 四隅を、丸める。
+    borderTopLeftRadius: index == 0 ? RADIUS : 0,
+    borderTopRightRadius: index == 4 ? RADIUS : 0,
+    borderBottomLeftRadius: index == 5 ? RADIUS : 0,
+    borderBottomRightRadius: index === 9 ? RADIUS : 0
   }),
   raceButtonText: isSelected => ({
     color: isSelected ? 'white' : 'black',
-    fontSize: wp('2.2%')
+    fontSize: wp('2.2%'),
+    letterSpacing: wp('0.15%')
   })
 })
 
