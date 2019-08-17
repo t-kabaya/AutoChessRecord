@@ -1,5 +1,5 @@
 export const raceEnum = {
-  beast: 'Beast', 
+  beast: 'Beast',
   caveClan: 'CaveClan',
   demon: 'Demon',
   dragon: 'Dragon',
@@ -11,5 +11,6 @@ export const raceEnum = {
   human: 'Human',
   kira: 'Kira',
   marine: 'Marine',
-  spirit: 'Spirit'
+  spirit: 'Spirit',
+  divinity: 'Divinity'
 }
