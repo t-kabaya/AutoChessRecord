@@ -1,541 +1,524 @@
 import { jobEnum as job } from './synergyData'
 import { raceEnum as race } from './synergyData'
 
-const unitNameEnum = {
-  // エアフォ
-  mortus: 'mortus',
-  dauntless: 'dauntless',
-  cruiser: 'cruiser',
-  engineer: 'engineer',
+const unit = {
+  // cost1
+  defector: 'Defector',
+  egersisRanger: 'Egersis Ranger',
+  frostKnight: 'Frost Knight',
+  godOfWar: 'God of War',
+  heavenBomber: 'Heaven Bomber',
+  ogreMage: 'Ogre Mage',
+  redaxeChief: 'Redaxe Chief',
+  skyBreaker: 'Sky Breaker',
+  soulBreaker: 'Soul Breaker',
+  stoneSpirit: 'Stone Spirit',
+  tabooWitcher: 'Taboo Witcher',
+  tuskChampion: 'Tusk Champion',
+  unicorn: 'Unicorn',
 
-  // ビースト
-  razorclaw: 'razorclaw',
-  goldmane: 'goldmane',
-  dreadpaw: 'dreadpaw',
-  soulmentor: 'soulmentor',
-  acidtooth: 'acidtooth',
-  skyclaw: 'skyclaw',
-  tusker: 'tusker',
+  // cost2
+  abyssalCrawler: 'Abyssal Crawler',
+  abyssalGuard: 'Abyssal Guard',
+  desperateDoctor: 'Desperate Doctor',
+  hellKnight: 'Hell Knight',
+  lightbladeKnight: 'Lightblade Knight',
+  phantomQueen: 'Phantom Queen',
+  ripper: 'Ripper',
+  shiningDragon: 'Shining Dragon',
+  skullHunter: 'Skull Hunter',
+  swordman: 'Swordman',
+  theSource: 'The Source',
+  waterSpirit: 'Water Spirit',
+  wisperSeer: 'Wisper Seer',
 
-  // イモータル
-  bonewyrn: 'bonewyrn',
-  vinewarden: 'vinewarden',
-  soulTaker: 'soulTaker',
-  forestRager: 'forestRager',
+  // cost3
+  argaliKnight: 'Argali Knight',
+  dwarfSniper: 'Dwarf Sniper',
+  evilKnight: 'Evil Knight',
+  fallenWitcher: 'Fallen Witcher',
+  flamingWizard: 'Flaming Wizard',
+  lordOfSand: 'Lord of Sand',
+  poisonousWorm: 'Poisonous Worm',
+  shadowDevil: 'Shadow Devil',
+  shadowcrawler: 'Shadowcrawler',
+  thunderSpirit: 'Thunder Spirit',
+  venom: 'Venom',
+  warpwoodSage: 'Warpwood Sage',
+  werewolf: 'Werewolf',
+  windRanger: 'Wind Ranger',
 
-  // インセクトイド
-  kamikaze: 'kamikaze',
-  hiveQueen: 'hiveQueen',
-  mindbreaker: 'mindbreaker',
-  oculus: 'oculus',
+  // cost4
+  berserker: 'Berserker',
+  doomArbiter: 'Doom Arbiter',
+  dragonKnight: 'Dragon Knight',
+  pirateCaptain: 'Pirate Captain',
+  razorclaw: 'Razorclaw',
+  shiningAssassin: 'Shining Assassin',
+  siren: 'Siren',
+  soulReaper: 'Soul Reaper',
+  stormShaman: 'Storm Shaman',
+  tortolaElder: 'Tortola Elder',
+  venomancer: 'Venomancer',
 
-  // クラーケン
-  siren: 'siren',
-  mirageCaller: 'mirageCaller',
-  skycrab: 'skycrab',
-  electrocutioner: 'electrocutioner',
-  mantakor: 'mantakor',
-
-  // マリーン
-  paviser: 'paviser',
-  commando: 'commando',
-  sniper: 'sniper',
-  grenadier: 'grenadier',
-  medic: 'medic',
-  dragonBreath: 'dragonBreath',
-
-  // メカ
-  sentinel: 'sentinel',
-  gorilla: 'gorilla',
-  hailstorm: 'hailstorm',
-  marauder: 'marauder',
-  catapult: 'catapult',
-
-  // パンダ
-  shurikenPanda: 'shurikenPanda',
-  chanMaster: 'chanMaster',
-  pandaMonk: 'pandaMonk',
-
-  // サイカー
-  hierophant: 'hierophant',
-  ironshell: 'ironshell',
-  thunderer: 'thunderer',
-  illusionist: 'illusionist',
-  chanter: 'chanter',
-
-  // パペット
-  keenedge: 'keenedge',
-  bulwark: 'bulwark',
-  // illusionist: 'illusionist',
-  // mantakor: 'mantakor',
-  blademaster: 'blademaster',
-  slasher: 'slasher',
-  warbringer: 'warbringer',
-
-  // ラプター
-  sunfire: 'sunfire',
-  direwing: 'direwing',
-  // bonewyrn: 'bonewyrn',
-  devourer: 'devourer',
-  // skyclaw: 'skyclaw',
-
-  // ライダー
-  ironbirdRider: 'ironbirdRider',
-  outrider: 'outrider',
-
-  // ウォーカー
-  vajra: 'vajra',
-  arhat: 'arhat',
-  tempestKeeper: 'tempestKeeper'
+  // cost5
+  strangeEgg: 'Strange Egg',
+  lightSorcerer: 'Blight Sorcerer',
+  arkSpirit: 'Dark Spirit',
+  devastator: 'Devastator',
+  godOfThunder: 'God of Thunder',
+  helicopter: 'Helicopter',
+  tsunamiStalker: 'Tsunami Stalker'
 }
 
 const unitData = [
   {
     unitId: 1,
-    unitName: unitNameEnum.tusker,
-    race: [race.beast],
-    job: [job.vanguard],
-    class: 'タンク',
+    unitName: unit.defector,
+    race: [race.glacierClan],
+    job: [job.shaman],
     imageUrl: require('../assets/images/unit1.jpeg')
   },
   {
     unitId: 2,
-    unitName: unitNameEnum.acidtooth,
-    race: [race.beast],
-    job: [job.vanguard],
-    class: 'タンク',
+    unitName: unit.egersisRanger,
+    race: [race.egersis],
+    job: [job.hunter],
     imageUrl: require('../assets/images/unit2.jpeg')
   },
   {
     unitId: 3,
-    unitName: unitNameEnum.keenedge,
-    race: [race.puppet],
-    job: [job.assassin],
-    class: 'ベーシックアタック',
+    unitName: unit.frostKnight,
+    race: [race.glacierClan],
+    job: [job.knight],
+
     imageUrl: require('../assets/images/unit3.jpeg')
   },
   {
     unitId: 4,
-    unitName: unitNameEnum.chanter,
-    race: [race.psyker],
-    job: [job.supporter],
-    class: 'supporter',
+    unitName: unit.godOfWar,
+    race: [race.divinity],
+    job: [job.warrior],
     imageUrl: require('../assets/images/unit4.jpeg')
   },
   {
     unitId: 5,
-    unitName: unitNameEnum.hierophant,
-    race: [race.psyker],
-    job: [job.blaster],
-    class: 'アビリティダメージ',
+    unitName: unit.heavenBomber,
+    race: [race.goblin],
+    job: [job.mech],
+
     imageUrl: require('../assets/images/unit5.jpeg')
   },
   {
     unitId: 6,
-    unitName: unitNameEnum.sniper,
-    race: [race.marine],
-    job: [job.longShot],
-    class: 'ベーシックアタック',
+    unitName: unit.ogreMage,
+    race: [race.kira],
+    job: [job.mage],
+
     imageUrl: require('../assets/images/unit6.jpeg')
   },
   {
     unitId: 7,
-    unitName: unitNameEnum.medic,
-    race: [race.marine],
-    job: [job.supporter],
-    class: 'supporter',
+    unitName: unit.redaxeChief,
+    race: [race.caveClan],
+    job: [job.warrior],
+
     imageUrl: '../assets/images/unit7.jpeg'
   },
   {
     unitId: 8,
-    unitName: unitNameEnum.ironbirdRider,
-    race: [race.rider],
-    job: [job.longShot],
-    class: 'ベーシックアタック',
+    unitName: unit.skyBreaker,
+    race: [race.goblin],
+    job: [race.mech],
+
     imageUrl: require('../assets/images/unit8.jpeg')
   },
   {
     unitId: 9,
-    unitName: unitNameEnum.marauder,
-    race: [race.mech],
-    job: [job.blaster],
-    class: 'コントロール',
+    unitName: unit.soulBreaker,
+    race: [race.goblin],
+    job: [job.assassin],
+
     imageUrl: require('../assets/images/unit9.jpeg')
   },
   {
     unitId: 10,
-    unitName: unitNameEnum.oculus,
-    race: [race.insectoid],
-    job: [job.specialist],
-    class: 'コントロール',
+    unitName: unit.stoneSpirit,
+    race: [race.spirit],
+    job: [job.warrior],
+
     imageUrl: require('../assets/images/unit10.jpeg')
   },
   {
     unitId: 11,
-    unitName: unitNameEnum.razorclaw,
-    race: [race.beast],
-    job: [job.assassin],
-    class: 'ベーシックアタック',
+    unitName: unit.tabooWitcher,
+    race: [race.feathered],
+    job: [job.witcher],
+
     imageUrl: require('../assets/images/unit11.jpeg')
   },
   {
     unitId: 12,
-    unitName: unitNameEnum.pandaMonk,
-    race: [race.panda],
-    job: [job.vanguard],
-    class: 'タンク',
+    unitName: unit.tuskChampion,
+    race: [race.beast],
+    job: [job.warrior],
+
     imageUrl: require('../assets/images/unit12.jpeg')
   },
   {
     unitId: 13,
-    unitName: unitNameEnum.illusionist,
-    race: [race.psyker],
-    job: [job.summoner],
-    class: '召喚',
+    unitName: unit.unicorn,
+    race: [race.beast],
+    job: [job.druid],
+
     imageUrl: require('../assets/images/unit13.jpeg')
   },
+
+  // cost2
   {
     unitId: 14,
-    unitName: unitNameEnum.siren,
-    race: [race.kraken],
+    unitName: unit.abyssalCrawler,
+    race: [race.marine],
     job: [job.assassin],
-    class: 'アビリティダメージ',
+
     imageUrl: require('../assets/images/unit14.jpeg')
   },
   {
     unitId: 15,
-    unitName: unitNameEnum.thunderer,
-    race: [race.psyker],
-    job: [job.longShot],
-    class: 'レイトゲームキャリー',
+    unitName: unit.abyssalGuard,
+    race: [race.marine],
+    job: [job.warrior],
+
     imageUrl: require('../assets/images/unit15.jpeg')
   },
   {
     unitId: 16,
-    unitName: unitNameEnum.vajra,
-    race: [race.walker],
-    job: [job.guardian],
-    class: 'タンク、ベーシックアタック',
+    unitName: unit.desperateDoctor,
+    race: [race.glacierClan],
+    job: [job.warlock],
+
     imageUrl: require('../assets/images/unit16.jpeg')
   },
   {
     unitId: 17,
-    unitName: unitNameEnum.blademaster,
-    race: [race.puppet],
-    job: [job.vanguard],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit17.jpeg')
   },
   {
     unitId: 18,
-    unitName: unitNameEnum.skycrab,
-    race: [race.kraken],
-    job: [job.siegeBreaker],
-    class: 'アビリティダメージ',
+    unitName: unit.hellKnight,
+    race: [race.demon],
+    job: [job.knight],
+
     imageUrl: require('../assets/images/unit18.jpeg')
   },
   {
     unitId: 19,
-    unitName: unitNameEnum.gorilla,
-    race: [race.mech],
-    job: [job.blaster],
-    class: 'アビリティダメージ',
+    unitName: unit.lightbladeKnight,
+    race: [race.feathered],
+    job: [job.assassin],
+
     imageUrl: require('../assets/images/unit19.jpeg')
   },
   {
     unitId: 20,
-    unitName: unitNameEnum.dragonBreath,
-    race: [race.marine],
-    job: [job.vanguard],
-    class: 'アビリティダメージ',
+    unitName: unit.phantomQueen,
+    race: [race.demon],
+    job: [job.assassin],
+
     imageUrl: require('../assets/images/unit20.jpeg')
   },
   {
     unitId: 21,
-    unitName: unitNameEnum.paviser,
-    race: [race.marine],
-    job: [job.guardian],
-    class: 'タンク',
+    unitName: unit.ripper,
+    race: [race.goblin],
+    job: [job.mech],
+
     imageUrl: require('../assets/images/unit21.jpeg')
   },
   {
     unitId: 22,
-    unitName: unitNameEnum.kamikaze,
-    race: [race.insectoid],
-    job: [job.blaster],
-    class: 'アビリティダメージ',
+    unitName: unit.shiningDragon,
+    race: [race.feathered, race.dragon],
+    job: [job.mage],
+
     imageUrl: require('../assets/images/unit22.jpeg')
   },
   {
     unitId: 23,
-    unitName: unitNameEnum.vinewarden,
-    race: [race.immortal],
-    job: [job.specialist],
-    class: 'コントロール',
+    unitName: unit.skullHunter,
+    race: [race.caveClan],
+    job: [job.hunter],
+
     imageUrl: require('../assets/images/unit23.jpeg')
   },
   {
     unitId: 24,
-    unitName: unitNameEnum.slasher,
-    race: [race.puppet],
-    job: [job.vanguard],
-    class: 'ベーシックアタック',
+    unitName: unit.swordman,
+    race: [race.caveClan],
+    job: [job.warrior],
+
     imageUrl: require('../assets/images/unit24.jpeg')
   },
   {
     unitId: 25,
-    unitName: unitNameEnum.electrocutioner,
-    race: [race.kraken],
-    job: [job.specialist],
-    class: 'アビリティダメージ',
+    unitName: unit.theSource,
+    race: [race.human],
+    job: [job.mage],
+
     imageUrl: require('../assets/images/unit25.jpeg')
   },
   {
     unitId: 26,
-    unitName: unitNameEnum.arhat,
-    race: [race.walker],
-    job: [job.longShot],
-    class: 'アビリティダメージ',
+    unitName: unit.waterSpirit,
+    race: [race.spirit],
+    job: [job.assassin],
+
     imageUrl: require('../assets/images/unit26.jpeg')
   },
   {
     unitId: 27,
-    unitName: unitNameEnum.catapult,
-    race: [race.mech],
-    job: [job.siegeBreaker],
-    class: 'レイトゲームキャリー',
+    unitName: unit.wisperSeer,
+    race: [race.feathered],
+    job: [job.druid],
+
     imageUrl: require('../assets/images/unit27.jpeg')
   },
+
+  // cost3
   {
     unitId: 28,
-    unitName: unitNameEnum.outrider,
-    race: [race.rider],
-    job: [job.blaster],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit28.jpeg')
   },
   {
     unitId: 29,
-    unitName: unitNameEnum.dauntless,
-    race: [race.airForce],
-    job: [job.blaster],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit29.jpeg')
   },
   {
     unitId: 30,
-    unitName: unitNameEnum.engineer,
-    race: [race.airForce],
-    job: [job.supporter],
-    class: 'supporter',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit30.jpeg')
   },
   {
     unitId: 31,
-    unitName: unitNameEnum.commando,
-    race: [race.marine],
-    job: [job.longShot],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit31.jpeg')
   },
   {
     unitId: 32,
-    unitName: unitNameEnum.mortus,
-    race: [race.airForce],
-    job: [job.assassin],
-    class: 'ベーシックアタック',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit32.jpeg')
   },
   {
     unitId: 33,
-    unitName: unitNameEnum.dreadpaw,
-    race: [race.beast],
-    job: [job.summoner],
-    class: '召喚',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit33.jpeg')
   },
   {
     unitId: 34,
-    unitName: unitNameEnum.mindbreaker,
-    race: [race.insectoid],
-    job: [job.specialist],
-    class: 'コントロール',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit34.jpeg')
   },
   {
     unitId: 35,
-    unitName: unitNameEnum.direwing,
-    race: [race.rapter],
-    job: [job.longShot],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit35.jpeg')
   },
   {
     unitId: 36,
-    unitName: unitNameEnum.skyclaw,
-    race: [race.rapter, race.beast],
-    job: [job.vanguard],
-    class: 'タンク',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit36.jpeg')
   },
   {
     unitId: 37,
-    unitName: unitNameEnum.shurikenPanda,
-    race: [race.panda],
-    job: [job.assassin],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit37.jpeg')
   },
   {
     unitId: 38,
-    unitName: unitNameEnum.goldmane,
-    race: [race.beast],
-    job: [job.guardian],
-    class: 'コントロール、タンク',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit38.jpeg')
   },
   {
     unitId: 39,
-    unitName: unitNameEnum.sunfire,
-    race: [race.rapter],
-    job: [job.blaster, job.specialist],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit39.jpeg')
   },
   {
     unitId: 40,
-    unitName: unitNameEnum.bulwark,
-    race: [race.puppet],
-    job: [job.guardian],
-    class: 'タンク',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit40.jpeg')
   },
   {
     unitId: 41,
-    unitName: unitNameEnum.tempestKeeper,
-    race: [race.walker],
-    job: [job.siegeBreaker],
-    class: 'アビリティダメージ、コントロール',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit41.jpeg')
   },
   {
     unitId: 42,
-    unitName: unitNameEnum.mantakor,
-    race: [race.puppet, race.kraken],
-    job: [job.summoner],
-    class: '召喚',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit42.jpeg')
   },
   {
     unitId: 43,
-    unitName: unitNameEnum.warbringer,
-    race: [race.puppet],
-    job: [job.guardian],
-    class: 'レイトゲームキャリー',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit43.jpeg')
   },
   {
     unitId: 44,
-    unitName: unitNameEnum.grenadier,
-    race: [race.marine],
-    job: [job.specialist],
-    class: 'コントロール',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit44.jpeg')
   },
   {
     unitId: 45,
-    unitName: unitNameEnum.sentinel,
-    race: [race.mech],
-    job: [job.assassin],
-    class: 'ベーシックアタック',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit45.jpeg')
   },
   {
     unitId: 46,
-    unitName: unitNameEnum.cruiser,
-    race: [race.airForce],
-    job: [job.siegeBreaker],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit46.jpeg')
   },
   {
     unitId: 47,
-    unitName: unitNameEnum.soulmentor,
-    race: [race.beast],
-    job: [job.supporter],
-    class: 'supporter',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit47.jpeg')
   },
   {
     unitId: 48,
-    unitName: unitNameEnum.hiveQueen,
-    race: [race.insectoid],
-    job: [job.longShot],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit48.jpeg')
   },
   {
     unitId: 49,
-    unitName: unitNameEnum.bonewyrn,
-    race: [race.rapter, race.immortal],
-    job: [job.siegeBreaker],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit49.jpeg')
   },
   {
     unitId: 50,
-    unitName: unitNameEnum.chanMaster,
-    race: [race.panda],
-    job: [job.specialist],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit50.jpeg')
   },
   {
     unitId: 51,
-    unitName: unitNameEnum.mirageCaller,
-    race: [race.kraken],
-    job: [job.siegeBreaker],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit51.jpeg')
   },
   {
     unitId: 52,
-    unitName: unitNameEnum.hailstorm,
-    race: [race.mech],
-    job: [job.blaster],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit52.jpeg')
   },
   {
     unitId: 53,
-    unitName: unitNameEnum.devourer,
-    race: [race.rapter],
-    job: [job.specialist],
-    class: 'コントロール',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit53.jpeg')
   },
   {
     unitId: 54,
-    unitName: unitNameEnum.forestRager,
-    race: [race.immortal],
-    job: [job.vanguard],
-    class: 'コントロール',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit54.jpeg')
   },
   {
     unitId: 55,
-    unitName: unitNameEnum.ironshell,
-    race: [race.psyker],
-    job: [job.guardian],
-    class: 'コントロール',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit55.png')
   },
   {
     unitId: 56,
-    unitName: unitNameEnum.soulTaker,
-    race: [race.immortal],
-    job: [job.assassin],
-    class: 'アビリティダメージ',
+    unitName: unit,
+    race: [],
+    job: [],
+
     imageUrl: require('../assets/images/unit56.png')
   }
 ]

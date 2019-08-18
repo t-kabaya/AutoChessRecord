@@ -1,56 +1,113 @@
+// export const jobEnum = {
+//   guardian: 'guardian',
+//   blaster: 'blaster',
+//   supporter: 'supporter',
+//   longShot: 'longShot',
+//   siegeBreaker: 'siegeBreaker',
+//   specialist: 'specialist',
+//   assassin: 'assassin',
+//   summoner: 'summoner',
+//   vanguard: 'vanguard'
+// }
 export const jobEnum = {
-  guardian: 'guardian',
-  blaster: 'blaster',
-  supporter: 'supporter',
-  longShot: 'longShot',
-  siegeBreaker: 'siegeBreaker',
-  specialist: 'specialist',
-  assassin: 'assassin',
-  summoner: 'summoner',
-  vanguard: 'vanguard'
+  assassin: 'Assassin',
+  druid: 'Druid',
+  hunter: 'Hunter',
+  knight: 'Knight', 
+  mage: 'Mage',
+  mech: 'Mech',
+  shaman: 'Shaman',
+  warlock: 'Warlock',
+  warrior: 'Warrior',
+  witcher: 'Witcher'
 }
 
+// export const raceEnum = {
+//   marine: 'marine',
+//   rider: 'rider',
+//   mech: 'mech',
+//   airForce: 'airForce',
+//   puppet: 'puppet',
+//   psyker: 'psyker',
+//   walker: 'walker',
+//   kraken: 'kraken',
+//   beast: 'beast',
+//   rapter: 'rapter',
+//   insectoid: 'insectoid',
+//   immortal: 'immortal',
+//   panda: 'panda'
+// }
 export const raceEnum = {
-  marine: 'marine',
-  rider: 'rider',
-  mech: 'mech',
-  airForce: 'airForce',
-  puppet: 'puppet',
-  psyker: 'psyker',
-  walker: 'walker',
-  kraken: 'kraken',
-  beast: 'beast',
-  rapter: 'rapter',
-  insectoid: 'insectoid',
-  immortal: 'immortal',
-  panda: 'panda'
+  beast: 'Beast',
+  caveClan: 'CaveClan',
+  demon: 'Demon',
+  dragon: 'Dragon',
+  dwarf: 'Dwarf',
+  egersis: 'Egersis',
+  feathered: 'Feathered',
+  glacierClan: 'Glacier Clan',
+  goblin: 'Goblin',
+  human: 'Human',
+  kira: 'Kira',
+  marine: 'Marine',
+  spirit: 'Spirit',
+  divinity: 'Divinity'
 }
+
+// export const synergyEnum = {
+//   /* -------------------- job --------------------- */
+//   guardian: 'guardian',
+//   blaster: 'blaster',
+//   supporter: 'supporter',
+//   longShot: 'longShot',
+//   siegeBreaker: 'siegeBreaker',
+//   specialist: 'specialist',
+//   assassin: 'assassin',
+//   summoner: 'summoner',
+//   vanguard: 'vanguard',
+//   /* -------------------- race --------------------- */
+//   marine: 'marine',
+//   rider: 'rider',
+//   mech: 'mech',
+//   airForce: 'airForce',
+//   puppet: 'puppet',
+//   psyker: 'psyker',
+//   walker: 'walker',
+//   kraken: 'kraken',
+//   beast: 'beast',
+//   rapter: 'rapter',
+//   insectoid: 'insectoid',
+//   immortal: 'immortal',
+//   panda: 'panda'
+// }
 
 export const synergyEnum = {
-  /* -------------------- job --------------------- */
-  guardian: 'guardian',
-  blaster: 'blaster',
-  supporter: 'supporter',
-  longShot: 'longShot',
-  siegeBreaker: 'siegeBreaker',
-  specialist: 'specialist',
-  assassin: 'assassin',
-  summoner: 'summoner',
-  vanguard: 'vanguard',
-  /* -------------------- race --------------------- */
-  marine: 'marine',
-  rider: 'rider',
-  mech: 'mech',
-  airForce: 'airForce',
-  puppet: 'puppet',
-  psyker: 'psyker',
-  walker: 'walker',
-  kraken: 'kraken',
-  beast: 'beast',
-  rapter: 'rapter',
-  insectoid: 'insectoid',
-  immortal: 'immortal',
-  panda: 'panda'
+  beast: 'Beast',
+  caveClan: 'CaveClan',
+  demon: 'Demon',
+  dragon: 'Dragon',
+  dwarf: 'Dwarf',
+  egersis: 'Egersis',
+  feathered: 'Feathered',
+  glacierClan: 'Glacier Clan',
+  goblin: 'Goblin',
+  human: 'Human',
+  kira: 'Kira',
+  marine: 'Marine',
+  spirit: 'Spirit',
+  divinity: 'Divinity',
+
+  // job
+  assassin: 'Assassin',
+  druid: 'Druid',
+  hunter: 'Hunter',
+  knight: 'Knight', 
+  mage: 'Mage',
+  mech: 'Mech',
+  shaman: 'Shaman',
+  warlock: 'Warlock',
+  warrior: 'Warrior',
+  witcher: 'Witcher'
 }
 
 export const synergyImagePathArray = {
