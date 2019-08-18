@@ -1,3 +1,31 @@
+export const jobEnum = {
+  guardian: 'guardian',
+  blaster: 'blaster',
+  supporter: 'supporter',
+  longShot: 'longShot',
+  siegeBreaker: 'siegeBreaker',
+  specialist: 'specialist',
+  assassin: 'assassin',
+  summoner: 'summoner',
+  vanguard: 'vanguard'
+}
+
+export const raceEnum = {
+  marine: 'marine',
+  rider: 'rider',
+  mech: 'mech',
+  airForce: 'airForce',
+  puppet: 'puppet',
+  psyker: 'psyker',
+  walker: 'walker',
+  kraken: 'kraken',
+  beast: 'beast',
+  rapter: 'rapter',
+  insectoid: 'insectoid',
+  immortal: 'immortal',
+  panda: 'panda'
+}
+
 export const synergyEnum = {
   /* -------------------- job --------------------- */
   guardian: 'guardian',

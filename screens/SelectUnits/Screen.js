@@ -33,6 +33,9 @@ import {
   showSaveSuccessToast,
   showInvalidRankToast
 } from '../Common/Component/OnPressSaveToast'
+import RaceSelectButton from './RaceSelectButton.component'
+import JobSelectButtons from './JobSelectButtons.component'
+import { raceEnum, jobEnum } from '../../constants/synergyData.js'
 
 const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   let levelStar = []
@@ -41,13 +44,11 @@ const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   }
   return (
     <TouchableWithoutFeedback onPress={() => onPressUnitListItem(item)}>
-      <View style={styles.selectedUnitListItemContainer}>
-        <View style={styles.selectedUnitListItemStarContainer}>
-          {levelStar}
-        </View>
+      <View style={S.selectedUnitListItemContainer}>
+        <View style={S.selectedUnitListItemStarContainer}>{levelStar}</View>
         <Image
           resizeMode='contain'
-          style={styles.selectedUnitListItemImage}
+          style={S.selectedUnitListItemImage}
           source={unitImagePathArray[item.unitId - 1]}
         />
       </View>
@@ -55,12 +56,22 @@ const SelectedUnitListItem = ({ item, onPressUnitListItem }) => {
   )
 }
 
-// unitの重複は考えない
+const jobNameList = ['all', ...Object.keys(jobEnum)]
+const raceNameList = ['all', ...Object.keys(raceEnum)]
 
+// unitの重複は考えない
 export default class SelectUnitsScreen extends React.Component {
   state = {
     unitState: unitData.map(data => ({ ...data, level: 0 })),
-    ranking: null
+    ranking: null,
+    // ここで、indexとかで、state内に保存すると、取り回しが面倒。英文字でstateに保存して良いか。
+    // 選択肢は三つある。index, name, array of json
+    // 迷うことなく、array of jsonが、一番、スケールする。
+    // でも、オートチェスモバイルとの兼ね合いで、名前をハードコードすると、色々と大変そう。やっぱりindex保存で良いかな。
+    // stateに保存して良いのはUIの更新に使う値だけ。
+    // jobの、配列は、不変なので、stateに入れてはいけない。
+    selectedRaceButtonsIndex: 0,
+    selectedJobButtonsIndex: 0
   }
 
   onPressUnitListItem = item => {
@@ -81,13 +92,11 @@ export default class SelectUnitsScreen extends React.Component {
     }
     return (
       <TouchableWithoutFeedback onPress={() => this.onPressUnitListItem(item)}>
-        <View style={styles.unitListItemContainer}>
-          <View style={styles.selectedUnitListItemStarContainer}>
-            {levelStar}
-          </View>
+        <View style={S.unitListItemContainer}>
+          <View style={S.selectedUnitListItemStarContainer}>{levelStar}</View>
           <Image
             resizeMode='contain'
-            style={styles.unitListItemImage}
+            style={S.unitListItemImage}
             source={unitImagePathArray[item.unitId - 1]}
           />
           <Text numberOfLines={2}>{I18n.t(item.unitName)}</Text>
@@ -101,9 +110,9 @@ export default class SelectUnitsScreen extends React.Component {
     return (
       <Button
         onPress={() => this.onPressRankingItem(item)}
-        style={styles.rankingButton(isSelected)}
+        style={S.rankingButton(isSelected)}
       >
-        <Text style={styles.rankingButtonText}>{item}位</Text>
+        <Text style={S.rankingButtonText}>{item}位</Text>
       </Button>
     )
   }
@@ -131,82 +140,124 @@ export default class SelectUnitsScreen extends React.Component {
 
   onPressGoBackButton = () => this.props.navigation.goBack()
 
+  onPressSelectRaceButton = index => {
+    this.setState({ selectedRaceButtonsIndex: index })
+  }
+
+  onPressSelectJobButton = index => {
+    this.setState({ selectedJobButtonsIndex: index })
+  }
+
   render () {
-    const { unitState } = this.state
+    const {
+      unitState,
+      selectedJobButtonsIndex,
+      selectedRaceButtonsIndex
+    } = this.state
     const selectedUnits = unitState.filter(unit => !(unit.level === 0))
+
+    const filteredUnitsState = unitState
+      .filter(unit =>
+        unit.job.some(job =>
+          jobNameList[selectedJobButtonsIndex] === 'all'
+            ? // allの時は、全ユニットを表示
+            true
+            : job === jobNameList[selectedJobButtonsIndex]
+        )
+      )
+      .filter(unit =>
+        unit.race.some(race =>
+          raceNameList[selectedRaceButtonsIndex] === 'all'
+            ? // all の時は、全ユニットを表示
+            true
+            : race === raceNameList[selectedRaceButtonsIndex]
+        )
+      )
+
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <View style={styles.topButtonContainer}>
-            <Button
-              style={styles.goBackButton}
-              onPress={this.onPressGoBackButton}
-            >
-              <Text style={styles.doneSelectButtonText}>
-                {I18n.t('backButtonText')}
-              </Text>
-            </Button>
-            <Button
-              style={styles.decisionButton}
-              onPress={() => this.onPressDecision(unitState)}
-            >
-              <Text style={styles.doneSelectButtonText}>
-                {I18n.t('saveButtonText')}
-              </Text>
-            </Button>
-          </View>
+      <SafeAreaView>
+        <View style={S.topButtonContainer}>
+          <Button style={S.goBackButton} onPress={this.onPressGoBackButton}>
+            <Text style={S.doneSelectButtonText}>
+              {I18n.t('backButtonText')}
+            </Text>
+          </Button>
+          <Button
+            style={S.decisionButton}
+            onPress={() => this.onPressDecision(unitState)}
+          >
+            <Text style={S.doneSelectButtonText}>
+              {I18n.t('saveButtonText')}
+            </Text>
+          </Button>
+        </View>
 
-          <View style={{ flex: 3 }}>
-            <FlatList
-              style={styles.unitListContainer}
-              numColumns={7}
-              data={unitState}
-              renderItem={this.unitListItem}
-              keyExtractor={item => item.unitId}
-            />
-          </View>
-          <View style={styles.selectedUnitsContainer}>
-            <Text style={styles.text}>{selectedUnits.length}</Text>
-            <FlatList
-              inverted
-              horizontal
-              data={selectedUnits}
-              renderItem={({ item }) => (
-                <SelectedUnitListItem
-                  item={item}
-                  onPressUnitListItem={this.onPressUnitListItem}
-                />
-              )}
-              keyExtractor={item => item.unitId}
-            />
-          </View>
+        <View style={S.raceSelectButtonsContainer}>
+          <RaceSelectButton
+            raceNameList={raceNameList}
+            selectedRaceButtonsIndex={selectedRaceButtonsIndex}
+            onPressSelectRaceButton={this.onPressSelectRaceButton}
+          />
+        </View>
 
-          <View style={styles.rankingContainer}>
-            {/* <Text style={styles.text}>順位</Text> */}
-            <FlatList
-              scrollEnabled={false}
-              contentContainerStyle={styles.rankingContentContainer}
-              numColumns={8}
-              data={[1, 2, 3, 4, 5, 6, 7, 8]}
-              renderItem={this.rankingItem}
-              keyExtractor={item => item}
-            />
-          </View>
+        <View style={S.jobSelectButtonsContainer}>
+          <JobSelectButtons
+            selectedJobButtonsIndex={selectedJobButtonsIndex}
+            onPressSelectJobButton={this.onPressSelectJobButton}
+          />
+        </View>
+
+        <FlatList
+          style={S.unitsListContainer}
+          numColumns={6}
+          data={filteredUnitsState}
+          renderItem={this.unitListItem}
+          keyExtractor={item => item.unitId}
+        />
+
+        <View style={S.selectedUnitsContainer}>
+          <Text style={S.text}>{selectedUnits.length}</Text>
+          <FlatList
+            inverted
+            horizontal
+            data={selectedUnits}
+            renderItem={({ item }) => (
+              <SelectedUnitListItem
+                item={item}
+                onPressUnitListItem={this.onPressUnitListItem}
+              />
+            )}
+            keyExtractor={item => item.unitId}
+          />
+        </View>
+
+        <View style={S.rankingContainer}>
+          <FlatList
+            scrollEnabled={false}
+            contentContainerStyle={S.rankingContentContainer}
+            numColumns={8}
+            data={[1, 2, 3, 4, 5, 6, 7, 8]}
+            renderItem={this.rankingItem}
+            keyExtractor={item => item}
+          />
         </View>
       </SafeAreaView>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: wp('90%'),
-    marginHorizontal: wp('5%')
-    // backgroundColor: baseBackgroundColor
-  },
+// styleの
+const HEADER_HEIGHT = 13
+const HEADER_PADDING = 2
+const SIDE_BAR_WIDTH = 15
+
+const S = StyleSheet.create({
   topButtonContainer: {
-    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: hp(HEADER_HEIGHT),
+    width: wp('100%'),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -217,27 +268,20 @@ const styles = StyleSheet.create({
     width: wp('12.5%'),
     height: wp('15%')
   },
-  unitListContainer: {
-    height: (Layout.height * 4) / 5
-  },
   unitListItemImage: {
     width: Layout.width / 10,
     height: Layout.width / 10
-    // borderWidth: 5
-    // borderColor: primaryColor
   },
   doneSelectButtonText: {
     color: 'white',
-    fontSize: 20
+    fontSize: 22,
+    fontWeight: 'bold',
+    letterSpacing: 2
   },
   text: {
     alignSelf: 'center',
     paddingTop: 5,
     fontSize: 18
-  },
-  rankingContainer: {
-    flex: 0.8,
-    flexDirection: 'row'
   },
   rankingContentContainer: {
     alignItems: 'center'
@@ -255,11 +299,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20
   },
-  selectedUnitsContainer: {
-    flex: 0.8,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
   goBackButton: {
     backgroundColor: primaryColor,
     width: 80,
@@ -268,7 +307,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   decisionButton: {
-    backgroundColor: primaryColor,
+    backgroundColor: secondaryColor,
     width: 80,
     margin: 3,
     alignItems: 'center',
@@ -291,5 +330,33 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     zIndex: 1
+  },
+  raceSelectButtonsContainer: {
+    position: 'absolute',
+    top: hp(HEADER_HEIGHT + HEADER_PADDING),
+    left: 0
+  },
+  jobSelectButtonsContainer: {
+    position: 'absolute',
+    top: hp(HEADER_HEIGHT + HEADER_PADDING),
+    left: wp(SIDE_BAR_WIDTH)
+  },
+  unitsListContainer: {
+    position: 'absolute',
+    top: hp(HEADER_HEIGHT + HEADER_PADDING + 18),
+    left: wp(SIDE_BAR_WIDTH),
+    height: hp('50%')
+  },
+  selectedUnitsContainer: {
+    position: 'absolute',
+    top: hp('80%'),
+    left: wp(SIDE_BAR_WIDTH),
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  rankingContainer: {
+    position: 'absolute',
+    top: hp('90%'),
+    left: wp(SIDE_BAR_WIDTH)
   }
 })

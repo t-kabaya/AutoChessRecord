@@ -28,3 +28,7 @@ MyPage - BusinessLogic.js
        - BusinessLogic.test.js
        - Screen.js
        - Screen.test.js
+
+積極的にショートハンドを使う
+props = P
+styles = S
