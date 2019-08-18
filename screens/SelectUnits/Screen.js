@@ -97,7 +97,7 @@ export default class SelectUnitsScreen extends React.Component {
           <Image
             resizeMode='contain'
             style={S.unitListItemImage}
-            source={unitImagePathArray[item.unitId - 1]}
+            source={item.imageUrl}
           />
           <Text numberOfLines={2}>{I18n.t(item.unitName)}</Text>
         </View>

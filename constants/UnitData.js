@@ -77,14 +77,14 @@ const unitData = [
     unitName: unit.defector,
     race: [race.glacierClan],
     job: [job.shaman],
-    imageUrl: require('../assets/images/unit1.jpeg')
+    imageUrl: require('../assets/images/units/defector.jpeg')
   },
   {
     unitId: 2,
     unitName: unit.egersisRanger,
     race: [race.egersis],
     job: [job.hunter],
-    imageUrl: require('../assets/images/unit2.jpeg')
+    imageUrl: require('../assets/images/units/egersisRanger.jpeg')
   },
   {
     unitId: 3,
@@ -92,14 +92,14 @@ const unitData = [
     race: [race.glacierClan],
     job: [job.knight],
 
-    imageUrl: require('../assets/images/unit3.jpeg')
+    imageUrl: require('../assets/images/units/frostKnight.jpeg')
   },
   {
     unitId: 4,
     unitName: unit.godOfWar,
     race: [race.divinity],
     job: [job.warrior],
-    imageUrl: require('../assets/images/unit4.jpeg')
+    imageUrl: require('../assets/images/units/godOfWar.jpeg')
   },
   {
     unitId: 5,
@@ -107,7 +107,7 @@ const unitData = [
     race: [race.goblin],
     job: [job.mech],
 
-    imageUrl: require('../assets/images/unit5.jpeg')
+    imageUrl: require('../assets/images/units/heavenBomber.jpeg')
   },
   {
     unitId: 6,
@@ -115,15 +115,14 @@ const unitData = [
     race: [race.kira],
     job: [job.mage],
 
-    imageUrl: require('../assets/images/unit6.jpeg')
+    imageUrl: require('../assets/images/units/ogreMage.jpeg')
   },
   {
     unitId: 7,
     unitName: unit.redaxeChief,
     race: [race.caveClan],
     job: [job.warrior],
-
-    imageUrl: '../assets/images/unit7.jpeg'
+    imageUrl: '../assets/images/units/redaxeChief.jpeg'
   },
   {
     unitId: 8,
@@ -131,7 +130,7 @@ const unitData = [
     race: [race.goblin],
     job: [race.mech],
 
-    imageUrl: require('../assets/images/unit8.jpeg')
+    imageUrl: require('../assets/images/units/skyBreaker.jpeg')
   },
   {
     unitId: 9,
@@ -139,7 +138,7 @@ const unitData = [
     race: [race.goblin],
     job: [job.assassin],
 
-    imageUrl: require('../assets/images/unit9.jpeg')
+    imageUrl: require('../assets/images/units/soulBreaker.jpeg')
   },
   {
     unitId: 10,
@@ -147,7 +146,7 @@ const unitData = [
     race: [race.spirit],
     job: [job.warrior],
 
-    imageUrl: require('../assets/images/unit10.jpeg')
+    imageUrl: require('../assets/images/units/stoneSpirit.jpeg')
   },
   {
     unitId: 11,
@@ -155,7 +154,7 @@ const unitData = [
     race: [race.feathered],
     job: [job.witcher],
 
-    imageUrl: require('../assets/images/unit11.jpeg')
+    imageUrl: require('../assets/images/units/tabooWitcher.jpeg')
   },
   {
     unitId: 12,
@@ -163,7 +162,7 @@ const unitData = [
     race: [race.beast],
     job: [job.warrior],
 
-    imageUrl: require('../assets/images/unit12.jpeg')
+    imageUrl: require('../assets/images/units/tuskChampion.jpeg')
   },
   {
     unitId: 13,
@@ -171,7 +170,7 @@ const unitData = [
     race: [race.beast],
     job: [job.druid],
 
-    imageUrl: require('../assets/images/unit13.jpeg')
+    imageUrl: require('../assets/images/units/unicorn.jpeg')
   },
 
   // cost2
@@ -181,7 +180,7 @@ const unitData = [
     race: [race.marine],
     job: [job.assassin],
 
-    imageUrl: require('../assets/images/unit14.jpeg')
+    imageUrl: require('../assets/images/units/abyssalCrawler.jpeg')
   },
   {
     unitId: 15,
@@ -189,7 +188,7 @@ const unitData = [
     race: [race.marine],
     job: [job.warrior],
 
-    imageUrl: require('../assets/images/unit15.jpeg')
+    imageUrl: require('../assets/images/units/abyssalGuard.jpeg')
   },
   {
     unitId: 16,
@@ -197,23 +196,23 @@ const unitData = [
     race: [race.glacierClan],
     job: [job.warlock],
 
-    imageUrl: require('../assets/images/unit16.jpeg')
+    imageUrl: require('../assets/images/units/desperateDoctor.jpeg')
   },
-  {
-    unitId: 17,
-    unitName: unit,
-    race: [],
-    job: [],
+  // {
+  //   unitId: 17,
+  //   unitName: unit.strangeEgg,
+  //   race: [],
+  //   job: [],
 
-    imageUrl: require('../assets/images/unit17.jpeg')
-  },
+  //   imageUrl: require('../assets/images/units/.jpeg')
+  // },
   {
     unitId: 18,
     unitName: unit.hellKnight,
     race: [race.demon],
     job: [job.knight],
 
-    imageUrl: require('../assets/images/unit18.jpeg')
+    imageUrl: require('../assets/images/units/hellKnight.jpeg')
   },
   {
     unitId: 19,
@@ -221,7 +220,7 @@ const unitData = [
     race: [race.feathered],
     job: [job.assassin],
 
-    imageUrl: require('../assets/images/unit19.jpeg')
+    imageUrl: require('../assets/images/units/lightbladeKnight.jpeg')
   },
   {
     unitId: 20,
@@ -229,7 +228,7 @@ const unitData = [
     race: [race.demon],
     job: [job.assassin],
 
-    imageUrl: require('../assets/images/unit20.jpeg')
+    imageUrl: require('../assets/images/units/phantomQueen.jpeg')
   },
   {
     unitId: 21,
@@ -237,7 +236,7 @@ const unitData = [
     race: [race.goblin],
     job: [job.mech],
 
-    imageUrl: require('../assets/images/unit21.jpeg')
+    imageUrl: require('../assets/images/units/ripper.jpeg')
   },
   {
     unitId: 22,
@@ -245,7 +244,7 @@ const unitData = [
     race: [race.feathered, race.dragon],
     job: [job.mage],
 
-    imageUrl: require('../assets/images/unit22.jpeg')
+    imageUrl: require('../assets/images/units/shiningDragon.jpeg')
   },
   {
     unitId: 23,
@@ -253,7 +252,7 @@ const unitData = [
     race: [race.caveClan],
     job: [job.hunter],
 
-    imageUrl: require('../assets/images/unit23.jpeg')
+    imageUrl: require('../assets/images/units/shullHunter.jpeg')
   },
   {
     unitId: 24,
@@ -261,7 +260,7 @@ const unitData = [
     race: [race.caveClan],
     job: [job.warrior],
 
-    imageUrl: require('../assets/images/unit24.jpeg')
+    imageUrl: require('../assets/images/units/swordman.jpeg')
   },
   {
     unitId: 25,
@@ -269,7 +268,7 @@ const unitData = [
     race: [race.human],
     job: [job.mage],
 
-    imageUrl: require('../assets/images/unit25.jpeg')
+    imageUrl: require('../assets/images/units/theSource.jpeg')
   },
   {
     unitId: 26,
@@ -277,7 +276,7 @@ const unitData = [
     race: [race.spirit],
     job: [job.assassin],
 
-    imageUrl: require('../assets/images/unit26.jpeg')
+    imageUrl: require('../assets/images/units/waterSpirit.jpeg')
   },
   {
     unitId: 27,
@@ -285,8 +284,8 @@ const unitData = [
     race: [race.feathered],
     job: [job.druid],
 
-    imageUrl: require('../assets/images/unit27.jpeg')
-  },
+    imageUrl: require('../assets/images/units/wisperSeer.jpeg')
+  }
 
   // cost3
   {
@@ -295,7 +294,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit28.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 29,
@@ -303,7 +302,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit29.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 30,
@@ -311,7 +310,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit30.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 31,
@@ -319,7 +318,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit31.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 32,
@@ -327,7 +326,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit32.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 33,
@@ -335,7 +334,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit33.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 34,
@@ -343,7 +342,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit34.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 35,
@@ -351,7 +350,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit35.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 36,
@@ -359,7 +358,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit36.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 37,
@@ -367,7 +366,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit37.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 38,
@@ -375,7 +374,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit38.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 39,
@@ -383,7 +382,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit39.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 40,
@@ -391,7 +390,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit40.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 41,
@@ -399,7 +398,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit41.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 42,
@@ -407,7 +406,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit42.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 43,
@@ -415,7 +414,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit43.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 44,
@@ -423,7 +422,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit44.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 45,
@@ -431,7 +430,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit45.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 46,
@@ -439,7 +438,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit46.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 47,
@@ -447,7 +446,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit47.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 48,
@@ -455,7 +454,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit48.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 49,
@@ -463,7 +462,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit49.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 50,
@@ -471,7 +470,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit50.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 51,
@@ -479,7 +478,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit51.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 52,
@@ -487,7 +486,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit52.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 53,
@@ -495,7 +494,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit53.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 54,
@@ -503,7 +502,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit54.jpeg')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 55,
@@ -511,7 +510,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit55.png')
+    imageUrl: require('../assets/images/units/.jpeg')
   },
   {
     unitId: 56,
@@ -519,7 +518,7 @@ const unitData = [
     race: [],
     job: [],
 
-    imageUrl: require('../assets/images/unit56.png')
+    imageUrl: require('../assets/images/units/.jpeg')
   }
 ]
 
