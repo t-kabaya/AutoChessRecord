@@ -13,13 +13,14 @@ export const jobEnum = {
   assassin: 'Assassin',
   druid: 'Druid',
   hunter: 'Hunter',
-  knight: 'Knight', 
+  knight: 'Knight',
   mage: 'Mage',
   mech: 'Mech',
   shaman: 'Shaman',
   warlock: 'Warlock',
   warrior: 'Warrior',
-  witcher: 'Witcher'
+  witcher: 'Witcher',
+  priest: 'priest'
 }
 
 // export const raceEnum = {
@@ -101,7 +102,7 @@ export const synergyEnum = {
   assassin: 'Assassin',
   druid: 'Druid',
   hunter: 'Hunter',
-  knight: 'Knight', 
+  knight: 'Knight',
   mage: 'Mage',
   mech: 'Mech',
   shaman: 'Shaman',

@@ -47,6 +47,7 @@ const unit = {
   warpwoodSage: 'Warpwood Sage',
   werewolf: 'Werewolf',
   windRanger: 'Wind Ranger',
+  fortunesTeller: 'fortuneTeller',
 
   // cost4
   berserker: 'Berserker',
@@ -68,9 +69,11 @@ const unit = {
   devastator: 'Devastator',
   godOfThunder: 'God of Thunder',
   helicopter: 'Helicopter',
-  tsunamiStalker: 'Tsunami Stalker'
+  tsunamiStalker: 'Tsunami Stalker',
+  ghostProphet: 'ghostProphet'
 }
 
+//　不思議な卵は、ユニットデータに含めない。
 const unitData = [
   {
     unitId: 1,
@@ -285,240 +288,240 @@ const unitData = [
     job: [job.druid],
 
     imageUrl: require('../assets/images/units/wisperSeer.jpeg')
-  }
+  },
 
   // cost3
   {
     unitId: 28,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.lordOfSand,
+    race: [race.beast],
+    job: [job.assassin],
+    imageUrl: require('../assets/images/units/lordOfSand.jpeg')
   },
   {
     unitId: 29,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.poisonousWorm,
+    race: [race.beast],
+    job: [job.warlock],
+    imageUrl: require('../assets/images/units/poisonousWorm.jpeg')
   },
   {
     unitId: 30,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.fortunesTeller,
+    race: [race.glacierClan],
+    job: [job.priest],
+    imageUrl: require('../assets/images/units/fortunesTeller.jpeg')
   },
   {
     unitId: 31,
-    unitName: unit,
-    race: [],
-    job: [],
+    unitName: unit.evilKnight,
+    race: [race.egersis],
+    job: [job.knight],
 
-    imageUrl: require('../assets/images/units/.jpeg')
+    imageUrl: require('../assets/images/units/evilKnight.jpeg')
   },
   {
     unitId: 32,
-    unitName: unit,
-    race: [],
-    job: [],
+    unitName: unit.werewolf,
+    race: [race.human, race.beast],
+    job: [job.warrior],
 
-    imageUrl: require('../assets/images/units/.jpeg')
+    imageUrl: require('../assets/images/units/werewolf.jpeg')
   },
   {
     unitId: 33,
-    unitName: unit,
-    race: [],
-    job: [],
+    unitName: unit.argaliKnight,
+    race: [race.human],
+    job: [job.knight],
 
-    imageUrl: require('../assets/images/units/.jpeg')
+    imageUrl: require('../assets/images/units/argaliKnight.jpeg')
   },
   {
     unitId: 34,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.flamingWizard,
+    race: [race.human],
+    job: [job.mage],
+    imageUrl: require('../assets/images/units/flammingWizard.jpeg')
   },
   {
     unitId: 35,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.venom,
+    race: [race.dragon],
+    job: [job.assassin],
+    imageUrl: require('../assets/images/units/venom.jpeg')
   },
   {
     unitId: 36,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.dwarfSniper,
+    race: [race.dwarf],
+    job: [job.hunter],
+    imageUrl: require('../assets/images/units/dwarfSniper.jpeg')
   },
   {
     unitId: 37,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.shadowDevil,
+    race: [race.demon],
+    job: [job.warlock],
+    imageUrl: require('../assets/images/units/shadowDevil.jpeg')
   },
   {
     unitId: 38,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.fallenWitcher,
+    race: [race.demon],
+    job: [job.witcher],
+    imageUrl: require('../assets/images/units/fallenWitcher.jpeg')
   },
   {
     unitId: 39,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.windRanger,
+    race: [race.feathered],
+    job: [job.hunter],
+    imageUrl: require('../assets/images/units/windRanger.jpeg')
   },
   {
     unitId: 40,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.shadowcrawler,
+    race: [race.feathered],
+    job: [job.assassin],
+    imageUrl: require('../assets/images/units/shadowcrawler.jpeg')
   },
   {
     unitId: 41,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.warpwoodSage,
+    race: [race.feathered],
+    job: [job.druid],
+    imageUrl: require('../assets/images/units/warpwoodSage.jpeg')
   },
   {
     unitId: 42,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.thunderSpirit,
+    race: [race.spirit],
+    job: [job.mage],
+    imageUrl: require('../assets/images/units/thunderSpirit.jpeg')
   },
+
+  // cost4
   {
     unitId: 43,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.stormShaman,
+    race: [race.caveClan],
+    job: [job.shaman],
+    imageUrl: require('../assets/images/units/stormShaman.jpeg')
   },
   {
     unitId: 44,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.razorclaw,
+    race: [race.beast],
+    job: [job.druid],
+    imageUrl: require('../assets/images/units/razorclaw.jpeg')
   },
   {
     unitId: 45,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.berserker,
+    race: [race.glacierClan],
+    job: [job.warrior],
+    imageUrl: require('../assets/images/units/berserker.jpeg')
   },
   {
     unitId: 46,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.soulReaper,
+    race: [race.egersis],
+    job: [job.warlock],
+    imageUrl: require('../assets/images/units/soulReaper.jpeg')
   },
   {
     unitId: 47,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.siren,
+    race: [race.marine],
+    job: [job.hunter],
+    imageUrl: require('../assets/images/units/siren.jpeg')
   },
   {
     unitId: 48,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.pirateCaptain,
+    race: [race.human],
+    job: [job.warrior],
+    imageUrl: require('../assets/images/units/pirateCaptain.jpeg')
   },
   {
     unitId: 49,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.dragonKnight,
+    race: [race.human, race.dragon],
+    job: [job.knight],
+    imageUrl: require('../assets/images/units/dragonKnight.jpeg')
   },
   {
     unitId: 50,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.tortolaElder,
+    race: [race.human],
+    job: [job.mage],
+    imageUrl: require('../assets/images/units/tortolaElder.jpeg')
   },
   {
     unitId: 51,
-    unitName: unit,
-    race: [],
-    job: [],
+    unitName: unit.venomancer,
+    race: [race.goblin],
+    job: [job.warlock],
 
-    imageUrl: require('../assets/images/units/.jpeg')
+    imageUrl: require('../assets/images/units/venomancer.jpeg')
   },
   {
     unitId: 52,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.doomArbiter,
+    race: [race.demon],
+    job: [job.warrior],
+    imageUrl: require('../assets/images/units/doomArbiter.jpeg')
   },
   {
     unitId: 53,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.shiningAssassin,
+    race: [race.feathered],
+    job: [job.assassin],
+    imageUrl: require('../assets/images/units/shiningAssassin.jpeg')
   },
+
+  // cost5
   {
     unitId: 54,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.ghostProphet,
+    race: [race.egersis],
+    job: [job.warlock],
+    imageUrl: require('../assets/images/units/ghostProphet.jpeg')
   },
   {
     unitId: 55,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.tsunamiStalker,
+    race: [race.marine],
+    job: [job.hunter],
+    imageUrl: require('../assets/images/units/tsunamiStalker.jpeg')
   },
   {
     unitId: 56,
-    unitName: unit,
-    race: [],
-    job: [],
-
-    imageUrl: require('../assets/images/units/.jpeg')
+    unitName: unit.helicopter,
+    race: [race.dwarf],
+    job: [job.mech],
+    imageUrl: require('../assets/images/units/helicopter.jpeg')
+  },
+  {
+    unitId: 57,
+    unitName: unit.devastator,
+    race: [race.goblin],
+    job: [job.mech],
+    imageUrl: require('../assets/images/units/devastator.jpeg')
+  },
+  {
+    unitId: 58,
+    unitName: unit.darkSpirit,
+    race: [race.spirit],
+    job: [job.warlock],
+    imageUrl: require('../assets/images/units/darkSpirit.jpeg')
+  },
+  {
+    unitId: 56,
+    unitName: unit.godOfThunder,
+    race: [race.divinity],
+    job: [job.mage],
+    imageUrl: require('../assets/images/units/godOfThunder.jpeg')
   }
 ]
 
